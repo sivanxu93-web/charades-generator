@@ -387,6 +387,14 @@ export const es = {
         badge: "Favorito en familia",
       },
       {
+        key: "pictionary",
+        title: "Generador de Pictionary",
+        href: "/pictionary-word-generator/",
+        description:
+          "Palabras aleatorias optimizadas para juegos de dibujo. Objetos, animales y acciones ideales para noches de Pictionary.",
+        badge: "Nuevo",
+      },
+      {
         key: "movies",
         title: "Generador de películas",
         href: "/movie-charades-generator/",
@@ -1234,6 +1242,7 @@ export const es = {
           { title: "Generador gratuito", href: "/" },
           { title: "Generador de palabras", href: "/word-charades-generator" },
           { title: "Generador aleatorio", href: "/random-charades-generator" },
+          { title: "Generador Pictionary", href: "/pictionary-word-generator" },
           {
             title: "Charadas para niños",
             href: "/charades-generator-for-kids",

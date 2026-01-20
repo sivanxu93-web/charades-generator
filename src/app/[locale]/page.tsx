@@ -26,17 +26,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
   const alternateLanguages = buildAlternateLanguages(canonicalPath);
 
+  const title = locale === "es"
+    ? "Generador de Charadas y Palabras Aleatorias - Jugar Online"
+    : "Charades Generator & Random Word Tool - Play Online (No Login)";
+  
+  const description = locale === "es"
+    ? "El mejor generador de palabras para Charadas, Pictionary y juegos en grupo. Más de 1000 palabras divertidas y difíciles. ¡Sin descargar nada!"
+    : "The best random word generator for Charades, Pictionary, and Catchphrase. Get 1000+ funny, hard, and easy words instantly. No app or login needed!";
+
   return {
-    title: dictionary.seo.home.title,
-    description: dictionary.seo.home.description,
+    title,
+    description,
     keywords: dictionary.seo.home.keywords,
     alternates: {
       canonical: canonicalUrl,
       languages: alternateLanguages,
     },
     openGraph: {
-      title: dictionary.seo.home.title,
-      description: dictionary.seo.home.description,
+      title,
+      description,
       type: "website",
       url: canonicalUrl,
       locale: getOpenGraphLocale(locale),
@@ -45,14 +53,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: `${BASE_URL}/charades-generator-og.png`,
           width: 1200,
           height: 630,
-          alt: dictionary.seo.home.title,
+          alt: title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: dictionary.seo.home.title,
-      description: dictionary.seo.home.description,
+      title,
+      description,
       images: [`${BASE_URL}/charades-generator-og.png`],
     },
     robots: "index, follow",

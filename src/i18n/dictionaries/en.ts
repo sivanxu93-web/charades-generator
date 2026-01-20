@@ -383,6 +383,14 @@ export const en = {
         badge: "Family favorite",
       },
       {
+        key: "pictionary",
+        title: "Pictionary Word Generator",
+        href: "/pictionary-word-generator/",
+        description:
+          "Random words optimized for drawing games. Objects, animals, and actions perfect for Pictionary night.",
+        badge: "New tool",
+      },
+      {
         key: "movies",
         title: "Movie Charades Generator",
         href: "/movie-charades-generator/",
@@ -1222,6 +1230,10 @@ export const en = {
           {
             title: "Random Charades Generator",
             href: "/random-charades-generator",
+          },
+          {
+            title: "Pictionary Word Generator",
+            href: "/pictionary-word-generator",
           },
           {
             title: "Kids Charades Generator",

@@ -149,6 +149,26 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
           </div>
         </section>
 
+        <section className="bg-purple-50 rounded-lg shadow-md p-6 mb-8 border border-purple-100">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.ageGuideTitle}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {copy.ageGuideItems.map((item) => (
+              <div key={item.age} className="bg-white rounded-lg p-4 shadow-sm">
+                <div className="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-sm font-bold rounded-full mb-3">
+                  {item.age}
+                </div>
+                <p className="text-sm text-gray-600 mb-3">{item.description}</p>
+                <div>
+                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                    {item.examplesLabel}:
+                  </span>
+                  <p className="text-gray-800 font-medium mt-1">{item.examples}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className="bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg p-6 mb-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.benefitsTitle}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -322,6 +342,27 @@ const kidsContent = {
         textColor: "#be185d",
       },
     ],
+    ageGuideTitle: "Charades Ideas by Age Group",
+    ageGuideItems: [
+      {
+        age: "Ages 4-6 (Preschool)",
+        description: "Focus on animals and simple daily actions. No reading required if an adult whispers the word.",
+        examplesLabel: "Try words like",
+        examples: "Frog, Sleeping, Airplane, Monkey",
+      },
+      {
+        age: "Ages 7-9 (Elementary)",
+        description: "Introduce simple objects, professions, and familiar movie characters.",
+        examplesLabel: "Try words like",
+        examples: "Teacher, Harry Potter, Guitar, Spider-Man",
+      },
+      {
+        age: "Ages 10-12 (Pre-Teen)",
+        description: "More abstract concepts, harder verbs, and multi-word phrases.",
+        examplesLabel: "Try words like",
+        examples: "Grocery Shopping, Statue of Liberty, Invisible, Karate",
+      },
+    ],
     benefitsTitle: "Educational Benefits of Kids Charades",
     benefits: {
       learningTitle: "Learning Skills:",
@@ -482,6 +523,27 @@ const kidsContent = {
         textColor: "#be185d",
       },
     ],
+    ageGuideTitle: "Ideas de charadas por edad",
+    ageGuideItems: [
+      {
+        age: "4-6 Años (Preescolar)",
+        description: "Enfócate en animales y acciones diarias. Un adulto puede susurrar la palabra.",
+        examplesLabel: "Prueba con",
+        examples: "Rana, Dormir, Avión, Mono",
+      },
+      {
+        age: "7-9 Años (Primaria)",
+        description: "Introduce objetos simples, profesiones y personajes famosos.",
+        examplesLabel: "Prueba con",
+        examples: "Maestro, Harry Potter, Guitarra, Spiderman",
+      },
+      {
+        age: "10-12 Años (Preadolescentes)",
+        description: "Conceptos más abstractos, verbos difíciles y frases compuestas.",
+        examplesLabel: "Prueba con",
+        examples: "Hacer la compra, Estatua de la Libertad, Invisible, Karate",
+      },
+    ],
     benefitsTitle: "Beneficios educativos de las charadas",
     benefits: {
       learningTitle: "Habilidades de aprendizaje:",
@@ -607,6 +669,13 @@ const kidsContent = {
     background: string;
     headingColor: string;
     textColor: string;
+  }>;
+  ageGuideTitle: string;
+  ageGuideItems: Array<{
+    age: string;
+    description: string;
+    examplesLabel: string;
+    examples: string;
   }>;
   benefitsTitle: string;
   benefits: {

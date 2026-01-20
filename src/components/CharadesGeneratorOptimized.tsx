@@ -38,14 +38,16 @@ interface CharadesGeneratorProps {
   hideAgeGroupFilter?: boolean;
   isShowScenarios?: boolean;
   showChristmasPromoLink?: boolean;
+  allowedCategories?: string[];
 }
 
 type PickWordsFn = (
-  category: string,
+  category: string | string[],
   difficulty: string,
   ageGroup: string,
   count: number,
   locale: string,
+  excludeWords?: string[],
 ) => CharadesWord[];
 
 export default function CharadesGeneratorOptimized({
@@ -61,6 +63,7 @@ export default function CharadesGeneratorOptimized({
   hideAgeGroupFilter = false,
   isShowScenarios = false,
   showChristmasPromoLink = false,
+  allowedCategories,
 }: CharadesGeneratorProps = {}) {
   const { locale, dictionary, t } = useLocale();
   const difficultiesLabel = dictionary.difficulties;
@@ -68,6 +71,7 @@ export default function CharadesGeneratorOptimized({
   const ageGroupLabels = dictionary.ageGroups;
   const resolvedTitle = title ?? dictionary.generator.defaultTitle;
   const resolvedDescription = description ?? dictionary.generator.defaultDescription;
+  const categoriesToDisplay = allowedCategories ?? categoryIds;
   const scenarios = useMemo(
     () => (dictionary.generator.scenarios ?? []) as ScenarioPreset[],
     [dictionary],
@@ -98,6 +102,7 @@ export default function CharadesGeneratorOptimized({
   const [copyFeedback, setCopyFeedback] = useState<'idle' | 'success' | 'error'>('idle');
   const [scenarioUsage, setScenarioUsage] = useState<Record<string, boolean>>({});
   const [scenariosExpanded, setScenariosExpanded] = useState(false);
+  const [seenWords, setSeenWords] = useState<string[]>([]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -105,10 +110,14 @@ export default function CharadesGeneratorOptimized({
     }
     const timeoutId = window.setTimeout(() => {
       try {
-        const stored = window.localStorage.getItem('cg-scenario-usage');
-        if (stored) {
-          const parsed = JSON.parse(stored) as Record<string, boolean>;
-          setScenarioUsage(parsed);
+        const storedScenarios = window.localStorage.getItem('cg-scenario-usage');
+        if (storedScenarios) {
+          setScenarioUsage(JSON.parse(storedScenarios));
+        }
+        
+        const storedSeen = window.localStorage.getItem('cg-seen-words');
+        if (storedSeen) {
+          setSeenWords(JSON.parse(storedSeen));
         }
       } catch {
         // ignore parsing errors
@@ -158,14 +167,33 @@ export default function CharadesGeneratorOptimized({
 
       try {
         const pickWords = await loadPickWords();
+        const categoryParam =
+          selectedCategory === 'all' && allowedCategories
+            ? allowedCategories.filter((c) => c !== 'all')
+            : selectedCategory;
+
         const words = pickWords(
-          selectedCategory,
+          categoryParam,
           selectedDifficulty,
           selectedAgeGroup,
           count,
           locale,
+          seenWords,
         );
         setGeneratedWords(words);
+
+        // Update seen words history (keep last 150)
+        const newWords = words.map((w) => w.word);
+        const nextSeen = [...seenWords, ...newWords];
+        if (nextSeen.length > 150) {
+          nextSeen.splice(0, nextSeen.length - 150);
+        }
+        setSeenWords(nextSeen);
+        try {
+          window.localStorage.setItem('cg-seen-words', JSON.stringify(nextSeen));
+        } catch {
+          // ignore storage errors
+        }
       } catch {
         setErrorMessage(dictionary.generator.errorFetchingWords);
       } finally {
@@ -486,7 +514,7 @@ export default function CharadesGeneratorOptimized({
             setSelectedDifficulty={setSelectedDifficulty}
             setSelectedAgeGroup={setSelectedAgeGroup}
             setFiltersExpanded={setFiltersExpanded}
-            categories={categoryIds}
+            categories={categoriesToDisplay}
             difficulties={[...difficultyIds]}
             ageGroups={[...ageGroupIds]}
             showCategoryFilter={!hideCategoryFilter}
