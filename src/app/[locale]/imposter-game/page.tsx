@@ -309,15 +309,15 @@ export default async function ImposterGamePage({ params }: PageProps) {
 
 const imposterContent = {
   en: {
-    whatIsTitle: "What is the imposter game?",
+    whatIsTitle: "What is the imposter word game?",
     whatIsIntro:
-      "The imposter game is a social deduction party game where one or more players secretly receive a different word or role and everyone tries to spot who doesn’t quite fit.",
+      "The imposter game is a free online social deduction party game where everyone secretly receives the same word, except for one or more players who receive a different word. The group must then try to guess the imposter.",
     whatIsBullets: [
-      "Perfect for 4–12 players in living rooms, classrooms, or online calls.",
-      "Inspired by games like “Who’s the Impostor?” and “Among Us in real life,” but fully screen-free.",
-      "Easy to teach in under two minutes—great as an icebreaker before charades rounds.",
+      "Play online instantly—our free imposter game generator requires no app downloads.",
+      "Perfect for 4–12 players in living rooms, classrooms, or online group calls.",
+      "Inspired by party games like “Who’s the Impostor?”, “Spyfall”, and “Among Us in real life”.",
     ],
-    rulesTitle: "Imposter game rules: quick start",
+    rulesTitle: "How to play the imposter game (Rules)",
     setupTitle: "Setup",
     setupSteps: [
       "Choose a host who won’t play this round or can see everyone’s words.",
@@ -353,9 +353,9 @@ const imposterContent = {
         tagline: "Keep the game flowing.",
       },
     ],
-    wordsTitle: "Imposter word and prompt ideas",
+    wordsTitle: "Best words for the imposter game (Generator ideas)",
     wordsIntro:
-      "Start with simple everyday concepts, then move to themed or question-based prompts once everyone understands the flow.",
+      "When using our imposter word game generator, start with simple everyday concepts. Then, you can try themed or question-based prompts once everyone understands how to play.",
     wordGroups: [
       {
         title: "Easy everyday pairs",
@@ -445,15 +445,15 @@ const imposterContent = {
     ctaSecondary: "See the full charades guide",
   },
   es: {
-    whatIsTitle: "¿Qué es el juego del impostor?",
+    whatIsTitle: "¿Qué es el juego de palabras del impostor?",
     whatIsIntro:
-      "El juego del impostor es un juego de deducción social donde una o varias personas reciben una palabra distinta y el grupo intenta descubrir quién no encaja del todo.",
+      "El juego del impostor es un juego de deducción social gratuito online donde todo el grupo recibe en secreto la misma palabra, excepto una o más personas que reciben una palabra distinta. El objetivo es adivinar quién es el impostor.",
     whatIsBullets: [
-      "Ideal para 4–12 participantes en salones, aulas o videollamadas.",
-      "Inspirado en juegos como “Quién es el impostor” o “Among Us en la vida real”, pero sin pantallas.",
-      "Se explica en menos de dos minutos, perfecto como rompehielos antes de las charadas.",
+      "Juega online al instante: nuestro generador gratuito del juego del impostor no requiere descargar ninguna app.",
+      "Ideal para 4–12 participantes en salones, aulas o videollamadas en grupo.",
+      "Inspirado en juegos de fiesta como “Spyfall”, “Quién es el impostor” o “Among Us en la vida real”.",
     ],
-    rulesTitle: "Reglas del juego del impostor (versión rápida)",
+    rulesTitle: "Cómo jugar al juego del impostor (Reglas)",
     setupTitle: "Preparación",
     setupSteps: [
       "Elige una persona anfitriona que no juegue esa ronda o que pueda ver todas las palabras.",
@@ -489,9 +489,9 @@ const imposterContent = {
         tagline: "Mantén el ritmo de la partida.",
       },
     ],
-    wordsTitle: "Ideas de palabras y prompts para impostor",
+    wordsTitle: "Las mejores palabras para el juego del impostor (Ideas)",
     wordsIntro:
-      "Empieza con conceptos cotidianos sencillos y después pasa a temas o preguntas cuando el grupo ya entienda la dinámica.",
+      "Al usar nuestro generador online del juego del impostor, empieza con conceptos cotidianos sencillos. Después, puedes pasar a temas o preguntas cuando el grupo entienda cómo jugar.",
     wordGroups: [
       {
         title: "Pares cotidianos fáciles",

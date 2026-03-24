@@ -123,11 +123,11 @@ export const es = {
         "Generador avanzado con prompts exigentes y estrategias para anfitriones",
     },
     imposter: {
-      title: "Juego del impostor - Reglas, roles e ideas",
+      title: "Generador del Juego del Impostor Online Gratis (Reglas y Palabras)",
       description:
-        "Aprende a jugar al juego del impostor en la vida real con amigos, familia o alumnado. Reglas sencillas, ideas de roles y palabras para rondas de impostor en fiestas y aulas.",
+        "¡Juega al mejor juego del impostor online con amigos! Generador gratuito con cientos de palabras. Aprende a jugar, descubre al impostor y empieza una partida al instante, sin descargar ninguna app.",
       keywords:
-        "juego del impostor, reglas impostor, quién es el impostor, juego de fiesta impostor, among us en la vida real",
+        "juego del impostor, generador juego impostor, juego impostor online, juego de palabras impostor, como jugar impostor, juego de fiesta impostor, among us en la vida real",
       structuredDataName: "Guía del juego del impostor",
       structuredDataDescription:
         "Reglas para el juego del impostor fuera de pantalla con ideas de roles, palabras y consejos para anfitriones en reuniones familiares, fiestas y clases.",
@@ -742,9 +742,9 @@ export const es = {
   },
   pages: {
     imposter: {
-      title: "Cómo jugar al juego del impostor",
+      title: "Generador del Juego del Impostor Online Gratis",
       description:
-        "Guía paso a paso del juego del impostor con reglas, roles e ideas de palabras para usar en fiestas, aulas y actividades de equipo.",
+        "Genera palabras al instante y juega al juego del impostor online con amigos. ¡No requiere descargar app!",
     },
     imposterGame: {
       roomTitle: "Juega al impostor con tu grupo",

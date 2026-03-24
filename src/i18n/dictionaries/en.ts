@@ -123,11 +123,11 @@ export const en = {
         "Advanced charades generator with tough prompts, scoring twists, and host strategies",
     },
     imposter: {
-      title: "Imposter Game - Rules, Roles & Word Ideas",
+      title: "Free Imposter Game Generator Online (Word Ideas & Rules)",
       description:
-        "Learn how to play the imposter game in real life with friends, family, or classmates. Simple rules, roles, and word prompts for party and classroom impostor rounds.",
+        "Play the best imposter word game online! Free imposter game generator with hundreds of words. Learn how to play, guess the imposter, and start a game instantly—no app needed.",
       keywords:
-        "imposter game, impostor game rules, who is the imposter, imposter party game, among us in real life",
+        "imposter game, imposter game generator, imposter game online, imposter word game, how to play imposter game, guess the imposter game, imposter game words",
       structuredDataName: "Imposter Party Game Guide",
       structuredDataDescription:
         "Offline imposter party game rules with role ideas, word prompts, and host tips for friends, families, and classrooms.",
@@ -739,9 +739,9 @@ export const en = {
   },
   pages: {
     imposter: {
-      title: "How to Play the Imposter Game",
+      title: "Free Imposter Game Generator Online",
       description:
-        "Step-by-step imposter game rules plus role ideas and word prompts you can use for parties, classrooms, and team icebreakers.",
+        "Generate words instantly and play the imposter game online with friends. No app download needed!",
     },
     imposterGame: {
       roomTitle: "Play the imposter game with your group",
