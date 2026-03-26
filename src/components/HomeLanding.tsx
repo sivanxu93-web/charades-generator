@@ -14,16 +14,13 @@ interface HomeLandingProps {
 
 export default function HomeLanding({ initialWords, dictionary, locale }: HomeLandingProps) {
   const themedGenerators = dictionary.home.themedGenerators;
-  const playGuides = dictionary.home.playGuides;
-  const expertInsights = dictionary.home.expertInsights;
-  const quickResources = dictionary.home.quickResources;
   const generatorDeepDive = dictionary.home.generatorDeepDive;
 
   const difference = generatorDeepDive.difference;
   const presets = generatorDeepDive.presets;
-  const useCases = generatorDeepDive.useCases;
-  const tips = generatorDeepDive.tips;
   const faq = generatorDeepDive.faq;
+  const playGuides = generatorDeepDive.playGuides;
+  const expertInsights = generatorDeepDive.expertInsights;
 
   return (
     <>
@@ -120,41 +117,6 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           </div>
         </section>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{useCases.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {useCases.columns.map((column) => (
-              <div key={column.title} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-                <h3 className="font-semibold text-gray-800 mb-3">{column.title}</h3>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  {column.items.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{tips.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {tips.cards.map((card) => (
-              <div key={card.title} className="bg-slate-50 border border-slate-200 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-slate-800 mb-3">{card.title}</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  {card.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{faq.title}</h2>
           <div className="space-y-4">
@@ -225,7 +187,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {playGuides.map((resource) => (
+            {playGuides.items.map((resource) => (
               <Link
                 key={resource.href}
                 href={buildLocalePath(locale, resource.href)}
@@ -258,18 +220,12 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
             <p className="mt-2 text-gray-600">{expertInsights.description}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {expertInsights.personas.map((persona) => (
-              <article key={persona.title} className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-900">{persona.title}</h3>
-                <p className="mt-2 text-sm text-gray-600 italic">“{persona.quote}”</p>
+            {expertInsights.items.map((item, idx) => (
+              <article key={idx} className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
+                <p className="text-sm text-gray-600 italic">“{item.quote}”</p>
                 <h4 className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-800">
-                  {persona.tipsTitle}
+                  {item.author} — {item.role}
                 </h4>
-                <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-gray-700">
-                  {persona.tips.map((tip) => (
-                    <li key={tip}>{tip}</li>
-                  ))}
-                </ul>
               </article>
             ))}
           </div>
@@ -288,53 +244,11 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
         </div>
       </section>
 
-      {quickResources && (
-        <section className="bg-gray-100 border-t border-gray-200">
-          <div className="max-w-4xl mx-auto px-6 py-10">
-            <div className="mb-8 max-w-3xl">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{quickResources.title}</h2>
-              <p className="mt-2 text-gray-600">{quickResources.description}</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {quickResources.items.map((item) => (
-                <article key={item.title} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{item.description}</p>
-                  <Link
-                    className="mt-4 inline-flex items-center text-sm font-semibold text-orange-600"
-                    href={buildLocalePath(locale, item.href)}
-                  >
-                    {quickResources.actionLabel}
-                    <svg
-                      className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </article>
-              ))}
-            </div>
-            <div className="mt-6">
-              <Link
-                href={buildLocalePath(locale, "/quick-play-kit/")}
-                className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
-              >
-                {quickResources.printLabel}
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
       {dictionary.home.communityPlaybooks && (
         <CommunityPlaybooks
           locale={locale}
           playbooks={dictionary.home.communityPlaybooks}
-          fallbackShareCta={dictionary.home.expertInsights.shareCta}
+          fallbackShareCta={expertInsights.shareCta}
         />
       )}
     </>

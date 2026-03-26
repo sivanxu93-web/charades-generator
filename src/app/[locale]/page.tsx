@@ -6,6 +6,7 @@ import SiteLinksStructuredData from "@/components/SiteLinksStructuredData";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
+import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 
@@ -24,15 +25,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalPath = "/";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeLabel = dictionary.navigation.items.find((item => item.key === "home"))?.title ?? "Home";
   const alternateLanguages = buildAlternateLanguages(canonicalPath);
 
   const title = locale === "es"
     ? "Generador de Charadas y Palabras Aleatorias - Jugar Online"
-    : "Charades Generator & Random Word Tool - Play Online (No Login)";
+    : "Charades Generator: 1000+ Free Online Words (No Login)";
   
   const description = locale === "es"
     ? "El mejor generador de palabras para Charadas, Pictionary y juegos en grupo. Más de 1000 palabras divertidas y difíciles. ¡Sin descargar nada!"
-    : "The best random word generator for Charades, Pictionary, and Catchphrase. Get 1000+ funny, hard, and easy words instantly. No app or login needed!";
+    : "Generate 1000+ charades words instantly! No login required. Get funny, hard, & easy ideas for kids, adults, Movies, and Disney. Copy or Print lists in 1-click.";
 
   return {
     title,
@@ -75,9 +77,11 @@ export default async function Home({ params }: PageProps) {
 
   const canonicalPath = "/";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeLabel = dictionary.navigation.items.find((item => item.key === "home"))?.title ?? "Home";
 
   return (
     <div className="bg-gray-50 min-h-screen">
+      <BreadcrumbStructuredData items={[{ name: homeLabel, url: canonicalUrl }]} />
       <HomeLanding initialWords={initialWords} dictionary={dictionary} locale={locale} />
 
       <WebsiteStructuredData locale={locale} dictionary={dictionary} />

@@ -282,13 +282,13 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
 
 const kidsContent = {
   en: {
-    introTitle: "Your childrens charades generator toolkit",
+    introTitle: "Children's charades generator for quick fun",
     introDescription:
       "Use this childrens charades generator to instantly pull age-appropriate prompts for birthday parties, classroom brain breaks, family gatherings, and rainy day fun. Bookmark it whenever you need new words fast!",
-    activitiesTitle: "Perfect for Children's Activities",
+    activitiesTitle: "Perfect for children's party games",
     activitiesDescription: {
       before: "Need more options for family fun? Visit our",
-      linkText: "complete charades generator",
+      linkText: "full charades generator",
       after: "with age-appropriate filters and thousands of family-friendly words.",
       href: "/",
     },
@@ -296,8 +296,8 @@ const kidsContent = {
       {
         title: "Kids Birthday Parties",
         items: [
-          "Children's birthday entertainment",
-          "Preschool party games and activities",
+          "Children's birthday party entertainment",
+          "Preschool party games and ideas",
           "Elementary school celebrations",
           "Kids sleepover party fun",
         ],
@@ -306,7 +306,7 @@ const kidsContent = {
         textColor: "#15803d",
       },
       {
-        title: "Educational Settings",
+        title: "Classroom Fun",
         items: [
           "Classroom brain break activities",
           "Homeschool learning games",
@@ -318,7 +318,7 @@ const kidsContent = {
         textColor: "#1d4ed8",
       },
     ],
-    safeTitle: "Safe & Educational Charades for Kids",
+    safeTitle: "Safe & Fun Charades for Kids",
     safeCategories: [
       {
         title: "Friendly Animals",
@@ -463,13 +463,13 @@ const kidsContent = {
     rulesCta: "Open the full charades guide",
   },
   es: {
-    introTitle: "Tu kit para charadas infantiles",
+    introTitle: "Generador de charadas para niños: diversión rápida",
     introDescription:
       "Usa este generador de charadas para niños y consigue al instante palabras aptas para cumpleaños, descansos activos en clase, reuniones familiares y tardes lluviosas. ¡Guárdalo en favoritos para tener ideas nuevas siempre!",
-    activitiesTitle: "Ideal para actividades infantiles",
+    activitiesTitle: "Perfecto para juegos de fiesta infantiles",
     activitiesDescription: {
       before: "¿Quieres más opciones familiares? Visita nuestro",
-      linkText: "generador completo de charadas",
+      linkText: "generador de charadas completo",
       after: "con filtros por edad y miles de palabras aptas para todos.",
       href: "/es/",
     },
@@ -499,7 +499,7 @@ const kidsContent = {
         textColor: "#1d4ed8",
       },
     ],
-    safeTitle: "Charadas seguras y educativas",
+    safeTitle: "Charadas seguras y divertidas para niños",
     safeCategories: [
       {
         title: "Animales amigables",

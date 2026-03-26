@@ -368,13 +368,23 @@ const imposterContent = {
         ],
       },
       {
-        title: "Party & classroom themes",
+        title: "Party & pop culture",
         items: [
+          "Harry Potter vs. Lord of the Rings",
+          "Batman vs. Superman",
+          "Netflix vs. YouTube",
           "Pizza vs. Lasagna",
-          "Lion vs. Tiger",
-          "Science vs. History",
-          "Snowman vs. Santa",
           "Concert vs. Theatre",
+        ],
+      },
+      {
+        title: "Tricky/Hard mode pairs",
+        items: [
+          "Ocean vs. Sea",
+          "Jacket vs. Coat",
+          "Cupcake vs. Muffin",
+          "Turtle vs. Tortoise",
+          "Clock vs. Watch",
         ],
       },
       {
@@ -504,13 +514,23 @@ const imposterContent = {
         ],
       },
       {
-        title: "Temas para fiestas y aulas",
+        title: "Fiestas y cultura pop",
         items: [
+          "Harry Potter vs. El Señor de los Anillos",
+          "Batman vs. Superman",
+          "Netflix vs. YouTube",
           "Pizza vs. Lasaña",
-          "León vs. Tigre",
-          "Ciencias vs. Historia",
-          "Muñeco de nieve vs. Papá Noel",
           "Concierto vs. Teatro",
+        ],
+      },
+      {
+        title: "Pares difíciles (Modo Difícil)",
+        items: [
+          "Océano vs. Mar",
+          "Chaqueta vs. Abrigo",
+          "Magdalena vs. Muffin",
+          "Tortuga de agua vs. Tortuga de tierra",
+          "Reloj de pared vs. Reloj de pulsera",
         ],
       },
       {

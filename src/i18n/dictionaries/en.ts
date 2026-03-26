@@ -3,7 +3,7 @@ export const en = {
   localeName: "English",
   seo: {
     home: {
-      title: "Charades Generator – Free Online Words & Ideas",
+      title: "Charades Generator: #1 Free Online Word Generator",
       description:
         "Generate random charades words for kids and adults in one click. Free online charades generator with 1000+ ideas, printable word lists, and themed packs for movies, Disney, kids, Christmas, and more.",
       keywords:
@@ -13,9 +13,9 @@ export const en = {
         "Charades word generator with a 1000+ word database. Free instant charades words and ideas for kids, adults, parties, and classrooms—including movies, Disney, animals, actions, and funny prompts.",
     },
     kids: {
-      title: "Kids Charades Generator - Free Children's Ideas & Words",
+      title: "Childrens Charades Generator: 500+ Fun Ideas for Kids",
       description:
-        "Free kids charades with 500+ child-friendly words and ideas! Children's charades generator for parties, Disney characters, animals, classroom activities, and printable word lists.",
+        "Free childrens charades generator with 500+ child-friendly words and ideas! Children's charades generator for parties, Disney characters, animals, classroom activities, and printable word lists.",
       keywords:
         "kids charades, children charades, kids party games, educational charades, animal charades kids",
       structuredDataName: "Kids Charades Generator",
@@ -123,14 +123,14 @@ export const en = {
         "Advanced charades generator with tough prompts, scoring twists, and host strategies",
     },
     imposter: {
-      title: "Free Imposter Game Generator Online (Word Ideas & Rules)",
+      title: "Imposter Game Generator: Play Online Word Game with Friends",
       description:
-        "Play the best imposter word game online! Free imposter game generator with hundreds of words. Learn how to play, guess the imposter, and start a game instantly—no app needed.",
+        "The #1 Imposter game generator online! Start a room instantly, generate secret words, and assign roles. No app or login needed. Get 100+ funny imposter game words for parties and groups.",
       keywords:
-        "imposter game, imposter game generator, imposter game online, imposter word game, how to play imposter game, guess the imposter game, imposter game words",
-      structuredDataName: "Imposter Party Game Guide",
+        "imposter game generator, imposter game online, imposter word game, imposter game word generator, imposter game words, how to play imposter game, guess the imposter game",
+      structuredDataName: "Imposter Game Generator & Online Word Tool",
       structuredDataDescription:
-        "Offline imposter party game rules with role ideas, word prompts, and host tips for friends, families, and classrooms.",
+        "Instant Imposter game room generator with real-time role assignment, secret word distribution, and curated word packs. Play online with friends, no app required.",
     },
     howToUse: {
       title: "How to Play Charades – Rules & Charades Generator Guide",
@@ -172,6 +172,26 @@ export const en = {
       keywords:
         "contact charades generator, charades support email, charades generator help",
     },
+  },
+  imposterWords: {
+    title: "100+ Best Imposter Game Words & Pairs (Printable List)",
+    description: "Browse the ultimate list of imposter game words and pairs! Perfect for parties, classrooms, and friends. Categories include Food, Movies, Hard Mode, and more.",
+    heading: "Imposter Game Word Pairs & Ideas",
+    lead: "Looking for fresh words for your next game night? Use our curated list of imposter word pairs below, or open our Online Room to assign them automatically.",
+    cta: "Play this pack online →",
+    categories: {
+      food: "Food & Drinks",
+      movies: "Movies & Characters",
+      objects: "Daily Objects",
+      hard: "Hard / Abstract Mode",
+    }
+  },
+  imposterRules: {
+    title: "How to Play Imposter Game: Rules, Setup & Winning Tips",
+    description: "Learn how to play the Imposter word game step-by-step. Get clear rules for setup, voting, and winning as an imposter or crewmate.",
+    heading: "Imposter Game Rules & Strategy",
+    stepsTitle: "Step-by-Step Instructions",
+    winningTipsTitle: "How to Win as the Imposter",
   },
   languageSwitcher: {
     label: "Language",
@@ -252,115 +272,70 @@ export const en = {
     kids: "Kids Friendly",
     adults: "Adults Only",
   },
-  generator: {
-    defaultTitle: "Charades Generator",
-    defaultDescription:
-      "Generate charades words instantly from our database of 1000+ carefully curated words and ideas!",
-    wordsCountSublabel: "1000+ words across 9 categories",
-    yourWordsHeading: "Your Charades Words",
-    readyToPlay: "Ready to play! {{count}} words generated",
-    quickPickLabel: "Quick pick:",
-    customLabel: "Custom",
-    customAmountLabel: "Custom amount:",
-    customPlaceholder: "1-50",
-    apply: "Apply",
-    generateButton: "Generate {{count}} new words",
-    loadingFilters: "Loading filters...",
-    errorFetchingWords: "We couldn't refresh your words. Please try again.",
-    cardMeta: {
-      difficulty: "Difficulty",
-      category: "Category",
-      ageGroup: "Audience",
-    },
-    scenarioHeading: "Need a quick start?",
-    scenarioSubheading:
-      "Choose a preset tailored for common groups. We’ll prefill filters and batch size—you can still adjust anything before generating.",
-    scenarioReset: "Clear preset",
-    scenarioAppliedLabel: "Preset applied:",
-    scenarioToggleOpen: "Show presets",
-    scenarioToggleClose: "Hide presets",
-    scenarioMarkUsed: "I used this preset",
-    scenarioMarkedMessage:
-      "Thanks! Your feedback helps us prioritise new tweaks.",
-    cardCountLabel: "{{count}} cards",
-    roundLengthLabel: "Suggested round length",
-    tipLabel: "Host tip",
-    copyListButton: "Copy word list",
-    copySuccess: "Copied to clipboard! Paste it into Notes, Docs, or chat.",
-    copyError: "Copy failed. Select the list manually instead.",
-    scenarios: [
-      {
-        id: "family-night",
-        title: "Family game night",
-        description: "Balanced clues for mixed ages with an optional wildcard.",
-        category: "all",
-        difficulty: "easy",
-        ageGroup: "all",
-        wordCount: 10,
-        roundLength: "60–90 seconds",
-        tip: "Let younger players choose one wildcard each round so everyone stays bought in.",
-      },
-      {
-        id: "classroom-break",
-        title: "Classroom brain break",
-        description: "Curriculum-safe verbs and emotions for a 5-minute reset.",
-        category: "actions",
-        difficulty: "easy",
-        ageGroup: "kids",
-        wordCount: 8,
-        roundLength: "45–60 seconds",
-        tip: "Wrap up by asking students to use the acted word in a sentence or drawing.",
-      },
-      {
-        id: "team-icebreaker",
-        title: "Team icebreaker",
-        description: "Lively mix for hybrid stand-ups and offsites.",
-        category: "all",
-        difficulty: "medium",
-        ageGroup: "adults",
-        wordCount: 9,
-        roundLength: "60 seconds",
-        tip: "Rotate captains so quieter teammates lead a round and give bonus points for themed guesses.",
-      },
-      {
-        id: "adult-party",
-        title: "Adult party chaos",
-        description:
-          "Meme-heavy prompts and trickier clues for late-night laughs.",
-        category: "funny",
-        difficulty: "medium",
-        ageGroup: "adults",
-        wordCount: 12,
-        roundLength: "45–75 seconds",
-        tip: "Use lightning tie-breakers with one-word clues to keep the energy spiking.",
-      },
-    ],
-    howToPlayHeading: "How to Play",
-    howToPlaySteps: [
-      "One player acts out the word without speaking",
-      "Other players guess within the time limit",
-      "Use only gestures, facial expressions, and body language",
-      "No talking, pointing, or mouthing words",
-    ],
-  },
   filter: {
     advancedOptions: "Advanced Options",
     customFilters: "Custom Filters",
-    categoryLabel: "Category",
-    difficultyLabel: "Difficulty Level",
-    allLevels: "All Levels",
-    ageGroupLabel: "Age Group",
-    ageGroupAll: "All Ages",
-    ageGroupKids: "Kids Friendly",
-    ageGroupAdults: "Adults Only",
+    reset: "Reset",
+    apply: "Apply Filters", categoryLabel: "Choose Category", difficultyLabel: "Choose Difficulty", ageGroupLabel: "Choose Age Group", allLevels: "All Levels", activeFilters: "Active Filters:", noFilters: "None",
+  },
+  generator: {
+    defaultTitle: "Charades Generator",
+    defaultDescription: "Click generate to get random words!",
+    generateButton: "Generate words",
+    copyButton: "Copy words",
+    printButton: "Print list",
+    loading: "Generating...",
+    empty: "No words generated yet.",
+    errorFetchingWords: "Error fetching words. Please try again.",
+    wordsCountSublabel: "Choose how many words to generate",
+    scenarioHeading: "Scenario Presets",
+    scenarioSubheading: "Quick setup for common groups",
+    scenarioToggleOpen: "Show presets",
+    scenarioToggleClose: "Hide presets",
+    scenarioReset: "Reset filters",
+    scenarioAppliedLabel: "Applied:",
+    roundLengthLabel: "Round length",
+    tipLabel: "Host tip",
+    scenarioMarkUsed: "Mark as used",
+    scenarioMarkedMessage: "Using scenario preset",
+    yourWordsHeading: "Your Random Charades Words",
+    copyListButton: "Copy List",
+    copySuccess: "Copied!",
+    copyError: "Failed to copy",
+    quickPickLabel: "Quick pick",
+    customLabel: "Custom amount",
+    customAmountLabel: "Or type amount:",
+    customPlaceholder: "1-50",
+    apply: "Apply",
+    howToPlayHeading: "How to Play Charades",
+    howToPlaySteps: [
+      "Divide into teams or play individually.",
+      "One player acts out a word silently.",
+      "Others guess before time runs out!",
+    ],
+    scenarios: [
+      {
+        id: "family",
+        title: "Family Night",
+        description: "Balanced easy prompts for all ages.",
+        tip: "Rotate the actor every round.",
+        roundLength: "60s",
+      },
+    ],
+    filters: {
+      category: "Category",
+      difficulty: "Difficulty",
+      ageGroup: "Age Group",
+      count: "Number of words",
+    },
     activeFilters: "Active filters:",
     noFilters: "None (showing all words)",
   },
   home: {
     seoIntro: {
-      title: "Start with the fastest online charades generator",
+      title: "Free online charades generator with 1000+ ideas",
       lead:
-        "Looking for an online charades generator that just works? Spin up instant words across movies, Disney, animals, actions, and more—filter by difficulty and age group, then copy or print a ready-to-play list in seconds, no sign-up required.",
+        "Looking for a random charades generator that just works? Spin up instant words across movies, Disney, animals, actions, and more—filter by difficulty and age group, then copy or print a ready-to-play list in seconds, no sign-up required.",
     },
     heroShortcuts: {
       ideasLabel: "Browse ideas & word lists",
@@ -372,118 +347,54 @@ export const en = {
       "Jump straight into curated word banks built for kids, movie buffs, teachers, or adult parties so your charades word generator session starts with the perfect prompts.",
     luckyLabel: "I feel lucky →",
     browsePromptsLabel: "Browse prompts",
-    readMoreLabel: "Read more",
+    readMoreLabel: "Read more", guidesLabel: "Playbooks", guidesHeading: "Game Night Playbooks", guidesDescription: "Step-by-step guides for different groups.", playGuides: [], quickResources: [], 
     themedGenerators: [
       {
         key: "kids",
-        title: "Kids Charades Generator",
+        title: "Children's Charades Generator",
         href: "/charades-generator-for-kids/",
         description:
           "Age-appropriate prompts for family nights, classrooms, and rainy-day playdates.",
         badge: "Family favorite",
       },
       {
-        key: "pictionary",
-        title: "Pictionary Word Generator",
-        href: "/pictionary-word-generator/",
-        description:
-          "Random words optimized for drawing games. Objects, animals, and actions perfect for Pictionary night.",
-        badge: "New tool",
-      },
-      {
         key: "movies",
         title: "Movie Charades Generator",
         href: "/movie-charades-generator/",
         description:
-          "Classic blockbusters to new releases—perfect for film buffs and home theater parties.",
-        badge: "Film night",
+          "From Hollywood blockbusters to indie classics. Perfect for film buffs.",
+        badge: "Most popular",
       },
       {
-        key: "christmas",
-        title: "Christmas Charades Generator",
-        href: "/christmas-charades-generator/",
+        key: "disney",
+        title: "Disney Charades Generator",
+        href: "/disney-charades-generator/",
         description:
-          "Festive prompts, holiday traditions, and family-friendly laughs for December gatherings.",
-        badge: "Seasonal hit",
+          "Characters, songs, and magical moments from the world of Disney.",
       },
       {
         key: "funny",
-        title: "Funny Charades for Adults",
+        title: "Funny Adult Charades",
         href: "/funny-charades-for-adults/",
         description:
-          "From office icebreakers to late-night parties, grab hilarious scenarios on demand.",
-        badge: "Party ready",
+          "Hilarious and sometimes awkward prompts for grown-up game nights.",
       },
       {
-        key: "reverse",
-        title: "Reverse Charades Game",
-        href: "/reverse-charades-game/",
-        description:
-          "Team-vs-team mode with shared acting prompts, score sheets, and loud laugh potential.",
-        badge: "Team mode",
+        key: "christmas",
+        title: "Christmas Charades",
+        href: "/christmas-charades-generator/",
+        description: "Festive words to bring holiday cheer to your gatherings.",
       },
       {
-        key: "emotions",
-        title: "Emotion Charades",
-        href: "/emotion-charades/",
-        description:
-          "SEL-friendly cards that help kids, teens, and adults name feelings through play.",
-        badge: "SEL ready",
-      },
-      {
-        key: "animals",
-        title: "Animal Charades Game",
-        href: "/animal-charades-game/",
-        description:
-          "Pet, farm, and wildlife prompts perfect for classrooms, ESL groups, and family nights.",
-        badge: "Kid approved",
-      },
-      {
-        key: "hard",
-        title: "Hard Charades Ideas",
-        href: "/hard-charades-ideas/",
-        description:
-          "Challenge advanced players with multi-word prompts, mashups, and expert host tips.",
-        badge: "Level up",
-      },
-    ],
-    guidesLabel: "Plan & learn",
-    guidesHeading: "Guides, rules, and ways to make charades unforgettable",
-    guidesDescription:
-      "Learn new twists, download resources, and stay in the loop as we keep improving the experience for your next game night.",
-    playGuides: [
-      {
-        key: "howToUse",
-        title: "How to Use Charades Generator",
-        href: "/how-to-use/",
-        description:
-          "Step-by-step setup, scoring ideas, and tips for every group size.",
-      },
-      {
-        key: "faq",
-        title: "Charades FAQ & Troubleshooting",
-        href: "/faq/",
-        description:
-          "Answers to the most common gameplay questions, house rules, and customization ideas.",
-      },
-      {
-        key: "updates",
-        title: "Latest Updates & Roadmap",
-        href: "/about/",
-        description:
-          "See what we're building next and how the generator continues to grow each month.",
-      },
-      {
-        key: "ideas",
-        title: "Charades Ideas & Word Lists",
-        href: "/charades-ideas/",
-        description:
-          "Browse ready-made word lists for kids, adults, families, and classrooms before you open the generator.",
+        key: "random",
+        title: "Random Word Generator",
+        href: "/random-charades-generator/",
+        description: "The ultimate mix of all categories for maximum variety.",
       },
     ],
     generatorDeepDive: {
       difference: {
-        title: "Run every game night from one place",
+        title: "The ultimate charades word generator for any group",
         lead: "Instead of juggling apps, notes, and rule sheets, you can plan, generate, and share charades rounds from a single hub.",
         bullets: [
           "Mix categories, difficulty, and age ranges without switching tools mid-game.",
@@ -499,7 +410,7 @@ export const en = {
         },
       },
       presets: {
-        title: "Quick presets for common groups",
+        title: "Smart charades ideas generator presets",
         items: [
           {
             title: "Family Night Mix",
@@ -508,72 +419,33 @@ export const en = {
             note: "Start with 10 words, difficulty easy",
           },
           {
-            title: "Hybrid Stand-up Sprint",
+            title: "Grade School Break",
             description:
-              "Medium difficulty and adults-only prompts that wake up hybrid meetings without derailing the agenda.",
-            note: "9 words • 60-second rounds",
+              "Safe, energetic verbs and objects that get students moving without needing props or prep.",
+            note: "Filter by Kids, Actions category",
           },
           {
-            title: "Classroom Brain Break",
+            title: "Remote Team Retro",
             description:
-              "Kids-friendly verbs and emotions that double as quick SEL or language-vocab refreshers between lessons.",
-            note: "8 words • actions + emotions",
-          },
-        ],
-      },
-      useCases: {
-        title: "Ways different hosts use this generator",
-        columns: [
-          {
-            title: "Family & friends",
-            items: [
-              "Share printable lists before gatherings so late arrivals can catch up.",
-              "Rotate presets so each age group picks one signature round.",
-              "Save or screenshot favourite batches to reuse at future parties.",
-            ],
+              "Icebreakers designed for the camera—fast, identifiable, and great for Zoom/Teams calls.",
+            note: "Use medium difficulty for a challenge",
           },
           {
-            title: "Classrooms",
-            items: [
-              "Refresh SEL or language vocabulary with short acting breaks.",
-              "Ask helpers to copy the latest batch so absent students can replay at home.",
-              "Note which filter combinations keep different classes most engaged.",
-            ],
-          },
-          {
-            title: "Teams & events",
-            items: [
-              "Kick off retros or offsites with a 5-minute speed round.",
-              "Switch to hard clues as a friendly challenge for trivia fans.",
-              "Drop generator links in chat so remote teammates can join in live.",
-            ],
-          },
-        ],
-      },
-      tips: {
-        title: "Simple hosting tricks that keep rounds smooth",
-        cards: [
-          {
-            title: "Mix filters each round",
-            items: [
-              'Start on "all" to see what your group enjoys, then narrow to themes for finals or tie-breakers.',
-              "Alternate word counts so no team can predict how long a round will feel.",
-              "Open a second tab and prep the next batch while players act.",
-            ],
-          },
-          {
-            title: "Keep the momentum",
-            items: [
-              "Use the copy button to paste results into Notes, Docs, or Slack before you start.",
-              "Mark used presets so you avoid repeating the same combinations every game night.",
-              "Pair the quick-play kit timers with your usual round length and stick to it.",
-            ],
+            title: "Adult Game Night",
+            description:
+              "Witty, slightly more complex scenarios that spark funny debates and creative acting.",
+            note: "Movies & Funny categories",
           },
         ],
       },
       faq: {
-        title: "Charades Generator FAQ",
+        title: "Free Charades Generator FAQ",
         items: [
+          {
+            question: "Is this charades generator free?",
+            answer:
+              "Yes! Our charades generator is 100% free with no hidden costs, subscriptions, or login required. We believe in making fun accessible to everyone.",
+          },
           {
             question: "How many prompts are in the charades generator?",
             answer:
@@ -585,89 +457,67 @@ export const en = {
               "Yes. Choose quick buttons for 1, 3, 5, or 10 prompts, or type any amount between 1 and 50 for a custom charades generator batch.",
           },
           {
-            question: "Do preset filters lock me in?",
-            answer:
-              "Presets simply pre-fill the charades generator. You can adjust category, difficulty, or age group before generating.",
-          },
-          {
             question: "What if I need printable rules?",
             answer:
               "Head to the quick-play kit linked below the charades generator for score sheets, timers, and gesture legends.",
           },
         ],
       },
-    },
-    quickResources: {
-      title: "Quick-play toolkit",
-      description:
-        "Need to get the round started in under a minute? Grab printable rules, timers, and score sheets so everyone knows the plan.",
-      items: [
-        {
-          title: "30-second rules rundown",
-          description:
-            "Printable cheat sheet covering turn order, gestures, and easy tie-breakers.",
-          href: "/quick-play-kit#rules",
-        },
-        {
-          title: "Timer & score tracker",
-          description:
-            "One-page tracker with round timer suggestions and space for three teams.",
-          href: "/quick-play-kit#score",
-        },
-        {
-          title: "Signal legend poster",
-          description:
-            "Show new players what the movie/book/song and syllable signals look like.",
-          href: "/quick-play-kit#signals",
-        },
-      ],
-      actionLabel: "Open quick kit",
-      printLabel: "Print instantly",
-    },
-    expertInsights: {
-      title: "Real hosting examples you can copy",
-      description:
-        "These short case studies show how families, teachers, and team leads actually structure charades sessions—from round order to timing and house rules.",
-      personas: [
-        {
-          title: "Family host · Seattle, WA",
-          quote:
-            "Our Sunday charades nights mix grandparents and teens. I segment rounds by difficulty so everyone closes with a win.",
-          tipsTitle: "Favorite tweaks",
-          tips: [
-            "Start with three easy animal cards, then add one wildcard to reset energy.",
-            "Use a 60-second phone timer and award bonus points for silent sound effects.",
-            "Keep a printable ‘gesture legend’ so new players learn category signals fast.",
-          ],
-        },
-        {
-          title: "Elementary teacher · Austin, TX",
-          quote:
-            "I run five-minute charades breaks between lessons. Students act out vocabulary and reflect on the verbs we just learned.",
-          tipsTitle: "Classroom routine",
-          tips: [
-            "Filter for kids-friendly verbs and emotions to reinforce SEL vocabulary.",
-            "Pair confident actors with shy guessers so every student participates.",
-            "Ask learners to journal the gesture they used—great for kinesthetic recall.",
-          ],
-        },
-        {
-          title: "Culture lead · Berlin, DE",
-          quote:
-            "Quarterly offsites need fast team bonding. We run lightning charades rounds and record highlight reels for retros.",
-          tipsTitle: "Office playbook",
-          tips: [
-            "Pre-build decks themed around recent product launches or in-jokes.",
-            "Use the random generator for tie-breakers so no team can ‘study ahead’.",
-            "Capture a 10-second video recap to open the next retrospective with laughs.",
-          ],
-        },
-      ],
-      shareTitle: "Have a proven charades format?",
-      shareDescription:
-        "We spotlight community strategies that elevate game nights, classrooms, and company socials. Send us your approach and we may feature it in the next update.",
-      shareCta: "Share your playbook",
-      shareHref: "/contact",
+      expertInsights: {
+        title: "Facilitation tips from power users",
+        description:
+          "We asked regular hosts how they maintain energy and use the generator to keep rounds moving fast.",
+        shareTitle: "Have a proven charades format?",
+        shareDescription:
+          "We spotlight community strategies that elevate game nights, classrooms, and company socials. Send us your approach and we may feature it in the next update.",
+        shareCta: "Share your playbook",
+        shareHref: "/contact",
+        items: [
+          {
+            quote:
+              "Using this charades generator for five-minute breaks helps my students learn vocabulary while getting their energy out between heavy lessons.",
+            author: "Mr. Alvarez",
+            role: "Grade 5 Teacher",
+          },
+          {
+            quote:
+              "The ability to filter by age is a lifesaver. We can keep it clean for family dinners but switch to movie deep-cuts for late-night trivia.",
+            author: "Leah K.",
+            role: "Family Game Night Host",
+          },
+          {
+            quote:
+              "I just copy the word list to our Slack channel during remote retros. It's the only icebreaker that actually gets everyone laughing on camera.",
+            author: "Nina J.",
+            role: "Product Ops Manager",
+          },
+        ],
+      },
+      playGuides: {
+        title: "Step-by-step playbooks",
+        description:
+          "Browse ready-made word lists for kids, adults, families, and classrooms.",
+        items: [
+          {
+            title: "Classroom Energy Reset",
+            description:
+              "A 7-minute format for teachers: rotate students through 3 rapid cards to reset focus.",
+            href: "/how-to-use/",
+          },
+          {
+            title: "The 'No-App' Hybrid Retro",
+            description:
+              "How to run charades for distributed teams using only a browser and your group chat.",
+            href: "/online-charades-guide/",
+          },
+          {
+            title: "Family Reunion Showdown",
+            description:
+              "Score-tracking and category rotation tips for groups with ages 6 to 70+.",
+            href: "/family-game-night/",
+          },
+        ],
+      },
     },
     communityPlaybooks: {
       title: "Community playbooks you can borrow",
@@ -736,246 +586,9 @@ export const en = {
         },
       ],
     },
+    partnersTitle: "Friendly Links",
   },
   pages: {
-    imposter: {
-      title: "Free Imposter Game Generator Online",
-      description:
-        "Generate words instantly and play the imposter game online with friends. No app download needed!",
-    },
-    imposterGame: {
-      roomTitle: "Play the imposter game with your group",
-      roomDescription:
-        "Each player joins on their phone to see a private role and word while you host the discussion and voting out loud.",
-      hostButton: "I'm hosting · create a room",
-      joinButton: "I have a code · join room",
-      back: "Back",
-      yourName: "Your name",
-      hostNamePlaceholder: "Host name",
-      wordPack: "Word pack",
-      numberOfImposters: "Number of imposters",
-      impostersOption1: "1 (small groups)",
-      impostersOption2: "2 (6+ players)",
-      impostersOption3: "3 (very large groups)",
-      createRoom: "Create room",
-      creating: "Creating…",
-      roomCode: "Room code",
-      roomCodePlaceholder: "e.g. ABC123",
-      playerName: "Player name",
-      playerNamePlaceholder: "Player name",
-      joinRoom: "Join room",
-      joining: "Joining…",
-      shareCodeHint:
-        "Share this code or the link / QR below for others to join.",
-      youAre: "You are",
-      imposter: "Imposter",
-      crew: "Crew",
-      round: "Round",
-      pack: "Pack",
-      yourSecretWord: "Your secret word",
-      secretWordHint:
-        "Keep this word hidden. Use short, honest-sounding clues if you are the imposter, and listen carefully to everyone else.",
-      inviteLinkQR: "Invite link & QR",
-      shareInvite: "Share invite",
-      newRound: "New round (same room)",
-      starting: "Starting…",
-      leaveRoom: "Leave room on this device",
-      errorNameRequired: "Please enter your name first.",
-      errorBothRequired: "Enter both room code and your name.",
-      inviteCopied:
-        "Invite link copied to clipboard. Paste it into chat or messages.",
-      shareFailed: "Unable to share right now. Copy the link shown below.",
-      shareNotSupported:
-        "Sharing is not supported here. Copy the link shown below.",
-    },
-    kids: {
-      title: "Kids Charades Generator",
-      description:
-        "Generate fun, child-friendly charades words plus a quick “how to play charades for kids” guide for parties, family nights, and classrooms.",
-    },
-    disney: {
-      title: "Disney Charades Generator",
-      description:
-        "Generate Disney-themed charades with beloved characters, magical movies, and enchanting songs.",
-    },
-    movies: {
-      title: "Movie Charades Generator",
-      description:
-        "Generate movie charades from classic films, blockbusters, and cinema favorites for your next movie night.",
-    },
-    funny: {
-      title: "Funny Adult Charades Generator",
-      description:
-        "Generate hilarious adult charades with mature humor and funny scenarios perfect for grown-up parties and office game nights.",
-    },
-    random: {
-      title: "Random Charades Generator",
-      description:
-        "Random charades word generator that mixes every category—ideal when you need mixed charades ideas or a printable charades word list.",
-    },
-    christmas: {
-      title: "Christmas Charades Generator",
-      description:
-        "Generate festive Christmas charades words for your holiday parties! Perfect for family gatherings, office parties, and Christmas celebrations.",
-    },
-    reverse: {
-      title: "Reverse Charades Game",
-      description:
-        "Generate team-friendly prompts and follow the reverse charades playbook for loud, high-energy rounds with simple team rules.",
-    },
-    emotions: {
-      title: "Emotion Charades Generator",
-      description:
-        "Generate emotion charades cards that reinforce SEL lessons, counseling check-ins, and expressive play at home.",
-    },
-    animals: {
-      title: "Animal Charades Generator",
-      description:
-        "Generate animal charades cards packed with pets, zoo stars, and wildlife for classrooms and family nights.",
-    },
-    hard: {
-      title: "Hard Charades Ideas Generator",
-      description:
-        "Generate challenging charades ideas with multi-word prompts and advanced hosting tips for competitive players.",
-    },
-    howToUse: {
-      title: "How to Play Charades (and Use the Generator)",
-      whatIsCharades: "What is Charades?",
-      whatIsCharadesDescription:
-        "Charades is a classic party game where players act out words or phrases without speaking while others try to guess what they're performing. It's perfect for parties, family gatherings, and team-building activities.",
-      howToPlay: "How to Play Charades",
-      step1: "Divide into teams or play individually",
-      step2: "One player picks a word and acts it out silently",
-      step3: "Other players guess the word within the time limit",
-      step4: "Use gestures, facial expressions, and body language only",
-      step5: "No speaking, pointing at objects, or mouthing words",
-      step6: "Award points for correct guesses",
-      basicRules: "Basic Rules",
-      rule1: "No talking or making sounds while acting",
-      rule2: "No pointing at objects in the room",
-      rule3: "No mouthing or spelling out words",
-      rule4: "Use hand signals for categories (movie, book, song, etc.)",
-      rule5: "Set a time limit (usually 1-3 minutes per word)",
-      usingGenerator: "Using Our Generator",
-      generatorDescription:
-        "Our charades generator makes it easy to get instant words for your game:",
-      generatorStep1: "Choose your category (movies, animals, actions, etc.)",
-      generatorStep2: "Select difficulty level and age group",
-      generatorStep3: "Click generate to get your charades words",
-      tips: "Pro Tips for Great Charades",
-      tip1: "Start with easier words to warm up the group",
-      tip2: "Use exaggerated movements and expressions",
-      tip3: "Break complex words into smaller parts",
-      tip4: "Establish team signals for common categories",
-      tip5: "Keep the energy high and encourage participation",
-      benefits: "Benefits of Playing Charades",
-      benefitsDescription: "Charades isn't just fun - it's also great for:",
-      benefit1: "Improving non-verbal communication skills",
-      benefit2: "Building creativity and imagination",
-      benefit3: "Encouraging teamwork and social interaction",
-      benefit4: "Providing screen-free entertainment for all ages",
-      fieldNotesTitle: "Field notes from experienced hosts",
-      fieldNotesDescription:
-        "These quick case studies show how other facilitators structure rounds, manage energy, and keep charades inclusive.",
-      fieldNotes: [
-        {
-          heading: "Family showdown with mixed ages",
-          description:
-            "Host Leah rotates through three playlists: warmup animals for kids, movie titles for teens, and medium-difficulty actions for adults. They finish with a collaborative ‘speed round’ to celebrate wins together.",
-          takeawaysTitle: "Key takeaways",
-          takeaways: [
-            "Stack rounds from easiest to hardest so every player scores early.",
-            "Let kids choose the final wildcard word to keep ownership high.",
-            "Use a whiteboard scoreboard so grandparents can track the action.",
-          ],
-        },
-        {
-          heading: "Curriculum-aligned classroom break",
-          description:
-            "Mr. Alvarez pulls vocabulary words from the ‘Actions’ and ‘Emotions’ sets to reinforce his English language unit. Students earn bonus points when they connect the word to a sentence after the round.",
-          takeawaysTitle: "Key takeaways",
-          takeaways: [
-            "Filter by ‘kids’ and ‘easy’ for safe, curriculum-friendly cards.",
-            "Rotate captains so quieter students call the shots for a round.",
-            "Debrief with one reflective question to lock in new language.",
-          ],
-        },
-        {
-          heading: "Remote team energiser",
-          description:
-            "Product ops manager Nina runs 10-minute charades sprints during hybrid retros. Teammates act out product features, bug nicknames, and company lore to strengthen shared knowledge.",
-          takeawaysTitle: "Key takeaways",
-          takeaways: [
-            "Screen-share the generator so remote players feel included.",
-            "Record funny rounds (with consent) to replay at quarter-end socials.",
-            "Tag each prompt by project to reinforce cross-team context.",
-          ],
-        },
-      ],
-      playbooksHeading: "Charades playbooks for specific situations",
-      playbooksDescription:
-        "Once you know the core rules, dive into focused guides for classrooms, remote teams, and family nights.",
-      gearHeading: "Optional gear for charades nights",
-      gearDescription:
-        "Some hosts like to add simple tools like timers, score sheets, and whiteboards around the table. If you explore product links from this site, some may be affiliate links which could support the project at no extra cost to you.",
-      readyToPlay: "Ready to Play?",
-      readyToPlayDescription:
-        "Now that you know the rules and tips, it's time to start your charades game!",
-      startGenerating: "Start Generating Words",
-    },
-    ideas: {
-      title: "Charades Ideas & Word Lists",
-    },
-    quickKit: {
-      title: "Quick-Play Kit",
-      description:
-        "Printable rules, timers, and tracking sheets so you can launch a charades session in seconds.",
-      updated: "Updated September 2025",
-      printCta: "Print this kit",
-      copyLink: "Copy shareable link",
-      copyConfirmation: "Link copied to your clipboard!",
-      copyError: "Copy unavailable. Use your browser menu instead.",
-      intro: [
-        "Minimal-ink layout sized for Letter and A4.",
-        "Works alongside the family, classroom, team, and adult presets.",
-        "Designed so a new host can run the game without memorising anything.",
-      ],
-      sections: [
-        {
-          id: "rules",
-          title: "30-second rules rundown",
-          description:
-            "Keep this beside the host so new players instantly understand the flow.",
-          bullets: [
-            "Default timers: 60s (easy), 45s (medium), 30s (lightning).",
-            "House rules checklist: no talking, no props, how many passes allowed.",
-            "Tie-break suggestions: sudden-death clue, team pantomime, or charade relay.",
-          ],
-        },
-        {
-          id: "score",
-          title: "Timer & score tracker",
-          description:
-            "Track up to three teams with space for bonus awards and captain rotation.",
-          bullets: [
-            "Columns for rounds, guessed words, total points, and improvisation bonuses.",
-            "Reminder line to swap clue givers every round for fairness.",
-            "Extra notes area for sudden rule tweaks or tie markers.",
-          ],
-        },
-        {
-          id: "signals",
-          title: "Signal legend poster",
-          description:
-            "Stick this on a wall so everyone recognises the gestures for categories and syllables.",
-          bullets: [
-            "Movie, book, song, TV show, quote, person, place, and object signals.",
-            "How to indicate syllable count and which syllable you are performing.",
-            "Guidance for compound words (split, act syllables, act whole).",
-          ],
-        },
-      ],
-    },
     about: {
       title: "About Charades Generator",
       mission: "Our Mission",
@@ -1086,6 +699,294 @@ export const en = {
         "Need direct support? Drop us a note at support@charades-generator.com and we’ll reply within one business day.",
       contactUs: "Email Support",
     },
+    howToUse: {
+      title: "How to Play Charades (and Use the Generator)",
+      whatIsCharades: "What is Charades?",
+      whatIsCharadesDescription:
+        "Charades is a classic party game where players act out words or phrases without speaking while others try to guess what they're performing. It's perfect for parties, family gatherings, and team-building activities.",
+      howToPlay: "How to Play Charades",
+      step1: "Divide into teams or play individually",
+      step2: "One player picks a word and acts it out silently",
+      step3: "Other players guess the word within the time limit",
+      step4: "Use gestures, facial expressions, and body language only",
+      step5: "No speaking, pointing at objects, or mouthing words",
+      step6: "Award points for correct guesses",
+      basicRules: "Basic Rules",
+      rule1: "No talking or making sounds while acting",
+      rule2: "No pointing at objects in the room",
+      rule3: "No mouthing or spelling out words",
+      rule4: "Use hand signals for categories (movie, book, song, etc.)",
+      rule5: "Set a time limit (usually 1-3 minutes per word)",
+      usingGenerator: "Using Our Generator",
+      generatorDescription:
+        "Our charades generator makes it easy to get instant words for your game:",
+      generatorStep1: "Choose your category (movies, animals, actions, etc.)",
+      generatorStep2: "Select difficulty level and age group",
+      generatorStep3: "Click generate to get your charades words",
+      tips: "Pro Tips for Great Charades",
+      tip1: "Start with easier words to warm up the group",
+      tip2: "Use exaggerated movements and expressions",
+      tip3: "Break complex words into smaller parts",
+      tip4: "Establish team signals for common categories",
+      tip5: "Keep the energy high and encourage participation",
+      benefits: "Benefits of Playing Charades",
+      benefitsDescription: "Charades isn't just fun - it's also great for:",
+      benefit1: "Improving non-verbal communication skills",
+      benefit2: "Building creativity and imagination",
+      benefit3: "Encouraging teamwork and social interaction",
+      benefit4: "Providing screen-free entertainment for all ages",
+      fieldNotesTitle: "Field notes from experienced hosts",
+      fieldNotesDescription:
+        "These quick case studies show how other facilitators structure rounds, manage energy, and keep charades inclusive.",
+      fieldNotes: [
+        {
+          heading: "Family showdown with mixed ages",
+          description:
+            "Host Leah rotates through three playlists: warmup animals for kids, movie titles for teens, and medium-difficulty actions for adults. They finish with a collaborative ‘speed round’ to celebrate wins together.",
+          takeawaysTitle: "Key takeaways",
+          takeaways: [
+            "Stack rounds from easiest to hardest so every player scores early.",
+            "Let kids choose the final wildcard word to keep ownership high.",
+            "Use a whiteboard scoreboard so grandparents can track the action.",
+          ],
+        },
+        {
+          heading: "Curriculum-aligned classroom break",
+          description:
+            "Mr. Alvarez pulls vocabulary words from the ‘Actions’ and ‘Emotions’ sets to reinforce his English language unit. Students earn bonus points when they connect the word to a sentence after the round.",
+          takeawaysTitle: "Key takeaways",
+          takeaways: [
+            "Filter by ‘kids’ and ‘easy’ for safe, curriculum-friendly cards.",
+            "Rotate captains so quieter students call the shots for a round.",
+            "Debrief with one reflective question to lock in new language.",
+          ],
+        },
+        {
+          heading: "Remote team energiser",
+          description:
+            "Product ops manager Nina runs 10-minute charades sprints during hybrid retros. Teammates act out product features, bug nicknames, and company lore to strengthen shared knowledge.",
+          takeawaysTitle: "Key takeaways",
+          takeaways: [
+            "Screen-share the generator so remote players feel included.",
+            "Record funny rounds (with consent) to replay at quarter-end socials.",
+            "Tag each prompt by project to reinforce cross-team context.",
+          ],
+        },
+      ],
+      playbooksHeading: "Charades playbooks for specific situations",
+      playbooksDescription:
+        "Once you know the core rules, dive into focused guides for classrooms, remote teams, and family nights.",
+      gearHeading: "Optional gear for charades nights",
+      gearDescription:
+        "Some hosts like to add simple tools like timers, score sheets, and whiteboards around the table. If you explore product links from this site, some may be affiliate links which could support the project at no extra cost to you.",
+      readyToPlay: "Ready to Play?",
+      readyToPlayDescription:
+        "Now that you know the rules and tips, it's time to start your charades game!",
+      startGenerating: "Start Generating Words",
+    },
+    quickKit: {
+      title: "Quick-Play Kit",
+      description:
+        "Printable rules, timers, and tracking sheets so you can launch a charades session in seconds.",
+      updated: "Updated September 2025",
+      printCta: "Print this kit",
+      copyLink: "Copy shareable link",
+      copyConfirmation: "Link copied to your clipboard!",
+      copyError: "Copy unavailable. Use your browser menu instead.",
+      intro: [
+        "Minimal-ink layout sized for Letter and A4.",
+        "Works alongside the family, classroom, team, and adult presets.",
+        "Designed so a new host can run the game without memorising anything.",
+      ],
+      sections: [
+        {
+          id: "rules",
+          title: "30-second rules rundown",
+          description:
+            "Keep this beside the host so new players instantly understand the flow.",
+          bullets: [
+            "Default timers: 60s (easy), 45s (medium), 30s (lightning).",
+            "House rules checklist: no talking, no props, how many passes allowed.",
+            "Tie-break suggestions: sudden-death clue, team pantomime, or charade relay.",
+          ],
+        },
+        {
+          id: "score",
+          title: "Timer & score tracker",
+          description:
+            "Track up to three teams with space for bonus awards and captain rotation.",
+          bullets: [
+            "Columns for rounds, guessed words, total points, and improvisation bonuses.",
+            "Reminder line to swap clue givers every round for fairness.",
+            "Extra notes area for sudden rule tweaks or tie markers.",
+          ],
+        },
+        {
+          id: "signals",
+          title: "Signal legend poster",
+          description:
+            "Stick this on a wall so everyone recognises the gestures for categories and syllables.",
+          bullets: [
+            "Movie, book, song, TV show, quote, person, place, and object signals.",
+            "How to indicate syllable count and which syllable you are performing.",
+            "Guidance for compound words (split, act syllables, act whole).",
+          ],
+        },
+      ],
+    },
+    imposter: {
+      title: "Imposter Word Game Room Generator",
+      description:
+        "Generate words instantly and play the imposter game online with friends. No app download needed!",
+    },
+    imposterGame: {
+      roomTitle: "Imposter Game Room Generator",
+      roomDescription:
+        "Each player joins on their phone to see a private role and word while you host the discussion and voting out loud.",
+      hostButton: "I'm hosting · create a room",
+      joinButton: "I have a code · join room",
+      back: "Back",
+      yourName: "Your name",
+      hostNamePlaceholder: "Host name",
+      wordPack: "Word pack",
+      numberOfImposters: "Number of imposters",
+      impostersOption1: "1 (small groups)",
+      impostersOption2: "2 (6+ players)",
+      impostersOption3: "3 (very large groups)",
+      createRoom: "Create room",
+      creating: "Creating…",
+      roomCode: "Room code",
+      roomCodePlaceholder: "e.g. ABC123",
+      playerName: "Player name",
+      playerNamePlaceholder: "Player name",
+      joinRoom: "Join room",
+      joining: "Joining…",
+      shareCodeHint:
+        "Share this code or the link / QR below for others to join.",
+      youAre: "You are",
+      imposter: "Imposter",
+      crew: "Crew",
+      round: "Round",
+      pack: "Pack",
+      yourSecretWord: "Your secret word",
+      secretWordHint:
+        "Keep this word hidden. Use short, honest-sounding clues if you are the imposter, and listen carefully to everyone else.",
+      inviteLinkQR: "Invite link & QR",
+      shareInvite: "Share invite",
+      newRound: "New round (same room)",
+      starting: "Starting…",
+      leaveRoom: "Leave room on this device",
+      errorNameRequired: "Please enter your name first.",
+      errorBothRequired: "Enter both room code and your name.",
+      inviteCopied:
+        "Invite link copied to clipboard. Paste it into chat or messages.",
+      shareFailed: "Unable to share right now. Copy the link shown below.",
+      shareNotSupported:
+        "Sharing is not supported here. Copy the link shown below.",
+    },
+    kids: {
+      title: "Kids Charades Generator",
+      description:
+        "Generate fun, child-friendly charades words plus a quick “how to play charades for kids” guide for parties, family nights, and classrooms.",
+    },
+    disney: {
+      title: "Disney Charades Generator",
+      description:
+        "Generate Disney-themed charades with beloved characters, magical movies, and enchanting songs.",
+    },
+    movies: {
+      title: "Movie Charades Generator",
+      description:
+        "Generate movie charades from classic films, blockbusters, and cinema favorites for your next movie night.",
+    },
+    funny: {
+      title: "Funny Adult Charades Generator",
+      description:
+        "Generate hilarious adult charades with mature humor and funny scenarios perfect for grown-up parties and office game nights.",
+    },
+    random: {
+      title: "Random Charades Generator",
+      description:
+        "Random charades word generator that mixes every category—ideal when you need mixed charades ideas or a printable charades word list.",
+    },
+    christmas: {
+      title: "Christmas Charades Generator",
+      description:
+        "Generate festive Christmas charades words for your holiday parties! Perfect for family gatherings, office parties, and Christmas celebrations.",
+    },
+    reverse: {
+      title: "Reverse Charades Game",
+      description:
+        "Generate team-friendly prompts and follow the reverse charades playbook for loud, high-energy rounds with simple team rules.",
+    },
+    emotions: {
+      title: "Emotion Charades Generator",
+      description:
+        "Generate emotion charades cards that reinforce SEL lessons, counseling check-ins, and expressive play at home.",
+    },
+    animals: {
+      title: "Animal Charades Generator",
+      description:
+        "Generate animal charades cards packed with pets, zoo stars, and wildlife for classrooms and family nights.",
+    },
+    hard: {
+      title: "Hard Charades Ideas Generator",
+      description:
+        "Generate challenging charades ideas with multi-word prompts and advanced hosting tips for competitive players.",
+    },
+    ideas: {
+      title: "Charades Ideas & Word Lists",
+    },
+    contact: {
+      title: "Contact the Charades Generator Team",
+      intro:
+        "We read every message and typically reply within one business day. Choose the category that best matches your request so the right person can respond.",
+      responseTime: "Average response time: 24 hours on weekdays.",
+      email: "support@charades-generator.com",
+      sections: [
+        {
+          heading: "Product support",
+          body: "Need help using the generator or spotted a bug? Share the device, browser, and a short description of what happened, along with screenshots if possible.",
+        },
+        {
+          heading: "Word list suggestions",
+          body: "Have theme ideas or want to contribute new prompts? Send us your list and we’ll review it for upcoming releases.",
+        },
+        {
+          heading: "Partnerships & media",
+          body: "For collaboration, sponsorship, or press requests, outline your proposal, preferred timelines, and any supporting materials.",
+        },
+      ],
+      nextStepsHeading: "How to reach us",
+      nextSteps: [
+        "Send an email to support@charades-generator.com",
+        "Use a descriptive subject line such as ‘Support’, ‘Word suggestion’, or ‘Partnership’",
+        "Include relevant links, screenshots, or documents so we can resolve your request faster",
+      ],
+      playbookHeading: "Share your charades playbook",
+      playbookDescription:
+        "Tell us how you run charades for your friends, class, or team. We regularly feature real experiences on the homepage and in the how-to guide.",
+      form: {
+        nameLabel: "Your name",
+        emailLabel: "Email (we’ll reply here)",
+        scenarioLabel: "Where do you use this playbook?",
+        playersLabel: "Typical group size",
+        difficultyLabel: "Favorite categories or difficulties",
+        detailsLabel:
+          "Share the flow, house rules, timer tips, or printable resources you use.",
+        permissionLabel:
+          "You can publish my playbook (credit me by first name / role)",
+        submit: "Review & send",
+        subject: "Charades playbook submission",
+        mailtoIntro: "Here’s my charades playbook:",
+        scenarioPlaceholder:
+          "Family night, Grade 4 classroom, Product team retro, etc.",
+        playersPlaceholder: "e.g. 6–8 players",
+        detailsPlaceholder:
+          "Explain how you set up, any custom signals, scoring twists, or printable resources.",
+        confirmation: "Open your email client to finish sending.",
+      },
+    },
     privacy: {
       title: "Privacy Policy",
       lastUpdated: "Last updated: December 2024",
@@ -1161,56 +1062,6 @@ export const en = {
       contactContent:
         'Questions about the Terms of Service? Email us at support@charades-generator.com and include "Terms of Service" in the subject line so we can route your note quickly.',
     },
-    contact: {
-      title: "Contact the Charades Generator Team",
-      intro:
-        "We read every message and typically reply within one business day. Choose the category that best matches your request so the right person can respond.",
-      responseTime: "Average response time: 24 hours on weekdays.",
-      email: "support@charades-generator.com",
-      sections: [
-        {
-          heading: "Product support",
-          body: "Need help using the generator or spotted a bug? Share the device, browser, and a short description of what happened, along with screenshots if possible.",
-        },
-        {
-          heading: "Word list suggestions",
-          body: "Have theme ideas or want to contribute new prompts? Send us your list and we’ll review it for upcoming releases.",
-        },
-        {
-          heading: "Partnerships & media",
-          body: "For collaboration, sponsorship, or press requests, outline your proposal, preferred timelines, and any supporting materials.",
-        },
-      ],
-      nextStepsHeading: "How to reach us",
-      nextSteps: [
-        "Send an email to support@charades-generator.com",
-        "Use a descriptive subject line such as ‘Support’, ‘Word suggestion’, or ‘Partnership’",
-        "Include relevant links, screenshots, or documents so we can resolve your request faster",
-      ],
-      playbookHeading: "Share your charades playbook",
-      playbookDescription:
-        "Tell us how you run charades for your friends, class, or team. We regularly feature real experiences on the homepage and in the how-to guide.",
-      form: {
-        nameLabel: "Your name",
-        emailLabel: "Email (we’ll reply here)",
-        scenarioLabel: "Where do you use this playbook?",
-        playersLabel: "Typical group size",
-        difficultyLabel: "Favorite categories or difficulties",
-        detailsLabel:
-          "Share the flow, house rules, timer tips, or printable resources you use.",
-        permissionLabel:
-          "You can publish my playbook (credit me by first name / role)",
-        submit: "Review & send",
-        subject: "Charades playbook submission",
-        mailtoIntro: "Here’s my charades playbook:",
-        scenarioPlaceholder:
-          "Family night, Grade 4 classroom, Product team retro, etc.",
-        playersPlaceholder: "e.g. 6–8 players",
-        detailsPlaceholder:
-          "Explain how you set up, any custom signals, scoring twists, or printable resources.",
-        confirmation: "Open your email client to finish sending.",
-      },
-    },
   },
   footer: {
     brandTitle: "Charades Generator",
@@ -1225,51 +1076,54 @@ export const en = {
           { title: "Free Charades Generator", href: "/" },
           {
             title: "Charades Word List Generator",
-            href: "/word-charades-generator",
+            href: "/word-charades-generator/",
           },
           {
             title: "Random Charades Generator",
-            href: "/random-charades-generator",
+            href: "/random-charades-generator/",
           },
           {
             title: "Pictionary Word Generator",
-            href: "/pictionary-word-generator",
+            href: "/pictionary-word-generator/",
           },
           {
             title: "Kids Charades Generator",
-            href: "/charades-generator-for-kids",
+            href: "/charades-generator-for-kids/",
           },
           {
             title: "Movie Charades Generator",
-            href: "/movie-charades-generator",
+            href: "/movie-charades-generator/",
           },
           {
             title: "Disney Charades Generator",
-            href: "/disney-charades-generator",
+            href: "/disney-charades-generator/",
           },
           {
             title: "Christmas Charades Generator",
-            href: "/christmas-charades-generator",
+            href: "/christmas-charades-generator/",
           },
-          { title: "Reverse Charades", href: "/reverse-charades-game" },
-          { title: "Funny Adult Charades", href: "/funny-charades-for-adults" },
+          { title: "Reverse Charades", href: "/reverse-charades-game/" },
+          { title: "Funny Adult Charades", href: "/funny-charades-for-adults/" },
+          { title: "Imposter Game Generator", href: "/imposter-game/" },
+          { title: "Imposter Game Word List", href: "/imposter-game-word-list/" },
+          { title: "How to Play Imposter Game", href: "/how-to-play-imposter-game/" },
         ],
       },
       info: {
         title: "Help & Information",
         links: [
-          { title: "How to Use", href: "/how-to-use" },
-          { title: "FAQ", href: "/faq" },
-          { title: "Quick-Play Kit", href: "/quick-play-kit" },
-          { title: "About Us", href: "/about" },
-          { title: "Contact", href: "/contact" },
+          { title: "How to Use", href: "/how-to-use/" },
+          { title: "FAQ", href: "/faq/" },
+          { title: "Quick-Play Kit", href: "/quick-play-kit/" },
+          { title: "About Us", href: "/about/" },
+          { title: "Contact", href: "/contact/" },
         ],
       },
       legal: {
         title: "Legal",
         links: [
-          { title: "Privacy Policy", href: "/privacy-policy" },
-          { title: "Terms of Service", href: "/terms-of-service" },
+          { title: "Privacy Policy", href: "/privacy-policy/" },
+          { title: "Terms of Service", href: "/terms-of-service/" },
         ],
       },
       partnersTitle: "Friendly Links",
