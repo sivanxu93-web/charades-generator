@@ -172,6 +172,62 @@ export const en = {
       keywords:
         "contact charades generator, charades support email, charades generator help",
     },
+    pricing: {
+      title: "Pricing & Membership - Charades Generator",
+      description: "Upgrade your game night with ad-free charades and premium features. Affordable 24-hour and lifetime plans available.",
+      keywords: "charades pricing, ad-free charades, premium charades words, charades membership",
+      structuredDataName: "Charades Generator Pricing Plans",
+      structuredDataDescription: "Choose between a 24-hour ad-free pass or a lifetime premium membership for the ultimate charades experience.",
+    },
+  },
+  pricing: {
+    title: "Pricing & Membership",
+    description: "Upgrade your game night experience with our premium features. No more ads, just pure fun.",
+    heroTitle: "Choose Your Plan",
+    heroSubtitle: "Simple pricing for an ad-free experience and premium tools.",
+    tiers: [
+      {
+        name: "24-Hour Pass",
+        price: "$0.99",
+        duration: "per day",
+        description: "Perfect for a single game night or event.",
+        features: [
+          "24-hour ad-free experience",
+          "Access to all premium categories",
+          "Unlimited custom word generation",
+          "Priority support for 24 hours",
+        ],
+        button: "Get 24h Pass",
+        popular: false,
+      },
+      {
+        name: "Lifetime Member",
+        price: "$2.99",
+        duration: "one-time",
+        description: "Best value for regular hosts and educators.",
+        features: [
+          "Permanent ad-free experience",
+          "Lifetime access to all premium tools",
+          "Early access to new word packs",
+          "Exclusive 'Pro Host' badge",
+          "Unlimited PDF exports",
+        ],
+        button: "Go Lifetime",
+        popular: true,
+      },
+    ],
+    faqTitle: "Pricing FAQ",
+    faqs: [
+      {
+        question: "Is there a free version?",
+        answer: "Yes! Our standard generator will always be free with minimal ads. These premium plans are for users who want an ad-free experience and extra tools.",
+      },
+      {
+        question: "How do I activate my pass?",
+        answer: "After a successful payment via Creem, your session will be automatically upgraded. For lifetime members, you will receive a unique key.",
+      },
+    ],
+    paymentUnderDevelopment: "Payment integration is under development. Please check back soon!",
   },
   imposterWords: {
     title: "100+ Best Imposter Game Words & Pairs (Printable List)",
@@ -239,6 +295,12 @@ export const en = {
         title: "How to Use",
         description: "Complete guide & rules",
         href: "/how-to-use",
+      },
+      {
+        key: "pricing",
+        title: "Pricing",
+        description: "Upgrade to Ad-Free",
+        href: "/pricing",
       },
     ],
   },
@@ -1114,6 +1176,7 @@ export const en = {
         links: [
           { title: "How to Use", href: "/how-to-use/" },
           { title: "FAQ", href: "/faq/" },
+          { title: "Pricing", href: "/pricing/" },
           { title: "Quick-Play Kit", href: "/quick-play-kit/" },
           { title: "About Us", href: "/about/" },
           { title: "Contact", href: "/contact/" },

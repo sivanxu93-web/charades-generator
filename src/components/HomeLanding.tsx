@@ -213,6 +213,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
         </div>
       </section>
 
+      {/* Hide testimonials for compliance review
       <section className="bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-10">
           <div className="mb-8">
@@ -243,7 +244,9 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           </div>
         </div>
       </section>
+      */}
 
+      {/* Hide community playbooks for compliance review
       {dictionary.home.communityPlaybooks && (
         <CommunityPlaybooks
           locale={locale}
@@ -251,6 +254,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           fallbackShareCta={expertInsights.shareCta}
         />
       )}
+      */}
     </>
   );
 }

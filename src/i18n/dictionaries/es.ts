@@ -172,6 +172,62 @@ export const es = {
       keywords:
         "contacto generador de charadas, soporte charadas, ayuda charadas",
     },
+    pricing: {
+      title: "Precios y Membresía - Generador de Charadas",
+      description: "Mejora tu noche de juegos con charadas sin publicidad y funciones premium. Planes económicos de 24 horas y de por vida disponibles.",
+      keywords: "precios charadas, charadas sin publicidad, palabras premium charadas, membresía charadas",
+      structuredDataName: "Planes de Precios del Generador de Charadas",
+      structuredDataDescription: "Elige entre un pase de 24 horas sin publicidad o una membresía premium de por vida para la mejor experiencia de charadas.",
+    },
+  },
+  pricing: {
+    title: "Precios y Membresía",
+    description: "Mejora tu experiencia de noche de juegos con nuestras funciones premium. Sin más anuncios, solo pura diversión.",
+    heroTitle: "Elige Tu Plan",
+    heroSubtitle: "Precios sencillos para una experiencia sin publicidad y herramientas premium.",
+    tiers: [
+      {
+        name: "Pase de 24 Horas",
+        price: "$0.99",
+        duration: "por día",
+        description: "Perfecto para una sola noche de juegos o evento.",
+        features: [
+          "Experiencia sin publicidad por 24 horas",
+          "Acceso a todas las categorías premium",
+          "Generación de palabras personalizada ilimitada",
+          "Soporte prioritario por 24 horas",
+        ],
+        button: "Obtener Pase 24h",
+        popular: false,
+      },
+      {
+        name: "Miembro de Por Vida",
+        price: "$2.99",
+        duration: "pago único",
+        description: "El mejor valor para anfitriones y educadores habituales.",
+        features: [
+          "Experiencia sin publicidad permanente",
+          "Acceso de por vida a todas las herramientas premium",
+          "Acceso anticipado a nuevos paquetes de palabras",
+          "Insignia exclusiva de 'Anfitrión Pro'",
+          "Exportaciones PDF ilimitadas",
+        ],
+        button: "Hacerse de Por Vida",
+        popular: true,
+      },
+    ],
+    faqTitle: "Preguntas sobre Precios",
+    faqs: [
+      {
+        question: "¿Hay una versión gratuita?",
+        answer: "¡Sí! Nuestro generador estándar siempre será gratuito con anuncios mínimos. Estos planes premium son para usuarios que desean una experiencia sin publicidad y herramientas adicionales.",
+      },
+      {
+        question: "¿Cómo activo mi pase?",
+        answer: "Después de un pago exitoso a través de Creem, tu sesión se actualizará automáticamente. Para los miembros de por vida, recibirás una clave única.",
+      },
+    ],
+    paymentUnderDevelopment: "La integración del pago está en desarrollo. ¡Vuelve pronto!",
   },
   imposterWords: {
     title: "Más de 100 Palabras y Parejas para el Juego del Impostor",
@@ -239,6 +295,12 @@ export const es = {
         title: "Cómo Jugar",
         description: "Guía completa y reglas",
         href: "/how-to-use",
+      },
+      {
+        key: "pricing",
+        title: "Precios",
+        description: "Sin Anuncios",
+        href: "/pricing",
       },
     ],
   },
@@ -1121,6 +1183,7 @@ export const es = {
         links: [
           { title: "Cómo jugar", href: "/how-to-use/" },
           { title: "Preguntas frecuentes", href: "/faq/" },
+          { title: "Precios", href: "/pricing/" },
           { title: "Kit rápido", href: "/quick-play-kit/" },
           { title: "Sobre nosotros", href: "/about/" },
           { title: "Contacto", href: "/contact/" },
