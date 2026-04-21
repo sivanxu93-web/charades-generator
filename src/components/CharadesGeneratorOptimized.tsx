@@ -144,8 +144,6 @@ export default function CharadesGeneratorOptimized({
   const [copyFeedback, setCopyFeedback] = useState<'idle' | 'success' | 'error'>('idle');
   const [scenarioUsage, setScenarioUsage] = useState<Record<string, boolean>>({});
   const [scenariosExpanded, setScenariosExpanded] = useState(false);
-  
-  // FIX 1: Use Ref for seenWords to prevent infinite loop
   const seenWordsRef = useRef<string[]>([]);
 
   useEffect(() => {
@@ -153,7 +151,6 @@ export default function CharadesGeneratorOptimized({
     try {
       const storedScenarios = window.localStorage.getItem('cg-scenario-usage');
       if (storedScenarios) setScenarioUsage(JSON.parse(storedScenarios));
-      
       const storedSeen = window.localStorage.getItem('cg-seen-words');
       if (storedSeen) seenWordsRef.current = JSON.parse(storedSeen);
     } catch { /* ignore */ }
@@ -195,11 +192,10 @@ export default function CharadesGeneratorOptimized({
           selectedAgeGroup,
           count,
           locale,
-          seenWordsRef.current, // Use ref here
+          seenWordsRef.current,
         );
         setGeneratedWords(words);
 
-        // Update ref and local storage
         const newWords = words.map((w) => w.word);
         seenWordsRef.current = [...seenWordsRef.current, ...newWords].slice(-150);
         try {
@@ -211,15 +207,7 @@ export default function CharadesGeneratorOptimized({
         setIsLoading(false);
       }
     },
-    [
-      dictionary.generator.errorFetchingWords,
-      loadPickWords,
-      locale,
-      selectedAgeGroup,
-      selectedCategory,
-      selectedDifficulty,
-      allowedCategories
-    ],
+    [dictionary.generator.errorFetchingWords, loadPickWords, locale, selectedAgeGroup, selectedCategory, selectedDifficulty, allowedCategories],
   );
 
   const activeScenario = useMemo(() => {
@@ -281,17 +269,7 @@ export default function CharadesGeneratorOptimized({
     } else {
       void generateBatchWords(batchSize);
     }
-  }, [
-    batchSize,
-    generateBatchWords,
-    isCustomMode,
-    isCustomValid,
-    parsedCustomCount,
-    selectedAgeGroup,
-    selectedCategory,
-    selectedDifficulty,
-    checkProInterception
-  ]);
+  }, [batchSize, generateBatchWords, isCustomMode, isCustomValid, parsedCustomCount, selectedAgeGroup, selectedCategory, selectedDifficulty, checkProInterception]);
 
   useEffect(() => {
     if (!hasHydrated) return;
@@ -342,11 +320,52 @@ export default function CharadesGeneratorOptimized({
         <p className="text-gray-500 text-sm mt-2">{dictionary.generator.wordsCountSublabel}</p>
       </header>
 
-      {/* Scenarios - (Simplified for brevity, assuming existing logic works) */}
+      {/* RE-RESTORE SCENARIOS SECTION */}
       {scenarios.length > 0 && isShowScenarios && (
-        <section className="mb-8 rounded-2xl border border-indigo-100 bg-indigo-50 p-5">
-           <h2 className="text-lg font-bold text-indigo-900 mb-4">{dictionary.generator.scenarioHeading}</h2>
-           {/* ... Rest of scenario grid ... */}
+        <section className="mb-8 rounded-2xl border border-indigo-100 bg-indigo-50 p-5 pt-4 pb-4 sm:p-6 sm:pt-4 sm:pb-4">
+          <div className="sm:flex sm:items-start sm:justify-between gap-3">
+            <div className="max-w-2xl">
+              <button
+                type="button"
+                onClick={() => setScenariosExpanded((prev) => !prev)}
+                className="flex items-center gap-2 text-left text-lg font-semibold text-indigo-900"
+              >
+                <span>{dictionary.generator.scenarioHeading}</span>
+                <svg className={`h-4 w-4 transition-transform ${scenariosExpanded ? 'rotate-180' : ''}`} viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+              </button>
+              {scenariosExpanded && <p className="mt-1 text-sm text-indigo-800">{dictionary.generator.scenarioSubheading}</p>}
+            </div>
+            <div className="mt-3 flex shrink-0 items-center gap-2 sm:mt-0">
+              <button type="button" onClick={() => setScenariosExpanded((prev) => !prev)} className="inline-flex items-center rounded-md border border-indigo-300 px-3 py-1.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100">
+                {scenariosExpanded ? dictionary.generator.scenarioToggleClose : dictionary.generator.scenarioToggleOpen}
+              </button>
+              {activeScenario && (
+                <button type="button" onClick={handleScenarioReset} className="inline-flex items-center rounded-md border border-indigo-300 px-3 py-1.5 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100">
+                  {dictionary.generator.scenarioReset}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {scenariosExpanded && (
+            <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 animate-in fade-in slide-in-from-top-2 duration-300">
+              {scenarios.map((scenario) => {
+                const isActive = scenario.id === activeScenarioId;
+                return (
+                  <button key={scenario.id} type="button" onClick={() => handleApplyScenario(scenario)} className={`text-left rounded-xl border p-4 transition ${isActive ? 'border-indigo-400 bg-white shadow-sm ring-2 ring-indigo-100' : 'border-transparent bg-white/80 hover:border-indigo-200 hover:bg-white'}`}>
+                    <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-tighter text-indigo-500">
+                      <span className="bg-indigo-50 px-2 py-0.5 rounded">{difficultiesLabel[scenario.difficulty as keyof typeof difficultiesLabel] ?? scenario.difficulty}</span>
+                      <span className="bg-indigo-50 px-2 py-0.5 rounded">{categoriesLabel[scenario.category as keyof typeof categoriesLabel] ?? scenario.category}</span>
+                    </div>
+                    <h3 className="mt-3 text-sm font-bold text-indigo-900">{scenario.title}</h3>
+                    <p className="mt-1 text-xs text-indigo-800 line-clamp-2">{scenario.description}</p>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </section>
       )}
 
@@ -374,10 +393,7 @@ export default function CharadesGeneratorOptimized({
       {generatedWords.length > 0 && (
         <div className="bg-white rounded-xl shadow-lg p-4 mb-8">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              {/* FIX 2: Correct I18n Usage */}
-              {dictionary.generator.yourWordsHeading}
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">{dictionary.generator.yourWordsHeading}</h2>
             <p className="text-gray-600">
               {t('generator.readyToPlay', { count: generatedWords.length })}
             </p>

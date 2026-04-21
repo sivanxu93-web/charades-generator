@@ -128,7 +128,7 @@ export default function ConsentManager({ initialStatus, locale, copy, isProducti
               });
             `}
           </Script>
-          {(!isProLoaded || !isPro) && (
+          {isProLoaded && !isPro && (
             <Script
               async
               src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4855228928819714"
