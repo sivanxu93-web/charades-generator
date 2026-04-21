@@ -188,7 +188,7 @@ export const en = {
     tiers: [
       {
         name: "24-Hour Pass",
-        price: "$0.99",
+        price: "$1.49",
         duration: "per day",
         description: "Perfect for a single game night or event.",
         features: [
@@ -228,6 +228,28 @@ export const en = {
       },
     ],
     paymentUnderDevelopment: "Payment integration is under development. Please check back soon!",
+    upgrade: {
+      title: "Early Bird Special — Pro is Here! 🎉",
+      subtitle: "New features just launched. Grab our limited-time launch pricing before it's gone.",
+      adNotice: "Ads help us keep Charades Generator free for teachers and families worldwide. Going Pro supports our mission and removes all interruptions.",
+      features: [
+        "Remove all advertisements",
+        "Unlock Adults-Only & themed word packs",
+        "Built-in countdown timer (Coming soon)",
+        "Generate up to 50 words at once",
+        "Flip card game mode (Coming soon)",
+      ],
+      partyPass: "Party Pass",
+      partyPassDesc: "24 hours · perfect for tonight",
+      partyPassPrice: "$1.49",
+      partyPassOriginal: "$2.99",
+      proForever: "Pro Forever",
+      proForeverDesc: "Lifetime access · best value",
+      proForeverPrice: "$2.99",
+      proForeverOriginal: "$9.99",
+      maybeLater: "Maybe later",
+      emailPlaceholder: "Email (optional — for recovery)",
+    },
   },
   imposterWords: {
     title: "100+ Best Imposter Game Words & Pairs (Printable List)",
@@ -361,6 +383,7 @@ export const en = {
     scenarioMarkUsed: "Mark as used",
     scenarioMarkedMessage: "Using scenario preset",
     yourWordsHeading: "Your Random Charades Words",
+    readyToPlay: "Ready to Play with {{count}} cards?",
     copyListButton: "Copy List",
     copySuccess: "Copied!",
     copyError: "Failed to copy",

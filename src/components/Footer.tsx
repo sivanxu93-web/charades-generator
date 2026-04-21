@@ -95,16 +95,6 @@ export default function Footer({ locale, footer }: FooterProps) {
                 />
               </a>
             </li>
-            <li>
-              <a href="https://acidtools.com" target="_blank"rel="noopener noreferrer nofollow" >
-                <Image
-                  src="https://acidtools.com/assets/images/badge.png"
-                  alt="Acid Tools badge"
-                  width={159}
-                  height={54}
-                />
-              </a>
-            </li>
             <li className="leading-none">
               <a href="https://kontext-ai.com/" target="_blank"rel="noopener noreferrer nofollow" >
                 Kontext AI

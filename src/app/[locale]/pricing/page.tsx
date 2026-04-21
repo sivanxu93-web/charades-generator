@@ -59,8 +59,27 @@ export default async function PricingPage({ params }: PageProps) {
   const dictionary = getDictionary(locale);
   const pricing = dictionary.pricing;
 
+  // SEO Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": dictionary.seo.pricing.structuredDataName,
+    "description": dictionary.seo.pricing.structuredDataDescription,
+    "offers": pricing.tiers.map(tier => ({
+      "@type": "Offer",
+      "name": tier.name,
+      "price": tier.price.replace('$', ''),
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }))
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-7xl mx-auto">
         <div className="text-center">
           <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
@@ -73,7 +92,6 @@ export default async function PricingPage({ params }: PageProps) {
 
         <PricingTable 
           tiers={pricing.tiers} 
-          paymentUnderDevelopment={pricing.paymentUnderDevelopment} 
         />
 
         <div className="mt-20 max-w-3xl mx-auto">

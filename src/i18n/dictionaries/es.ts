@@ -188,7 +188,7 @@ export const es = {
     tiers: [
       {
         name: "Pase de 24 Horas",
-        price: "$0.99",
+        price: "$1.49",
         duration: "por día",
         description: "Perfecto para una sola noche de juegos o evento.",
         features: [
@@ -228,6 +228,28 @@ export const es = {
       },
     ],
     paymentUnderDevelopment: "La integración del pago está en desarrollo. ¡Vuelve pronto!",
+    upgrade: {
+      title: "Oferta Lanzamiento — ¡Pro está aquí! 🎉",
+      subtitle: "Nuevas funciones recién lanzadas. Aprovecha el precio especial de lanzamiento por tiempo limitado.",
+      adNotice: "Los anuncios nos permiten mantener el Generador de Charadas gratis para familias y profesores. Al hacerte Pro, apoyas nuestro proyecto y eliminas la publicidad.",
+      features: [
+        "Eliminar toda la publicidad",
+        "Desbloquear packs temáticos y para adultos",
+        "Temporizador integrado (Próximamente)",
+        "Generar hasta 50 palabras a la vez",
+        "Modo de juego de cartas (Próximamente)",
+      ],
+      partyPass: "Pase de Fiesta",
+      partyPassDesc: "24 horas · perfecto para hoy",
+      partyPassPrice: "$1.49",
+      partyPassOriginal: "$2.99",
+      proForever: "Pro para siempre",
+      proForeverDesc: "Acceso de por vida · el mejor valor",
+      proForeverPrice: "$2.99",
+      proForeverOriginal: "$9.99",
+      maybeLater: "Quizás más tarde",
+      emailPlaceholder: "Correo (opcional — para recuperación)",
+    },
   },
   imposterWords: {
     title: "Más de 100 Palabras y Parejas para el Juego del Impostor",
@@ -361,6 +383,7 @@ export const es = {
     scenarioMarkUsed: "Marcar como usado",
     scenarioMarkedMessage: "Usando preset de escenario",
     yourWordsHeading: "Tus Palabras Aleatorias",
+    readyToPlay: "¿Listo para jugar con {{count}} tarjetas?",
     copyListButton: "Copiar Lista",
     copySuccess: "¡Copiado!",
     copyError: "Error al copiar",
