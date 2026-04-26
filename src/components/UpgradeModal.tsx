@@ -67,7 +67,7 @@ export default function UpgradeModal({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div 
-        className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in duration-200"
+        className="relative flex w-full max-w-lg max-h-[90vh] flex-col overflow-hidden rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {loading && (
@@ -77,7 +77,7 @@ export default function UpgradeModal({
         )}
         
         {/* Header */}
-        <div className="bg-gradient-to-br from-indigo-600 to-indigo-800 p-6 text-center text-white">
+        <div className="shrink-0 bg-gradient-to-br from-indigo-600 to-indigo-800 p-6 text-center text-white">
           <div className="mb-2 inline-block rounded-full bg-yellow-400 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-indigo-900 shadow-sm">
             Launch Special — Limited Time
           </div>
@@ -86,7 +86,7 @@ export default function UpgradeModal({
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="flex-1 overflow-y-auto p-6">
           <ul className="space-y-2 mb-5 text-sm">
             {dictionary.features.map((feature, idx) => (
               <li key={idx} className="flex items-start gap-2">

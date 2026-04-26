@@ -5,6 +5,7 @@ import { getDictionary } from "@/i18n/dictionary";
 import ConsentManager from "@/components/ConsentManager";
 import RouteTracking from "@/components/RouteTracking";
 import { ensureUrlCanParse } from "@/utils/polyfills";
+import Script from "next/script";
 import "./globals.css";
 
 const LOCALE_COOKIE = "site-locale";
@@ -183,6 +184,15 @@ export default async function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "whn6xf9ygp");
+          `}
+        </Script>
         <ConsentManager
           initialStatus={consentStatus}
           locale={locale}

@@ -1,11 +1,15 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 /**
  * Sends a Pro Forever activation email with the unique token.
  */
 export async function sendTokenEmail(email: string, tokenId: string) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Missing RESEND_API_KEY environment variable.");
+    return;
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const activationLink = `${process.env.NEXT_PUBLIC_URL}/pro/activate?token=${tokenId}`;
 
   try {

@@ -161,7 +161,7 @@ export default function PricingTable({ tiers }: PricingTableProps) {
       {isEmailModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => !loading && setIsEmailModalOpen(false)}>
           <div 
-            className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl p-8 animate-in fade-in zoom-in duration-200"
+            className="relative w-full max-w-md overflow-y-auto max-h-[90vh] rounded-3xl bg-white shadow-2xl p-8 animate-in fade-in zoom-in duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {loading && (
