@@ -103,30 +103,13 @@ export default function CharadesGeneratorOptimized({
     isCustomMode && !Number.isNaN(parsedCustomCount) && parsedCustomCount >= 1 && parsedCustomCount <= 50;
 
   const checkProInterception = useCallback((category: string): boolean => {
-    if (!isProLoaded || isPro) return false;
-
-    const hasSeenModal = window.sessionStorage.getItem('cg-shown-first-modal');
-    if (!hasSeenModal) {
-      setIsUpgradeModalOpen(true);
-      window.sessionStorage.setItem('cg-shown-first-modal', 'true');
-      return true;
-    }
-
-    if (PRO_CATEGORIES.includes(category)) {
-      setIsUpgradeModalOpen(true);
-      return true;
-    }
-
+    // Disabled automatic modal trigger
     return false;
-  }, [isPro, isProLoaded]);
+  }, []);
 
   const handleSetCategory = useCallback((cat: string) => {
-    if (PRO_CATEGORIES.includes(cat) && !isPro) {
-       setIsUpgradeModalOpen(true);
-       return;
-    }
     setSelectedCategory(cat);
-  }, [isPro]);
+  }, []);
 
   const handleSetBatchSize = useCallback((size: number) => {
     setBatchSize(size);
@@ -396,6 +379,14 @@ export default function CharadesGeneratorOptimized({
             <h2 className="text-2xl font-bold text-gray-800 mb-2">{dictionary.generator.yourWordsHeading}</h2>
             <p className="text-gray-600">
               {t('generator.readyToPlay', { count: generatedWords.length })}
+            </p>
+            <p className="mt-2">
+              <button 
+                onClick={() => setIsUpgradeModalOpen(true)}
+                className="text-sm font-medium text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 transition-all hover:scale-105"
+              >
+                {dictionary.generator.removeAdsHint || "✨ One-click to remove ads"}
+              </button>
             </p>
             <div className="mt-3 flex items-center justify-center gap-2 text-sm">
               <button onClick={handleCopyWords} className="rounded-md border border-indigo-300 px-3 py-1.5 font-semibold text-indigo-700 hover:bg-indigo-100">

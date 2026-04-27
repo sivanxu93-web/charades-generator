@@ -384,6 +384,7 @@ export const en = {
     scenarioMarkedMessage: "Using scenario preset",
     yourWordsHeading: "Your Random Charades Words",
     readyToPlay: "Ready to Play with {{count}} cards?",
+    removeAdsHint: "✨ One-click to remove ads",
     copyListButton: "Copy List",
     copySuccess: "Copied!",
     copyError: "Failed to copy",

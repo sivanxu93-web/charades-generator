@@ -384,6 +384,7 @@ export const es = {
     scenarioMarkedMessage: "Usando preset de escenario",
     yourWordsHeading: "Tus Palabras Aleatorias",
     readyToPlay: "¿Listo para jugar con {{count}} tarjetas?",
+    removeAdsHint: "✨ Un clic para eliminar anuncios",
     copyListButton: "Copiar Lista",
     copySuccess: "¡Copiado!",
     copyError: "Error al copiar",
