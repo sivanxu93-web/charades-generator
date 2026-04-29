@@ -3,9 +3,9 @@ export const en = {
   localeName: "English",
   seo: {
     home: {
-      title: "Charades Generator: #1 Free Online Word Generator",
+      title: "Charades Generator - Free Random Charades Words & Ideas",
       description:
-        "Generate random charades words for kids and adults in one click. Free online charades generator with 1000+ ideas, printable word lists, and themed packs for movies, Disney, kids, Christmas, and more.",
+        "Use this free charades generator to get random charades words instantly. Choose kids, adults, movies, Disney, animals, and difficulty, then copy or print your list.",
       keywords:
         "charades generator, free charades generator, online charades generator, random charades generator, charades word generator, charades words generator, free charades words, charades ideas, party games, family games, disney charades, online charades, charades game generator",
       structuredDataName: "Charades Generator - Free Online Word Tool",
@@ -278,8 +278,8 @@ export const en = {
     items: [
       {
         key: "home",
-        title: "Free Generator",
-        description: "Main charades generator",
+        title: "Charades Generator",
+        description: "Free charades word generator",
         href: "/",
       },
       {
@@ -364,14 +364,14 @@ export const en = {
   },
   generator: {
     defaultTitle: "Charades Generator",
-    defaultDescription: "Click generate to get random words!",
+    defaultDescription: "Generate random charades words for kids, adults, movies, Disney, animals, and parties. No login needed.",
     generateButton: "Generate words",
     copyButton: "Copy words",
     printButton: "Print list",
     loading: "Generating...",
     empty: "No words generated yet.",
     errorFetchingWords: "Error fetching words. Please try again.",
-    wordsCountSublabel: "Choose how many words to generate",
+    wordsCountSublabel: "Pick a category, difficulty, and word count, then copy or print your charades list.",
     scenarioHeading: "Scenario Presets",
     scenarioSubheading: "Quick setup for common groups",
     scenarioToggleOpen: "Show presets",
@@ -458,7 +458,7 @@ export const en = {
     seoIntro: {
       title: "Free online charades generator with 1000+ ideas",
       lead:
-        "Looking for a random charades generator that just works? Spin up instant words across movies, Disney, animals, actions, and more—filter by difficulty and age group, then copy or print a ready-to-play list in seconds, no sign-up required.",
+        "Looking for a free charades generator that just works? Generate instant charades words across movies, Disney, animals, actions, and more—filter by difficulty and age group, then copy or print a ready-to-play list in seconds, no sign-up required.",
     },
     heroShortcuts: {
       ideasLabel: "Browse ideas & word lists",
@@ -561,6 +561,43 @@ export const en = {
           },
         ],
       },
+      capabilities: {
+        title: "What this charades generator can do",
+        description:
+          "Use the generator as a fast word picker, printable charades word list, or party setup tool for almost any group.",
+        items: [
+          {
+            title: "Generate one word or a full list",
+            description:
+              "Pick 1, 3, 5, 10, or a custom amount up to 50 prompts when you need a quick round or a complete charades list.",
+          },
+          {
+            title: "Filter for your group",
+            description:
+              "Choose kids, adults, all ages, easy, medium, or hard prompts so the words match your players.",
+          },
+          {
+            title: "Choose themed word banks",
+            description:
+              "Mix movies, Disney, animals, actions, emotions, objects, professions, Christmas, and funny prompts.",
+          },
+          {
+            title: "Copy or print your charades words",
+            description:
+              "Copy a generated list into chat, notes, or a lesson plan, then print it when you want offline cards.",
+          },
+          {
+            title: "Run parties, classrooms, and calls",
+            description:
+              "Use the same online charades generator for family game night, classroom brain breaks, office icebreakers, and remote teams.",
+          },
+          {
+            title: "Start without an app or login",
+            description:
+              "The generator loads in the browser, works on mobile, and keeps the first round ready without sign-up friction.",
+          },
+        ],
+      },
       faq: {
         title: "Free Charades Generator FAQ",
         items: [
@@ -583,6 +620,11 @@ export const en = {
             question: "What if I need printable rules?",
             answer:
               "Head to the quick-play kit linked below the charades generator for score sheets, timers, and gesture legends.",
+          },
+          {
+            question: "Can I use this as an online charades word generator?",
+            answer:
+              "Yes. The tool works as an online charades word generator for quick single prompts, full word lists, themed categories, and printable game cards.",
           },
         ],
       },
@@ -1198,8 +1240,8 @@ export const en = {
         links: [
           { title: "Free Charades Generator", href: "/" },
           {
-            title: "Charades Word List Generator",
-            href: "/word-charades-generator/",
+            title: "Charades Word Generator",
+            href: "/",
           },
           {
             title: "Random Charades Generator",

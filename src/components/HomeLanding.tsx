@@ -18,6 +18,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
 
   const difference = generatorDeepDive.difference;
   const presets = generatorDeepDive.presets;
+  const capabilities = generatorDeepDive.capabilities;
   const faq = generatorDeepDive.faq;
   const playGuides = generatorDeepDive.playGuides;
   const expertInsights = generatorDeepDive.expertInsights;
@@ -112,6 +113,19 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
                 <h3 className="text-lg font-semibold text-indigo-700 mb-2">{preset.title}</h3>
                 <p className="text-sm text-gray-700 mb-2">{preset.description}</p>
                 <p className="text-xs uppercase tracking-wider text-indigo-500 font-semibold">{preset.note}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">{capabilities.title}</h2>
+          <p className="text-gray-600 mb-5">{capabilities.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {capabilities.items.map((item) => (
+              <div key={item.title} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.description}</p>
               </div>
             ))}
           </div>
@@ -213,7 +227,6 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
         </div>
       </section>
 
-      {/* Hide testimonials for compliance review
       <section className="bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-10">
           <div className="mb-8">
@@ -244,9 +257,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           </div>
         </div>
       </section>
-      */}
 
-      {/* Hide community playbooks for compliance review
       {dictionary.home.communityPlaybooks && (
         <CommunityPlaybooks
           locale={locale}
@@ -254,7 +265,6 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           fallbackShareCta={expertInsights.shareCta}
         />
       )}
-      */}
     </>
   );
 }

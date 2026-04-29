@@ -3,9 +3,9 @@ export const es = {
   localeName: "Español",
   seo: {
     home: {
-      title: "Generador de Charadas: #1 Herramienta Online Gratis (1000+ Palabras)",
+      title: "Generador de Charadas Gratis - Palabras e Ideas Online",
       description:
-        "¡Generador de charadas aleatorias gratis! Consigue 1000+ ideas para niños y adultos al instante. Sin registro ni descargas. Listas para imprimir de películas, Disney y más.",
+        "Usa este generador de charadas gratis para obtener palabras al instante. Elige niños, adultos, cine, Disney, animales y dificultad, luego copia o imprime tu lista.",
       keywords:
         "generador charadas, palabras charadas gratis, juego charadas, juegos fiesta, juegos familiares, charadas disney, generador de palabras online",
       structuredDataName: "Generador de Charadas Gratis - Herramienta Online",
@@ -278,8 +278,8 @@ export const es = {
     items: [
       {
         key: "home",
-        title: "Generador Gratis",
-        description: "Generador principal",
+        title: "Generador de Charadas",
+        description: "Generador de palabras gratis",
         href: "/",
       },
       {
@@ -364,14 +364,14 @@ export const es = {
   },
   generator: {
     defaultTitle: "Generador de Charadas",
-    defaultDescription: "¡Haz clic en generar para obtener palabras aleatorias!",
+    defaultDescription: "Genera palabras de charadas para niños, adultos, cine, Disney, animales y fiestas. Sin registro.",
     generateButton: "Generar palabras",
     copyButton: "Copiar palabras",
     printButton: "Imprimir lista",
     loading: "Generando...",
     empty: "Aún no se han generado palabras.",
     errorFetchingWords: "Error al obtener palabras. Inténtalo de nuevo.",
-    wordsCountSublabel: "Elige cuántas palabras generar",
+    wordsCountSublabel: "Elige categoría, dificultad y cantidad; luego copia o imprime tu lista.",
     scenarioHeading: "Presets de Escenarios",
     scenarioSubheading: "Configuración rápida para grupos",
     scenarioToggleOpen: "Ver presets",
@@ -458,7 +458,7 @@ export const es = {
     seoIntro: {
       title: "Generador de charadas online gratis con 1000+ ideas",
       lead:
-        "¿Buscas un generador aleatorio de charadas que funcione? Obtén palabras al instante de películas, Disney, animales y más. Filtra por dificultad y edad, copia o imprime tu lista en segundos, sin registro.",
+        "¿Buscas un generador de charadas gratis que funcione? Obtén palabras al instante de películas, Disney, animales y más. Filtra por dificultad y edad, copia o imprime tu lista en segundos, sin registro.",
     },
     heroShortcuts: {
       ideasLabel: "Explorar ideas y listas",
@@ -561,6 +561,43 @@ export const es = {
           },
         ],
       },
+      capabilities: {
+        title: "Qué puede hacer este generador de charadas",
+        description:
+          "Úsalo como selector rápido de palabras, lista imprimible o herramienta para preparar juegos en grupo.",
+        items: [
+          {
+            title: "Generar una palabra o una lista completa",
+            description:
+              "Elige 1, 3, 5, 10 o una cantidad personalizada hasta 50 prompts para una ronda rápida o una lista completa.",
+          },
+          {
+            title: "Filtrar según el grupo",
+            description:
+              "Elige niños, adultos, todas las edades, fácil, medio o difícil para adaptar las palabras a tus jugadores.",
+          },
+          {
+            title: "Elegir bancos temáticos",
+            description:
+              "Mezcla cine, Disney, animales, acciones, emociones, objetos, profesiones, Navidad y prompts divertidos.",
+          },
+          {
+            title: "Copiar o imprimir palabras",
+            description:
+              "Copia la lista a un chat, notas o una clase, o imprímela cuando quieras tarjetas físicas.",
+          },
+          {
+            title: "Jugar en fiestas, clases y videollamadas",
+            description:
+              "Usa el mismo generador online para noches familiares, pausas escolares, icebreakers y equipos remotos.",
+          },
+          {
+            title: "Empezar sin app ni registro",
+            description:
+              "El generador funciona en el navegador, va bien en móvil y deja lista la primera ronda sin fricción.",
+          },
+        ],
+      },
       faq: {
         title: "Preguntas frecuentes sobre el generador",
         items: [
@@ -583,6 +620,11 @@ export const es = {
             question: "¿Tenéis reglas para imprimir?",
             answer:
               "Ve al Kit rápido para jugar enlazado abajo para obtener hojas de puntuación, cronómetros y leyendas de gestos.",
+          },
+          {
+            question: "¿Puedo usarlo como generador online de palabras para charadas?",
+            answer:
+              "Sí. La herramienta funciona como generador online para palabras sueltas, listas completas, categorías temáticas y tarjetas imprimibles.",
           },
         ],
       },
@@ -1203,10 +1245,10 @@ export const es = {
       charades: {
         title: "Generadores",
         links: [
-          { title: "Generador gratuito", href: "/" },
+          { title: "Generador de Charadas", href: "/" },
           {
-            title: "Lista de palabras",
-            href: "/word-charades-generator/",
+            title: "Generador de palabras",
+            href: "/",
           },
           {
             title: "Generador aleatorio",

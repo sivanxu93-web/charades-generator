@@ -45,6 +45,11 @@ const routeConfig: Array<{
     priority: 0.8,
   },
   {
+    path: "/charades-ideas",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
     path: "/movie-charades-generator",
     changeFrequency: "weekly",
     priority: 0.8,
@@ -95,9 +100,39 @@ const routeConfig: Array<{
     priority: 0.75,
   },
   {
+    path: "/imposter-game-word-list",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
+  {
+    path: "/how-to-play-imposter-game",
+    changeFrequency: "weekly",
+    priority: 0.65,
+  },
+  {
     path: "/imposter-game/play",
     changeFrequency: "weekly",
     priority: 0.7,
+  },
+  {
+    path: "/classroom-charades-guide",
+    changeFrequency: "weekly",
+    priority: 0.65,
+  },
+  {
+    path: "/family-game-night",
+    changeFrequency: "weekly",
+    priority: 0.65,
+  },
+  {
+    path: "/online-charades-guide",
+    changeFrequency: "weekly",
+    priority: 0.65,
+  },
+  {
+    path: "/pictionary-word-generator",
+    changeFrequency: "weekly",
+    priority: 0.6,
   },
 
   {

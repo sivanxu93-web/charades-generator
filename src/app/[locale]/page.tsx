@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const alternateLanguages = buildAlternateLanguages(canonicalPath);
 
   const title = locale === "es"
-    ? "Generador de Charadas y Palabras Aleatorias - Jugar Online"
-    : "Charades Generator: 1000+ Free Online Words (No Login)";
+    ? "Generador de Charadas Gratis - Palabras e Ideas Online"
+    : "Charades Generator - Free Random Charades Words & Ideas";
   
   const description = locale === "es"
-    ? "El mejor generador de palabras para Charadas, Pictionary y juegos en grupo. Más de 1000 palabras divertidas y difíciles. ¡Sin descargar nada!"
-    : "Generate 1000+ charades words instantly! No login required. Get funny, hard, & easy ideas for kids, adults, Movies, and Disney. Copy or Print lists in 1-click.";
+    ? "Usa este generador de charadas gratis para obtener palabras al instante. Elige niños, adultos, cine, Disney, animales y dificultad, luego copia o imprime tu lista."
+    : "Use this free charades generator to get random charades words instantly. Choose kids, adults, movies, Disney, animals, and difficulty, then copy or print your list.";
 
   return {
     title,
