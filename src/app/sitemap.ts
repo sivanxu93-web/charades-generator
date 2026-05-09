@@ -161,11 +161,6 @@ const routeConfig: Array<{
     priority: 0.7,
   },
   {
-    path: "/pricing",
-    changeFrequency: "monthly",
-    priority: 0.7,
-  },
-  {
     path: "/privacy-policy",
     changeFrequency: "yearly",
     priority: 0.3,

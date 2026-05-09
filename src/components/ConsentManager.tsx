@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Script from "next/script";
 import { buildLocalePath } from "@/utils/localePaths";
 import type { Locale } from "@/i18n/config";
-import { usePro } from "@/hooks/usePro";
 
 const CONSENT_COOKIE = "cg-consent";
 const CONSENT_MAX_AGE = 60 * 60 * 24 * 180; // 180 days
@@ -77,7 +76,6 @@ declare global {
 export default function ConsentManager({ initialStatus, locale, copy, isProduction }: ConsentManagerProps) {
   const [status, setStatus] = useState<ConsentStatus>(initialStatus);
   const [scriptsEnabled, setScriptsEnabled] = useState<boolean>(isProduction && initialStatus === "granted");
-  const { isPro, loaded: isProLoaded } = usePro();
 
   useEffect(() => {
     if (!isProduction) return;
@@ -128,14 +126,12 @@ export default function ConsentManager({ initialStatus, locale, copy, isProducti
               });
             `}
           </Script>
-          {isProLoaded && !isPro && (
-            <Script
-              async
-              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4855228928819714"
-              crossOrigin="anonymous"
-              strategy="afterInteractive"
-            />
-          )}
+          <Script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4855228928819714"
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
         </>
       )}
 

@@ -7,11 +7,8 @@ import { useLocale } from '@/contexts/LocaleContext';
 import { categoryIds, difficultyIds, ageGroupIds } from '@/data/charades-metadata';
 import { buildLocalePath } from '@/utils/localePaths';
 import { trackEvent } from '@/lib/analytics';
-import { usePro } from '@/hooks/usePro';
-import UpgradeModal from '@/components/UpgradeModal';
 
 const DEFAULT_BATCH_SIZE = 3;
-const PRO_CATEGORIES = ['funny'];
 
 interface ScenarioPreset {
   id: string;
@@ -87,9 +84,6 @@ export default function CharadesGeneratorOptimized({
       ? 'Especial de Navidad: charadas navideñas'
       : 'Holiday special: Christmas charades generator';
 
-  const { isPro, loaded: isProLoaded } = usePro();
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false);
-
   const [selectedCategory, setSelectedCategory] = useState<string>(defaultCategory);
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>(defaultDifficulty);
   const [selectedAgeGroup, setSelectedAgeGroup] = useState<string>(defaultAgeGroup);
@@ -101,11 +95,6 @@ export default function CharadesGeneratorOptimized({
   const parsedCustomCount = Number.parseInt(customCount, 10);
   const isCustomValid =
     isCustomMode && !Number.isNaN(parsedCustomCount) && parsedCustomCount >= 1 && parsedCustomCount <= 50;
-
-  const checkProInterception = useCallback((category: string): boolean => {
-    // Disabled automatic modal trigger
-    return false;
-  }, []);
 
   const handleSetCategory = useCallback((cat: string) => {
     setSelectedCategory(cat);
@@ -237,8 +226,6 @@ export default function CharadesGeneratorOptimized({
   }, [hasHydrated]);
 
   const handleGenerateClick = useCallback(() => {
-    if (checkProInterception(selectedCategory)) return;
-
     trackEvent('charades_generate_click', {
       category: selectedCategory,
       difficulty: selectedDifficulty,
@@ -252,7 +239,7 @@ export default function CharadesGeneratorOptimized({
     } else {
       void generateBatchWords(batchSize);
     }
-  }, [batchSize, generateBatchWords, isCustomMode, isCustomValid, parsedCustomCount, selectedAgeGroup, selectedCategory, selectedDifficulty, checkProInterception]);
+  }, [batchSize, generateBatchWords, isCustomMode, isCustomValid, parsedCustomCount, selectedAgeGroup, selectedCategory, selectedDifficulty]);
 
   useEffect(() => {
     if (!hasHydrated) return;
@@ -380,14 +367,6 @@ export default function CharadesGeneratorOptimized({
             <p className="text-gray-600">
               {t('generator.readyToPlay', { count: generatedWords.length })}
             </p>
-            <p className="mt-2">
-              <button 
-                onClick={() => setIsUpgradeModalOpen(true)}
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 transition-all hover:scale-105"
-              >
-                {dictionary.generator.removeAdsHint || "✨ One-click to remove ads"}
-              </button>
-            </p>
             <div className="mt-3 flex items-center justify-center gap-2 text-sm">
               <button onClick={handleCopyWords} className="rounded-md border border-indigo-300 px-3 py-1.5 font-semibold text-indigo-700 hover:bg-indigo-100">
                 {dictionary.generator.copyListButton}
@@ -451,12 +430,6 @@ export default function CharadesGeneratorOptimized({
         </ul>
       </div>
 
-      <UpgradeModal
-        isOpen={isUpgradeModalOpen}
-        onClose={() => setIsUpgradeModalOpen(false)}
-        dictionary={dictionary.pricing.upgrade}
-        paymentUnderDevelopment={dictionary.pricing.paymentUnderDevelopment}
-      />
     </div>
   );
 }
