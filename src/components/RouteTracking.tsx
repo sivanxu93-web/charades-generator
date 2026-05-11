@@ -6,7 +6,6 @@ import { useEffect } from "react";
 declare global {
   interface Window {
     dataLayer?: unknown[][];
-    adsbygoogle?: unknown[];
     __cgLastTrackedPath?: string;
   }
 }

@@ -1,84 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { cookies, headers } from "next/headers";
 import { isLocale, DEFAULT_LOCALE, type Locale } from "@/i18n/config";
-import { getDictionary } from "@/i18n/dictionary";
-import ConsentManager from "@/components/ConsentManager";
+import GoogleScripts from "@/components/GoogleScripts";
 import RouteTracking from "@/components/RouteTracking";
 import { ensureUrlCanParse } from "@/utils/polyfills";
 import Script from "next/script";
 import "./globals.css";
 
 const LOCALE_COOKIE = "site-locale";
-const CONSENT_COOKIE = "cg-consent";
-
-const CONSENT_REQUIRED_COUNTRIES = new Set([
-  "AT",
-  "BE",
-  "BG",
-  "HR",
-  "CY",
-  "CZ",
-  "DK",
-  "EE",
-  "FI",
-  "FR",
-  "DE",
-  "GR",
-  "HU",
-  "IS",
-  "IE",
-  "IT",
-  "LI",
-  "LT",
-  "LU",
-  "LV",
-  "MT",
-  "NL",
-  "NO",
-  "PL",
-  "PT",
-  "RO",
-  "SE",
-  "SI",
-  "SK",
-  "ES",
-  "GB",
-  "UK",
-  "CH",
-  "GG",
-  "IM",
-  "JE",
-]);
-
-const CONSENT_REQUIRED_LOCALES = new Set<Locale>(["es"]);
-
-function getCountryFromHeaders(headerStore: Headers) {
-  const candidates = [
-    "cf-ipcountry",
-    "x-vercel-ip-country",
-    "x-forwarded-country",
-    "x-country-code",
-  ];
-
-  for (const key of candidates) {
-    const value = headerStore.get(key);
-    if (!value) continue;
-    const normalized = value.trim().toUpperCase();
-    if (normalized && normalized !== "T1" && normalized !== "XX") {
-      return normalized;
-    }
-  }
-
-  return undefined;
-}
-
-function regionRequiresConsent(countryCode: string | undefined, locale: Locale) {
-  if (countryCode && CONSENT_REQUIRED_COUNTRIES.has(countryCode)) {
-    return true;
-  }
-
-  return CONSENT_REQUIRED_LOCALES.has(locale);
-}
 
 function resolveLocale(cookieLocale: string | undefined, headerLocale: string | null): Locale {
   const fallback = cookieLocale ?? headerLocale ?? DEFAULT_LOCALE;
@@ -153,17 +82,6 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const headerStore = await headers();
   const locale = resolveLocale(cookieStore.get(LOCALE_COOKIE)?.value, headerStore.get("x-site-locale"));
-  const countryCode = getCountryFromHeaders(headerStore);
-  const consentCookie = cookieStore.get(CONSENT_COOKIE)?.value;
-  const consentStatus = (() => {
-    if (consentCookie === "granted" || consentCookie === "denied") {
-      return consentCookie;
-    }
-    // Only require explicit consent in regions/locales where it's legally needed;
-    // elsewhere (e.g. US) allow analytics/ads to load by default.
-    return regionRequiresConsent(countryCode, locale) ? "pending" : "granted";
-  })();
-  const dictionary = getDictionary(locale);
   const htmlAttributes = localeToHtmlAttributes(locale);
 
   return (
@@ -193,12 +111,7 @@ export default async function RootLayout({
             })(window, document, "clarity", "script", "whn6xf9ygp");
           `}
         </Script>
-        <ConsentManager
-          initialStatus={consentStatus}
-          locale={locale}
-          copy={dictionary.consent}
-          isProduction={isProduction}
-        />
+        <GoogleScripts isProduction={isProduction} />
         <RouteTracking />
       </body>
     </html>

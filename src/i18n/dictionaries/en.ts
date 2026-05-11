@@ -242,14 +242,6 @@ export const en = {
       },
     ],
   },
-  consent: {
-    title: "We value your privacy",
-    description:
-      "We use cookies to measure performance and fund the project with minimal ads. You can enable or decline analytics and advertising cookies at any time.",
-    accept: "Accept all cookies",
-    reject: "Decline non-essential",
-    privacyLinkLabel: "Privacy policy",
-  },
   categories: {
     all: "All Categories",
     movies: "Movies",

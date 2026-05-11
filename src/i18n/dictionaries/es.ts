@@ -242,14 +242,6 @@ export const es = {
       },
     ],
   },
-  consent: {
-    title: "Valoramos tu privacidad",
-    description:
-      "Usamos cookies para medir el rendimiento y financiar el proyecto con publicidad mínima. Puedes aceptar o rechazar las cookies en cualquier momento.",
-    accept: "Aceptar todas",
-    reject: "Rechazar no esenciales",
-    privacyLinkLabel: "Política de privacidad",
-  },
   categories: {
     all: "Todas las categorías",
     movies: "Películas",
