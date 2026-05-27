@@ -82,27 +82,35 @@ export default async function ImposterGamePage({ params }: PageProps) {
         <section className="mb-12 text-center relative overflow-hidden rounded-3xl bg-indigo-600 px-6 py-10 sm:py-16 text-white shadow-xl ring-1 ring-indigo-500/10">
           <div className="relative z-10">
             <span className="inline-block rounded-full bg-indigo-500/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-100 mb-4 border border-indigo-400/30">
-              {locale === "en" ? "Mobile-Ready Party Game" : "Juego para Móvil"}
+              {content.heroBadge}
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
-              {dictionary.pages.imposter.title}
+              {content.heroTitle}
             </h1>
             <p className="text-indigo-100 text-lg sm:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-              {dictionary.pages.imposter.description}
+              {content.heroDescription}
             </p>
 
-            <Link
-              href={buildLocalePath(locale, "/imposter-game/play/")}
-              className="group inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-white px-8 py-4 text-lg font-bold text-indigo-600 shadow-lg transition-all hover:bg-indigo-50 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
-            >
-              <svg className="w-6 h-6 mr-2 -ml-1 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {locale === "en" ? "Start Imposter Game" : "Empezar Juego del Impostor"}
-            </Link>
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <Link
+                href={buildLocalePath(locale, "/imposter-game/play/")}
+                className="group inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-white px-8 py-4 text-lg font-bold text-indigo-600 shadow-lg transition-all hover:bg-indigo-50 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+              >
+                <svg className="w-6 h-6 mr-2 -ml-1 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {content.heroPrimaryCta}
+              </Link>
+              <Link
+                href={buildLocalePath(locale, "/imposter-game-word-list/")}
+                className="inline-flex items-center justify-center w-full rounded-xl border-2 border-indigo-300 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-indigo-500/40 sm:w-auto"
+              >
+                {content.heroSecondaryCta}
+              </Link>
+            </div>
             <p className="mt-4 text-xs font-medium text-indigo-200 uppercase tracking-wide opacity-80">
-              {locale === "en" ? "Instant Load · No App Needed" : "Carga Instantánea · Sin App"}
+              {content.heroNote}
             </p>
           </div>
           
@@ -208,7 +216,7 @@ export default async function ImposterGamePage({ params }: PageProps) {
         <section className="mb-12">
           <div className="flex flex-col md:flex-row items-center justify-between mb-6">
              <h2 className="text-2xl font-bold text-slate-900">{content.wordsTitle}</h2>
-             <Link href={buildLocalePath(locale, "/")} className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 mt-2 md:mt-0 flex items-center">
+             <Link href={buildLocalePath(locale, "/imposter-game-word-list/")} className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 mt-2 md:mt-0 flex items-center">
                 {content.generatorHint.linkText} 
                 <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
              </Link>
@@ -280,13 +288,13 @@ export default async function ImposterGamePage({ params }: PageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={buildLocalePath(locale, "/")}
+              href={buildLocalePath(locale, "/imposter-game/play/")}
               className="inline-flex items-center justify-center rounded-xl bg-white text-indigo-900 px-6 py-3 font-bold hover:bg-indigo-50 transition-colors"
             >
               {content.ctaPrimary}
             </Link>
             <Link
-              href={buildLocalePath(locale, "/how-to-use/")}
+              href={buildLocalePath(locale, "/imposter-game-word-list/")}
               className="inline-flex items-center justify-center rounded-xl bg-transparent border-2 border-indigo-400 text-indigo-100 px-6 py-3 font-bold hover:bg-indigo-900/50 transition-colors"
             >
               {content.ctaSecondary}
@@ -296,9 +304,9 @@ export default async function ImposterGamePage({ params }: PageProps) {
       </main>
 
       <StructuredData
-        type="Article"
-        name={dictionary.seo.imposter.structuredDataName}
-        description={dictionary.seo.imposter.structuredDataDescription}
+        type="WebApplication"
+        name={content.heroTitle}
+        description={content.heroDescription}
         url={canonicalUrl}
         category="Party Games"
         locale={locale}
@@ -309,6 +317,13 @@ export default async function ImposterGamePage({ params }: PageProps) {
 
 const imposterContent = {
   en: {
+    heroBadge: "Free imposter game generator",
+    heroTitle: "Imposter Game Generator",
+    heroDescription:
+      "Create a free online imposter game room, generate secret word pairs, and assign roles on every player's phone. No app, login, or setup spreadsheet needed.",
+    heroPrimaryCta: "Start online game",
+    heroSecondaryCta: "Browse word list",
+    heroNote: "Instant room · QR invite · private words",
     whatIsTitle: "What is the imposter word game?",
     whatIsIntro:
       "The imposter game is a free online social deduction party game where everyone secretly receives the same word, except for one or more players who receive a different word. The group must then try to guess the imposter.",
@@ -400,8 +415,8 @@ const imposterContent = {
     ],
     generatorHint: {
       before: "Need more ideas?",
-      linkText: "use the main charades generator",
-      after: "to spin up extra words you can adapt into imposter pairs.",
+      linkText: "browse the imposter word list",
+      after: "or start an online room to assign secret words automatically.",
     },
     useCasesTitle: "Where the imposter game works best",
     useCases: [
@@ -450,11 +465,18 @@ const imposterContent = {
     ],
     ctaTitle: "Ready to host your first imposter round?",
     ctaDescription:
-      "Start with a handful of simple word pairs, then switch over to charades once everyone is warmed up.",
-    ctaPrimary: "Open the charades generator",
-    ctaSecondary: "See the full charades guide",
+      "Create a room now or keep the word list open when you want paper-friendly backup prompts.",
+    ctaPrimary: "Create an imposter room",
+    ctaSecondary: "Open the word list",
   },
   es: {
+    heroBadge: "Generador gratuito del juego del impostor",
+    heroTitle: "Generador del Juego del Impostor",
+    heroDescription:
+      "Crea una sala online gratuita, genera parejas de palabras secretas y reparte roles en el móvil de cada jugador. Sin app, registro ni preparación complicada.",
+    heroPrimaryCta: "Empezar partida online",
+    heroSecondaryCta: "Ver lista de palabras",
+    heroNote: "Sala instantánea · QR para invitar · palabras privadas",
     whatIsTitle: "¿Qué es el juego de palabras del impostor?",
     whatIsIntro:
       "El juego del impostor es un juego de deducción social gratuito online donde todo el grupo recibe en secreto la misma palabra, excepto una o más personas que reciben una palabra distinta. El objetivo es adivinar quién es el impostor.",
@@ -546,8 +568,8 @@ const imposterContent = {
     ],
     generatorHint: {
       before: "¿Necesitas más ideas?",
-      linkText: "usa el generador principal de charadas",
-      after: "para crear listas de palabras que luego puedas adaptar a parejas de impostor.",
+      linkText: "consulta la lista de palabras del impostor",
+      after: "o crea una sala online para repartir palabras secretas automáticamente.",
     },
     useCasesTitle: "Dónde brilla el juego del impostor",
     useCases: [
@@ -596,11 +618,17 @@ const imposterContent = {
     ],
     ctaTitle: "¿Listo para tu primera ronda de impostor?",
     ctaDescription:
-      "Empieza con unas pocas parejas sencillas y cambia a charadas cuando el grupo ya esté animado.",
-    ctaPrimary: "Abrir el generador de charadas",
-    ctaSecondary: "Ver la guía completa de charadas",
+      "Crea una sala ahora o deja abierta la lista de palabras como apoyo para jugar en papel.",
+    ctaPrimary: "Crear sala de impostor",
+    ctaSecondary: "Abrir lista de palabras",
   },
 } satisfies Record<Locale, {
+  heroBadge: string;
+  heroTitle: string;
+  heroDescription: string;
+  heroPrimaryCta: string;
+  heroSecondaryCta: string;
+  heroNote: string;
   whatIsTitle: string;
   whatIsIntro: string;
   whatIsBullets: string[];
