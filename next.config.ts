@@ -1,5 +1,34 @@
 import type { NextConfig } from "next";
 
+const localizedPagePaths = [
+  "/about",
+  "/animal-charades-game",
+  "/charades-generator-for-kids",
+  "/charades-ideas",
+  "/christmas-charades-generator",
+  "/classroom-charades-guide",
+  "/contact",
+  "/disney-charades-generator",
+  "/emotion-charades",
+  "/family-game-night",
+  "/faq",
+  "/funny-charades-for-adults",
+  "/hard-charades-ideas",
+  "/how-to-play-imposter-game",
+  "/how-to-use",
+  "/imposter-game",
+  "/imposter-game/play",
+  "/imposter-game-word-list",
+  "/movie-charades-generator",
+  "/online-charades-guide",
+  "/pictionary-word-generator",
+  "/privacy-policy",
+  "/quick-play-kit",
+  "/random-charades-generator",
+  "/reverse-charades-game",
+  "/terms-of-service",
+];
+
 const nextConfig: NextConfig = {
   trailingSlash: true,
   compiler: {
@@ -41,6 +70,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/en",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/en/:path*",
+        destination: "/:path*",
+        permanent: true,
+      },
+      {
         source: "/word-charades-generator",
         destination: "/",
         permanent: true,
@@ -60,6 +99,18 @@ const nextConfig: NextConfig = {
         destination: "/es/",
         permanent: true,
       },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/en",
+      },
+      ...localizedPagePaths.map((path) => ({
+        source: path,
+        destination: `/en${path}`,
+      })),
     ];
   },
 };

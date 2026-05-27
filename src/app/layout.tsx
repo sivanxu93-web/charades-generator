@@ -1,27 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { cookies, headers } from "next/headers";
-import { isLocale, DEFAULT_LOCALE, type Locale } from "@/i18n/config";
+import { Suspense } from "react";
 import GoogleScripts from "@/components/GoogleScripts";
 import RouteTracking from "@/components/RouteTracking";
 import { ensureUrlCanParse } from "@/utils/polyfills";
 import Script from "next/script";
 import "./globals.css";
-
-const LOCALE_COOKIE = "site-locale";
-
-function resolveLocale(cookieLocale: string | undefined, headerLocale: string | null): Locale {
-  const fallback = cookieLocale ?? headerLocale ?? DEFAULT_LOCALE;
-  return isLocale(fallback) ? fallback : DEFAULT_LOCALE;
-}
-
-function localeToHtmlAttributes(locale: Locale) {
-  switch (locale) {
-    case "es":
-      return { lang: "es", dir: "ltr" as const };
-    default:
-      return { lang: "en", dir: "ltr" as const };
-  }
-}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://charades-generator.com"),
@@ -79,13 +62,9 @@ export default async function RootLayout({
 }>) {
   ensureUrlCanParse();
   const isProduction = process.env.NODE_ENV === "production";
-  const cookieStore = await cookies();
-  const headerStore = await headers();
-  const locale = resolveLocale(cookieStore.get(LOCALE_COOKIE)?.value, headerStore.get("x-site-locale"));
-  const htmlAttributes = localeToHtmlAttributes(locale);
 
   return (
-    <html lang={htmlAttributes.lang} dir={htmlAttributes.dir} data-locale={locale}>
+    <html lang="en" dir="ltr" data-locale="en">
       <head>
         {/* Preload critical assets */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
@@ -112,7 +91,9 @@ export default async function RootLayout({
           `}
         </Script>
         <GoogleScripts isProduction={isProduction} />
-        <RouteTracking />
+        <Suspense fallback={null}>
+          <RouteTracking />
+        </Suspense>
       </body>
     </html>
   );

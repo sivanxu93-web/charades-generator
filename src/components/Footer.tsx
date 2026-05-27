@@ -53,7 +53,7 @@ export default function Footer({ locale, footer }: FooterProps) {
               <h3 className="font-semibold text-gray-800">{title}</h3>
               <ul className="space-y-2">
                 {links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${key}:${link.href}:${link.title}`}>
                     <Link
                       href={buildLocalePath(locale, link.href)}
                       className="text-sm text-gray-600 transition-colors hover:text-blue-600"

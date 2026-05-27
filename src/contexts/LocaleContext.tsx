@@ -42,34 +42,16 @@ export function LocaleProvider({ children, initialLocale = DEFAULT_LOCALE }: Loc
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const pathLocale = window.location.pathname.split('/').filter(Boolean)[0] as Locale | undefined;
-    if (pathLocale && SUPPORTED_LOCALES.includes(pathLocale)) {
-      setLocaleState(pathLocale);
-      document.documentElement.lang = pathLocale;
-      return;
-    }
-
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored && SUPPORTED_LOCALES.includes(stored as Locale)) {
-      setLocaleState(stored as Locale);
-      document.documentElement.lang = stored;
-      return;
-    }
-
-    const navigatorLocale = window.navigator.language.slice(0, 2) as Locale;
-    if (SUPPORTED_LOCALES.includes(navigatorLocale)) {
-      setLocaleState(navigatorLocale);
-      document.documentElement.lang = navigatorLocale;
-    } else {
-      document.documentElement.lang = DEFAULT_LOCALE;
-    }
-  }, []);
+    setLocaleState(initialLocale);
+    document.documentElement.lang = initialLocale;
+    document.documentElement.dataset.locale = initialLocale;
+  }, [initialLocale]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEY, locale);
     document.documentElement.lang = locale;
+    document.documentElement.dataset.locale = locale;
   }, [locale]);
 
   const dictionary = useMemo(() => getDictionary(locale), [locale]);
