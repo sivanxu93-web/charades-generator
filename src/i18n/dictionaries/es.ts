@@ -9,6 +9,7 @@ export const es = {
       keywords:
         "generador charadas, palabras charadas gratis, juego charadas, juegos fiesta, juegos familiares, charadas disney, generador de palabras online",
       structuredDataName: "Generador de Charadas Gratis - Herramienta Online",
+      alternateName: "Generador de Charadas Gratis",
       structuredDataDescription:
         "Generador de Charadas con base de datos de más de 1000 palabras! Palabras instantáneas gratis para niños, adultos y fiestas. Sin necesidad de iniciar sesión.",
     },
@@ -1040,6 +1041,9 @@ export const es = {
       section5Title: "Cookies y Seguimiento",
       section5Content:
         "Usamos cookies y tecnologías de seguimiento similares para analizar patrones de uso y mejorar nuestro servicio. Puedes controlar las preferencias de cookies a través de la configuración de tu navegador.",
+      monumetricDisclosure:
+        "This Site is affiliated with Monumetric (dba for The Blogger Network, LLC) for the purposes of placing advertising on the Site, and Monumetric will collect and use certain data for advertising purposes. To learn more about Monumetric's data usage, click here:",
+      monumetricLinkText: "Publisher Advertising Privacy",
       section6Title: "Servicios de Terceros",
       section6Content:
         "Nuestro sitio web puede contener enlaces a servicios de terceros. No somos responsables de las prácticas de privacidad de estos sitios externos.",
@@ -1186,6 +1190,12 @@ export const es = {
           { title: "Juego del Impostor", href: "/imposter-game/" },
           { title: "Palabras para el Impostor", href: "/imposter-game-word-list/" },
           { title: "Cómo jugar al Impostor", href: "/how-to-play-imposter-game/" },
+          { title: "Generador de Verdad o Reto", href: "/truth-or-dare-generator/" },
+          { title: "Generador de Qué Prefieres", href: "/would-you-rather-generator/" },
+          { title: "Ideas para noche familiar", href: "/family-game-night-ideas/" },
+          { title: "Charadas Bíblicas", href: "/bible-charades/" },
+          { title: "Juegos de Halloween", href: "/halloween-party-games/" },
+          { title: "Juegos de Navidad", href: "/christmas-party-games/" },
         ],
       },
       info: {

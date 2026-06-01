@@ -119,6 +119,10 @@ Remaining Stage 1 work:
 
 Timeline: 2-4 weeks
 
+Status: Complete
+
+Last updated: 2026-05-28
+
 Goal: Add high-fit generator tools with clear search intent and relatively low difficulty.
 
 Keyword data from validation:
@@ -148,20 +152,29 @@ Success criteria:
 
 ### Todo
 
-- [ ] Create `/truth-or-dare-generator/` with clean/family-friendly default questions.
-- [ ] Add truth/dare filters: kids, teens, family, funny, party, clean.
-- [ ] Create `/would-you-rather-generator/`.
-- [ ] Add would-you-rather filters: kids, family, funny, hard, school, party.
-- [ ] Create `/family-game-night-ideas/`.
-- [ ] Include charades, pictionary, imposter, would-you-rather, truth-or-dare, printable games.
-- [ ] Create `/bible-charades/`.
-- [ ] Add Bible-friendly word groups: people, places, stories, actions, animals.
-- [ ] Create `/halloween-party-games/`.
-- [ ] Include Halloween charades, pictionary, would-you-rather, trivia, printable cards.
-- [ ] Create `/christmas-party-games/`.
-- [ ] Include Christmas charades, pictionary, would-you-rather, trivia, printable cards.
-- [ ] Add all new pages to sitemap.
-- [ ] Add related links from new pages back to charades, imposter, and pictionary.
+- [x] Create `/truth-or-dare-generator/` with clean/family-friendly default questions.
+- [x] Add truth/dare filters: kids, teens, family, funny, party, clean.
+- [x] Create `/would-you-rather-generator/`.
+- [x] Add would-you-rather filters: kids, family, funny, hard, school, party.
+- [x] Create `/family-game-night-ideas/`.
+- [x] Include charades, pictionary, imposter, would-you-rather, truth-or-dare, printable games.
+- [x] Create `/bible-charades/`.
+- [x] Add Bible-friendly word groups: people, places, stories, actions, animals.
+- [x] Create `/halloween-party-games/`.
+- [x] Include Halloween charades, pictionary, would-you-rather, trivia, printable cards.
+- [x] Create `/christmas-party-games/`.
+- [x] Include Christmas charades, pictionary, would-you-rather, trivia, printable cards.
+- [x] Add all new pages to sitemap.
+- [x] Add related links from new pages back to charades, imposter, and pictionary.
+
+### 2026-05-28 Progress Notes
+
+- Built a reusable Stage 2 page system for low-difficulty game tools and structured game lists.
+- Launched six new multilingual pages: `/truth-or-dare-generator/`, `/would-you-rather-generator/`, `/family-game-night-ideas/`, `/bible-charades/`, `/halloween-party-games/`, and `/christmas-party-games/`.
+- Each new page includes generator-style prompt picking, copyable prompts, FAQ schema, breadcrumb schema, canonical URLs, alternate language metadata, and at least four related internal links.
+- Added the new pages to default-locale rewrites so canonical English URLs work without middleware.
+- Added all new pages to sitemap output and footer discovery links.
+- Verification: `next build`, `git diff --check`, sitemap checks, canonical checks, English route checks, Spanish route checks, and `/en/...` redirect checks passed.
 
 ## Stage 3: Expand Pictionary And Printable Assets
 

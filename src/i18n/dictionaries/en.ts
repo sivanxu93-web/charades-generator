@@ -9,6 +9,7 @@ export const en = {
       keywords:
         "charades generator, free charades generator, online charades generator, random charades generator, charades word generator, charades words generator, free charades words, charades ideas, party games, family games, disney charades, online charades, charades game generator",
       structuredDataName: "Charades Generator - Free Online Word Tool",
+      alternateName: "Free Charades Word Generator",
       structuredDataDescription:
         "Charades word generator with a 1000+ word database. Free instant charades words and ideas for kids, adults, parties, and classrooms—including movies, Disney, animals, actions, and funny prompts.",
     },
@@ -1083,6 +1084,9 @@ export const en = {
       section5Title: "Cookies and Tracking",
       section5Content:
         "We use cookies and similar tracking technologies to analyze usage patterns and improve our service. You can control cookie preferences through your browser settings.",
+      monumetricDisclosure:
+        "This Site is affiliated with Monumetric (dba for The Blogger Network, LLC) for the purposes of placing advertising on the Site, and Monumetric will collect and use certain data for advertising purposes. To learn more about Monumetric's data usage, click here:",
+      monumetricLinkText: "Publisher Advertising Privacy",
       section6Title: "Third-Party Services",
       section6Content:
         "Our website may contain links to third-party services. We are not responsible for the privacy practices of these external sites.",
@@ -1179,6 +1183,12 @@ export const en = {
           { title: "Imposter Game Generator", href: "/imposter-game/" },
           { title: "Imposter Game Word List", href: "/imposter-game-word-list/" },
           { title: "How to Play Imposter Game", href: "/how-to-play-imposter-game/" },
+          { title: "Truth or Dare Generator", href: "/truth-or-dare-generator/" },
+          { title: "Would You Rather Generator", href: "/would-you-rather-generator/" },
+          { title: "Family Game Night Ideas", href: "/family-game-night-ideas/" },
+          { title: "Bible Charades", href: "/bible-charades/" },
+          { title: "Halloween Party Games", href: "/halloween-party-games/" },
+          { title: "Christmas Party Games", href: "/christmas-party-games/" },
         ],
       },
       info: {

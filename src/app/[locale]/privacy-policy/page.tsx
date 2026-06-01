@@ -121,6 +121,17 @@ export default async function PrivacyPolicyPage({ params }: PageProps) {
           <p className="text-gray-700 mb-4">
             {dictionary.pages.privacy.section5Content}
           </p>
+          <p className="text-gray-700 mb-4">
+            {dictionary.pages.privacy.monumetricDisclosure}{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://www.monumetric.com/publisher-advertising-privacy"
+              className="font-semibold text-blue-600 underline hover:text-blue-700"
+            >
+              {dictionary.pages.privacy.monumetricLinkText}
+            </a>
+          </p>
         </section>
 
         <section className="mb-8">

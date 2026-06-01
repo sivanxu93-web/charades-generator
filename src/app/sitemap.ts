@@ -134,6 +134,36 @@ const routeConfig: Array<{
     changeFrequency: "weekly",
     priority: 0.6,
   },
+  {
+    path: "/truth-or-dare-generator",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
+  {
+    path: "/would-you-rather-generator",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
+  {
+    path: "/family-game-night-ideas",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
+  {
+    path: "/bible-charades",
+    changeFrequency: "weekly",
+    priority: 0.65,
+  },
+  {
+    path: "/halloween-party-games",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
+  {
+    path: "/christmas-party-games",
+    changeFrequency: "weekly",
+    priority: 0.75,
+  },
 
   {
     path: "/about",

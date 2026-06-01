@@ -1,8 +1,6 @@
 import HomeLanding from "@/components/HomeLanding";
 import StructuredData from "@/components/StructuredData";
 import FAQStructuredData from "@/components/FAQStructuredData";
-import WebsiteStructuredData from "@/components/WebsiteStructuredData";
-import SiteLinksStructuredData from "@/components/SiteLinksStructuredData";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
@@ -28,13 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const homeLabel = dictionary.navigation.items.find((item => item.key === "home"))?.title ?? "Home";
   const alternateLanguages = buildAlternateLanguages(canonicalPath);
 
-  const title = locale === "es"
-    ? "Generador de Charadas Gratis - Palabras e Ideas Online"
-    : "Charades Generator - Free Random Charades Words & Ideas";
-  
-  const description = locale === "es"
-    ? "Usa este generador de charadas gratis para obtener palabras al instante. Elige niños, adultos, cine, Disney, animales y dificultad, luego copia o imprime tu lista."
-    : "Use this free charades generator to get random charades words instantly. Choose kids, adults, movies, Disney, animals, and difficulty, then copy or print your list.";
+  const title = dictionary.seo.home.title;
+  const description = dictionary.seo.home.description;
 
   return {
     title,
@@ -84,8 +77,6 @@ export default async function Home({ params }: PageProps) {
       <BreadcrumbStructuredData items={[{ name: homeLabel, url: canonicalUrl }]} />
       <HomeLanding initialWords={initialWords} dictionary={dictionary} locale={locale} />
 
-      <WebsiteStructuredData locale={locale} dictionary={dictionary} />
-      <SiteLinksStructuredData locale={locale} dictionary={dictionary} />
       <StructuredData
         type="WebApplication"
         name={dictionary.seo.home.structuredDataName}

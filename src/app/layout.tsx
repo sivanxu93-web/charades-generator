@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import GoogleScripts from "@/components/GoogleScripts";
 import RouteTracking from "@/components/RouteTracking";
+import SitewideJsonLd from "@/components/SitewideJsonLd";
 import { ensureUrlCanParse } from "@/utils/polyfills";
 import Script from "next/script";
 import "./globals.css";
@@ -64,8 +65,18 @@ export default async function RootLayout({
   const isProduction = process.env.NODE_ENV === "production";
 
   return (
-    <html lang="en" dir="ltr" data-locale="en">
+    <html lang="en" dir="ltr" data-locale="en" suppressHydrationWarning>
       <head>
+        <SitewideJsonLd />
+        <Script id="document-locale" strategy="beforeInteractive">
+          {`
+            (function(){
+              var locale = window.location.pathname.indexOf('/es') === 0 ? 'es' : 'en';
+              document.documentElement.lang = locale;
+              document.documentElement.dataset.locale = locale;
+            })();
+          `}
+        </Script>
         {/* Preload critical assets */}
         <link rel="preload" href="/logo.svg" as="image" type="image/svg+xml" />
 

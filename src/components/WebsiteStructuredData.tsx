@@ -25,7 +25,7 @@ export default function WebsiteStructuredData({
   const languageTag = getLanguageTag(locale);
   const siteName = dictionary.footer.brandTitle;
   const description = dictionary.seo.home.description;
-  const alternateName = locale === "es" ? "Generador de Charadas Gratis" : "Free Charades Word Generator";
+  const alternateName = dictionary.seo.home.alternateName;
 
   const websiteData = {
     "@context": "https://schema.org",

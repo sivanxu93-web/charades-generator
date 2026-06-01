@@ -11,9 +11,11 @@ const localizedPagePaths = [
   "/disney-charades-generator",
   "/emotion-charades",
   "/family-game-night",
+  "/family-game-night-ideas",
   "/faq",
   "/funny-charades-for-adults",
   "/hard-charades-ideas",
+  "/halloween-party-games",
   "/how-to-play-imposter-game",
   "/how-to-use",
   "/imposter-game",
@@ -27,6 +29,10 @@ const localizedPagePaths = [
   "/random-charades-generator",
   "/reverse-charades-game",
   "/terms-of-service",
+  "/truth-or-dare-generator",
+  "/would-you-rather-generator",
+  "/bible-charades",
+  "/christmas-party-games",
 ];
 
 const nextConfig: NextConfig = {
@@ -98,6 +104,28 @@ const nextConfig: NextConfig = {
         source: "/es/word-charades-generator/",
         destination: "/es/",
         permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: "/es",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "es",
+          },
+        ],
+      },
+      {
+        source: "/es/:path*",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "es",
+          },
+        ],
       },
     ];
   },
