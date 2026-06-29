@@ -148,22 +148,22 @@ export default function ImposterQuickGenerator() {
   };
 
   return (
-    <section className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+    <section className="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-100 relative overflow-hidden">
       {/* Decorative Gradients */}
-      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-72 h-72 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-72 h-72 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10">
         {/* Header */}
         <div className="mb-6 text-center sm:text-left">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-2">
-            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-2">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
             Quick Tool
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-100 tracking-tight">
+          <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
             {t.title}
           </h2>
-          <p className="text-slate-400 text-sm mt-1 max-w-xl">
+          <p className="text-slate-600 text-sm mt-1 max-w-xl">
             {t.subtitle}
           </p>
         </div>
@@ -181,7 +181,7 @@ export default function ImposterQuickGenerator() {
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-lg shadow-indigo-600/20 scale-105"
-                    : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-slate-100"
+                    : "bg-slate-100 text-slate-650 hover:bg-slate-200 hover:text-slate-900"
                 }`}
               >
                 {packLabel}
@@ -193,12 +193,12 @@ export default function ImposterQuickGenerator() {
         {/* Generator Main Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           {/* Crew Word Card */}
-          <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between min-h-[120px] transition-all hover:border-cyan-500/30">
+          <div className="bg-slate-50/80 border border-slate-200/60 rounded-2xl p-5 flex flex-col justify-between min-h-[120px] transition-all hover:border-cyan-500/30">
             <div>
-              <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest block mb-2">
+              <span className="text-[10px] font-bold text-cyan-600 uppercase tracking-widest block mb-2">
                 {t.crewLabel}
               </span>
-              <p className={`text-2xl font-extrabold text-slate-50 transition-all duration-300 ${animate ? "opacity-40 scale-95" : "opacity-100 scale-100"}`}>
+              <p className={`text-2xl font-extrabold text-slate-900 transition-all duration-300 ${animate ? "opacity-40 scale-95" : "opacity-100 scale-100"}`}>
                 {currentPair.main}
               </p>
             </div>
@@ -208,15 +208,15 @@ export default function ImposterQuickGenerator() {
           </div>
 
           {/* Imposter Word Card */}
-          <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between min-h-[120px] relative overflow-hidden transition-all hover:border-rose-500/30">
+          <div className="bg-slate-50/80 border border-slate-200/60 rounded-2xl p-5 flex flex-col justify-between min-h-[120px] relative overflow-hidden transition-all hover:border-rose-500/30">
             <div>
-              <span className="text-[10px] font-bold text-rose-400 uppercase tracking-widest block mb-2">
+              <span className="text-[10px] font-bold text-rose-600 uppercase tracking-widest block mb-2">
                 {t.imposterLabel}
               </span>
               
               <div className="relative">
                 <p
-                  className={`text-2xl font-extrabold text-slate-50 select-none transition-all duration-300 ${
+                  className={`text-2xl font-extrabold text-slate-900 select-none transition-all duration-300 ${
                     isRevealed ? "filter-none opacity-100 scale-100" : "blur-md opacity-20 scale-95 pointer-events-none"
                   } ${animate ? "opacity-0" : ""}`}
                 >
@@ -225,7 +225,7 @@ export default function ImposterQuickGenerator() {
 
                 {!isRevealed && (
                   <div className="absolute inset-0 flex items-center justify-start">
-                    <span className="text-xs font-semibold text-rose-300 bg-rose-500/10 border border-rose-500/20 px-2.5 py-1 rounded-lg">
+                    <span className="text-xs font-semibold text-rose-600 bg-rose-500/10 border border-rose-500/20 px-2.5 py-1 rounded-lg">
                       Hidden
                     </span>
                   </div>
@@ -239,8 +239,8 @@ export default function ImposterQuickGenerator() {
                 onClick={() => setIsRevealed(!isRevealed)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
                   isRevealed
-                    ? "bg-slate-800 hover:bg-slate-700 text-slate-300"
-                    : "bg-rose-600 hover:bg-rose-500 text-white shadow-md shadow-rose-900/20"
+                    ? "bg-slate-200 hover:bg-slate-300 text-slate-700"
+                    : "bg-rose-600 hover:bg-rose-500 text-white shadow-md shadow-rose-900/10"
                 }`}
               >
                 {isRevealed ? t.hideBtn : t.revealBtn}
@@ -250,12 +250,12 @@ export default function ImposterQuickGenerator() {
         </div>
 
         {/* Generate & Call To Actions */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800/60">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
           <div className="flex flex-wrap gap-2 w-full sm:w-auto">
             <button
               type="button"
               onClick={handleGenerate}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-900/40 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-950/10 transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
             >
               <svg
                 className={`w-4 h-4 transition-transform duration-500 ${animate ? "rotate-180" : ""}`}
@@ -275,7 +275,7 @@ export default function ImposterQuickGenerator() {
             <button
               type="button"
               onClick={handleCopyPair}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/40 hover:bg-slate-850 px-4 py-3 text-sm font-semibold text-slate-200 hover:text-white transition-all w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-250 bg-white hover:bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700 transition-all w-full sm:w-auto"
             >
               {copied ? t.copied : t.copyPair}
             </button>
@@ -284,13 +284,13 @@ export default function ImposterQuickGenerator() {
           <div className="flex flex-wrap gap-2 w-full sm:w-auto justify-end">
             <Link
               href={buildLocalePath(locale, "/imposter-game/play/")}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800/40 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors text-center"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 transition-colors text-center"
             >
               {t.playOnline}
             </Link>
             <Link
               href={buildLocalePath(locale, "/imposter-game/play/?mode=pass")}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-800/40 text-xs font-bold text-slate-300 hover:bg-slate-800 hover:text-slate-100 transition-colors text-center"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 transition-colors text-center"
             >
               {t.playPass}
             </Link>
