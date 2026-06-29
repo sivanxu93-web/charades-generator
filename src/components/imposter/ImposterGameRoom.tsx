@@ -251,16 +251,19 @@ export default function ImposterGameRoom() {
     setRoomFromUrl(false);
   };
 
-  // If the URL contains ?room=CODE, jump straight to the join step with the code prefilled.
+  // If the URL contains ?room=CODE or ?mode=pass, jump straight to the correct step.
   useEffect(() => {
     if (typeof window === "undefined" || room) return;
     try {
       const url = new URL(window.location.href);
       const roomParam = url.searchParams.get("room");
+      const modeParam = url.searchParams.get("mode");
       if (roomParam && roomParam.trim()) {
         setJoinRoomId(roomParam.trim().toUpperCase());
         setRoomFromUrl(true);
         setStep("join");
+      } else if (modeParam === "pass") {
+        setStep("passSetup");
       }
     } catch {
       // ignore malformed URLs

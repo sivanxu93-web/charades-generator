@@ -7,6 +7,7 @@ import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import FAQStructuredData from "@/components/FAQStructuredData";
 import StructuredData from "@/components/StructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
+import ImposterQuickGenerator from "@/components/imposter/ImposterQuickGenerator";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -78,45 +79,93 @@ export default async function ImposterGamePage({ params }: PageProps) {
       />
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
-        {/* Hero Section */}
-        <section className="mb-12 text-center relative overflow-hidden rounded-3xl bg-indigo-600 px-6 py-10 sm:py-16 text-white shadow-xl ring-1 ring-indigo-500/10">
-          <div className="relative z-10">
-            <span className="inline-block rounded-full bg-indigo-500/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-100 mb-4 border border-indigo-400/30">
-              {content.heroBadge}
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
-              {content.heroTitle}
-            </h1>
-            <p className="text-indigo-100 text-lg sm:text-xl max-w-xl mx-auto mb-8 leading-relaxed">
-              {content.heroDescription}
-            </p>
+        {/* Header Section */}
+        <header className="mb-10 text-center">
+          <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-700 mb-3 border border-indigo-200">
+            {content.heroBadge}
+          </span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+            {content.heroTitle}
+          </h1>
+          <p className="text-slate-650 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            {content.heroDescription}
+          </p>
+        </header>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
+        {/* Quick Interactive Generator */}
+        <div className="mb-12">
+          <ImposterQuickGenerator />
+        </div>
+
+        {/* Featured Ways to Play Cards */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
+            {locale === "en" ? "Featured Ways to Play" : "Modos de Juego Destacados"}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1: Online Multiplayer */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4 text-xl shadow-sm">🌐</span>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  {locale === "en" ? "Pusher Online Room" : "Sala Online Pusher"}
+                </h3>
+                <p className="text-slate-650 text-sm mb-4 leading-relaxed">
+                  {locale === "en" 
+                    ? "Create a live room. Everyone joins from their own phone to see their private secret words. Best for groups." 
+                    : "Crea una sala en vivo. Cada persona se une desde su propio móvil para ver sus palabras secretas de forma privada."}
+                </p>
+              </div>
               <Link
                 href={buildLocalePath(locale, "/imposter-game/play/")}
-                className="group inline-flex items-center justify-center w-full sm:w-auto rounded-xl bg-white px-8 py-4 text-lg font-bold text-indigo-600 shadow-lg transition-all hover:bg-indigo-50 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+                className="inline-flex items-center justify-center w-full rounded-xl bg-indigo-600 hover:bg-indigo-500 py-2.5 text-sm font-bold text-white shadow-sm transition-colors text-center"
               >
-                <svg className="w-6 h-6 mr-2 -ml-1 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                {content.heroPrimaryCta}
-              </Link>
-              <Link
-                href={buildLocalePath(locale, "/imposter-game-word-list/")}
-                className="inline-flex items-center justify-center w-full rounded-xl border-2 border-indigo-300 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-indigo-500/40 sm:w-auto"
-              >
-                {content.heroSecondaryCta}
+                {locale === "en" ? "Start Online Game" : "Empezar Online"}
               </Link>
             </div>
-            <p className="mt-4 text-xs font-medium text-indigo-200 uppercase tracking-wide opacity-80">
-              {content.heroNote}
-            </p>
+
+            {/* Card 2: Pass & Play */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 text-xl shadow-sm">📱</span>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  {locale === "en" ? "Pass & Play (Offline)" : "Pasar y Jugar (Offline)"}
+                </h3>
+                <p className="text-slate-650 text-sm mb-4 leading-relaxed">
+                  {locale === "en"
+                    ? "No internet connection? Pass a single device around the circle to assign secret roles offline."
+                    : "¿Sin conexión a internet? Pásate el móvil en círculo para repartir las palabras secretas offline."}
+                </p>
+              </div>
+              <Link
+                href={buildLocalePath(locale, "/imposter-game/play/?mode=pass")}
+                className="inline-flex items-center justify-center w-full rounded-xl bg-slate-800 hover:bg-slate-700 py-2.5 text-sm font-bold text-slate-200 transition-colors text-center"
+              >
+                {locale === "en" ? "Start Pass & Play" : "Jugar Pasar y Jugar"}
+              </Link>
+            </div>
+
+            {/* Card 3: Word list */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/60 flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div>
+                <span className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 text-xl shadow-sm">📋</span>
+                <h3 className="font-bold text-slate-900 text-lg mb-2">
+                  {locale === "en" ? "100+ Word Pairs List" : "Lista de 100+ Parejas"}
+                </h3>
+                <p className="text-slate-650 text-sm mb-4 leading-relaxed">
+                  {locale === "en"
+                    ? "Browse our full library of imposter word pairs. Easy to copy, print, or use as backup prompts."
+                    : "Explora nuestra biblioteca completa de parejas. Copia o imprime para jugar con lápiz y papel."}
+                </p>
+              </div>
+              <Link
+                href={buildLocalePath(locale, "/imposter-game-word-list/")}
+                className="inline-flex items-center justify-center w-full rounded-xl border border-slate-350 hover:bg-slate-50 py-2.5 text-sm font-bold text-slate-750 transition-colors text-center"
+              >
+                {locale === "en" ? "Browse Word List" : "Ver Lista de Palabras"}
+              </Link>
+            </div>
           </div>
-          
-          {/* Decorative background effects */}
-          <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-          <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
         </section>
 
         {/* What is + Rules Grid */}
@@ -453,9 +502,19 @@ const imposterContent = {
           "Four to twelve players works best. With fewer than four, it’s hard to hide the imposter; with more than twelve, split into two groups so everyone gets enough speaking time.",
       },
       {
+        question: "How does the imposter game generator work?",
+        answer:
+          "Our generator offers two ways to play: you can instantly generate and reveal secret word pairs for offline play (like Tomato vs. Apple), or create an online multiplayer room. If you start a room, a unique QR code allows your friends to join on their own phones, and the generator automatically distributes the secret words and assigns the Imposter role.",
+      },
+      {
         question: "Is the imposter game kid-friendly?",
         answer:
           "Yes—as long as you choose age-appropriate words. For younger kids, stick to animals, foods, and school objects, and keep descriptions simple.",
+      },
+      {
+        question: "Can I customize the word list in the generator?",
+        answer:
+          "Yes! You can choose from pre-made packs like Food & Party, Classroom, Holidays, and Everyday Things, or browse our full word list page to copy and write your own custom pairs for a tailored game night.",
       },
       {
         question: "What’s the difference between this and charades?",
@@ -606,9 +665,19 @@ const imposterContent = {
           "Lo ideal son entre cuatro y doce personas. Con menos de cuatro es difícil ocultar al impostor; con más de doce, mejor dividir en dos grupos para que todo el mundo pueda hablar.",
       },
       {
+        question: "¿Cómo funciona el generador del juego del impostor?",
+        answer:
+          "Nuestro generador ofrece dos formas de jugar: puedes generar y revelar parejas de palabras secretas al instante para jugar en persona (como Tomate vs. Manzana), o crear una sala multijugador online. Si creas una sala, tus amigos se pueden unir desde sus móviles con un código QR, y el sistema repartirá las palabras y asignará el rol de Impostor automáticamente.",
+      },
+      {
         question: "¿Es apto para niños?",
         answer:
           "Sí, siempre que elijas palabras apropiadas para su edad. Para peques, usa animales, comidas y objetos del colegio y mantén las descripciones sencillas.",
+      },
+      {
+        question: "¿Puedo personalizar la lista de palabras en el generador?",
+        answer:
+          "¡Sí! Puedes elegir entre packs temáticos ya creados (comida de fiesta, aula, eventos, cosas cotidianas) o consultar nuestra lista completa de palabras para copiar o imprimir tus propios pares personalizados.",
       },
       {
         question: "¿En qué se diferencia de las charadas?",
