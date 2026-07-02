@@ -26,8 +26,10 @@ export default function GoogleScripts({ isProduction }: GoogleScriptsProps) {
       </Script>
       <Script
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4855228928819714"
-        crossOrigin="anonymous"
+        src="https://scripts.scriptwrapper.com/tags/1f04f612-13c5-4212-b2f2-7c2009b4aa91.js"
+        type="text/javascript"
+        data-noptimize="1"
+        data-cfasync="false"
         strategy="afterInteractive"
       />
     </>
