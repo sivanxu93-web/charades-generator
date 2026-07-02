@@ -1,4 +1,5 @@
 # Ads.txt v20260526
+google.com, pub-4855228928819714, DIRECT, f08c47fec0942fa0
 managerdomain=journeymv.com
 contact=sales@journeymv.com
 ownerdomain=charades-generator.com
