@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import { Metadata } from "next";
 import Link from "next/link";
 import { pickWords } from "@/utils/charades";
@@ -97,7 +98,8 @@ export default async function ChristmasCharadesPage({ params }: PageProps) {
       />
       <FAQStructuredData items={copy.faq ?? []} />
 
-      <div className="max-w-4xl mx-auto px-6 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
+        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-red-500">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.calloutTitle}</h2>
           <p className="text-gray-600 mb-4">
@@ -234,6 +236,8 @@ export default async function ChristmasCharadesPage({ params }: PageProps) {
             {copy.rulesCta}
           </Link>
         </section>
+      </article>
+        <Sidebar locale={locale} />
       </div>
     </div>
   );

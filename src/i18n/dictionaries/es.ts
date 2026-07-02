@@ -243,6 +243,17 @@ export const es = {
       },
     ],
   },
+  sidebar: {
+    quickRulesTitle: "Reglas rápidas",
+    quickRulesList: [
+      "Equipos: Divide a los jugadores en dos equipos iguales.",
+      "Límite de tiempo: Configura un temporizador de 60 segundos por ronda.",
+      "Silencio: El actor no puede hacer sonidos ni deletrear palabras.",
+      "Puntuación: Adivina correctamente antes de que se acabe el tiempo para anotar 1 punto."
+    ],
+    popularTitle: "Categorías populares",
+    advertisement: "Publicidad"
+  },
   categories: {
     all: "Todas las categorías",
     movies: "Películas",

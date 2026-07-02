@@ -243,6 +243,17 @@ export const en = {
       },
     ],
   },
+  sidebar: {
+    quickRulesTitle: "Quick Game Rules",
+    quickRulesList: [
+      "Teams: Divide players into two equal teams.",
+      "Time Limit: Set a timer for 60 seconds per round.",
+      "Silence: The actor cannot make sounds or spell words.",
+      "Scoring: Guess correctly before time runs out to score 1 point."
+    ],
+    popularTitle: "Popular Categories",
+    advertisement: "Advertisement"
+  },
   categories: {
     all: "All Categories",
     movies: "Movies",

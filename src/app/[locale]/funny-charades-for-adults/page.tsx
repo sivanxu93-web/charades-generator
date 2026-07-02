@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
 import StructuredData from "@/components/StructuredData";
 import FAQStructuredData from "@/components/FAQStructuredData";
@@ -91,7 +92,8 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
       />
       <FAQStructuredData items={copy.faq ?? []} />
 
-      <div className="max-w-4xl mx-auto px-6 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
+        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
         <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold text-blue-800">{copy.quickActions.title}</h2>
@@ -261,6 +263,8 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
             {copy.rulesCta}
           </Link>
         </section>
+      </article>
+        <Sidebar locale={locale} />
       </div>
     </div>
   );

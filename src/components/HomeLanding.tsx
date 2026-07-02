@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
 import { buildLocalePath } from "@/utils/localePaths";
@@ -84,7 +85,8 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto px-6 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
+        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-indigo-500">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{difference.title}</h2>
           <p className="text-gray-600 mb-4">{difference.lead}</p>
@@ -142,6 +144,8 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
             ))}
           </div>
         </section>
+      </article>
+        <Sidebar locale={locale} />
       </div>
 
       <section className="bg-white border-t border-gray-200">

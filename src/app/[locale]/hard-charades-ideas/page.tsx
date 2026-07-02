@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
 import FAQStructuredData from "@/components/FAQStructuredData";
 import StructuredData from "@/components/StructuredData";
@@ -90,7 +91,8 @@ export default async function HardCharadesPage({ params }: PageProps) {
       />
       <FAQStructuredData items={copy.faq ?? []} />
 
-      <div className="max-w-4xl mx-auto px-6 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
+        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
         <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-slate-600">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.introTitle}</h2>
           <p className="text-gray-700 mb-4">{copy.introLead}</p>
@@ -184,6 +186,8 @@ export default async function HardCharadesPage({ params }: PageProps) {
             {copy.rulesCtaLabel}
           </Link>
         </section>
+      </article>
+        <Sidebar locale={locale} />
       </div>
     </div>
   );

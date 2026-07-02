@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
 import StructuredData from "@/components/StructuredData";
 import FAQStructuredData from "@/components/FAQStructuredData";
@@ -102,7 +103,8 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
       />
       <FAQStructuredData items={copy.faq ?? []} />
 
-      <div className="max-w-4xl mx-auto px-6 pb-10">
+      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
+        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
         <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8">
           <h2 className="text-xl font-semibold text-blue-800 mb-2">{copy.introTitle}</h2>
           <p className="text-blue-700 text-sm sm:text-base">{copy.introDescription}</p>
@@ -275,6 +277,8 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
             </Link>
           </div>
         </section>
+      </article>
+        <Sidebar locale={locale} />
       </div>
     </div>
   );
