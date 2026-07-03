@@ -275,7 +275,7 @@ export default function CharadesGeneratorOptimized({
   }, [generatedWords, difficultiesLabel, categoriesLabel, ageGroupLabels]);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
+    <>
       <header className="text-center mb-8">
         {showChristmasPromoLink && (
           <div className="mb-3">
@@ -430,6 +430,6 @@ export default function CharadesGeneratorOptimized({
         </ul>
       </div>
 
-    </div>
+    </>
   );
 }
