@@ -82,71 +82,69 @@ export default function CommunityPlaybooks({
   };
 
   return (
-    <section className="bg-white border-t border-gray-200">
-      <div className="mx-auto max-w-4xl px-6 py-12">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-        <div className="max-w-3xl">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            {playbooks.title}
-          </h2>
-          <p className="mt-2 text-gray-600">{playbooks.description}</p>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-2">
+        {playbooks.title}
+      </h2>
+      <p className="text-gray-600 leading-relaxed mb-6">{playbooks.description}</p>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {playbooks.entries.map((entry: PlaybookEntry) => (
-            <article
-              key={entry.id}
-              id={entry.id}
-              className="flex h-full flex-col justify-between rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm"
-            >
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
-                  {entry.persona}
-                </p>
-                <h3 className="mt-1 text-lg font-semibold text-gray-900">{entry.scenario}</h3>
-                <p className="mt-2 text-sm text-gray-600">{entry.summary}</p>
-
-                <div className="mt-3 space-y-1 text-sm text-gray-700">
-                  {entry.highlights.map((highlight) => (
-                    <p key={highlight} className="flex gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500" />
-                      <span>{highlight}</span>
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                <p className="text-xs text-gray-500">
-                  {entry.location} · {formatDate(locale, entry.lastTested)}
-                </p>
-                <details className="rounded-md border border-indigo-200 bg-white px-3 py-2 text-sm text-gray-700">
-                  <summary className="cursor-pointer font-semibold text-indigo-700">
-                    {playbooks.followLabel}
-                  </summary>
-                  <ol className="mt-2 list-decimal list-inside space-y-1">
-                    {entry.steps.map((step) => (
-                      <li key={step}>{step}</li>
-                    ))}
-                  </ol>
-                </details>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 text-sm text-gray-600">
-          <Link
-            href={playbooks.shareHref ?? "/contact"}
-            className="text-blue-600 hover:text-blue-800 font-semibold"
+      {/* Grid optimized to 2 columns on tablet/desktop to avoid crowded cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {playbooks.entries.map((entry: PlaybookEntry) => (
+          <article
+            key={entry.id}
+            id={entry.id}
+            className="flex h-full flex-col justify-between rounded-2xl border border-gray-200 bg-gray-50 p-6 shadow-sm hover:shadow-md transition-shadow"
           >
-            {playbooks.shareCta ?? fallbackShareCta}
-          </Link>
-        </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-indigo-600">
+                {entry.persona}
+              </p>
+              <h3 className="mt-1 text-lg font-semibold text-gray-900">{entry.scenario}</h3>
+              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{entry.summary}</p>
+
+              <div className="mt-4 space-y-2 text-sm text-gray-700">
+                {entry.highlights.map((highlight) => (
+                  <p key={highlight} className="flex items-start gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500" />
+                    <span className="leading-tight">{highlight}</span>
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 space-y-3">
+              <p className="text-xs text-gray-500">
+                {entry.location} · {formatDate(locale, entry.lastTested)}
+              </p>
+              <details className="rounded-lg border border-indigo-200 bg-white px-4 py-2.5 text-sm text-gray-700">
+                <summary className="cursor-pointer font-semibold text-indigo-700 hover:text-indigo-900 transition-colors">
+                  {playbooks.followLabel}
+                </summary>
+                <ol className="mt-3 list-decimal list-inside space-y-1.5 text-gray-600 leading-relaxed">
+                  {entry.steps.map((step) => (
+                    <li key={step} className="pl-1 py-0.5">{step}</li>
+                  ))}
+                </ol>
+              </details>
+            </div>
+          </article>
+        ))}
       </div>
-    </section>
+
+      <div className="text-sm text-gray-600 mb-8 mt-4">
+        <Link
+          href={playbooks.shareHref ?? "/contact"}
+          className="text-blue-600 hover:text-blue-800 font-semibold underline"
+        >
+          {playbooks.shareCta ?? fallbackShareCta}
+        </Link>
+      </div>
+    </>
   );
 }

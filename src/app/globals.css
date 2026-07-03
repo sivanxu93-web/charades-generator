@@ -34,6 +34,81 @@
 
 /* Optimize button interactions for mobile */
 @media (hover: none) and (pointer: coarse) {
-  .hover\:text-blue-600:hover { color: inherit; }
+  .hover\:text-blue-600:hover { background-color: inherit; }
   .hover\:bg-blue-50:hover { background-color: inherit; }
+}
+
+/* Article layout flat styles for Mediavine Journey ads optimization */
+.entry-content {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #2d3748;
+  line-height: 1.8;
+}
+
+/* Direct child headings - Georgia serif for premium editorial feel */
+.entry-content > h1 {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #1a202c;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  line-height: 1.25;
+}
+
+.entry-content > h2 {
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  line-height: 1.35;
+}
+
+.entry-content > h3 {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Direct child paragraphs */
+.entry-content > p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  color: #4a5568;
+}
+
+/* Direct child lists */
+.entry-content > ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.entry-content > ul > li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  color: #4a5568;
+}
+
+.entry-content > ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+.entry-content > ol > li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  color: #4a5568;
 }

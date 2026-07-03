@@ -1,10 +1,8 @@
 import HomeLanding from "@/components/HomeLanding";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 
@@ -23,7 +21,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalPath = "/";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
-  const homeLabel = dictionary.navigation.items.find((item => item.key === "home"))?.title ?? "Home";
   const alternateLanguages = buildAlternateLanguages(canonicalPath);
 
   const title = dictionary.seo.home.title;
@@ -73,19 +70,20 @@ export default async function Home({ params }: PageProps) {
   const homeLabel = dictionary.navigation.items.find((item => item.key === "home"))?.title ?? "Home";
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData items={[{ name: homeLabel, url: canonicalUrl }]} />
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[{ name: homeLabel, url: canonicalUrl }]}
+      structuredDataName={dictionary.seo.home.structuredDataName}
+      structuredDataDescription={dictionary.seo.home.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Party Games"
+      faq={dictionary.home.generatorDeepDive.faq.items ?? []}
+      themeColorClass="bg-gray-50"
+    >
       <HomeLanding initialWords={initialWords} dictionary={dictionary} locale={locale} />
-
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.home.structuredDataName}
-        description={dictionary.seo.home.structuredDataDescription}
-        url={canonicalUrl}
-        category="Party Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={dictionary.home.generatorDeepDive.faq.items ?? []} />
-    </div>
+    </FlatGeneratorPageLayout>
   );
 }
+

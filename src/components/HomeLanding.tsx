@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
 import { buildLocalePath } from "@/utils/localePaths";
@@ -25,241 +24,195 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
   const expertInsights = generatorDeepDive.expertInsights;
 
   return (
-    <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-      <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-        <CharadesGeneratorOptimized
-          initialWords={initialWords}
-          isShowScenarios
-        />
+    <>
+      <CharadesGeneratorOptimized
+        initialWords={initialWords}
+        isShowScenarios
+      />
 
-      <div className="max-w-4xl mx-auto px-6 mt-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-          <Link
-            href={buildLocalePath(locale, "/charades-ideas/")}
-            className="inline-flex items-center justify-center rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
-          >
-            {dictionary.home.heroShortcuts?.ideasLabel ?? "Browse ideas & word lists"}
-          </Link>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-50"
-          >
-            {dictionary.home.heroShortcuts?.howToLabel ?? "Learn rules & how to play"}
-          </Link>
-        </div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:justify-center mt-6 mb-8">
+        <Link
+          href={buildLocalePath(locale, "/charades-ideas/")}
+          className="inline-flex items-center justify-center rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+        >
+          {dictionary.home.heroShortcuts?.ideasLabel ?? "Browse ideas & word lists"}
+        </Link>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-50"
+        >
+          {dictionary.home.heroShortcuts?.howToLabel ?? "Learn rules & how to play"}
+        </Link>
       </div>
 
       {dictionary.home?.seoIntro && (
-        <div className="max-w-4xl mx-auto px-6 mt-6">
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">{dictionary.home.seoIntro.title}</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">{dictionary.home.seoIntro.lead}</p>
-            <div className="flex flex-wrap gap-2 text-sm">
-              <Link href={buildLocalePath(locale, "/random-charades-generator/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50">
-                Random
-              </Link>
-              <Link href={buildLocalePath(locale, "/movie-charades-generator/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50">
-                Movies
-              </Link>
-              <Link href={buildLocalePath(locale, "/disney-charades-generator/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50">
-                Disney
-              </Link>
-              <Link href={buildLocalePath(locale, "/charades-generator-for-kids/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50">
-                Kids
-              </Link>
-              <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50">
-                Reverse
-              </Link>
-              <Link
-                href={buildLocalePath(locale, "/imposter-game/")}
-                className="inline-flex items-center rounded-md border border-gray-200 px-2 py-1 text-gray-700 hover:bg-gray-50"
-              >
-                Imposter game
-              </Link>
-            </div>
-          </section>
-        </div>
-      )}
-
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-indigo-500">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{difference.title}</h2>
-          <p className="text-gray-600 mb-4">{difference.lead}</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-            {difference.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
-            ))}
-          </ul>
-          <p className="text-gray-600">
-            {difference.footer.before}{" "}
+        <>
+          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">{dictionary.home.seoIntro.title}</h2>
+          <p className="text-gray-700 leading-relaxed mb-4">{dictionary.home.seoIntro.lead}</p>
+          <div className="flex flex-wrap gap-2 text-sm mb-8">
+            <Link href={buildLocalePath(locale, "/random-charades-generator/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50">
+              Random
+            </Link>
+            <Link href={buildLocalePath(locale, "/movie-charades-generator/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50">
+              Movies
+            </Link>
+            <Link href={buildLocalePath(locale, "/disney-charades-generator/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50">
+              Disney
+            </Link>
+            <Link href={buildLocalePath(locale, "/charades-generator-for-kids/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50">
+              Kids
+            </Link>
+            <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50">
+              Reverse
+            </Link>
             <Link
-              href={buildLocalePath(locale, difference.footer.href)}
-              className="text-indigo-600 hover:text-indigo-800 underline"
+              href={buildLocalePath(locale, "/imposter-game/")}
+              className="inline-flex items-center rounded-md border border-gray-200 px-2.5 py-1 text-gray-700 hover:bg-gray-50"
             >
-              {difference.footer.linkText}
-            </Link>{" "}
-            {difference.footer.after}
-          </p>
-        </section>
-
-        <section className="bg-gradient-to-r from-indigo-100 to-sky-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{presets.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {presets.items.map((preset) => (
-              <div key={preset.title} className="bg-white/70 rounded-xl border border-indigo-200 p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-indigo-700 mb-2">{preset.title}</h3>
-                <p className="text-sm text-gray-700 mb-2">{preset.description}</p>
-                <p className="text-xs uppercase tracking-wider text-indigo-500 font-semibold">{preset.note}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{capabilities.title}</h2>
-          <p className="text-gray-600 mb-5">{capabilities.description}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {capabilities.items.map((item) => (
-              <div key={item.title} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-                <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{faq.title}</h2>
-          <div className="space-y-4">
-            {faq.items.map((item) => (
-              <div key={item.question} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-
-      <section className="bg-white border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-10">
-          <div className="mb-8">
-            <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em]">
-              {dictionary.home.exploreLabel}
-            </p>
-            <div className="mt-3 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <div className="max-w-4xl">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{dictionary.home.themedHeading}</h2>
-                <p className="text-gray-600 mt-2">{dictionary.home.themedDescription}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {themedGenerators.map((item) => (
-              <Link
-                key={item.href}
-                href={buildLocalePath(locale, item.href)}
-                className="group relative flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-              >
-                <span className="inline-flex w-fit items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
-                  {item.badge}
-                </span>
-                <h3 className="mt-4 text-xl font-semibold text-gray-900 group-hover:text-blue-700">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-gray-600 flex-1">{item.description}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600">
-                  {dictionary.home.browsePromptsLabel}
-                  <svg
-                    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-gray-100 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-10">
-          <div className="mb-8 max-w-4xl">
-            <p className="text-xs font-semibold text-green-600 uppercase tracking-[0.2em]">
-              {dictionary.home.guidesLabel}
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">{dictionary.home.guidesHeading}</h2>
-            <p className="mt-2 text-gray-600">{dictionary.home.guidesDescription}</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {playGuides.items.map((resource) => (
-              <Link
-                key={resource.href}
-                href={buildLocalePath(locale, resource.href)}
-                className="group flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-700">{resource.title}</h3>
-                <p className="mt-2 text-sm text-gray-600 flex-1">{resource.description}</p>
-                <span className="mt-4 inline-flex items-center text-sm font-semibold text-green-600">
-                  {dictionary.home.readMoreLabel}
-                  <svg
-                    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-10">
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{expertInsights.title}</h2>
-            <p className="mt-2 text-gray-600">{expertInsights.description}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {expertInsights.items.map((item, idx) => (
-              <article key={idx} className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
-                <p className="text-sm text-gray-600 italic">“{item.quote}”</p>
-                <h4 className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-800">
-                  {item.author} — {item.role}
-                </h4>
-              </article>
-            ))}
-          </div>
-          <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-indigo-200 bg-indigo-50 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-indigo-900">{expertInsights.shareTitle}</h3>
-              <p className="mt-1 text-sm text-indigo-800">{expertInsights.shareDescription}</p>
-            </div>
-            <Link
-              href={buildLocalePath(locale, expertInsights.shareHref)}
-              className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
-            >
-              {expertInsights.shareCta}
+              Imposter game
             </Link>
           </div>
+        </>
+      )}
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{difference.title}</h2>
+      <p className="text-gray-600 mb-4">{difference.lead}</p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
+        {difference.bullets.map((bullet) => (
+          <li key={bullet}>{bullet}</li>
+        ))}
+      </ul>
+      <p className="text-gray-600 mb-8">
+        {difference.footer.before}{" "}
+        <Link
+          href={buildLocalePath(locale, difference.footer.href)}
+          className="text-indigo-600 hover:text-indigo-800 underline"
+        >
+          {difference.footer.linkText}
+        </Link>{" "}
+        {difference.footer.after}
+      </p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{presets.title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        {presets.items.map((preset) => (
+          <div key={preset.title} className="bg-white rounded-xl border border-indigo-100 p-5 shadow-sm">
+            <h3 className="text-lg font-semibold text-indigo-700 mb-2">{preset.title}</h3>
+            <p className="text-sm text-gray-700 mb-2">{preset.description}</p>
+            <p className="text-xs uppercase tracking-wider text-indigo-500 font-semibold">{preset.note}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">{capabilities.title}</h2>
+      <p className="text-gray-600 mb-5">{capabilities.description}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        {capabilities.items.map((item) => (
+          <div key={item.title} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+            <p className="text-sm text-gray-600">{item.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-6">{faq.title}</h2>
+      <div className="space-y-4 mb-8">
+        {faq.items.map((item) => (
+          <div key={item.question} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-600">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-2">{dictionary.home.themedHeading}</h2>
+      <p className="text-gray-600 mb-6">{dictionary.home.themedDescription}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+        {themedGenerators.map((item) => (
+          <Link
+            key={item.href}
+            href={buildLocalePath(locale, item.href)}
+            className="group relative flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <span className="inline-flex w-fit items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
+              {item.badge}
+            </span>
+            <h3 className="mt-4 text-xl font-semibold text-gray-900 group-hover:text-blue-700">
+              {item.title}
+            </h3>
+            <p className="mt-2 text-sm text-gray-600 flex-1">{item.description}</p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600">
+              {dictionary.home.browsePromptsLabel}
+              <svg
+                className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-2">{dictionary.home.guidesHeading}</h2>
+      <p className="text-gray-600 mb-6">{dictionary.home.guidesDescription}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+        {playGuides.items.map((resource) => (
+          <Link
+            key={resource.href}
+            href={buildLocalePath(locale, resource.href)}
+            className="group flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+          >
+            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-700">{resource.title}</h3>
+            <p className="mt-2 text-sm text-gray-600 flex-1">{resource.description}</p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-green-600">
+              {dictionary.home.readMoreLabel}
+              <svg
+                className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-12 mb-2">{expertInsights.title}</h2>
+      <p className="text-gray-600 mb-6">{expertInsights.description}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {expertInsights.items.map((item, idx) => (
+          <article key={idx} className="rounded-xl border border-gray-200 bg-gray-50 p-6 shadow-sm">
+            <p className="text-sm text-gray-600 italic">“{item.quote}”</p>
+            <h4 className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-800">
+              {item.author} — {item.role}
+            </h4>
+          </article>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4 rounded-2xl border border-indigo-200 bg-indigo-50 p-6 sm:flex-row sm:items-center sm:justify-between mb-10">
+        <div>
+          <h3 className="text-lg font-semibold text-indigo-900">{expertInsights.shareTitle}</h3>
+          <p className="mt-1 text-sm text-indigo-800">{expertInsights.shareDescription}</p>
         </div>
-      </section>
+        <Link
+          href={buildLocalePath(locale, expertInsights.shareHref)}
+          className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+        >
+          {expertInsights.shareCta}
+        </Link>
+      </div>
 
       {dictionary.home.communityPlaybooks && (
         <CommunityPlaybooks
@@ -268,8 +221,6 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           fallbackShareCta={expertInsights.shareCta}
         />
       )}
-      </article>
-      <Sidebar />
-    </div>
+    </>
   );
 }
