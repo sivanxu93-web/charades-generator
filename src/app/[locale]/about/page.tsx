@@ -4,7 +4,7 @@ import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import { buildLocalePath } from "@/utils/localePaths";
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -62,6 +62,8 @@ export default async function AboutPage({ params }: PageProps) {
   const changelog = dictionary.pages.changelog;
   const canonicalPath = "/about";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildLocalePath(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   const slugify = (text: string) =>
     text
@@ -99,132 +101,130 @@ export default async function AboutPage({ params }: PageProps) {
     : null;
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
-          {changelogSchema && (
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.about.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.about.title}
+      structuredDataDescription={dictionary.seo.about.description}
+      themeColorClass="bg-gray-50"
+    >
+      {changelogSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(changelogSchema) }} />
       )}
       <h1 className="text-3xl font-bold text-gray-900 mb-8">
         {dictionary.pages.about.title}
       </h1>
 
-      <div className="prose prose-lg max-w-none">
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.about.mission}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.about.missionDescription}
-          </p>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.about.mission}
+      </h2>
+      <p className="text-gray-700 mb-6">
+        {dictionary.pages.about.missionDescription}
+      </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.about.whatWeDo}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.about.whatWeDoDescription}
-          </p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>{dictionary.pages.about.feature1}</li>
-            <li>{dictionary.pages.about.feature2}</li>
-            <li>{dictionary.pages.about.feature3}</li>
-            <li>{dictionary.pages.about.feature4}</li>
-            <li>{dictionary.pages.about.feature5}</li>
-          </ul>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.about.whatWeDo}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {dictionary.pages.about.whatWeDoDescription}
+      </p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+        <li>{dictionary.pages.about.feature1}</li>
+        <li>{dictionary.pages.about.feature2}</li>
+        <li>{dictionary.pages.about.feature3}</li>
+        <li>{dictionary.pages.about.feature4}</li>
+        <li>{dictionary.pages.about.feature5}</li>
+      </ul>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.about.whyChooseUs}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">
-                {dictionary.pages.about.reason1Title}
-              </h3>
-              <p className="text-blue-800">
-                {dictionary.pages.about.reason1Description}
-              </p>
-            </div>
-            <div className="bg-green-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-green-900 mb-3">
-                {dictionary.pages.about.reason2Title}
-              </h3>
-              <p className="text-green-800">
-                {dictionary.pages.about.reason2Description}
-              </p>
-            </div>
-            <div className="bg-purple-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-purple-900 mb-3">
-                {dictionary.pages.about.reason3Title}
-              </h3>
-              <p className="text-purple-800">
-                {dictionary.pages.about.reason3Description}
-              </p>
-            </div>
-            <div className="bg-orange-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-orange-900 mb-3">
-                {dictionary.pages.about.reason4Title}
-              </h3>
-              <p className="text-orange-800">
-                {dictionary.pages.about.reason4Description}
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.about.howItWorks}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.about.howItWorksDescription}
-          </p>
-          <ol className="list-decimal list-inside space-y-3 text-gray-700">
-            <li>{dictionary.pages.about.workStep1}</li>
-            <li>{dictionary.pages.about.workStep2}</li>
-            <li>{dictionary.pages.about.workStep3}</li>
-            <li>{dictionary.pages.about.workStep4}</li>
-          </ol>
-        </section>
-
-        <div className="mt-12 p-6 bg-gray-50 rounded-lg">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            {dictionary.pages.about.getStarted}
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.about.whyChooseUs}
+      </h2>
+      <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="bg-blue-50 p-6 rounded-lg">
+          <h3 className="text-xl font-semibold text-blue-900 mb-3">
+            {dictionary.pages.about.reason1Title}
           </h3>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.about.getStartedDescription}
+          <p className="text-blue-800">
+            {dictionary.pages.about.reason1Description}
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href={buildLocalePath(locale, "/")}
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              {dictionary.pages.about.startGenerating}
-            </Link>
-            <Link
-              href={buildLocalePath(locale, "/how-to-use/")}
-              className="inline-block bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors"
-            >
-              {dictionary.pages.about.learnMore}
-            </Link>
-          </div>
+        </div>
+        <div className="bg-green-50 p-6 rounded-lg">
+          <h3 className="text-xl font-semibold text-green-900 mb-3">
+            {dictionary.pages.about.reason2Title}
+          </h3>
+          <p className="text-green-800">
+            {dictionary.pages.about.reason2Description}
+          </p>
+        </div>
+        <div className="bg-purple-50 p-6 rounded-lg">
+          <h3 className="text-xl font-semibold text-purple-900 mb-3">
+            {dictionary.pages.about.reason3Title}
+          </h3>
+          <p className="text-purple-800">
+            {dictionary.pages.about.reason3Description}
+          </p>
+        </div>
+        <div className="bg-orange-50 p-6 rounded-lg">
+          <h3 className="text-xl font-semibold text-orange-900 mb-3">
+            {dictionary.pages.about.reason4Title}
+          </h3>
+          <p className="text-orange-800">
+            {dictionary.pages.about.reason4Description}
+          </p>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.about.howItWorks}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {dictionary.pages.about.howItWorksDescription}
+      </p>
+      <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-8">
+        <li>{dictionary.pages.about.workStep1}</li>
+        <li>{dictionary.pages.about.workStep2}</li>
+        <li>{dictionary.pages.about.workStep3}</li>
+        <li>{dictionary.pages.about.workStep4}</li>
+      </ol>
+
+      <div className="mt-12 p-6 bg-white border border-gray-200 rounded-lg shadow-sm mb-8">
+        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+          {dictionary.pages.about.getStarted}
+        </h3>
+        <p className="text-gray-700 mb-4">
+          {dictionary.pages.about.getStartedDescription}
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href={buildLocalePath(locale, "/")}
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+          >
+            {dictionary.pages.about.startGenerating}
+          </Link>
+          <Link
+            href={buildLocalePath(locale, "/how-to-use/")}
+            className="inline-block bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors text-sm font-semibold"
+          >
+            {dictionary.pages.about.learnMore}
+          </Link>
         </div>
       </div>
 
       {changelog && (
-        <section className="mt-12 space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">{changelog.title}</h2>
-          <p className="text-gray-600">{changelog.description}</p>
-          <div className="space-y-6">
+        <>
+          <h2 className="text-2xl font-bold text-gray-900 mt-12 mb-4">{changelog.title}</h2>
+          <p className="text-gray-600 mb-6">{changelog.description}</p>
+          <div className="space-y-6 mb-8">
             {changelog.items.map((entry: { date: string; title: string; highlights: string[] }, index: number) => (
               <article
                 key={entry.date}
                 id={slugify(`${entry.date}-${entry.title}`) || `entry-${index + 1}`}
-                className="rounded-xl border border-gray-200 bg-gray-50 p-5"
+                className="rounded-xl border border-gray-200 bg-white p-5"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
                   {new Date(entry.date).toLocaleDateString(locale, {
@@ -242,11 +242,8 @@ export default async function AboutPage({ params }: PageProps) {
               </article>
             ))}
           </div>
-        </section>
+        </>
       )}
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+    </FlatGeneratorPageLayout>
   );
 }

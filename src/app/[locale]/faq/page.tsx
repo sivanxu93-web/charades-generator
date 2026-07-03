@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import { buildLocalePath } from "@/utils/localePaths";
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -60,6 +59,11 @@ export default async function FAQPage({ params }: PageProps) {
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
 
+  const canonicalPath = "/faq";
+  const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildLocalePath(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? (locale === "es" ? "Inicio" : "Home");
+
   const faqs = [
     {
       question: dictionary.pages.faq.q1,
@@ -108,29 +112,35 @@ export default async function FAQPage({ params }: PageProps) {
   ];
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
-          <FAQStructuredData items={faqs} />
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.faq.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.faq.title}
+      structuredDataDescription={dictionary.seo.faq.description}
+      faq={faqs}
+      themeColorClass="bg-gray-50"
+    >
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">
         {dictionary.pages.faq.title}
       </h1>
 
-      <div className="space-y-8">
-        {faqs.map((faq, index) => (
-          <div key={index} className="border-b border-gray-200 pb-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">
-              {faq.question}
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              {faq.answer}
-            </p>
-          </div>
-        ))}
-      </div>
+      {faqs.map((faq, index) => (
+        <div key={index} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-4">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2">
+            {faq.question}
+          </h2>
+          <p className="text-gray-700 leading-relaxed text-sm">
+            {faq.answer}
+          </p>
+        </div>
+      ))}
 
-      <div className="mt-12 p-6 bg-blue-50 rounded-lg">
+      <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-lg mb-8">
         <h3 className="text-xl font-semibold text-blue-900 mb-4">
           {dictionary.pages.faq.stillHaveQuestions}
         </h3>
@@ -139,15 +149,12 @@ export default async function FAQPage({ params }: PageProps) {
         </p>
         <a
           href={`mailto:${dictionary.pages.contact?.email ?? 'support@charades-generator.com'}`}
-          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-         rel="noopener noreferrer nofollow" 
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+          rel="noopener noreferrer nofollow" 
         >
           {dictionary.pages.faq.contactUs}
         </a>
       </div>
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+    </FlatGeneratorPageLayout>
   );
 }

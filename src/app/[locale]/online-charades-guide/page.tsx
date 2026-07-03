@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionary";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl } from "@/utils/seo";
 import { buildLocalePath } from "@/utils/localePaths";
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -70,6 +71,13 @@ export default async function OnlineCharadesGuidePage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const isEn = locale === "en";
+  const dictionary = getDictionary(locale);
+  const meta = metaByLocale[locale] ?? metaByLocale.en;
+
+  const canonicalPath = "/online-charades-guide";
+  const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildLocalePath(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? (isEn ? "Home" : "Inicio");
 
   const t = isEn
     ? {
@@ -154,48 +162,54 @@ export default async function OnlineCharadesGuidePage({ params }: PageProps) {
       };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">{t.heading}</h1>
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: meta.title, url: canonicalUrl },
+      ]}
+      structuredDataName={meta.title}
+      structuredDataDescription={meta.description}
+      structuredDataType="Article"
+      structuredDataCategory="Party Games"
+      themeColorClass="bg-gray-50"
+    >
+      <h1 className="text-3xl font-bold text-gray-900 mb-6">{t.heading}</h1>
       <p className="text-gray-700 mb-8">{t.intro}</p>
 
-      <section className="mb-8 rounded-xl border border-slate-200 bg-slate-50 p-6">
+      <div className="mb-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-semibold text-gray-900 mb-3">{t.section1Title}</h2>
         <ol className="list-decimal list-inside space-y-2 text-gray-700">
           {t.section1Steps.map((step) => (
             <li key={step}>{step}</li>
           ))}
         </ol>
-      </section>
+      </div>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.section2Title}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {t.formats.map((format) => (
-            <article key={format.title} className="rounded-xl border border-gray-200 bg-gray-50 p-5">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{format.title}</h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {format.items.map((item: string) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+      <h2 className="text-2xl font-semibold text-gray-900 mb-4">{t.section2Title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {t.formats.map((format) => (
+          <div key={format.title} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{format.title}</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {format.items.map((item: string) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-3">{t.section3Title}</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          {t.tips.map((tip: string) => (
-            <li key={tip}>{tip}</li>
-          ))}
-        </ul>
-      </section>
+      <h2 className="text-2xl font-semibold text-gray-900 mb-3 mt-8">{t.section3Title}</h2>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        {t.tips.map((tip: string) => (
+          <li key={tip}>{tip}</li>
+        ))}
+      </ul>
 
-      <section className="mb-10 rounded-xl border border-indigo-100 bg-indigo-50 p-6">
+      <div className="mb-10 rounded-xl border border-indigo-100 bg-indigo-50 p-6">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
           {isEn ? "Jump into online-ready generators" : "Abre los generadores listos para online"}
         </h2>
@@ -228,11 +242,8 @@ export default async function OnlineCharadesGuidePage({ params }: PageProps) {
             </Link>
           </article>
         </div>
-      </section>
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

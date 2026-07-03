@@ -1,15 +1,11 @@
-import Sidebar from "@/components/Sidebar";
 import Link from "next/link";
 import { Metadata } from "next";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import CharadesAudienceLists from "@/components/CharadesAudienceLists";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import { buildLocalePath } from "@/utils/localePaths";
-import { trackEvent } from "@/lib/analytics";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -68,153 +64,135 @@ export default async function CharadesIdeasPage({ params }: PageProps) {
 
   const canonicalPath = "/charades-ideas";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
-  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeUrl = buildLocalePath(locale, "/");
   const homeLabel =
     dictionary.navigation.items.find((item) => item.key === "home")?.title ??
     (locale === "es" ? "Inicio" : "Home");
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.ideas.title, url: canonicalUrl },
-        ]}
-      />
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.ideas.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.ideas.structuredDataName}
+      structuredDataDescription={dictionary.seo.ideas.structuredDataDescription}
+      structuredDataType="Article"
+      structuredDataCategory="Charades Ideas"
+      faq={copy.faq}
+      themeColorClass="bg-gray-50"
+    >
+      <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em] mb-2">
+        {copy.tagline}
+      </p>
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        {dictionary.pages.ideas.title}
+      </h1>
+      <p className="text-gray-700 mb-6">{copy.introLead}</p>
+      <div className="flex flex-col gap-3 sm:flex-row mb-8">
+        <Link
+          href={buildLocalePath(locale, "/")}
+          className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.primaryCta}
+        </Link>
+        <a
+          href="#word-lists"
+          className="inline-flex items-center justify-center rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+        >
+          {copy.secondaryCta}
+        </a>
+      </div>
 
-      <StructuredData
-        type="Article"
-        name={dictionary.seo.ideas.structuredDataName}
-        description={dictionary.seo.ideas.structuredDataDescription}
-        url={canonicalUrl}
-        category="Charades Ideas"
+      <CharadesAudienceLists
         locale={locale}
+        title={copy.audienceSectionTitle}
+        description={copy.audienceSectionDescription}
+        audiences={copy.audiences}
       />
 
-      <FAQStructuredData items={copy.faq} />
-
-      <div className="max-w-[1500px] mx-auto px-6 pb-10 pt-8 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-        <section className="mb-10">
-          <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em]">
-            {copy.tagline}
-          </p>
-          <h1 className="mt-2 text-3xl sm:text-4xl font-bold text-gray-900">
-            {dictionary.pages.ideas.title}
-          </h1>
-          <p className="mt-3 text-gray-700">{copy.introLead}</p>
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-2">
+        {copy.themesSectionTitle}
+      </h2>
+      <p className="text-gray-700 mb-4">{copy.themesSectionDescription}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        {copy.themes.map((theme) => (
+          <article
+            key={theme.key}
+            className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 mb-1">
+              {theme.title}
+            </h3>
+            <p className="text-sm text-gray-700 mb-3">
+              {theme.description}
+            </p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+              {copy.sampleLabel}
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 mb-3">
+              {theme.samples.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
             <Link
-              href={buildLocalePath(locale, "/")}
-              className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+              href={buildLocalePath(locale, theme.href)}
+              className="inline-flex items-center text-sm font-semibold text-blue-600"
             >
-              {copy.primaryCta}
-            </Link>
-            <a
-              href="#word-lists"
-              className="inline-flex items-center justify-center rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
-            >
-              {copy.secondaryCta}
-            </a>
-          </div>
-        </section>
-
-        <CharadesAudienceLists
-          locale={locale}
-          title={copy.audienceSectionTitle}
-          description={copy.audienceSectionDescription}
-          audiences={copy.audiences}
-        />
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {copy.themesSectionTitle}
-          </h2>
-          <p className="text-gray-700 mb-4">{copy.themesSectionDescription}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.themes.map((theme) => (
-              <article
-                key={theme.key}
-                className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+              {copy.themeCta}
+              <svg
+                className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
               >
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700 mb-1">
-                  {theme.title}
-                </h3>
-                <p className="text-sm text-gray-700 mb-3">
-                  {theme.description}
-                </p>
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
-                  {copy.sampleLabel}
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 mb-3">
-                  {theme.samples.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <Link
-                  href={buildLocalePath(locale, theme.href)}
-                  className="inline-flex items-center text-sm font-semibold text-blue-600"
-                >
-                  {copy.themeCta}
-                  <svg
-                    className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-10 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            {copy.generatorSectionTitle}
-          </h2>
-          <p className="text-gray-800 mb-3">{copy.generatorSectionDescription}</p>
-          <ul className="list-disc list-inside space-y-2 text-sm text-indigo-900">
-            {copy.generatorTips.map((tip) => (
-              <li key={tip}>{tip}</li>
-            ))}
-          </ul>
-          <div className="mt-4">
-            <Link
-              href={buildLocalePath(locale, "/")}
-              className="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700"
-            >
-              {copy.generatorCta}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
-          </div>
-        </section>
+          </article>
+        ))}
+      </div>
 
-        <section className="mb-4">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            {copy.faqTitle}
-          </h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <article key={item.question}>
-                <h3 className="font-semibold text-gray-900 mb-1">
-                  {item.question}
-                </h3>
-                <p className="text-gray-700 text-sm">{item.answer}</p>
-              </article>
-            ))}
+      <div className="mb-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          {copy.generatorSectionTitle}
+        </h2>
+        <p className="text-gray-800 mb-3">{copy.generatorSectionDescription}</p>
+        <ul className="list-disc list-inside space-y-2 text-sm text-indigo-900 mb-4">
+          {copy.generatorTips.map((tip) => (
+            <li key={tip}>{tip}</li>
+          ))}
+        </ul>
+        <div>
+          <Link
+            href={buildLocalePath(locale, "/")}
+            className="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700"
+          >
+            {copy.generatorCta}
+          </Link>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
+        {copy.faqTitle}
+      </h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
           </div>
-        </section>
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+        ))}
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

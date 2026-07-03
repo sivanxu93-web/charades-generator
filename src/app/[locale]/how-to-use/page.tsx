@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
-import Sidebar from "@/components/Sidebar";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import HowToStructuredData from "@/components/HowToStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 const howToExtras = {
   en: {
@@ -175,13 +175,27 @@ export default async function HowToUsePage({ params }: PageProps) {
     dictionary.pages.howToUse.step5,
     dictionary.pages.howToUse.step6,
   ].filter(Boolean);
+  const canonicalPath = "/how-to-use";
+  const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildLocalePath(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? (locale === "es" ? "Inicio" : "Home");
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.howToUse.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.howToUse.title}
+      structuredDataDescription={dictionary.seo.howToUse.description}
+      structuredDataType="Article"
+      structuredDataCategory="Party Games"
+      themeColorClass="bg-gray-50"
+    >
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">
         {dictionary.pages.howToUse.title}
       </h1>
 
@@ -194,147 +208,98 @@ export default async function HowToUsePage({ params }: PageProps) {
         tools={["Charades Generator"]}
       />
 
-      <div className="prose prose-lg max-w-none">
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.whatIsCharades}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.howToUse.whatIsCharadesDescription}
-          </p>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.whatIsCharades}
+      </h2>
+      <p className="text-gray-700 mb-6">
+        {dictionary.pages.howToUse.whatIsCharadesDescription}
+      </p>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.howToPlay}
-          </h2>
-          <ol className="list-decimal list-inside space-y-3 text-gray-700">
-            <li>{dictionary.pages.howToUse.step1}</li>
-            <li>{dictionary.pages.howToUse.step2}</li>
-            <li>{dictionary.pages.howToUse.step3}</li>
-            <li>{dictionary.pages.howToUse.step4}</li>
-            <li>{dictionary.pages.howToUse.step5}</li>
-            <li>{dictionary.pages.howToUse.step6}</li>
-          </ol>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.howToPlay}
+      </h2>
+      <ol className="list-decimal list-inside space-y-3 text-gray-700 mb-8">
+        <li>{dictionary.pages.howToUse.step1}</li>
+        <li>{dictionary.pages.howToUse.step2}</li>
+        <li>{dictionary.pages.howToUse.step3}</li>
+        <li>{dictionary.pages.howToUse.step4}</li>
+        <li>{dictionary.pages.howToUse.step5}</li>
+        <li>{dictionary.pages.howToUse.step6}</li>
+      </ol>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.basicRules}
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>{dictionary.pages.howToUse.rule1}</li>
-            <li>{dictionary.pages.howToUse.rule2}</li>
-            <li>{dictionary.pages.howToUse.rule3}</li>
-            <li>{dictionary.pages.howToUse.rule4}</li>
-            <li>{dictionary.pages.howToUse.rule5}</li>
-          </ul>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.basicRules}
+      </h2>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        <li>{dictionary.pages.howToUse.rule1}</li>
+        <li>{dictionary.pages.howToUse.rule2}</li>
+        <li>{dictionary.pages.howToUse.rule3}</li>
+        <li>{dictionary.pages.howToUse.rule4}</li>
+        <li>{dictionary.pages.howToUse.rule5}</li>
+      </ul>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.usingGenerator}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.howToUse.generatorDescription}
-          </p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>{dictionary.pages.howToUse.generatorStep1}</li>
-            <li>{dictionary.pages.howToUse.generatorStep2}</li>
-            <li>{dictionary.pages.howToUse.generatorStep3}</li>
-          </ul>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.usingGenerator}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {dictionary.pages.howToUse.generatorDescription}
+      </p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        <li>{dictionary.pages.howToUse.generatorStep1}</li>
+        <li>{dictionary.pages.howToUse.generatorStep2}</li>
+        <li>{dictionary.pages.howToUse.generatorStep3}</li>
+      </ul>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.tips}
-          </h2>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>{dictionary.pages.howToUse.tip1}</li>
-            <li>{dictionary.pages.howToUse.tip2}</li>
-            <li>{dictionary.pages.howToUse.tip3}</li>
-            <li>{dictionary.pages.howToUse.tip4}</li>
-            <li>{dictionary.pages.howToUse.tip5}</li>
-          </ul>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.tips}
+      </h2>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        <li>{dictionary.pages.howToUse.tip1}</li>
+        <li>{dictionary.pages.howToUse.tip2}</li>
+        <li>{dictionary.pages.howToUse.tip3}</li>
+        <li>{dictionary.pages.howToUse.tip4}</li>
+        <li>{dictionary.pages.howToUse.tip5}</li>
+      </ul>
 
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.benefits}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.howToUse.benefitsDescription}
-          </p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            <li>{dictionary.pages.howToUse.benefit1}</li>
-            <li>{dictionary.pages.howToUse.benefit2}</li>
-            <li>{dictionary.pages.howToUse.benefit3}</li>
-            <li>{dictionary.pages.howToUse.benefit4}</li>
-          </ul>
-        </section>
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.benefits}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {dictionary.pages.howToUse.benefitsDescription}
+      </p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        <li>{dictionary.pages.howToUse.benefit1}</li>
+        <li>{dictionary.pages.howToUse.benefit2}</li>
+        <li>{dictionary.pages.howToUse.benefit3}</li>
+        <li>{dictionary.pages.howToUse.benefit4}</li>
+      </ul>
 
-        {themedGenerators && (
-          <section className="mb-8 rounded-2xl border border-blue-200 bg-blue-50 p-6">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-              {dictionary.home.themedHeading}
-            </h2>
-            <p className="text-gray-700 mb-4">
-              {dictionary.home.themedDescription}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {themedGenerators.slice(0, 5).map((generator) => (
-                <Link
-                  key={generator.href}
-                  href={buildLocalePath(locale, generator.href)}
-                  className="group flex flex-col rounded-xl border border-blue-100 bg-white/80 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                >
-                  <span className="inline-flex w-fit items-center rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700">
-                    {generator.badge}
-                  </span>
-                  <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-blue-700">
-                    {generator.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-gray-600 flex-1">
-                    {generator.description}
-                  </p>
-                  <span className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600">
-                    {dictionary.home.browsePromptsLabel}
-                    <svg
-                      className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+      {themedGenerators && (
+        <div className="mb-8 rounded-2xl border border-blue-200 bg-blue-50 p-6">
           <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-            {dictionary.pages.howToUse.playbooksHeading}
+            {dictionary.home.themedHeading}
           </h2>
           <p className="text-gray-700 mb-4">
-            {dictionary.pages.howToUse.playbooksDescription}
+            {dictionary.home.themedDescription}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {guides.map((guide) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {themedGenerators.slice(0, 5).map((generator) => (
               <Link
-                key={guide.href}
-                href={buildLocalePath(locale, guide.href)}
-                className="group flex h-full flex-col rounded-xl bg-white p-4 shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md"
+                key={generator.href}
+                href={buildLocalePath(locale, generator.href)}
+                className="group flex flex-col rounded-xl border border-blue-100 bg-white/80 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700">
-                  {guide.title}
+                <span className="inline-flex w-fit items-center rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-700">
+                  {generator.badge}
+                </span>
+                <h3 className="mt-3 text-lg font-semibold text-gray-900 group-hover:text-blue-700">
+                  {generator.title}
                 </h3>
-                <p className="mt-2 text-sm text-gray-600 flex-1">{guide.description}</p>
+                <p className="mt-2 text-sm text-gray-600 flex-1">
+                  {generator.description}
+                </p>
                 <span className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600">
-                  {dictionary.home.readMoreLabel}
+                  {dictionary.home.browsePromptsLabel}
                   <svg
                     className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
                     fill="none"
@@ -348,99 +313,129 @@ export default async function HowToUsePage({ params }: PageProps) {
               </Link>
             ))}
           </div>
-        </section>
+        </div>
+      )}
 
-        <section className="mb-8 rounded-2xl border border-yellow-200 bg-yellow-50 p-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-3">
-            {dictionary.pages.howToUse.gearHeading}
-          </h2>
-          <p className="text-gray-700 mb-4">
-            {dictionary.pages.howToUse.gearDescription}
-          </p>
-        </section>
-
-        <section className="mb-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-3">{extras.teamTitle}</h2>
-          <p className="text-gray-700 mb-4">{extras.teamDescription}</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            {extras.teamTips.map((tip) => (
-              <li key={tip}>{tip}</li>
-            ))}
-          </ul>
-          <div className="mt-5 rounded-xl border border-green-200 bg-white p-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-1">{extras.kitTitle}</h3>
-            <p className="text-gray-700 mb-3">{extras.kitDescription}</p>
+      <div className="mb-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          {dictionary.pages.howToUse.playbooksHeading}
+        </h2>
+        <p className="text-gray-700 mb-4">
+          {dictionary.pages.howToUse.playbooksDescription}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {guides.map((guide) => (
             <Link
-              href={quickKitHref}
-              className="inline-flex items-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
+              key={guide.href}
+              href={buildLocalePath(locale, guide.href)}
+              className="group flex h-full flex-col rounded-xl bg-white p-4 shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md"
             >
-              {extras.kitCta}
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-700">
+                {guide.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-600 flex-1">{guide.description}</p>
+              <span className="mt-3 inline-flex items-center text-sm font-semibold text-blue-600">
+                {dictionary.home.readMoreLabel}
+                <svg
+                  className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
             </Link>
-          </div>
-        </section>
-
-        <section className="mb-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-3">{extras.reverseTitle}</h2>
-          <p className="text-gray-700 mb-4">{extras.reverseDescription}</p>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700">
-            {extras.reverseSteps.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ol>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            {dictionary.pages.howToUse.fieldNotesTitle}
-          </h2>
-          <p className="text-gray-700 mb-6">{dictionary.pages.howToUse.fieldNotesDescription}</p>
-          <div className="space-y-6">
-            {dictionary.pages.howToUse.fieldNotes.map((note) => (
-              <article key={note.heading} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-900">{note.heading}</h3>
-                <p className="mt-2 text-gray-600">{note.description}</p>
-                <h4 className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-800">
-                  {note.takeawaysTitle}
-                </h4>
-                <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-gray-600">
-                  {note.takeaways.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <div className="mt-12 p-6 bg-blue-50 rounded-lg">
-          <h3 className="text-xl font-semibold text-blue-900 mb-4">
-            {dictionary.pages.howToUse.readyToPlay}
-          </h3>
-          <p className="text-blue-800 mb-4">
-            {dictionary.pages.howToUse.readyToPlayDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/")}
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            {dictionary.pages.howToUse.startGenerating}
-          </Link>
-          <p className="mt-3 text-sm text-blue-900">
-            <Link
-              href={buildLocalePath(locale, "/charades-ideas/")}
-              className="font-semibold underline underline-offset-2"
-            >
-              {locale === "es" ? "Ver ideas y listas de palabras para charadas" : "Browse charades ideas & word lists"}
-            </Link>{" "}
-            {locale === "es"
-              ? "si prefieres empezar con ejemplos listos antes de usar el generador."
-              : "if you want ready-made examples before you start generating your own lists."}
-          </p>
+          ))}
         </div>
       </div>
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+
+      <div className="mb-8 rounded-2xl border border-yellow-200 bg-yellow-50 p-6">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
+          {dictionary.pages.howToUse.gearHeading}
+        </h2>
+        <p className="text-gray-700 mb-4">
+          {dictionary.pages.howToUse.gearDescription}
+        </p>
+      </div>
+
+      <div className="mb-8 rounded-2xl border border-gray-200 bg-gray-50 p-6">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">{extras.teamTitle}</h2>
+        <p className="text-gray-700 mb-4">{extras.teamDescription}</p>
+        <ul className="list-disc list-inside space-y-2 text-gray-700">
+          {extras.teamTips.map((tip) => (
+            <li key={tip}>{tip}</li>
+          ))}
+        </ul>
+        <div className="mt-5 rounded-xl border border-green-200 bg-white p-4">
+          <h3 className="text-lg font-semibold text-green-900 mb-1">{extras.kitTitle}</h3>
+          <p className="text-gray-700 mb-3">{extras.kitDescription}</p>
+          <Link
+            href={quickKitHref}
+            className="inline-flex items-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
+          >
+            {extras.kitCta}
+          </Link>
+        </div>
+      </div>
+
+      <div className="mb-8 rounded-2xl border border-indigo-200 bg-indigo-50 p-6">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-3">{extras.reverseTitle}</h2>
+        <p className="text-gray-700 mb-4">{extras.reverseDescription}</p>
+        <ol className="list-decimal list-inside space-y-2 text-gray-700">
+          {extras.reverseSteps.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </div>
+
+      <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+        {dictionary.pages.howToUse.fieldNotesTitle}
+      </h2>
+      <p className="text-gray-700 mb-6">{dictionary.pages.howToUse.fieldNotesDescription}</p>
+      <div className="space-y-6 mb-8">
+        {dictionary.pages.howToUse.fieldNotes.map((note) => (
+          <article key={note.heading} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 className="text-xl font-semibold text-gray-900">{note.heading}</h3>
+            <p className="mt-2 text-gray-600">{note.description}</p>
+            <h4 className="mt-4 text-sm font-semibold uppercase tracking-wide text-gray-800">
+              {note.takeawaysTitle}
+            </h4>
+            <ul className="mt-2 list-disc list-inside space-y-1 text-sm text-gray-600">
+              {note.takeaways.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-12 p-6 bg-blue-50 border border-blue-200 rounded-lg mb-8 shadow-sm">
+        <h3 className="text-xl font-semibold text-blue-900 mb-4">
+          {dictionary.pages.howToUse.readyToPlay}
+        </h3>
+        <p className="text-blue-800 mb-4">
+          {dictionary.pages.howToUse.readyToPlayDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/")}
+          className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+        >
+          {dictionary.pages.howToUse.startGenerating}
+        </Link>
+        <p className="mt-3 text-sm text-blue-900">
+          <Link
+            href={buildLocalePath(locale, "/charades-ideas/")}
+            className="font-semibold underline underline-offset-2"
+          >
+            {locale === "es" ? "Ver ideas y listas de palabras para charadas" : "Browse charades ideas & word lists"}
+          </Link>{" "}
+          {locale === "es"
+            ? "si prefieres empezar con ejemplos listos antes de usar el generador."
+            : "if you want ready-made examples before you start generating your own lists."}
+        </p>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }

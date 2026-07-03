@@ -2,15 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
-import Sidebar from "@/components/Sidebar";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import CopyTextButton from "@/components/CopyTextButton";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import PrintButton from "@/components/PrintButton";
-import StructuredData from "@/components/StructuredData";
 import { IMPOSTER_PACKS, IMPOSTER_PACK_IDS } from "@/data/imposter-packs";
 import { buildLocalePath } from "@/utils/localePaths";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -64,7 +61,13 @@ export default async function ImposterWordListPage(props: Props) {
   const locale = params.locale as Locale;
   const dictionary = getDictionary(locale);
   const copy = imposterWordListContent[locale] ?? imposterWordListContent.en;
-  const canonicalUrl = buildCanonicalUrl(locale, "/imposter-game-word-list/");
+  const canonicalPath = "/imposter-game-word-list/";
+  const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildLocalePath(locale, "/");
+  const homeLabel = dictionary.navigation.items.find(i => i.key === "home")?.title || (locale === "es" ? "Inicio" : "Home");
+  const imposterUrl = buildLocalePath(locale, "/imposter-game/");
+  const imposterLabel = dictionary.seo.imposter.title;
+
   const allPairsText = IMPOSTER_PACK_IDS.flatMap((packId) => {
     const pack = IMPOSTER_PACKS[packId];
     return [
@@ -74,56 +77,47 @@ export default async function ImposterWordListPage(props: Props) {
   }).join("\n");
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
-          <BreadcrumbStructuredData
-        items={[
-          { name: dictionary.navigation.items.find(i => i.key === "home")?.title || "Home", url: buildCanonicalUrl(locale, "/") },
-          { name: dictionary.seo.imposter.title, url: buildCanonicalUrl(locale, "/imposter-game/") },
-          { name: copy.heading, url: canonicalUrl },
-        ]}
-      />
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: imposterLabel, url: imposterUrl },
+        { name: copy.heading, url: canonicalUrl },
+      ]}
+      structuredDataName={copy.heading}
+      structuredDataDescription={copy.description}
+      faq={copy.faq}
+      themeColorClass="bg-gray-50"
+    >
+      <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 text-center mt-4">
+        {copy.heading}
+      </h1>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto text-center mb-8">
+        {copy.lead}
+      </p>
 
-      <StructuredData
-        type="Article"
-        name={copy.heading}
-        description={copy.description}
-        url={canonicalUrl}
-        category="Party Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq} />
-
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
-          {copy.heading}
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          {copy.lead}
-        </p>
-        <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Link
-            href={buildLocalePath(locale, "/imposter-game/play/")}
-            className="inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-indigo-700 sm:w-auto"
-          >
-            {copy.primaryCta}
-          </Link>
-          <CopyTextButton
-            text={allPairsText}
-            label={copy.copyAll}
-            copiedLabel={copy.copied}
-            className="inline-flex w-full items-center justify-center rounded-xl border border-indigo-200 px-6 py-3 text-base font-bold text-indigo-700 hover:bg-indigo-50 sm:w-auto"
-          />
-          <PrintButton
-            label={copy.print}
-            className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-base font-bold text-gray-700 hover:bg-gray-50 sm:w-auto"
-          />
-        </div>
+      <div className="flex flex-col items-center justify-center gap-3 sm:flex-row mb-8">
+        <Link
+          href={buildLocalePath(locale, "/imposter-game/play/")}
+          className="inline-flex w-full items-center justify-center rounded-xl bg-indigo-600 px-6 py-3 text-base font-bold text-white shadow-sm hover:bg-indigo-700 sm:w-auto"
+        >
+          {copy.primaryCta}
+        </Link>
+        <CopyTextButton
+          text={allPairsText}
+          label={copy.copyAll}
+          copiedLabel={copy.copied}
+          className="inline-flex w-full items-center justify-center rounded-xl border border-indigo-200 px-6 py-3 text-base font-bold text-indigo-700 hover:bg-indigo-50 sm:w-auto"
+        />
+        <PrintButton
+          label={copy.print}
+          className="inline-flex w-full items-center justify-center rounded-xl border border-gray-300 px-6 py-3 text-base font-bold text-gray-700 hover:bg-gray-50 sm:w-auto"
+        />
       </div>
 
-      <section className="mb-10 rounded-2xl border border-indigo-100 bg-indigo-50 p-6">
+      <div className="mb-8 rounded-2xl border border-indigo-100 bg-indigo-50 p-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.howToUseTitle}</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {copy.howToUseSteps.map((step, index) => (
@@ -135,87 +129,80 @@ export default async function ImposterWordListPage(props: Props) {
             </div>
           ))}
         </div>
-      </section>
-
-      <div className="space-y-12">
-        {IMPOSTER_PACK_IDS.map((packId) => {
-          const pack = IMPOSTER_PACKS[packId];
-          return (
-            <section key={packId} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              <div className="bg-indigo-600 px-6 py-4 flex justify-between items-center">
-                <h2 className="text-xl font-bold text-white">
-                  {pack.label[locale] || pack.label.en}
-                </h2>
-                <Link
-                  href={buildLocalePath(locale, `/imposter-game/?pack=${packId}`)}
-                  className="text-sm font-medium bg-white/20 hover:bg-white/30 text-white px-4 py-1.5 rounded-full transition-colors"
-                >
-                  {copy.packCta}
-                </Link>
-              </div>
-              <div className="p-6">
-                <div className="mb-4 flex justify-end">
-                  <CopyTextButton
-                    text={pack.pairs.map((pair) => `${pair.main} vs ${pair.imposter}`).join("\n")}
-                    label={copy.copyPack}
-                    copiedLabel={copy.copied}
-                    className="inline-flex items-center rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50"
-                  />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {pack.pairs.map((pair, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 group hover:border-indigo-200 transition-colors"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-lg text-sm font-bold">
-                          {idx + 1}
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Pair</span>
-                          <span className="text-gray-900 font-medium">{pair.main} vs {pair.imposter}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          );
-        })}
       </div>
 
-      <div className="mt-16 bg-indigo-50 rounded-3xl p-8 text-center">
+      {IMPOSTER_PACK_IDS.map((packId) => {
+        const pack = IMPOSTER_PACKS[packId];
+        return (
+          <div key={packId} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-8">
+            <div className="bg-indigo-600 px-6 py-4 flex justify-between items-center">
+              <h2 className="text-xl font-bold text-white">
+                {pack.label[locale] || pack.label.en}
+              </h2>
+              <Link
+                href={buildLocalePath(locale, `/imposter-game/?pack=${packId}`)}
+                className="text-sm font-medium bg-white/20 hover:bg-white/30 text-white px-4 py-1.5 rounded-full transition-colors"
+              >
+                {copy.packCta}
+              </Link>
+            </div>
+            <div className="p-6">
+              <div className="mb-4 flex justify-end">
+                <CopyTextButton
+                  text={pack.pairs.map((pair) => `${pair.main} vs ${pair.imposter}`).join("\n")}
+                  label={copy.copyPack}
+                  copiedLabel={copy.copied}
+                  className="inline-flex items-center rounded-md border border-gray-300 px-3 py-2 text-xs font-semibold text-gray-700 hover:bg-gray-50"
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {pack.pairs.map((pair, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 group hover:border-indigo-200 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-lg text-sm font-bold">
+                        {idx + 1}
+                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Pair</span>
+                        <span className="text-gray-900 font-medium">{pair.main} vs {pair.imposter}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      <div className="mb-8 bg-indigo-50 rounded-3xl p-8 text-center border border-indigo-100 shadow-sm mt-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
           {copy.finalCtaTitle}
         </h2>
-        <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+        <p className="text-gray-600 mb-8 max-w-xl mx-auto text-sm">
           {copy.finalCtaDescription}
         </p>
-        <Link
-          href={buildLocalePath(locale, "/imposter-game/")}
-          className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all transform hover:scale-105 shadow-lg"
-        >
-          {dictionary.pages.imposterGame.hostButton}
-        </Link>
+        <div>
+          <Link
+            href={buildLocalePath(locale, "/imposter-game/")}
+            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all transform hover:scale-105 shadow-lg text-sm"
+          >
+            {dictionary.pages.imposterGame.hostButton}
+          </Link>
+        </div>
       </div>
 
-      <section className="mt-12 bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-        <h2 className="text-2xl font-bold text-gray-900 mb-5">{copy.faqTitle}</h2>
-        <div className="space-y-5">
-          {copy.faq.map((item) => (
-            <div key={item.question}>
-              <h3 className="font-semibold text-gray-900 mb-1">{item.question}</h3>
-              <p className="text-sm leading-6 text-gray-600">{item.answer}</p>
-            </div>
-          ))}
+      <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">{copy.faqTitle}</h2>
+      {copy.faq.map((item, index) => (
+        <div key={index} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-4">
+          <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+          <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
         </div>
-      </section>
-      </article>
-      <Sidebar />
-    </div>
-  </div>
+      ))}
+    </FlatGeneratorPageLayout>
   );
 }
 

@@ -1,17 +1,14 @@
-import Sidebar from "@/components/Sidebar";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import CopyTextButton from "@/components/CopyTextButton";
 import PrintButton from "@/components/PrintButton";
 import { buildLocalePath } from "@/utils/localePaths";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -86,18 +83,20 @@ export default async function PictionaryPage({ params }: PageProps) {
   );
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: pageTitle, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: pageTitle, url: canonicalUrl },
+      ]}
+      structuredDataName={pageTitle}
+      structuredDataDescription={pageDescription}
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={pageTitle}
         description={pageDescription}
         defaultCategory="objects"
@@ -115,174 +114,149 @@ export default async function PictionaryPage({ params }: PageProps) {
         ]}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={pageTitle}
-        description={pageDescription}
-        url={canonicalUrl}
-        category="Party Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-yellow-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.introTitle}</h2>
-          <p className="text-gray-600 mb-4">{copy.introDescription}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.featuresColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.introTitle}</h2>
+      <p className="text-gray-650 mb-6">{copy.introDescription}</p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.featuresColumns.map((column) => (
+          <div key={column.title} className="p-5 rounded-xl shadow-sm border border-gray-100 bg-white" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold mb-2 text-lg" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.categoriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.categories.map((card) => (
-              <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-amber-500">
-          <div className="mb-5">
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">{copy.wordListTitle}</h2>
-            <p className="text-gray-600">{copy.wordListDescription}</p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {copy.wordLists.map((list) => (
-              <div key={list.key} className="rounded-lg border border-amber-100 bg-amber-50 p-4">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{list.title}</h3>
-                    <p className="mt-1 text-sm text-gray-600">{list.description}</p>
-                  </div>
-                  <CopyTextButton
-                    text={wordListTexts[list.key]}
-                    label={copy.copyWordList}
-                    copiedLabel={copy.copied}
-                    className="inline-flex shrink-0 items-center justify-center rounded-md border border-amber-300 px-3 py-2 text-sm font-semibold text-amber-800 hover:bg-amber-100"
-                  />
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {list.words.map((word) => (
-                    <span key={word} className="rounded-md bg-white px-2 py-1 text-sm font-medium text-gray-800 shadow-sm">
-                      {word}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-orange-500">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">{copy.printableTitle}</h2>
-              <p className="text-gray-600 max-w-2xl">{copy.printableDescription}</p>
-            </div>
-            <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col">
-              <CopyTextButton
-                text={printableText}
-                label={copy.copyPrintable}
-                copiedLabel={copy.copied}
-                className="inline-flex items-center justify-center rounded-md border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-50"
-              />
-              <PrintButton
-                label={copy.printCards}
-                className="inline-flex items-center justify-center rounded-md bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-              />
-            </div>
-          </div>
-          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-            {copy.printableWords.map((word) => (
-              <div key={word} className="flex min-h-20 items-center justify-center rounded-lg border-2 border-dashed border-orange-200 bg-orange-50 p-3 text-center text-sm font-bold text-gray-800">
-                {word}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg p-6 mb-8 border border-yellow-100">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.tipsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3 text-orange-800">
-                {copy.tips.drawingTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.drawingItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-3 text-orange-800">
-                {copy.tips.guessingTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.guessingItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-8 bg-gray-50 rounded-lg border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">{exploreLabel}</h2>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <Link href={buildLocalePath(locale, "/random-charades-generator/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {dictionary.pages.random.title}
-            </Link>
-            <Link href={buildLocalePath(locale, "/charades-generator-for-kids/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {dictionary.pages.kids.title}
-            </Link>
-            <Link href={buildLocalePath(locale, "/imposter-game/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {dictionary.pages.imposter.title}
-            </Link>
-            <Link href={buildLocalePath(locale, "/movie-charades-generator/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {dictionary.pages.movies.title}
-            </Link>
-          </div>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.categoriesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.categories.map((card) => (
+          <div key={card.title} className="p-5 rounded-xl shadow-sm border border-gray-100 text-center" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold mb-2 text-lg" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-2">{copy.wordListTitle}</h2>
+      <p className="text-gray-650 mb-6">{copy.wordListDescription}</p>
+      
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 mb-8">
+        {copy.wordLists.map((list) => (
+          <div key={list.key} className="rounded-xl border border-amber-100 bg-amber-50 p-5 shadow-sm">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">{list.title}</h3>
+                <p className="mt-1 text-sm text-gray-600">{list.description}</p>
+              </div>
+              <CopyTextButton
+                text={wordListTexts[list.key]}
+                label={copy.copyWordList}
+                copiedLabel={copy.copied}
+                className="inline-flex shrink-0 items-center justify-center rounded-md border border-amber-300 bg-white px-3 py-2 text-sm font-semibold text-amber-800 hover:bg-amber-100"
+              />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {list.words.map((word) => (
+                <span key={word} className="rounded-md bg-white px-2 py-1 text-sm font-medium text-gray-800 shadow-sm">
+                  {word}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between mt-8 mb-4">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">{copy.printableTitle}</h2>
+          <p className="text-gray-650 max-w-2xl text-base">{copy.printableDescription}</p>
+        </div>
+        <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col">
+          <CopyTextButton
+            text={printableText}
+            label={copy.copyPrintable}
+            copiedLabel={copy.copied}
+            className="inline-flex items-center justify-center rounded-md border border-orange-200 px-4 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-50 bg-white"
+          />
+          <PrintButton
+            label={copy.printCards}
+            className="inline-flex items-center justify-center rounded-md bg-orange-600 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-700"
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 mb-8">
+        {copy.printableWords.map((word) => (
+          <div key={word} className="flex min-h-20 items-center justify-center rounded-lg border-2 border-dashed border-orange-200 bg-white p-3 text-center text-sm font-bold text-gray-800 shadow-sm">
+            {word}
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-6 mb-8 border border-yellow-100 shadow-sm mt-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.tipsTitle}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-3 text-orange-800">
+              {copy.tips.drawingTitle}
+            </h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
+              {copy.tips.drawingItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-3 text-orange-800">
+              {copy.tips.guessingTitle}
+            </h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
+              {copy.tips.guessingItems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">{copy.faqTitle}</h2>
+      {copy.faq.map((item, index) => (
+        <div key={index} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-4">
+          <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+          <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+        </div>
+      ))}
+
+      <div className="bg-white rounded-xl border border-gray-200 p-6 mb-8 shadow-sm mt-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">{exploreLabel}</h2>
+        <div className="flex flex-wrap gap-2 text-sm">
+          <Link href={buildLocalePath(locale, "/random-charades-generator/")}
+            className="inline-flex items-center rounded-md border border-gray-300 px-3 py-1.5 text-gray-800 hover:bg-gray-100 bg-white">
+            {dictionary.pages.random.title}
+          </Link>
+          <Link href={buildLocalePath(locale, "/charades-generator-for-kids/")}
+            className="inline-flex items-center rounded-md border border-gray-300 px-3 py-1.5 text-gray-800 hover:bg-gray-100 bg-white">
+            {dictionary.pages.kids.title}
+          </Link>
+          <Link href={buildLocalePath(locale, "/imposter-game/")}
+            className="inline-flex items-center rounded-md border border-gray-300 px-3 py-1.5 text-gray-800 hover:bg-gray-100 bg-white">
+            {dictionary.pages.imposter.title}
+          </Link>
+          <Link href={buildLocalePath(locale, "/movie-charades-generator/")}
+            className="inline-flex items-center rounded-md border border-gray-300 px-3 py-1.5 text-gray-800 hover:bg-gray-100 bg-white">
+            {dictionary.pages.movies.title}
+          </Link>
+        </div>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

@@ -1,15 +1,12 @@
-import Sidebar from "@/components/Sidebar";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import FAQStructuredData from "@/components/FAQStructuredData";
-import StructuredData from "@/components/StructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
 import { pickWords } from "@/utils/charades";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -26,7 +23,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalPath = "/reverse-charades-game";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
-  const homeUrl = buildCanonicalUrl(locale, "/");
 
   return {
     title: dictionary.seo.reverse.title,
@@ -70,23 +66,25 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
 
   const canonicalPath = "/reverse-charades-game";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
-  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeUrl = buildLocalePath(locale, "/");
   const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
   const quickPlayHref = buildLocalePath(locale, "/quick-play-kit/");
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.reverse.title, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.reverse.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.reverse.structuredDataName}
+      structuredDataDescription={dictionary.seo.reverse.structuredDataDescription}
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.reverse.title}
         description={dictionary.pages.reverse.description}
         defaultCategory="all"
@@ -95,129 +93,106 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.reverse.structuredDataName}
-        description={dictionary.seo.reverse.structuredDataDescription}
-        url={canonicalUrl}
-        category="Team Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-blue-500">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.introTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.introLead}</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            {copy.introBullets.map((item) => (
-              <li key={item}>{item}</li>
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.introTitle}</h2>
+      <p className="text-gray-700 mb-4">{copy.introLead}</p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8 text-sm">
+        {copy.introBullets.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.rulesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-800 mb-3">{copy.rulesSetupTitle}</h3>
+          <ol className="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+            {copy.rulesSetupSteps.map((step) => (
+              <li key={step}>{step}</li>
             ))}
-          </ul>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.rulesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">{copy.rulesSetupTitle}</h3>
-              <ol className="list-decimal list-inside space-y-2 text-gray-700">
-                {copy.rulesSetupSteps.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">{copy.rulesPlayTitle}</h3>
-              <ol className="list-decimal list-inside space-y-2 text-gray-700">
-                {copy.rulesPlaySteps.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.samplesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {copy.samples.map((group) => (
-              <div key={group.title} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-                <h3 className="font-semibold text-gray-800 mb-3">{group.title}</h3>
-                <ul className="space-y-1 text-sm text-gray-600">
-                  {group.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
+          </ol>
+        </div>
+        <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+          <h3 className="text-lg font-semibold text-gray-800 mb-3">{copy.rulesPlayTitle}</h3>
+          <ol className="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+            {copy.rulesPlaySteps.map((step) => (
+              <li key={step}>{step}</li>
             ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.teamTipsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.teamTips.map((column) => (
-              <div key={column.title} className="bg-white/80 border border-indigo-200 rounded-xl p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-indigo-700 mb-2">{column.title}</h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border border-green-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.resourcesTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.resourcesDescription}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={quickPlayHref}
-              className="inline-flex items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
-            >
-              {copy.resourcesPrimaryCta}
-            </Link>
-            <Link
-              href={locale === "en" ? "/charades-generator-for-kids" : `/${locale}/charades-generator-for-kids`}
-              className="inline-flex items-center justify-center rounded-md border border-green-500 px-4 py-2 text-sm font-semibold text-green-700 hover:bg-green-50"
-            >
-              {copy.resourcesSecondaryCta}
-            </Link>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-700">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesCtaTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesCtaDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCtaLabel}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+          </ol>
+        </div>
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.samplesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        {copy.samples.map((group) => (
+          <div key={group.title} className="border border-gray-200 rounded-xl p-5 bg-white shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-3">{group.title}</h3>
+            <ul className="space-y-1 text-sm text-gray-600">
+              {group.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 mb-8 border border-indigo-100 shadow-sm mt-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.teamTipsTitle}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {copy.teamTips.map((column) => (
+            <div key={column.title} className="bg-white/80 border border-indigo-200 rounded-xl p-5 shadow-sm">
+              <h3 className="text-lg font-semibold text-indigo-700 mb-2">{column.title}</h3>
+              <ul className="space-y-2 text-sm text-gray-700">
+                {column.items.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-xl border border-green-200 p-6 mb-8 shadow-sm mt-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.resourcesTitle}</h2>
+        <p className="text-gray-700 mb-4 text-sm">{copy.resourcesDescription}</p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Link
+            href={quickPlayHref}
+            className="inline-flex items-center justify-center rounded-xl bg-green-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-green-700 shadow-sm"
+          >
+            {copy.resourcesPrimaryCta}
+          </Link>
+          <Link
+            href={locale === "en" ? "/charades-generator-for-kids" : `/${locale}/charades-generator-for-kids`}
+            className="inline-flex items-center justify-center rounded-xl border border-green-500 bg-white px-6 py-2.5 text-sm font-semibold text-green-700 hover:bg-green-50 shadow-sm"
+          >
+            {copy.resourcesSecondaryCta}
+          </Link>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">{copy.faqTitle}</h2>
+      {copy.faq.map((item, index) => (
+        <div key={index} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm mb-4">
+          <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+          <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+        </div>
+      ))}
+
+      <div className="bg-blue-50 rounded-xl border border-blue-200 p-6 shadow-sm mb-8 mt-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesCtaTitle}
+        </h2>
+        <p className="text-gray-700 mb-4 text-sm">
+          {copy.rulesCtaDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 shadow-sm"
+        >
+          {copy.rulesCtaLabel}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 
