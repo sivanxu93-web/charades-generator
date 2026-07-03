@@ -359,7 +359,7 @@ export default function CharadesGeneratorOptimized({
           />
         </Suspense>
       )}
-
+      <section>
       {generatedWords.length > 0 && (
         <div className="bg-white rounded-xl shadow-lg p-4 mb-8">
           <div className="text-center mb-6">
@@ -417,6 +417,7 @@ export default function CharadesGeneratorOptimized({
           {t('generator.generateButton', { count: displayCount })}
         </button>
       </div>
+      </section>
 
       <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
         <h2 className="text-xl font-bold text-gray-800 mb-4">{dictionary.generator.howToPlayHeading}</h2>
