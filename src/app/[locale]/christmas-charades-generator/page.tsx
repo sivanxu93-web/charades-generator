@@ -1,14 +1,11 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import { Metadata } from "next";
 import Link from "next/link";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
 
 interface PageProps {
@@ -73,18 +70,22 @@ export default async function ChristmasCharadesPage({ params }: PageProps) {
   const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   return (
-    <div className="bg-gradient-to-b from-red-50 to-green-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.christmas.title, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.christmas.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.christmas.structuredDataName}
+      structuredDataDescription={dictionary.seo.christmas.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Holiday Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gradient-to-b from-red-50 to-green-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.christmas.title}
         description={dictionary.pages.christmas.description}
         defaultCategory="christmas"
@@ -92,156 +93,131 @@ export default async function ChristmasCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.christmas.structuredDataName}
-        description={dictionary.seo.christmas.structuredDataDescription}
-        url={canonicalUrl}
-        category="Holiday Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-red-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.calloutTitle}</h2>
-          <p className="text-gray-600 mb-4">
-            {copy.calloutDescription.before}{" "}
-            <Link href={copy.calloutDescription.href} className="text-red-600 hover:text-red-800 underline">
-              {copy.calloutDescription.linkText}
-            </Link>
-            {copy.calloutDescription.after}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.calloutColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.calloutTitle}</h2>
+      <p className="text-gray-600 mb-4">
+        {copy.calloutDescription.before}{" "}
+        <Link href={copy.calloutDescription.href} className="text-red-600 hover:text-red-800 underline">
+          {copy.calloutDescription.linkText}
+        </Link>
+        {copy.calloutDescription.after}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.calloutColumns.map((column) => (
+          <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.samplesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.samples.map((group) => (
-              <div key={group.title} className="text-left p-4 rounded-lg border border-gray-200 bg-gray-50">
-                <h3 className="font-semibold mb-2 text-gray-800">{group.title}</h3>
-                <ul className="text-sm space-y-1 text-gray-700">
-                  {group.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.categoriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.categories.map((item) => (
-              <div key={item.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: item.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: item.headingColor }}>
-                  {item.title}
-                </h3>
-                <p className="text-sm" style={{ color: item.textColor }}>
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-red-100 to-green-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.howToTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.howTo.setupHeadingColor }}>
-                {copy.howTo.setupTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.howTo.setupItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.howTo.tipsHeadingColor }}>
-                {copy.howTo.tipsTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.howTo.tipsItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-red-50 rounded-lg shadow-md p-6 mb-8 border border-red-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">{copy.gearTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.gearDescription}</p>
-          <p className="text-xs font-semibold text-gray-500 mb-3">
-            {copy.gearDisclaimer}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.gearItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                target="_blank"
-               rel="noopener noreferrer nofollow" 
-                className="group flex flex-col rounded-xl bg-white p-4 border border-red-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <span className="text-xs font-semibold text-red-700 uppercase tracking-wide mb-1">
-                  {item.tag}
-                </span>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-red-700">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-gray-600 flex-1">{item.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.samplesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.samples.map((group) => (
+          <div key={group.title} className="text-left p-4 rounded-lg border border-gray-200 bg-gray-50">
+            <h3 className="font-semibold mb-2 text-gray-800">{group.title}</h3>
+            <ul className="text-sm space-y-1 text-gray-700">
+              {group.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.categoriesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.categories.map((item) => (
+          <div key={item.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: item.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: item.headingColor }}>
+              {item.title}
+            </h3>
+            <p className="text-sm" style={{ color: item.textColor }}>
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.howToTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-red-100 to-green-100 rounded-lg p-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.howTo.setupHeadingColor }}>
+            {copy.howTo.setupTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            {copy.howTo.setupItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.howTo.tipsHeadingColor }}>
+            {copy.howTo.tipsTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            {copy.howTo.tipsItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-2">{copy.gearTitle}</h2>
+      <p className="text-gray-700 mb-4">{copy.gearDescription}</p>
+      <p className="text-xs font-semibold text-gray-500 mb-3">
+        {copy.gearDisclaimer}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.gearItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="group flex flex-col rounded-xl bg-white p-4 border border-red-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <span className="text-xs font-semibold text-red-700 uppercase tracking-wide mb-1">
+              {item.tag}
+            </span>
+            <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-red-700">
+              {item.title}
+            </h3>
+            <p className="text-xs text-gray-600 flex-1">{item.description}</p>
+          </Link>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-600 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

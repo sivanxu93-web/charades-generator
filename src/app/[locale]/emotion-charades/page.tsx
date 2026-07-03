@@ -1,7 +1,5 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import FAQStructuredData from "@/components/FAQStructuredData";
-import StructuredData from "@/components/StructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
@@ -68,14 +66,26 @@ export default async function EmotionCharadesPage({ params }: PageProps) {
 
   const canonicalPath = "/emotion-charades";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   return (
-    <div className="bg-rose-50 min-h-screen">
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.emotions.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.emotions.structuredDataName}
+      structuredDataDescription={dictionary.seo.emotions.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Educational Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-rose-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.emotions.title}
         description={dictionary.pages.emotions.description}
         defaultCategory="emotions"
@@ -85,122 +95,99 @@ export default async function EmotionCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.emotions.structuredDataName}
-        description={dictionary.seo.emotions.structuredDataDescription}
-        url={canonicalUrl}
-        category="Educational Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-rose-500">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.introTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.introLead}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.introColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">{copy.introTitle}</h2>
+      <p className="text-gray-700 mb-6">{copy.introLead}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        {copy.introColumns.map((column) => (
+          <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.activitiesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {copy.activities.map((card) => (
-              <div key={card.title} className="bg-slate-50 border border-slate-200 rounded-xl p-4">
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{card.title}</h3>
-                <p className="text-sm text-slate-700">{card.description}</p>
-                <ul className="mt-3 space-y-1 text-xs text-slate-600">
-                  {card.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-rose-100 to-amber-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.tipsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.tips.map((tip) => (
-              <div key={tip.title} className="bg-white/80 border border-rose-200 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-rose-700 mb-2">{tip.title}</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  {tip.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.integrationTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.integrationLead}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.integrationCards.map((card) => (
-              <div key={card.title} className="border border-amber-200 rounded-lg p-4 bg-amber-50">
-                <h3 className="font-semibold text-amber-800 mb-2">{card.title}</h3>
-                <ul className="space-y-1 text-sm text-amber-900">
-                  {card.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-sm text-gray-600">
-            {copy.integrationFooter.before}{" "}
-            <Link href={copy.integrationFooter.href} className="text-rose-600 hover:text-rose-800 underline">
-              {copy.integrationFooter.linkText}
-            </Link>{" "}
-            {copy.integrationFooter.after}
-          </p>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-700">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesCtaTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesCtaDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCtaLabel}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.activitiesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        {copy.activities.map((card) => (
+          <div key={card.title} className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">{card.title}</h3>
+            <p className="text-sm text-slate-700">{card.description}</p>
+            <ul className="mt-3 space-y-1 text-xs text-slate-600">
+              {card.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.tipsTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-rose-100 to-amber-100 rounded-lg p-6">
+        {copy.tips.map((tip) => (
+          <div key={tip.title} className="bg-white/80 border border-rose-200 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-rose-700 mb-2">{tip.title}</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {tip.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.integrationTitle}</h2>
+      <p className="text-gray-700 mb-4">{copy.integrationLead}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
+        {copy.integrationCards.map((card) => (
+          <div key={card.title} className="border border-amber-200 rounded-lg p-4 bg-amber-50">
+            <h3 className="font-semibold text-amber-800 mb-2">{card.title}</h3>
+            <ul className="space-y-1 text-sm text-amber-900">
+              {card.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-gray-600 mb-8">
+        {copy.integrationFooter.before}{" "}
+        <Link href={copy.integrationFooter.href} className="text-rose-600 hover:text-rose-800 underline">
+          {copy.integrationFooter.linkText}
+        </Link>{" "}
+        {copy.integrationFooter.after}
+      </p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesCtaTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesCtaDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCtaLabel}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

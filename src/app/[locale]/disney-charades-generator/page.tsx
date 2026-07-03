@@ -1,14 +1,11 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
 
 interface PageProps {
@@ -76,18 +73,22 @@ export default async function DisneyCharadesPage({ params }: PageProps) {
     dictionary.navigation.items.find((item) => item.key === "howToUse")?.title ?? "How to Use";
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.disney.title, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.disney.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.disney.structuredDataName}
+      structuredDataDescription={dictionary.seo.disney.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Disney Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.disney.title}
         description={dictionary.pages.disney.description}
         defaultCategory="disney"
@@ -97,127 +98,106 @@ export default async function DisneyCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.disney.structuredDataName}
-        description={dictionary.seo.disney.structuredDataDescription}
-        url={canonicalUrl}
-        category="Disney Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-purple-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.partyTitle}</h2>
-          <p className="text-gray-600 mb-4">
-            {copy.partyDescription.before}{" "}
-            <Link href={copy.partyDescription.href} className="text-purple-600 hover:text-purple-800 underline">
-              {copy.partyDescription.linkText}
-            </Link>
-            {copy.partyDescription.after}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.partyColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.partyTitle}</h2>
+      <p className="text-gray-600 mb-4">
+        {copy.partyDescription.before}{" "}
+        <Link href={copy.partyDescription.href} className="text-purple-600 hover:text-purple-800 underline">
+          {copy.partyDescription.linkText}
+        </Link>
+        {copy.partyDescription.after}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.partyColumns.map((column) => (
+          <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.charactersTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.characters.map((card) => (
-              <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.tipsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.characterHeadingColor }}>
-                {copy.tips.characterTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.characterItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.guessingHeadingColor }}>
-                {copy.tips.guessingTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.guessingItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-8 bg-purple-50 rounded-lg border border-purple-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-
-        <section className="mt-8 bg-purple-50 rounded-lg border border-purple-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">{exploreLabel}</h2>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <Link href={buildLocalePath(locale, "/how-to-use/")}
-              className="inline-flex items-center rounded-md border border-purple-200 px-2 py-1 text-purple-800 hover:bg-purple-100">
-              {howToUseLabel}
-            </Link>
-            <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
-              className="inline-flex items-center rounded-md border border-purple-200 px-2 py-1 text-purple-800 hover:bg-purple-100">
-              {dictionary.pages.reverse.title}
-            </Link>
-          </div>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.charactersTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.characters.map((card) => (
+          <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.tipsTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg p-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.characterHeadingColor }}>
+            {copy.tips.characterTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            {copy.tips.characterItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.guessingHeadingColor }}>
+            {copy.tips.guessingTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-gray-700">
+            {copy.tips.guessingItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-600 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-purple-50 rounded-lg border border-purple-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+
+      <div className="bg-purple-50 rounded-lg border border-purple-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">{exploreLabel}</h2>
+        <div className="flex flex-wrap gap-2 text-sm">
+          <Link href={buildLocalePath(locale, "/how-to-use/")}
+            className="inline-flex items-center rounded-md border border-purple-200 px-2 py-1 text-purple-800 hover:bg-purple-100">
+            {howToUseLabel}
+          </Link>
+          <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
+            className="inline-flex items-center rounded-md border border-purple-200 px-2 py-1 text-purple-800 hover:bg-purple-100">
+            {dictionary.pages.reverse.title}
+          </Link>
+        </div>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

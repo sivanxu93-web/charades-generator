@@ -1,7 +1,5 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import FAQStructuredData from "@/components/FAQStructuredData";
-import StructuredData from "@/components/StructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
@@ -68,14 +66,26 @@ export default async function HardCharadesPage({ params }: PageProps) {
 
   const canonicalPath = "/hard-charades-ideas";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   return (
-    <div className="bg-slate-50 min-h-screen">
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.hard.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.hard.structuredDataName}
+      structuredDataDescription={dictionary.seo.hard.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Party Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-slate-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.hard.title}
         description={dictionary.pages.hard.description}
         defaultCategory="all"
@@ -85,113 +95,90 @@ export default async function HardCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.hard.structuredDataName}
-        description={dictionary.seo.hard.structuredDataDescription}
-        url={canonicalUrl}
-        category="Party Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-slate-600">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.introTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.introLead}</p>
-          <ul className="list-disc list-inside space-y-2 text-gray-700">
-            {copy.introBullets.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">{copy.introTitle}</h2>
+      <p className="text-gray-700 mb-4">{copy.introLead}</p>
+      <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
+        {copy.introBullets.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.categoriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {copy.categories.map((category) => (
-              <div key={category.title} className="bg-slate-900 text-slate-100 rounded-xl p-4">
-                <h3 className="text-lg font-semibold mb-2">{category.title}</h3>
-                <p className="text-sm mb-2">{category.description}</p>
-                <ul className="space-y-1 text-xs text-slate-200">
-                  {category.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.categoriesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        {copy.categories.map((category) => (
+          <div key={category.title} className="bg-slate-900 text-slate-100 rounded-xl p-4">
+            <h3 className="text-lg font-semibold mb-2">{category.title}</h3>
+            <p className="text-sm mb-2">{category.description}</p>
+            <ul className="space-y-1 text-xs text-slate-200">
+              {category.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-slate-200 to-slate-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.hostTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.hostTips.map((tip) => (
-              <div key={tip.title} className="bg-white border border-slate-200 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-slate-800 mb-2">{tip.title}</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  {tip.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.variantsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.variants.map((variant) => (
-              <div key={variant.title} className="border border-slate-200 rounded-lg p-4 bg-white">
-                <h3 className="text-lg font-semibold text-slate-800 mb-2">{variant.title}</h3>
-                <p className="text-sm text-gray-700 mb-2">{variant.description}</p>
-                <ul className="space-y-1 text-sm text-gray-600">
-                  {variant.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-sm text-gray-600">
-            {copy.variantsFooter.before}{" "}
-            <Link href={copy.variantsFooter.href} className="text-indigo-600 hover:text-indigo-800 underline">
-              {copy.variantsFooter.linkText}
-            </Link>{" "}
-            {copy.variantsFooter.after}
-          </p>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-700">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesCtaTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesCtaDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCtaLabel}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.hostTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-slate-200 to-slate-100 rounded-lg p-6">
+        {copy.hostTips.map((tip) => (
+          <div key={tip.title} className="bg-white border border-slate-200 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">{tip.title}</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {tip.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.variantsTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-4">
+        {copy.variants.map((variant) => (
+          <div key={variant.title} className="border border-slate-200 rounded-lg p-4 bg-white">
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">{variant.title}</h3>
+            <p className="text-sm text-gray-700 mb-2">{variant.description}</p>
+            <ul className="space-y-1 text-sm text-gray-600">
+              {variant.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <p className="text-sm text-gray-600 mb-8">
+        {copy.variantsFooter.before}{" "}
+        <Link href={copy.variantsFooter.href} className="text-indigo-600 hover:text-indigo-800 underline">
+          {copy.variantsFooter.linkText}
+        </Link>{" "}
+        {copy.variantsFooter.after}
+      </p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesCtaTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesCtaDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCtaLabel}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

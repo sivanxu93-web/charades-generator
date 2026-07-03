@@ -1,7 +1,5 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
@@ -68,14 +66,26 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
 
   const canonicalPath = "/funny-charades-for-adults";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.funny.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.funny.structuredDataName}
+      structuredDataDescription={dictionary.seo.funny.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Adult Party Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.funny.title}
         description={dictionary.pages.funny.description}
         defaultCategory="funny"
@@ -86,189 +96,164 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.funny.structuredDataName}
-        description={dictionary.seo.funny.structuredDataDescription}
-        url={canonicalUrl}
-        category="Adult Party Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h2 className="text-xl font-semibold text-blue-800">{copy.quickActions.title}</h2>
-            <p className="text-blue-700 text-sm md:text-base">{copy.quickActions.description}</p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={copy.quickActions.primary.href}
-              className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-            >
-              {copy.quickActions.primary.label}
-            </Link>
-            <Link
-              href={copy.quickActions.secondary.href}
-              className="inline-flex items-center justify-center rounded-md border border-blue-500 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100"
-            >
-              {copy.quickActions.secondary.label}
-            </Link>
-          </div>
-        </section>
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 className="text-xl font-semibold text-blue-800">{copy.quickActions.title}</h2>
+          <p className="text-blue-700 text-sm md:text-base">{copy.quickActions.description}</p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Link
+            href={copy.quickActions.primary.href}
+            className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+          >
+            {copy.quickActions.primary.label}
+          </Link>
+          <Link
+            href={copy.quickActions.secondary.href}
+            className="inline-flex items-center justify-center rounded-md border border-blue-500 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-100"
+          >
+            {copy.quickActions.secondary.label}
+          </Link>
+        </div>
+      </div>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-orange-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.party.title}</h2>
-          <p className="text-gray-600 mb-4">
-            {copy.party.description.before}{" "}
-            <Link href={copy.party.description.href} className="text-orange-600 hover:text-orange-800 underline">
-              {copy.party.description.linkText}
-            </Link>
-            {copy.party.description.after}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.party.columns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.party.title}</h2>
+      <p className="text-gray-600 mb-4">
+        {copy.party.description.before}{" "}
+        <Link href={copy.party.description.href} className="text-orange-600 hover:text-orange-800 underline">
+          {copy.party.description.linkText}
+        </Link>
+        {copy.party.description.after}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.party.columns.map((column) => (
+          <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.playbook.title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.playbook.sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.title}</h3>
+            <ul className="text-gray-600 space-y-2 text-sm">
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.categoriesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.categories.map((card) => (
+          <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.tips.title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-lg p-6">
+        {copy.tips.sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="text-lg font-semibold mb-3" style={{ color: section.headingColor }}>
+              {section.title}
+            </h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 id="word-banks" className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.wordBanks.title}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600 mb-8">
+        {copy.wordBanks.columns.map((column) => (
+          <div key={column.sections[0].heading}>
+            {column.sections.map((section) => (
+              <div key={section.heading} className="mb-4 last:mb-0">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.heading}</h3>
+                <ul className="space-y-1">
+                  {section.items.map((item) => (
                     <li key={item}>• {item}</li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
-        </section>
-
-        <section id="word-banks" className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.playbook.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.playbook.sections.map((section) => (
-              <div key={section.title}>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.title}</h3>
-                <ul className="text-gray-600 space-y-2 text-sm">
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.categoriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.categories.map((card) => (
-              <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-pink-100 to-yellow-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.tips.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.tips.sections.map((section) => (
-              <div key={section.title}>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: section.headingColor }}>
-                  {section.title}
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  {section.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.wordBanks.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-600">
-            {copy.wordBanks.columns.map((column) => (
-              <div key={column.sections[0].heading}>
-                {column.sections.map((section) => (
-                  <div key={section.heading} className="mb-4 last:mb-0">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{section.heading}</h3>
-                    <ul className="space-y-1">
-                      {section.items.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-yellow-50 rounded-lg shadow-md p-6 mb-8 border border-yellow-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">{copy.gearTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.gearDescription}</p>
-          <p className="text-xs font-semibold text-gray-500 mb-3">
-            {copy.gearDisclaimer}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.gearItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                target="_blank"
-               rel="noopener noreferrer nofollow" 
-                className="group flex flex-col rounded-xl bg-white p-4 border border-yellow-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide mb-1">
-                  {item.tag}
-                </span>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-yellow-700">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-gray-600 flex-1">{item.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-600 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-yellow-50 rounded-lg shadow-md p-6 mb-8 border border-yellow-200">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{copy.gearTitle}</h2>
+        <p className="text-gray-700 mb-4">{copy.gearDescription}</p>
+        <p className="text-xs font-semibold text-gray-500 mb-3">
+          {copy.gearDisclaimer}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {copy.gearItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="group flex flex-col rounded-xl bg-white p-4 border border-yellow-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide mb-1">
+                {item.tag}
+              </span>
+              <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-yellow-700">
+                {item.title}
+              </h3>
+              <p className="text-xs text-gray-600 flex-1">{item.description}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

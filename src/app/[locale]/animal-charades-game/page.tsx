@@ -1,7 +1,5 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import FAQStructuredData from "@/components/FAQStructuredData";
-import StructuredData from "@/components/StructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
@@ -68,14 +66,26 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
 
   const canonicalPath = "/animal-charades-game";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
+  const homeUrl = buildCanonicalUrl(locale, "/");
+  const homeLabel = dictionary.navigation.items.find((item) => item.key === "home")?.title ?? "Home";
 
   return (
-    <div className="bg-emerald-50 min-h-screen">
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.animals.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.animals.structuredDataName}
+      structuredDataDescription={dictionary.seo.animals.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Family Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-emerald-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.animals.title}
         description={dictionary.pages.animals.description}
         defaultCategory="animals"
@@ -85,122 +95,99 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.animals.structuredDataName}
-        description={dictionary.seo.animals.structuredDataDescription}
-        url={canonicalUrl}
-        category="Family Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-emerald-500">
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.introTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.introLead}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {copy.introCards.map((card) => (
-              <div key={card.title} className="p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm mb-3" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-                <ul className="text-xs space-y-1" style={{ color: card.textColor }}>
-                  {card.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">{copy.introTitle}</h2>
+      <p className="text-gray-700 mb-6">{copy.introLead}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        {copy.introCards.map((card) => (
+          <div key={card.title} className="p-4 rounded-lg" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm mb-3" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
+            <ul className="text-xs space-y-1" style={{ color: card.textColor }}>
+              {card.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.gameModesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {copy.gameModes.map((mode) => (
-              <div key={mode.title} className="border border-emerald-200 rounded-lg p-4 bg-white">
-                <h3 className="text-lg font-semibold text-emerald-700 mb-2">{mode.title}</h3>
-                <p className="text-sm text-gray-700 mb-3">{mode.description}</p>
-                <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                  {mode.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.educatorTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.educatorTips.map((tip) => (
-              <div key={tip.title} className="bg-white/80 border border-teal-200 rounded-lg p-4">
-                <h3 className="text-lg font-semibold text-teal-700 mb-2">{tip.title}</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700">
-                  {tip.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.resourcesTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.resourcesLead}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            {copy.resourcesPrimary && (
-              <Link
-                href={copy.resourcesPrimary.href}
-                className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
-              >
-                {copy.resourcesPrimary.label}
-              </Link>
-            )}
-            <Link
-              href={copy.resourcesSecondary.href}
-              className="inline-flex items-center justify-center rounded-md border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
-            >
-              {copy.resourcesSecondary.label}
-            </Link>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-700">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.gameModesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+        {copy.gameModes.map((mode) => (
+          <div key={mode.title} className="border border-emerald-200 rounded-lg p-4 bg-white">
+            <h3 className="text-lg font-semibold text-emerald-700 mb-2">{mode.title}</h3>
+            <p className="text-sm text-gray-700 mb-3">{mode.description}</p>
+            <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+              {mode.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.educatorTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg p-6">
+        {copy.educatorTips.map((tip) => (
+          <div key={tip.title} className="bg-white/80 border border-teal-200 rounded-lg p-4">
+            <h3 className="text-lg font-semibold text-teal-700 mb-2">{tip.title}</h3>
+            <ul className="list-disc list-inside space-y-2 text-gray-700">
+              {tip.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.resourcesTitle}</h2>
+      <p className="text-gray-700 mb-4">{copy.resourcesLead}</p>
+      <div className="flex flex-col sm:flex-row gap-3 mb-8">
+        {copy.resourcesPrimary && (
+          <Link
+            href={copy.resourcesPrimary.href}
+            className="inline-flex items-center justify-center rounded-md bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+          >
+            {copy.resourcesPrimary.label}
+          </Link>
+        )}
+        <Link
+          href={copy.resourcesSecondary.href}
+          className="inline-flex items-center justify-center rounded-md border border-emerald-500 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
+        >
+          {copy.resourcesSecondary.label}
+        </Link>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-blue-50 rounded-lg border border-blue-200 p-6 mb-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          {copy.rulesTitle}
+        </h2>
+        <p className="text-gray-700 mb-3">
+          {copy.rulesDescription}
+        </p>
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 
