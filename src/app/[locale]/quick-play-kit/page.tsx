@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
+import Sidebar from "@/components/Sidebar";
 import PrintButton from "@/components/PrintButton";
 import CopyLinkButton from "@/components/CopyLinkButton";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl } from "@/utils/seo";
@@ -74,8 +75,10 @@ export default async function QuickPlayKitPage({ params }: PageProps) {
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-4xl px-6 py-10 sm:py-12">
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
         <header className="mb-8 space-y-3">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
             {quickKit.updated}
@@ -111,7 +114,9 @@ export default async function QuickPlayKitPage({ params }: PageProps) {
             </section>
           ))}
         </main>
-      </div>
+      </article>
+      <Sidebar />
     </div>
+  </div>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
+import Sidebar from "@/components/Sidebar";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import HowToStructuredData from "@/components/HowToStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
@@ -176,8 +177,11 @@ export default async function HowToUsePage({ params }: PageProps) {
   ].filter(Boolean);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">
         {dictionary.pages.howToUse.title}
       </h1>
 
@@ -434,6 +438,9 @@ export default async function HowToUsePage({ params }: PageProps) {
           </p>
         </div>
       </div>
+      </article>
+      <Sidebar />
     </div>
+  </div>
   );
 }

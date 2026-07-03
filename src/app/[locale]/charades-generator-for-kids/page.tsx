@@ -83,7 +83,11 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
           { name: dictionary.pages.kids.title, url: canonicalUrl },
         ]}
       />
-      <CharadesGeneratorOptimized
+      
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+          <CharadesGeneratorOptimized
         title={dictionary.pages.kids.title}
         description={dictionary.pages.kids.description}
         defaultCategory="kids"
@@ -102,10 +106,8 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
         locale={locale}
       />
       <FAQStructuredData items={copy.faq ?? []} />
-
-      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
-        <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8">
+          
+          <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8">
           <h2 className="text-xl font-semibold text-blue-800 mb-2">{copy.introTitle}</h2>
           <p className="text-blue-700 text-sm sm:text-base">{copy.introDescription}</p>
         </section>
@@ -278,7 +280,7 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
           </div>
         </section>
       </article>
-        <Sidebar locale={locale} />
+        <Sidebar />
       </div>
     </div>
   );

@@ -25,11 +25,13 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
   const expertInsights = generatorDeepDive.expertInsights;
 
   return (
-    <>
-      <CharadesGeneratorOptimized
-        initialWords={initialWords}
-        isShowScenarios
-      />
+    <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+      <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+        <CharadesGeneratorOptimized
+          initialWords={initialWords}
+          isShowScenarios
+        />
 
       <div className="max-w-4xl mx-auto px-6 mt-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
@@ -85,8 +87,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
+
         <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-indigo-500">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{difference.title}</h2>
           <p className="text-gray-600 mb-4">{difference.lead}</p>
@@ -144,9 +145,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
             ))}
           </div>
         </section>
-      </article>
-        <Sidebar locale={locale} />
-      </div>
+
 
       <section className="bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-10">
@@ -155,7 +154,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
               {dictionary.home.exploreLabel}
             </p>
             <div className="mt-3 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-              <div className="max-w-3xl">
+              <div className="max-w-4xl">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{dictionary.home.themedHeading}</h2>
                 <p className="text-gray-600 mt-2">{dictionary.home.themedDescription}</p>
               </div>
@@ -196,7 +195,7 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
 
       <section className="bg-gray-100 border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-10">
-          <div className="mb-8 max-w-3xl">
+          <div className="mb-8 max-w-4xl">
             <p className="text-xs font-semibold text-green-600 uppercase tracking-[0.2em]">
               {dictionary.home.guidesLabel}
             </p>
@@ -269,6 +268,8 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
           fallbackShareCta={expertInsights.shareCta}
         />
       )}
-    </>
+      </article>
+      <Sidebar />
+    </div>
   );
 }

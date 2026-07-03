@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/dictionary";
+import Sidebar from "@/components/Sidebar";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import PlaybookSubmissionForm from "@/components/PlaybookSubmissionForm";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl } from "@/utils/seo";
@@ -93,11 +94,14 @@ export default async function ContactPage({ params }: PageProps) {
   };
 
   return (
-    <main className="max-w-3xl mx-auto p-6 bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <main className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
       <h1 className="text-3xl font-bold text-gray-900 mb-6">
         {dictionary.pages.contact.title}
       </h1>
@@ -143,6 +147,9 @@ export default async function ContactPage({ params }: PageProps) {
           formCopy={dictionary.pages.contact.form}
         />
       </section>
-    </main>
+        </main>
+        <Sidebar />
+      </div>
+    </div>
   );
 }

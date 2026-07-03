@@ -71,7 +71,11 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
 
   return (
     <div className="bg-emerald-50 min-h-screen">
-      <CharadesGeneratorOptimized
+      
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+          <CharadesGeneratorOptimized
         title={dictionary.pages.animals.title}
         description={dictionary.pages.animals.description}
         defaultCategory="animals"
@@ -90,10 +94,8 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
         locale={locale}
       />
       <FAQStructuredData items={copy.faq ?? []} />
-
-      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-emerald-500">
+          
+          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-emerald-500">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">{copy.introTitle}</h2>
           <p className="text-gray-700 mb-4">{copy.introLead}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -196,7 +198,7 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
           </Link>
         </section>
       </article>
-        <Sidebar locale={locale} />
+        <Sidebar />
       </div>
     </div>
   );

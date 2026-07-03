@@ -2,8 +2,9 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
-import { buildCanonicalUrl, buildAlternateLanguages } from "@/utils/seo";
+import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
+import Sidebar from "@/components/Sidebar";
 import HowToStructuredData from "@/components/HowToStructuredData";
 
 interface Props {
@@ -65,8 +66,11 @@ export default async function ImposterRulesPage(props: Props) {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <BreadcrumbStructuredData
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
+          <BreadcrumbStructuredData
         items={[
           { name: dictionary.navigation.items.find(i => i.key === "home")?.title || "Home", url: buildCanonicalUrl(locale, "/") },
           { name: dictionary.seo.imposter.title, url: buildCanonicalUrl(locale, "/imposter-game/") },
@@ -145,6 +149,9 @@ export default async function ImposterRulesPage(props: Props) {
           </div>
         </section>
       </article>
+      </article>
+      <Sidebar />
     </div>
+  </div>
   );
 }

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
+import Sidebar from "@/components/Sidebar";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import FAQStructuredData from "@/components/FAQStructuredData";
@@ -78,7 +79,9 @@ export default async function ImposterGamePage({ params }: PageProps) {
         ]}
       />
 
-      <main className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
         {/* Header Section */}
         <header className="mb-10 text-center">
           <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-indigo-700 mb-3 border border-indigo-200">
@@ -350,7 +353,9 @@ export default async function ImposterGamePage({ params }: PageProps) {
             </Link>
           </div>
         </section>
-      </main>
+      </article>
+      <Sidebar />
+    </div>
 
       <StructuredData
         type="WebApplication"

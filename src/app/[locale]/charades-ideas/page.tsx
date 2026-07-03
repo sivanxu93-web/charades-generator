@@ -93,8 +93,9 @@ export default async function CharadesIdeasPage({ params }: PageProps) {
 
       <FAQStructuredData items={copy.faq} />
 
-      <div className="max-w-6xl mx-auto px-6 pb-10 pt-8 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
+      <div className="max-w-[1500px] mx-auto px-6 pb-10 pt-8 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
         <section className="mb-10">
           <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.2em]">
             {copy.tagline}
@@ -211,7 +212,7 @@ export default async function CharadesIdeasPage({ params }: PageProps) {
           </div>
         </section>
       </article>
-      <Sidebar locale={locale} />
+      <Sidebar />
     </div>
   </div>
   );

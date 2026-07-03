@@ -71,7 +71,11 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <CharadesGeneratorOptimized
+      
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+          <CharadesGeneratorOptimized
         title={dictionary.pages.funny.title}
         description={dictionary.pages.funny.description}
         defaultCategory="funny"
@@ -91,10 +95,8 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
         locale={locale}
       />
       <FAQStructuredData items={copy.faq ?? []} />
-
-      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
-        <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          
+          <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-xl font-semibold text-blue-800">{copy.quickActions.title}</h2>
             <p className="text-blue-700 text-sm md:text-base">{copy.quickActions.description}</p>
@@ -264,7 +266,7 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
           </Link>
         </section>
       </article>
-        <Sidebar locale={locale} />
+        <Sidebar />
       </div>
     </div>
   );

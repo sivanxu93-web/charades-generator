@@ -4,6 +4,7 @@ import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
 import { buildLocalePath } from "@/utils/localePaths";
+import Sidebar from "@/components/Sidebar";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -98,8 +99,11 @@ export default async function AboutPage({ params }: PageProps) {
     : null;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white">
-      {changelogSchema && (
+    <div className="bg-gray-50 min-h-screen">
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden 2xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        <article className="entry-content post-content flex-grow max-w-4xl w-full p-6 bg-white rounded-lg shadow-sm">
+          {changelogSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(changelogSchema) }} />
       )}
       <h1 className="text-3xl font-bold text-gray-900 mb-8">
@@ -240,6 +244,9 @@ export default async function AboutPage({ params }: PageProps) {
           </div>
         </section>
       )}
+      </article>
+      <Sidebar />
     </div>
+  </div>
   );
 }

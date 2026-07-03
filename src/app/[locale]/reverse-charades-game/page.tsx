@@ -82,7 +82,11 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
           { name: dictionary.pages.reverse.title, url: canonicalUrl },
         ]}
       />
-      <CharadesGeneratorOptimized
+      
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+          <CharadesGeneratorOptimized
         title={dictionary.pages.reverse.title}
         description={dictionary.pages.reverse.description}
         defaultCategory="all"
@@ -100,10 +104,8 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
         locale={locale}
       />
       <FAQStructuredData items={copy.faq ?? []} />
-
-      <div className="max-w-6xl mx-auto px-6 pb-10 flex flex-col lg:flex-row gap-8 items-start">
-        <article className="entry-content post-content flex-grow min-w-0 w-full space-y-8">
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-blue-500">
+          
+          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-blue-500">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.introTitle}</h2>
           <p className="text-gray-700 mb-4">{copy.introLead}</p>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -213,7 +215,7 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
           </Link>
         </section>
       </article>
-        <Sidebar locale={locale} />
+        <Sidebar />
       </div>
     </div>
   );

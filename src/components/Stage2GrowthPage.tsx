@@ -9,6 +9,7 @@ import type { Locale } from "@/i18n/config";
 import type { Stage2PageContent } from "@/data/stage2-growth-pages";
 import { buildLocalePath } from "@/utils/localePaths";
 import { buildCanonicalUrl } from "@/utils/seo";
+import Sidebar from "@/components/Sidebar";
 
 interface Stage2GrowthPageProps {
   locale: Locale;
@@ -24,7 +25,7 @@ export default function Stage2GrowthPage({ locale, content }: Stage2GrowthPagePr
     .join("\n\n");
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 min-h-screen">
       <BreadcrumbStructuredData
         items={[
           { name: homeLabel, url: buildCanonicalUrl(locale, "/") },
@@ -41,34 +42,36 @@ export default function Stage2GrowthPage({ locale, content }: Stage2GrowthPagePr
       />
       <FAQStructuredData items={content.faq} />
 
-      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
-        <header className="mb-8 rounded-lg border border-blue-100 bg-white p-6 shadow-sm">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
-            {content.heroLabel}
-          </p>
-          <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-            {content.heroTitle}
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-600">
-            {content.heroDescription}
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#generator"
-              className="inline-flex items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700"
-            >
-              {content.primaryCta}
-            </a>
-            <a
-              href="#related-games"
-              className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-white"
-            >
-              {content.relatedTitle}
-            </a>
-          </div>
-        </header>
+      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
+        
+        <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
+          <header className="rounded-lg border border-blue-100 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+              {content.heroLabel}
+            </p>
+            <h1 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
+              {content.heroTitle}
+            </h1>
+            <p className="mt-4 max-w-4xl text-lg leading-8 text-gray-600">
+              {content.heroDescription}
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#generator"
+                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-700"
+              >
+                {content.primaryCta}
+              </a>
+              <a
+                href="#related-games"
+                className="inline-flex items-center justify-center rounded-md border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-700 hover:bg-white"
+              >
+                {content.relatedTitle}
+              </a>
+            </div>
+          </header>
 
-        <main className="space-y-8">
           <div id="generator">
             <Stage2PromptGenerator
               title={content.generatorTitle}
@@ -141,7 +144,9 @@ export default function Stage2GrowthPage({ locale, content }: Stage2GrowthPagePr
               ))}
             </div>
           </section>
-        </main>
+        </article>
+        
+        <Sidebar />
       </div>
     </div>
   );
