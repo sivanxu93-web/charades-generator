@@ -1,14 +1,11 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
 
 interface PageProps {
@@ -76,18 +73,22 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
     dictionary.navigation.items.find((item) => item.key === "howToUse")?.title ?? "How to Use";
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.kids.title, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.kids.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.kids.structuredDataName}
+      structuredDataDescription={dictionary.seo.kids.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Kids Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.kids.title}
         description={dictionary.pages.kids.description}
         defaultCategory="kids"
@@ -97,192 +98,159 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.kids.structuredDataName}
-        description={dictionary.seo.kids.structuredDataDescription}
-        url={canonicalUrl}
-        category="Kids Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8">
-          <h2 className="text-xl font-semibold text-blue-800 mb-2">{copy.introTitle}</h2>
-          <p className="text-blue-700 text-sm sm:text-base">{copy.introDescription}</p>
-        </section>
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-3">{copy.introTitle}</h2>
+      <p className="text-gray-700 leading-relaxed mb-6">{copy.introDescription}</p>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-green-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.activitiesTitle}</h2>
-          <p className="text-gray-600 mb-4">
-            {copy.activitiesDescription.before}{" "}
-            <Link href={copy.activitiesDescription.href} className="text-green-600 hover:text-green-800 underline">
-              {copy.activitiesDescription.linkText}
-            </Link>
-            {copy.activitiesDescription.after}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.activitiesColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.activitiesTitle}</h2>
+      <p className="text-gray-600 mb-4">
+        {copy.activitiesDescription.before}{" "}
+        <Link href={copy.activitiesDescription.href} className="text-green-600 hover:text-green-800 underline">
+          {copy.activitiesDescription.linkText}
+        </Link>
+        {copy.activitiesDescription.after}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.activitiesColumns.map((column) => (
+          <div key={column.title} className="p-5 rounded-lg border border-gray-100 shadow-sm" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold text-lg mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="list-disc list-inside space-y-1.5 text-sm" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
+        ))}
+      </div>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.safeTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.safeCategories.map((card) => (
-              <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.safeTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.safeCategories.map((card) => (
+          <div key={card.title} className="text-center p-5 rounded-lg border border-gray-100 shadow-sm" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold text-lg mb-2" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
           </div>
-        </section>
+        ))}
+      </div>
 
-        <section className="bg-purple-50 rounded-lg shadow-md p-6 mb-8 border border-purple-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">{copy.ageGuideTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {copy.ageGuideItems.map((item) => (
-              <div key={item.age} className="bg-white rounded-lg p-4 shadow-sm">
-                <div className="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-sm font-bold rounded-full mb-3">
-                  {item.age}
-                </div>
-                <p className="text-sm text-gray-600 mb-3">{item.description}</p>
-                <div>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                    {item.examplesLabel}:
-                  </span>
-                  <p className="text-gray-800 font-medium mt-1">{item.examples}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.benefitsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.benefits.learningHeadingColor }}>
-                {copy.benefits.learningTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.benefits.learningItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">{copy.ageGuideTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-purple-50 rounded-xl p-6 border border-purple-100">
+        {copy.ageGuideItems.map((item) => (
+          <div key={item.age} className="bg-white rounded-lg p-4 shadow-sm border border-purple-100/50">
+            <div className="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-sm font-bold rounded-full mb-3">
+              {item.age}
             </div>
+            <p className="text-sm text-gray-600 mb-3 leading-relaxed">{item.description}</p>
             <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.benefits.physicalHeadingColor }}>
-                {copy.benefits.physicalTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.benefits.physicalItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                {item.examplesLabel}:
+              </span>
+              <p className="text-gray-800 font-medium mt-1 text-sm">{item.examples}</p>
             </div>
           </div>
-        </section>
+        ))}
+      </div>
 
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.playGuideTitle}</h2>
-          <ol className="list-decimal list-inside space-y-2 text-gray-700">
-            {copy.playGuideList.map((item) => (
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.benefitsTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-orange-50 to-yellow-50 border border-orange-100 rounded-xl p-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.benefits.learningHeadingColor }}>
+            {copy.benefits.learningTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+            {copy.benefits.learningItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
-          </ol>
-          <div className="mt-6 rounded-lg border border-green-200 bg-green-50 p-4">
-            <h3 className="text-lg font-semibold text-green-900 mb-2">{copy.marryTitle}</h3>
-            <p className="text-gray-700">{copy.marryDescription}</p>
-          </div>
-        </section>
-
-        <section className="bg-yellow-50 rounded-lg shadow-md p-6 mb-8 border border-yellow-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">{copy.gearTitle}</h2>
-          <p className="text-gray-700 mb-4">{copy.gearDescription}</p>
-          <p className="text-xs font-semibold text-gray-500 mb-3">
-            {copy.gearDisclaimer}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.gearItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                target="_blank"
-               rel="noopener noreferrer nofollow" 
-                className="group flex flex-col rounded-xl bg-white p-4 border border-yellow-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-              >
-                <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide mb-1">
-                  {item.tag}
-                </span>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-yellow-700">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-gray-600 flex-1">{item.description}</p>
-              </Link>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.benefits.physicalHeadingColor }}>
+            {copy.benefits.physicalTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+            {copy.benefits.physicalItems.map((item) => (
+              <li key={item}>{item}</li>
             ))}
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-
-        <section className="mt-8 bg-green-50 rounded-lg border border-green-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">{exploreLabel}</h2>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <Link href={buildLocalePath(locale, "/how-to-use/")}
-              className="inline-flex items-center rounded-md border border-green-200 px-2 py-1 text-green-800 hover:bg-green-100">
-              {howToUseLabel}
-            </Link>
-            <Link href={buildLocalePath(locale, "/random-charades-generator/")}
-              className="inline-flex items-center rounded-md border border-green-200 px-2 py-1 text-green-800 hover:bg-green-100">
-              {dictionary.pages.random.title}
-            </Link>
-          </div>
-        </section>
-      </article>
-        <Sidebar />
+          </ul>
+        </div>
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.playGuideTitle}</h2>
+      <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
+        {copy.playGuideList.map((item) => (
+          <li key={item} className="text-sm leading-relaxed">{item}</li>
+        ))}
+      </ol>
+      <div className="rounded-lg border border-green-200 bg-green-50 p-5 mb-8">
+        <h3 className="text-lg font-semibold text-green-950 mb-2">{copy.marryTitle}</h3>
+        <p className="text-gray-700 text-sm leading-relaxed">{copy.marryDescription}</p>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-2">{copy.gearTitle}</h2>
+      <p className="text-gray-700 leading-relaxed mb-2">{copy.gearDescription}</p>
+      <p className="text-xs font-semibold text-gray-500 mb-4 leading-relaxed">{copy.gearDisclaimer}</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.gearItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="group flex flex-col rounded-xl bg-white p-4 border border-yellow-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          >
+            <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide mb-1">
+              {item.tag}
+            </span>
+            <h3 className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-yellow-700">
+              {item.title}
+            </h3>
+            <p className="text-xs text-gray-600 flex-1">{item.description}</p>
+          </Link>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-900 mb-2">{item.question}</h3>
+            <p className="text-gray-600 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-2">
+        {copy.rulesTitle}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {copy.rulesDescription}
+      </p>
+      <div className="mb-8">
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+
+      <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">{exploreLabel}</h2>
+      <div className="flex flex-wrap gap-2 text-sm mb-8">
+        <Link href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md border border-green-200 px-3 py-1.5 text-green-800 hover:bg-green-50">
+          {howToUseLabel}
+        </Link>
+        <Link href={buildLocalePath(locale, "/random-charades-generator/")}
+          className="inline-flex items-center rounded-md border border-green-200 px-3 py-1.5 text-green-800 hover:bg-green-50">
+          {dictionary.pages.random.title}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 

@@ -1,0 +1,20 @@
+Subject:
+Journey Ads integration issue: Ads not displaying after script setup
+
+Description:
+Hello Journey Support Team,
+
+We have recently integrated the Journey ad script wrapper tag on our custom site: https://charades-generator.com/
+
+Here are the technical details of our site and setup:
+1. CMS: Custom-built React/Next.js 15 application (not running on WordPress or standard CMS).
+2. Integration Method: The script tag (<script type="text/javascript" async="async" data-noptimize="1" data-cfasync="false" src="//scripts.scriptwrapper.com/tags/1f04f612-13c5-4212-b2f2-7c2009b4aa91.js"></script>) is successfully integrated in the HTML head and is confirmed loading in the browser.
+3. Sidebar: No, our design is a responsive container layout without a designated sidebar.
+4. Issue: Ads are currently not populating/rendering on any page, including the homepage (https://charades-generator.com/).
+5. Caching: We have cleared our CDN (Cloudflare) cache and local browser cache.
+6. Test query parameter: We appended `?test=placeholders` to the URL, but no ad placeholders or containers appeared on the page.
+
+Could you please verify the account and domain setup on your end to see why ads are not populating?
+
+Thank you,
+Xiwu Xu
