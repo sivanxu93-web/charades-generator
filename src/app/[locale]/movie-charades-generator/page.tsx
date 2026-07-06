@@ -1,14 +1,12 @@
-import Sidebar from "@/components/Sidebar";
+import FlatGeneratorPageLayout from "@/components/FlatGeneratorPageLayout";
 import CharadesGeneratorOptimized from "@/components/CharadesGeneratorOptimized";
-import StructuredData from "@/components/StructuredData";
-import FAQStructuredData from "@/components/FAQStructuredData";
+import CopyTextButton from "@/components/CopyTextButton";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pickWords } from "@/utils/charades";
 import { getDictionary } from "@/i18n/dictionary";
 import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { BASE_URL, buildAlternateLanguages, buildCanonicalUrl, getOpenGraphLocale } from "@/utils/seo";
-import BreadcrumbStructuredData from "@/components/BreadcrumbStructuredData";
 import { buildLocalePath } from "@/utils/localePaths";
 
 interface PageProps {
@@ -75,19 +73,24 @@ export default async function MovieCharadesPage({ params }: PageProps) {
   const howToUseLabel =
     dictionary.navigation.items.find((item) => item.key === "howToUse")?.title ?? "How to Use";
 
+
   return (
-    <div className="bg-gray-50 min-h-screen">
-      <BreadcrumbStructuredData
-        items={[
-          { name: homeLabel, url: homeUrl },
-          { name: dictionary.pages.movies.title, url: canonicalUrl },
-        ]}
-      />
-      
-      <div className="max-w-[1500px] mx-auto px-6 py-6 lg:py-10 flex flex-col lg:flex-row gap-8 items-start justify-center">
-        <div className="hidden xl:block w-[300px] xl:w-[320px] shrink-0 pointer-events-none" aria-hidden="true" />
-          <article className="entry-content post-content flex-grow max-w-4xl w-full space-y-8">
-          <CharadesGeneratorOptimized
+    <FlatGeneratorPageLayout
+      locale={locale}
+      dictionary={dictionary}
+      canonicalPath={canonicalPath}
+      breadcrumbs={[
+        { name: homeLabel, url: homeUrl },
+        { name: dictionary.pages.movies.title, url: canonicalUrl },
+      ]}
+      structuredDataName={dictionary.seo.movies.structuredDataName}
+      structuredDataDescription={dictionary.seo.movies.structuredDataDescription}
+      structuredDataType="WebApplication"
+      structuredDataCategory="Movie Games"
+      faq={copy.faq ?? []}
+      themeColorClass="bg-gray-50"
+    >
+      <CharadesGeneratorOptimized
         title={dictionary.pages.movies.title}
         description={dictionary.pages.movies.description}
         defaultCategory="movies"
@@ -97,127 +100,131 @@ export default async function MovieCharadesPage({ params }: PageProps) {
         initialWords={initialWords}
       />
 
-      <StructuredData
-        type="WebApplication"
-        name={dictionary.seo.movies.structuredDataName}
-        description={dictionary.seo.movies.structuredDataDescription}
-        url={canonicalUrl}
-        category="Movie Games"
-        locale={locale}
-      />
-      <FAQStructuredData items={copy.faq ?? []} />
-          
-          <section className="bg-white rounded-lg shadow-md p-6 mb-8 border-l-4 border-blue-500">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.partyTitle}</h2>
-          <p className="text-gray-600 mb-4">
-            {copy.partyDescription.before}{" "}
-            <Link href={copy.partyDescription.href} className="text-blue-600 hover:text-blue-800 underline">
-              {copy.partyDescription.linkText}
-            </Link>
-            {copy.partyDescription.after}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {copy.partyColumns.map((column) => (
-              <div key={column.title} className="p-4 rounded-lg" style={{ backgroundColor: column.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: column.headingColor }}>
-                  {column.title}
-                </h3>
-                <ul className="text-sm space-y-1" style={{ color: column.textColor }}>
-                  {column.items.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.partyTitle}</h2>
+      <p className="text-gray-600 mb-4">
+        {copy.partyDescription.before}{" "}
+        <Link href={copy.partyDescription.href} className="text-blue-600 hover:text-blue-800 underline">
+          {copy.partyDescription.linkText}
+        </Link>
+        {copy.partyDescription.after}
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {copy.partyColumns.map((column) => (
+          <div key={column.title} className="p-5 rounded-lg border border-gray-100 shadow-sm" style={{ backgroundColor: column.background }}>
+            <h3 className="font-semibold text-lg mb-2" style={{ color: column.headingColor }}>
+              {column.title}
+            </h3>
+            <ul className="list-disc list-inside space-y-1.5 text-sm" style={{ color: column.textColor }}>
+              {column.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.categoriesTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {copy.categories.map((card) => (
-              <div key={card.title} className="text-center p-4 rounded-lg" style={{ backgroundColor: card.background }}>
-                <h3 className="font-semibold mb-2" style={{ color: card.headingColor }}>
-                  {card.title}
-                </h3>
-                <p className="text-sm" style={{ color: card.textColor }}>
-                  {card.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="bg-gradient-to-r from-gray-100 to-blue-100 rounded-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">{copy.tipsTitle}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.actingHeadingColor }}>
-                {copy.tips.actingTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.actingItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.guessingHeadingColor }}>
-                {copy.tips.guessingTitle}
-              </h3>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                {copy.tips.guessingItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">{copy.faqTitle}</h2>
-          <div className="space-y-4">
-            {copy.faq.map((item) => (
-              <div key={item.question}>
-                <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-8 bg-blue-50 rounded-lg border border-blue-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            {copy.rulesTitle}
-          </h2>
-          <p className="text-gray-700 mb-3">
-            {copy.rulesDescription}
-          </p>
-          <Link
-            href={buildLocalePath(locale, "/how-to-use/")}
-            className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-          >
-            {copy.rulesCta}
-          </Link>
-        </section>
-
-        <section className="mt-8 bg-gray-50 rounded-lg border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">{exploreLabel}</h2>
-          <div className="flex flex-wrap gap-2 text-sm">
-            <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {dictionary.pages.reverse.title}
-            </Link>
-            <Link href={buildLocalePath(locale, "/how-to-use/")}
-              className="inline-flex items-center rounded-md border border-gray-300 px-2 py-1 text-gray-800 hover:bg-gray-100">
-              {howToUseLabel}
-            </Link>
-          </div>
-        </section>
-      </article>
-        <Sidebar />
+        ))}
       </div>
-    </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-3">
+        {copy.listTitle}
+      </h2>
+      <p className="text-gray-600 mb-4">
+        {copy.listDescription}
+      </p>
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+          <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+            {copy.popularMovies.length} Popular Movie Words:
+          </span>
+          <CopyTextButton
+            text={copy.popularMovies.join("\n")}
+            label={copy.copyButtonLabel}
+            copiedLabel={copy.copiedButtonLabel}
+            className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+          />
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+          {copy.popularMovies.map((movie: string) => (
+            <div key={movie} className="bg-white border border-gray-100 px-3 py-2 rounded-lg text-center text-xs font-medium text-gray-800 shadow-sm truncate" title={movie}>
+              {movie}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.categoriesTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {copy.categories.map((card) => (
+          <div key={card.title} className="text-center p-5 rounded-lg border border-gray-150 shadow-sm" style={{ backgroundColor: card.background }}>
+            <h3 className="font-semibold text-lg mb-2" style={{ color: card.headingColor }}>
+              {card.title}
+            </h3>
+            <p className="text-sm" style={{ color: card.textColor }}>
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">{copy.tipsTitle}</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 bg-gradient-to-r from-gray-50 to-blue-50 border border-blue-100 rounded-xl p-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.actingHeadingColor }}>
+            {copy.tips.actingTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+            {copy.tips.actingItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-3" style={{ color: copy.tips.guessingHeadingColor }}>
+            {copy.tips.guessingTitle}
+          </h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+            {copy.tips.guessingItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-6">{copy.faqTitle}</h2>
+      <div className="space-y-4 mb-8">
+        {copy.faq.map((item) => (
+          <div key={item.question} className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm">
+            <h3 className="font-semibold text-gray-950 mb-2">{item.question}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-2">
+        {copy.rulesTitle}
+      </h2>
+      <p className="text-gray-700 mb-4">
+        {copy.rulesDescription}
+      </p>
+      <div className="mb-8">
+        <Link
+          href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+        >
+          {copy.rulesCta}
+        </Link>
+      </div>
+
+      <h2 className="text-xl font-semibold text-gray-900 mt-8 mb-3">{exploreLabel}</h2>
+      <div className="flex flex-wrap gap-2 text-sm mb-8">
+        <Link href={buildLocalePath(locale, "/reverse-charades-game/")}
+          className="inline-flex items-center rounded-md border border-gray-200 px-3 py-1.5 text-gray-800 hover:bg-gray-50">
+          {dictionary.pages.reverse.title}
+        </Link>
+        <Link href={buildLocalePath(locale, "/how-to-use/")}
+          className="inline-flex items-center rounded-md border border-gray-200 px-3 py-1.5 text-gray-800 hover:bg-gray-50">
+          {howToUseLabel}
+        </Link>
+      </div>
+    </FlatGeneratorPageLayout>
   );
 }
 
@@ -327,7 +334,23 @@ const movieContent = {
     rulesTitle: "Need a refresher on charades rules?",
     rulesDescription:
       "If some players are new to charades, walk them through the basic rules and variations before you start your movie rounds.",
-    rulesCta: "View full charades rules",
+     rulesCta: "View full charades rules",
+    copyButtonLabel: "Copy Movie List",
+    copiedButtonLabel: "Copied!",
+    listTitle: "Movie Charades Word List (Quick Copy)",
+    listDescription: "No time to generate? Copy this curated list of 50 blockbuster movies, animated films, and classic hits to play instantly:",
+    popularMovies: [
+      "Titanic", "Avatar", "Star Wars", "Jurassic Park", "Toy Story", 
+      "The Matrix", "Gladiator", "Finding Nemo", "The Lion King", "Inception",
+      "Spider-Man", "The Dark Knight", "Harry Potter", "Frozen", "Home Alone",
+      "Shrek", "The Avengers", "Jaws", "Forrest Gump", "Pulp Fiction",
+      "The Godfather", "Back to the Future", "Raiders of the Lost Ark", "Alien", "Terminator",
+      "Die Hard", "Monsters, Inc.", "The Wizard of Oz", "Casablanca", "The Sound of Music",
+      "Ghostbusters", "Grease", "Top Gun", "Up", "Interstellar",
+      "The Lord of the Rings", "Pirates of the Caribbean", "Iron Man", "Mission: Impossible", "Despicable Me",
+      "Jumanji", "High School Musical", "Aladdin", "Inside Out", "Mean Girls",
+      "Legally Blonde", "The Notebook", "La La Land", "The Hangover", "Coco"
+    ],
   },
   es: {
     partyTitle: "Ideal para noches de cine",
@@ -434,7 +457,23 @@ const movieContent = {
     rulesTitle: "¿Necesitas repasar las reglas de charadas?",
     rulesDescription:
       "Si hay personas nuevas en el juego, dedica un minuto a revisar las reglas básicas y las variantes antes de empezar las rondas de películas.",
-    rulesCta: "Ver reglas completas de charadas",
+     rulesCta: "Ver reglas completas de charadas",
+    copyButtonLabel: "Copiar lista de películas",
+    copiedButtonLabel: "¡Copiado!",
+    listTitle: "Lista de películas para charadas (Copia rápida)",
+    listDescription: "Copia esta lista seleccionada de 50 películas populares para jugar al instante con tus amigos y familiares:",
+    popularMovies: [
+      "Titanic", "Avatar", "La guerra de las galaxias (Star Wars)", "Parque Jurásico (Jurassic Park)", "Toy Story", 
+      "Matrix", "Gladiator", "Buscando a Nemo", "El Rey León", "Origen (Inception)",
+      "Spider-Man", "El caballero oscuro (The Dark Knight)", "Harry Potter", "Frozen", "Solo en casa (Home Alone)",
+      "Shrek", "Los Vengadores", "Tiburón (Jaws)", "Forrest Gump", "Pulp Fiction",
+      "El Padrino", "Regreso al futuro", "En busca del arca perdida", "Alien, el octavo pasajero", "Terminator",
+      "Jungla de cristal (Die Hard)", "Monstruos, S.A.", "El mago de Oz", "Casablanca", "Sonrisas y lágrimas (The Sound of Music)",
+      "Cazafantasmas", "Grease", "Top Gun", "Up", "Interstellar",
+      "El Señor de los Anillos", "Piratas del Caribe", "Iron Man", "Misión Imposible", "Gru, mi villano favorito",
+      "Jumanji", "High School Musical", "Aladdín", "Del revés (Inside Out)", "Chicas malas (Mean Girls)",
+      "Una rubia muy legal", "El diario de Noa (The Notebook)", "La La Land", "Resacón en Las Vegas", "Coco"
+    ],
   },
 } satisfies Record<Locale, {
   partyTitle: string;
@@ -476,4 +515,9 @@ const movieContent = {
   rulesTitle: string;
   rulesDescription: string;
   rulesCta: string;
+  copyButtonLabel: string;
+  copiedButtonLabel: string;
+  listTitle: string;
+  listDescription: string;
+  popularMovies: string[];
 }>;

@@ -256,10 +256,10 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
 
 const kidsContent = {
   en: {
-    introTitle: "Children's charades generator for quick fun",
+    introTitle: "Charades for Kids: Online Word Ideas & Generator",
     introDescription:
-      "Use this childrens charades generator to instantly pull age-appropriate prompts for birthday parties, classroom brain breaks, family gatherings, and rainy day fun. Bookmark it whenever you need new words fast!",
-    activitiesTitle: "Perfect for children's party games",
+      "Use our free charades for kids generator to instantly pull age-appropriate prompts for birthday parties, classroom brain breaks, family gatherings, and rainy day fun. Bookmark it whenever you need new words fast!",
+    activitiesTitle: "Perfect for Children's Party Games",
     activitiesDescription: {
       before: "Need more options for family fun? Visit our",
       linkText: "full charades generator",

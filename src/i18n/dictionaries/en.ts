@@ -3,7 +3,7 @@ export const en = {
   localeName: "English",
   seo: {
     home: {
-      title: "Charades Generator - Free Random Charades Words & Ideas",
+      title: "Charades Generator: Free Word Lists & Game Rules",
       description:
         "Use this free charades generator to get random charades words instantly. Choose kids, adults, movies, Disney, animals, and difficulty, then copy or print your list.",
       keywords:
@@ -14,11 +14,11 @@ export const en = {
         "Charades word generator with a 1000+ word database. Free instant charades words and ideas for kids, adults, parties, and classrooms—including movies, Disney, animals, actions, and funny prompts.",
     },
     kids: {
-      title: "Childrens Charades Generator: 500+ Fun Ideas for Kids",
+      title: "Charades for Kids: 500+ Fun Ideas & Kids Charades Generator",
       description:
-        "Free childrens charades generator with 500+ child-friendly words and ideas! Children's charades generator for parties, Disney characters, animals, classroom activities, and printable word lists.",
+        "Free kids charades generator with 500+ safe, child-friendly word ideas! Find the best charades for kids, including animals, cartoons, actions, and easy printable prompts.",
       keywords:
-        "kids charades, children charades, kids party games, educational charades, animal charades kids",
+        "charades for kids, kids charades generator, childrens charades generator, charades game for kids, childrens charades, kids charades ideas",
       structuredDataName: "Kids Charades Generator",
       structuredDataDescription:
         "Child-friendly charades generator with safe words for kids parties and family fun",
@@ -198,6 +198,7 @@ export const en = {
     label: "Language",
   },
   navigation: {
+    homeBreadcrumb: "Charades Generator",
     items: [
       {
         key: "home",
@@ -283,7 +284,7 @@ export const en = {
     apply: "Apply Filters", categoryLabel: "Choose Category", difficultyLabel: "Choose Difficulty", ageGroupLabel: "Choose Age Group", allLevels: "All Levels", activeFilters: "Active Filters:", noFilters: "None",
   },
   generator: {
-    defaultTitle: "Charades Generator",
+    defaultTitle: "Charades Generator & Online Game Guide",
     defaultDescription: "Generate random charades words for kids, adults, movies, Disney, animals, and parties. No login needed.",
     generateButton: "Generate words",
     copyButton: "Copy words",
@@ -669,6 +670,55 @@ export const en = {
           lastTested: "2025-08-29",
         },
       ],
+    },
+    rulesAndLists: {
+      rulesTitle: "How to Play Charades: The Ultimate Party Guide",
+      rulesDescription: "Charades is the ultimate icebreaker because it relies on physical comedy rather than board game trivia. The core goal is simple: get your team to guess a secret word or phrase within 60 seconds using only gestures. To keep the game fast-paced and fair, follow this expert setup:",
+      rulesSteps: [
+        "Divide into two teams. It is best to mix quiet guests with expressive ones so teams are balanced.",
+        "Team A selects an 'actor'. The actor opens this generator on their phone and presses 'Generate' to get a word card.",
+        "Start a 60-second timer. The actor must act out the prompt without making any noise—no whispering, mouthing words, or humming.",
+        "Team A guesses out loud. If they nail the word before the buzzer sounds, they score 1 point. If not, they score 0 points.",
+        "Teams alternate turns. The first team to reach 10 points (or the team with the most points after everyone has acted twice) wins the game!"
+      ],
+      gesturesTitle: "Standard Charades Hand Signals (How to Mime)",
+      gesturesDescription: "Experienced players don't just act out the word; they use a silent vocabulary of hand signals to guide their team's guesses in the first 5 seconds of their turn. Memorize these standard gestures:",
+      gestures: [
+        { sign: "Book Category", action: "Clasp your palms together, then open them flat like an open book." },
+        { sign: "Movie Category", action: "Pretend to spin the crank of an old-fashioned movie projector." },
+        { sign: "Song Category", action: "Place one hand near your mouth and draw it outwards in a wavy motion to show singing." },
+        { sign: "Word Count", action: "Hold up fingers to show the number of words. Then hold up 1 finger for the 1st word, 2 fingers for the 2nd word, etc." },
+        { sign: "Sounds Like...", action: "Cup your hand behind your ear to indicate that the word you are acting out sounds like the actual answer." },
+        { sign: "Getting Closer!", action: "Roll your hands around each other in a circle to tell your team to keep guessing in that direction." }
+      ],
+      quickListTitle: "Free Copyable Charades Words (Handpicked for Maximum Laughs)",
+      quickListDescription: "No internet connection or want to print physical cards? Here is a hand-curated list of 20 high-energy prompts. We selected these specifically because they force players to move around, bend, and make silly faces—guaranteeing fun for all ages:",
+      quickWords: [
+        "Spider-Man", "Riding a bicycle", "Brushing teeth", "Harry Potter", "Cooking dinner",
+        "Waking up", "Walking a dog", "Playing basketball", "Super Mario", "Drinking coffee",
+        "Mickey Mouse", "Ironing clothes", "Lion King", "Flying a kite", "Baking a cake",
+        "Playing guitar", "Surfing the internet", "Tying shoelaces", "Eating a lemon", "Catching a fish"
+      ],
+      copyButton: "Copy Quick Word List",
+      copiedButton: "List Copied!"
+    },
+    siloDirectory: {
+      title: "Explore Specialized Charades Generators & Game Rooms",
+      description: "Looking for specific topics or custom setups? We have built dedicated lists and multiplayer web portals for different groups. Navigate directly to your game night setup below:",
+      links: [
+        { href: "/random-charades-generator/", anchor: "Random Charades Generator" },
+        { href: "/movie-charades-generator/", anchor: "Movie Charades Generator" },
+        { href: "/disney-charades-generator/", anchor: "Disney Charades Generator" },
+        { href: "/charades-generator-for-kids/", anchor: "Charades for Kids" },
+        { href: "/funny-charades-for-adults/", anchor: "Funny Charades for Adults" },
+        { href: "/christmas-charades-generator/", anchor: "Christmas Charades Generator" },
+        { href: "/animal-charades-game/", anchor: "Animal Charades Game" },
+        { href: "/emotion-charades/", anchor: "Emotion Charades Guide" },
+        { href: "/hard-charades-ideas/", anchor: "Hard Charades Ideas" },
+        { href: "/reverse-charades-game/", anchor: "Reverse Charades Game" },
+        { href: "/pictionary-word-generator/", anchor: "Pictionary Word Generator" },
+        { href: "/imposter-game/", anchor: "Imposter Game Room" }
+      ]
     },
     partnersTitle: "Friendly Links",
   },

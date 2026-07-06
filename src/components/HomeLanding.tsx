@@ -5,6 +5,7 @@ import type { CharadesWord } from "@/data/charades-types";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionary";
 import CommunityPlaybooks from "@/components/CommunityPlaybooks";
+import CopyTextButton from "@/components/CopyTextButton";
 
 interface HomeLandingProps {
   initialWords: CharadesWord[];
@@ -77,6 +78,89 @@ export default function HomeLanding({ initialWords, dictionary, locale }: HomeLa
               Imposter game
             </Link>
           </div>
+        </>
+      )}
+
+      {dictionary.home.rulesAndLists && (
+        <>
+          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">
+            {dictionary.home.rulesAndLists.rulesTitle}
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            {dictionary.home.rulesAndLists.rulesDescription}
+          </p>
+          <ol className="list-decimal list-inside space-y-2 text-gray-700 mb-6">
+            {dictionary.home.rulesAndLists.rulesSteps.map((step: string) => (
+              <li key={step} className="text-sm leading-relaxed">{step}</li>
+            ))}
+          </ol>
+
+          <h3 className="text-xl font-bold text-gray-900 mt-6 mb-2">
+            {dictionary.home.rulesAndLists.gesturesTitle}
+          </h3>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            {dictionary.home.rulesAndLists.gesturesDescription}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {dictionary.home.rulesAndLists.gestures.map((g: { sign: string; action: string }) => (
+              <div key={g.sign} className="bg-white border border-gray-150 p-4 rounded-xl shadow-sm flex flex-col justify-center">
+                <span className="font-bold text-indigo-700 text-sm mb-1">{g.sign}</span>
+                <span className="text-gray-600 text-xs leading-relaxed">{g.action}</span>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-3">
+            {dictionary.home.rulesAndLists.quickListTitle}
+          </h2>
+          <p className="text-gray-700 leading-relaxed mb-4">
+            {dictionary.home.rulesAndLists.quickListDescription}
+          </p>
+          
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                {dictionary.home.rulesAndLists.quickWords.length} Popular Words:
+              </span>
+              <CopyTextButton
+                text={dictionary.home.rulesAndLists.quickWords.join("\n")}
+                label={dictionary.home.rulesAndLists.copyButton}
+                copiedLabel={dictionary.home.rulesAndLists.copiedButton}
+                className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+              />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {dictionary.home.rulesAndLists.quickWords.map((word: string) => (
+                <div key={word} className="bg-white border border-gray-100 px-3 py-2 rounded-lg text-center text-xs font-medium text-gray-800 shadow-sm">
+                  {word}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {dictionary.home.siloDirectory && (
+            <>
+              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">
+                {dictionary.home.siloDirectory.title}
+              </h2>
+              <p className="text-gray-600 mb-6">
+                {dictionary.home.siloDirectory.description}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {dictionary.home.siloDirectory.links.map((link: { href: string; anchor: string }) => (
+                  <Link 
+                    key={link.href}
+                    href={buildLocalePath(locale, link.href)} 
+                    className="p-4 rounded-xl border border-gray-200 bg-white hover:border-blue-500 hover:shadow-md transition text-center flex flex-col justify-center min-h-[90px]"
+                  >
+                    <span className="font-semibold text-sm text-gray-900">
+                      {link.anchor}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </>
       )}
 

@@ -22,6 +22,7 @@ interface FlatGeneratorPageLayoutProps {
 
 export default function FlatGeneratorPageLayout({
   locale,
+  dictionary,
   canonicalPath,
   breadcrumbs,
   structuredDataName,
@@ -34,10 +35,21 @@ export default function FlatGeneratorPageLayout({
 }: FlatGeneratorPageLayoutProps) {
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
 
+  // Automatically optimize the first breadcrumb item to be keyword-rich using dictionary config
+  const optimizedBreadcrumbs = breadcrumbs.map((item, index) => {
+    if (index === 0) {
+      return {
+        ...item,
+        name: dictionary.navigation.homeBreadcrumb ?? item.name,
+      };
+    }
+    return item;
+  });
+
   return (
     <div className={`${themeColorClass} min-h-screen`}>
       {/* SEO Structured Data */}
-      <BreadcrumbStructuredData items={breadcrumbs} />
+      <BreadcrumbStructuredData items={optimizedBreadcrumbs} />
       <StructuredData
         type={structuredDataType}
         name={structuredDataName}

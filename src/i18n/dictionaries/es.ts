@@ -3,7 +3,7 @@ export const es = {
   localeName: "Español",
   seo: {
     home: {
-      title: "Generador de Charadas Gratis - Palabras e Ideas Online",
+      title: "Generador de Charadas: Listas de Palabras y Reglas",
       description:
         "Usa este generador de charadas gratis para obtener palabras al instante. Elige niños, adultos, cine, Disney, animales y dificultad, luego copia o imprime tu lista.",
       keywords:
@@ -198,6 +198,7 @@ export const es = {
     label: "Idioma",
   },
   navigation: {
+    homeBreadcrumb: "Generador de Charadas",
     items: [
       {
         key: "home",
@@ -283,7 +284,7 @@ export const es = {
     apply: "Aplicar filtros", categoryLabel: "Elegir categoría", difficultyLabel: "Elegir dificultad", ageGroupLabel: "Elegir grupo de edad", allLevels: "Todos los niveles", activeFilters: "Filtros activos:", noFilters: "Ninguno",
   },
   generator: {
-    defaultTitle: "Generador de Charadas",
+    defaultTitle: "Generador de Charadas y Guía de Juego",
     defaultDescription: "Genera palabras de charadas para niños, adultos, cine, Disney, animales y fiestas. Sin registro.",
     generateButton: "Generar palabras",
     copyButton: "Copiar palabras",
@@ -669,6 +670,55 @@ export const es = {
           lastTested: "2025-08-29",
         },
       ],
+    },
+    rulesAndLists: {
+      rulesTitle: "Cómo jugar a las charadas: La guía definitiva para tus fiestas",
+      rulesDescription: "Las charadas son el rompehielos perfecto porque dependen de la comedia física en lugar de conocimientos complicados. El objetivo es simple: lograr que tu equipo adivine una palabra o frase secreta en menos de 60 segundos usando solo gestos. Para mantener el juego dinámico y justo, sigue estos pasos recomendados:",
+      rulesSteps: [
+        "Divídanse en dos equipos. Lo ideal es mezclar a los invitados más tímidos con los más expresivos para equilibrar la diversión.",
+        "El Equipo A elige a un 'actor'. El actor abre este generador en su teléfono y pulsa 'Generar' para obtener una palabra secreta.",
+        "Inicia un temporizador de 60 segundos. El actor debe representar la palabra sin emitir ningún sonido (sin susurrar, modular con los labios ni tararear).",
+        "El Equipo A adivina en voz alta. Si aciertan la palabra antes de que suene la alarma, anotan 1 punto. Si no, obtienen 0 puntos.",
+        "Los equipos alternan turnos. ¡El primer equipo en llegar a 10 puntos (o el que tenga más puntos cuando todos hayan actuado dos veces) gana el juego!"
+      ],
+      gesturesTitle: "Gestos y señas estándar de charadas (Cómo hacer mímica)",
+      gesturesDescription: "Los jugadores experimentados no solo actúan la palabra; utilizan un vocabulario silencioso de señas de manos para guiar las suposiciones de su equipo en los primeros 5 segundos de su turno. Memoriza estas señas clave:",
+      gestures: [
+        { sign: "Categoría de Libro", action: "Junta las palmas de las manos y luego ábrelas en plano como un libro abierto." },
+        { sign: "Categoría de Película", action: "Simula girar la manivela de una cámara o proyector de cine antiguo." },
+        { sign: "Categoría de Canción", action: "Coloca una mano cerca de la boca y dibuja ondas hacia afuera para indicar que estás cantando." },
+        { sign: "Número de Palabras", action: "Muestra los dedos para indicar la cantidad de palabras. Luego muestra 1 dedo para la 1.ª palabra, 2 dedos para la 2.ª, etc." },
+        { sign: "Suena como...", action: "Coloca la mano detrás de la oreja para indicar que la palabra que estás actuando suena similar a la respuesta real." },
+        { sign: "¡Te estás acercando!", action: "Gira las manos una sobre otra en círculos para indicarle a tu equipo que siga adivinando en esa dirección." }
+      ],
+      quickListTitle: "Lista de palabras de charadas para copiar (Seleccionadas para reír al máximo)",
+      quickListDescription: "¿No tienes conexión a internet o quieres de imprimir tarjetas físicas? Aquí tienes una lista curada de 20 palabras muy dinámicas. Las seleccionamos específicamente porque obligan a los jugadores a moverse, saltar y hacer gestos divertidos, garantizando risas para todas las edades:",
+      quickWords: [
+        "Spider-Man", "Montar en bicicleta", "Cepillarse los dientes", "Harry Potter", "Cocinar la cena",
+        "Despertarse", "Pasear al perro", "Jugar al baloncesto", "Super Mario", "Tomar café",
+        "Mickey Mouse", "Planchar la ropa", "El Rey León", "Volar una cometa", "Hornear un pastel",
+        "Tocar la guitarra", "Navegar por internet", "Atarse los cordones", "Comer un limón", "Pescar un pez"
+      ],
+      copyButton: "Copiar lista de palabras",
+      copiedButton: "¡Lista copiada!"
+    },
+    siloDirectory: {
+      title: "Explora generadores temáticos y salas de juego",
+      description: "¿Buscas temas específicos o configuraciones multijugador? Hemos diseñado listas dedicadas y portales web para diferentes grupos. Accede directamente a tu juego preferido a continuación:",
+      links: [
+        { href: "/random-charades-generator/", anchor: "Generador de Charadas Aleatorio" },
+        { href: "/movie-charades-generator/", anchor: "Generador de Charadas de Cine" },
+        { href: "/disney-charades-generator/", anchor: "Generador de Charadas Disney" },
+        { href: "/charades-generator-for-kids/", anchor: "Charadas para Niños" },
+        { href: "/funny-charades-for-adults/", anchor: "Charadas Divertidas para Adultos" },
+        { href: "/christmas-charades-generator/", anchor: "Generador de Charadas Navideñas" },
+        { href: "/animal-charades-game/", anchor: "Juego de Charadas de Animales" },
+        { href: "/emotion-charades/", anchor: "Guía de Charadas de Emociones" },
+        { href: "/hard-charades-ideas/", anchor: "Ideas de Charadas Difíciles" },
+        { href: "/reverse-charades-game/", anchor: "Juego de Charadas al Revés" },
+        { href: "/pictionary-word-generator/", anchor: "Generador de Palabras de Pictionary" },
+        { href: "/imposter-game/", anchor: "Juego del Impostor" }
+      ]
     },
     partnersTitle: "Aliados",
   },

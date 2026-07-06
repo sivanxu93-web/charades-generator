@@ -166,10 +166,16 @@ export default async function ImposterWordListPage(props: Props) {
                         {idx + 1}
                       </span>
                       <div className="flex flex-col">
-                        <span className="text-sm text-gray-500 uppercase tracking-wider font-semibold">Pair</span>
-                        <span className="text-gray-900 font-medium">{pair.main} vs {pair.imposter}</span>
+                        <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold">Pair</span>
+                        <span className="text-gray-900 font-medium text-sm">{pair.main} vs {pair.imposter}</span>
                       </div>
                     </div>
+                    <CopyTextButton
+                      text={`${pair.main} vs ${pair.imposter}`}
+                      label={copy.copyPair}
+                      copiedLabel={copy.copied}
+                      className="inline-flex items-center justify-center rounded-md border border-gray-200 bg-white px-2.5 py-1 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition-colors shadow-sm"
+                    />
                   </div>
                 ))}
               </div>
@@ -254,6 +260,7 @@ const imposterWordListContent = {
           "For a short party game, 10 to 20 pairs is enough. For classrooms or longer game nights, prepare 30 or more so groups do not repeat clues too quickly.",
       },
     ],
+    copyPair: "Copy",
   },
   es: {
     title: "Más de 100 Palabras y Parejas para el Juego del Impostor",
@@ -301,6 +308,7 @@ const imposterWordListContent = {
           "Para una partida corta, 10 a 20 parejas bastan. Para clases o noches largas, prepara 30 o más para evitar repetir pistas.",
       },
     ],
+    copyPair: "Copiar",
   },
 } satisfies Record<Locale, {
   title: string;
@@ -311,6 +319,7 @@ const imposterWordListContent = {
   primaryCta: string;
   copyAll: string;
   copyPack: string;
+  copyPair: string;
   copied: string;
   print: string;
   packCta: string;

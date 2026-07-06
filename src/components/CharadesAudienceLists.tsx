@@ -26,10 +26,10 @@ export default function CharadesAudienceLists({
   const copyLabel = locale === "es" ? "Copiar lista" : "Copy list";
 
   return (
-    <section id="word-lists" className="mb-10">
-      <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
+    <>
+      <h2 id="word-lists" className="text-2xl font-bold text-gray-900 mt-8 mb-2">{title}</h2>
       <p className="text-gray-700 mb-4">{description}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         {audiences.map((group) => (
           <article
             key={group.key}
@@ -82,7 +82,7 @@ export default function CharadesAudienceLists({
           </article>
         ))}
       </div>
-    </section>
+    </>
   );
 }
 
