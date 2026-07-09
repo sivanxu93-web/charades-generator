@@ -82,6 +82,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/ads.txt",
+        destination: "https://adstxt.journeymv.com/sites/1f04f612-13c5-4212-b2f2-7c2009b4aa91/ads.txt",
+        permanent: true,
+      },
+      {
+        source: "/ads.txt/",
+        destination: "https://adstxt.journeymv.com/sites/1f04f612-13c5-4212-b2f2-7c2009b4aa91/ads.txt",
+        permanent: true,
+      },
+      {
         source: "/en/:path*",
         destination: "/:path*",
         permanent: true,
