@@ -266,6 +266,8 @@ export const en = {
     disney: "Disney",
     funny: "Funny",
     christmas: "Christmas",
+    bible: "Bible",
+    celebrity: "Celebrities",
   },
   difficulties: {
     easy: "Easy",
@@ -709,6 +711,7 @@ export const en = {
         { href: "/random-charades-generator/", anchor: "Random Charades Generator" },
         { href: "/movie-charades-generator/", anchor: "Movie Charades Generator" },
         { href: "/disney-charades-generator/", anchor: "Disney Charades Generator" },
+        { href: "/celebrity-charades-generator/", anchor: "Celebrity Charades Generator" },
         { href: "/charades-generator-for-kids/", anchor: "Charades for Kids" },
         { href: "/funny-charades-for-adults/", anchor: "Funny Charades for Adults" },
         { href: "/christmas-charades-generator/", anchor: "Christmas Charades Generator" },
@@ -716,6 +719,12 @@ export const en = {
         { href: "/emotion-charades/", anchor: "Emotion Charades Guide" },
         { href: "/hard-charades-ideas/", anchor: "Hard Charades Ideas" },
         { href: "/reverse-charades-game/", anchor: "Reverse Charades Game" },
+        { href: "/bible-charades/", anchor: "Bible Charades" },
+        { href: "/halloween-party-games/", anchor: "Halloween Party Games" },
+        { href: "/christmas-party-games/", anchor: "Christmas Party Games" },
+        { href: "/truth-or-dare-generator/", anchor: "Truth or Dare Generator" },
+        { href: "/would-you-rather-generator/", anchor: "Would You Rather Generator" },
+        { href: "/family-game-night-ideas/", anchor: "Family Game Night Ideas" },
         { href: "/pictionary-word-generator/", anchor: "Pictionary Word Generator" },
         { href: "/imposter-game/", anchor: "Imposter Game Room" }
       ]

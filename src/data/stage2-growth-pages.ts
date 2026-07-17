@@ -6,7 +6,8 @@ export type Stage2PageKey =
   | "family-game-night-ideas"
   | "bible-charades"
   | "halloween-party-games"
-  | "christmas-party-games";
+  | "christmas-party-games"
+  | "celebrity-charades-generator";
 
 export interface Stage2PromptGroup {
   id: string;
@@ -58,6 +59,7 @@ export const stage2PageOrder: Stage2PageKey[] = [
   "bible-charades",
   "halloween-party-games",
   "christmas-party-games",
+  "celebrity-charades-generator",
 ];
 
 export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent>> = {
@@ -1499,4 +1501,224 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
       ],
     },
   },
+  "celebrity-charades-generator": {
+    en: {
+      path: "/celebrity-charades-generator",
+      title: "Random Celebrity Generator - Famous People Charades & Ideas",
+      description: "Generate random famous people and celebrities for charades, pictionary, or party games. Hand-curated list of actors, singers, historical figures, and characters.",
+      keywords: [
+        "random celebrity generator",
+        "random famous people",
+        "random famous person",
+        "famous people generator",
+        "celebrity charades ideas"
+      ],
+      heroLabel: "Free party game tool",
+      heroTitle: "Random Celebrity Generator",
+      heroDescription: "Generate random famous people and celebrities for charades, pictionary, or icebreakers. Filter by category to find the perfect star to mimic.",
+      primaryCta: "Generate celebrity",
+      copyLabel: "Copy name",
+      copiedLabel: "Copied",
+      generatorTitle: "Pick a celebrity category",
+      promptListTitle: "Celebrity & Famous People Prompts List",
+      generatorDescription: "Select a group to pull hand-selected actors, pop stars, historical figures, or fictional characters. Perfect for all party groups.",
+      generatorButton: "New celebrity",
+      groups: [
+        {
+          id: "actors",
+          label: "Actors & Actresses",
+          description: "Famous Hollywood stars and icons.",
+          prompts: [
+            "Johnny Depp", "Angelina Jolie", "Leonardo DiCaprio", "Brad Pitt", 
+            "Tom Cruise", "Scarlett Johansson", "Will Smith", "Jennifer Lawrence",
+            "Robert Downey Jr.", "Meryl Streep", "Dwayne 'The Rock' Johnson", "Emma Watson"
+          ]
+        },
+        {
+          id: "singers",
+          label: "Musicians & Pop Stars",
+          description: "World-class singers, rappers, and musical groups.",
+          prompts: [
+            "Taylor Swift", "Michael Jackson", "Beyoncé", "Elvis Presley",
+            "Justin Bieber", "Madonna", "Billie Eilish", "Eminem",
+            "Ed Sheeran", "Ariana Grande", "Freddie Mercury", "Rihanna"
+          ]
+        },
+        {
+          id: "historical",
+          label: "Historical Figures",
+          description: "Famous people who shaped human history.",
+          prompts: [
+            "Albert Einstein", "Abraham Lincoln", "William Shakespeare", "Isaac Newton",
+            "Julius Caesar", "Leonardo da Vinci", "Cleopatra", "Winston Churchill",
+            "George Washington", "Marie Curie", "Mozart", "Thomas Edison"
+          ]
+        },
+        {
+          id: "characters",
+          label: "Fictional Characters",
+          description: "Well-known heroes, villains, and cartoon icons.",
+          prompts: [
+            "Harry Potter", "Spider-Man", "Batman", "Mickey Mouse",
+            "Sherlock Holmes", "Darth Vader", "Barbie", "Jack Sparrow",
+            "Shrek", "Mario", "Pikachu", "SpongeBob SquarePants"
+          ]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "How to Play Celebrity Charades",
+          description: "Acting out famous people is highly entertaining because of their unique traits.",
+          items: [
+            "Actor must mimic famous poses, signature movie scenes, or catchphrases (without talking).",
+            "Use signature styles: Taylor Swift holding a guitar, Einstein thinking, or Spider-Man shooting webs.",
+            "You can mime their famous roles if players don't know their real-life personality.",
+            "Add a house rule: Team gets 1 bonus point if they guess the celebrity and name one of their works."
+          ]
+        },
+        {
+          id: "party-tips",
+          title: "Party Tips & Variations",
+          description: "Elevate your game night with these fun celebrity game modes.",
+          items: [
+            "Celebrity Heads: Write a celebrity name on a sticky note and stick it to a player's forehead. They must guess who they are by asking yes/no questions.",
+            "Time Machine Mode: Limit the generator to the 'Historical Figures' category for a historical trivia vibe.",
+            "Printable cards: Copy names onto slips of paper, fold them, and pull them from a hat for a classic offline party setup."
+          ]
+        }
+      ],
+      relatedTitle: "More Fun Generators",
+      relatedLinks: [
+        { href: "/movie-charades-generator/", label: "Movie Charades Generator", description: "Get famous film prompts." },
+        { href: "/funny-charades-for-adults/", label: "Funny Adult Charades", description: "Awkward and hilarious prompts." },
+        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple family-friendly ideas." },
+        { href: "/imposter-game/", label: "Imposter Game Room", description: "Play multiplayer online." }
+      ],
+      faqTitle: "Frequently Asked Questions",
+      faq: [
+        {
+          question: "How do you act out a celebrity in charades?",
+          answer: "Focus on their famous habits, signatures, or roles. For singers, mimic holding a microphone or their signature dance. For actors, mime their most famous movie characters."
+        },
+        {
+          question: "What if players don't know the celebrity?",
+          answer: "You can skip the prompt or try acting out the words in their name (e.g., mime a 'taylor' sewing and then moving 'swiftly')."
+        },
+        {
+          question: "Can I print these celebrity cards?",
+          answer: "Yes, you can copy the list directly or print the page to cut out physical slips of paper for your next party."
+        }
+      ]
+    },
+    es: {
+      path: "/celebrity-charades-generator",
+      title: "Generador de Famosos Aleatorio - Personajes y Celebridades",
+      description: "Genera famosos y celebridades aleatorias para charadas, pictionary o juegos de mesa. Lista curada de actores, cantantes, personajes históricos y de ficción.",
+      keywords: [
+        "generador de famosos",
+        "charadas de famosos",
+        "personajes famosos aleatorios",
+        "celebridades para charadas",
+        "ideas de famosos para actuar"
+      ],
+      heroLabel: "Herramienta gratuita para fiestas",
+      heroTitle: "Generador de Famosos Aleatorio",
+      heroDescription: "Genera celebridades y personajes famosos para charadas, pictionary o rompehielos. Filtra por categoría para encontrar la estrella perfecta.",
+      primaryCta: "Generar famoso",
+      copyLabel: "Copiar nombre",
+      copiedLabel: "Copiado",
+      generatorTitle: "Elige una categoría de famosos",
+      promptListTitle: "Lista de ideas de famosos y celebridades",
+      generatorDescription: "Selecciona un grupo para obtener actores, estrellas del pop, figuras históricas o personajes de ficción seleccionados a mano.",
+      generatorButton: "Nuevo famoso",
+      groups: [
+        {
+          id: "actors",
+          label: "Actores y Actrices",
+          description: "Estrellas famosas de Hollywood y del cine mundial.",
+          prompts: [
+            "Johnny Depp", "Angelina Jolie", "Leonardo DiCaprio", "Brad Pitt", 
+            "Tom Cruise", "Scarlett Johansson", "Will Smith", "Jennifer Lawrence",
+            "Robert Downey Jr.", "Penélope Cruz", "Dwayne 'La Roca' Johnson", "Emma Watson"
+          ]
+        },
+        {
+          id: "singers",
+          label: "Músicos y Estrellas Pop",
+          description: "Cantantes, raperos y grupos de música de clase mundial.",
+          prompts: [
+            "Shakira", "Michael Jackson", "Taylor Swift", "Luis Miguel",
+            "Bad Bunny", "Rosalía", "Elvis Presley", "Eminem",
+            "Lionel Messi", "Karol G", "Freddie Mercury", "Rihanna"
+          ]
+        },
+        {
+          id: "historical",
+          label: "Figuras Históricas",
+          description: "Personajes famosos que cambiaron el rumbo de la historia.",
+          prompts: [
+            "Albert Einstein", "Cristóbal Colón", "William Shakespeare", "Isaac Newton",
+            "Julio César", "Leonardo da Vinci", "Cleopatra", "Frida Kahlo",
+            "Simón Bolívar", "Marie Curie", "Mozart", "Thomas Edison"
+          ]
+        },
+        {
+          id: "characters",
+          label: "Personajes de Ficción",
+          description: "Héroes, villanos e iconos animados muy populares.",
+          prompts: [
+            "Harry Potter", "Spider-Man", "Batman", "Mickey Mouse",
+            "Don Quijote", "Darth Vader", "Barbie", "Jack Sparrow",
+            "Shrek", "Mario Bros", "Pikachu", "Bob Esponja"
+          ]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Cómo jugar charadas de famosos",
+          description: "Actuar celebridades es muy divertido debido a sus gestos únicos y distintivos.",
+          items: [
+            "El actor debe imitar gestos característicos, poses o escenas famosas (sin emitir sonidos).",
+            "Usa sus firmas: Shakira moviendo las caderas, Einstein pensando pensativo, o Spider-Man lanzando telarañas.",
+            "Si no conocen su personalidad real, puedes actuar las películas o papeles más conocidos del actor.",
+            "Agrega una regla: El equipo gana 1 punto extra si adivina el famoso y menciona una de sus obras o películas."
+          ]
+        },
+        {
+          id: "party-tips",
+          title: "Ideas para tus fiestas",
+          description: "Dale un giro divertido a tu noche de juegos con estas dinámicas.",
+          items: [
+            "Famoso en la Frente: Escribe un nombre en un papel y pégalo en la frente de un jugador. Debe adivinar quién es haciendo preguntas de sí o no.",
+            "Máquina del Tiempo: Limita el generador al grupo 'Figuras Históricas' para un ambiente de trivia histórica.",
+            "Tarjetas para imprimir: Copia los nombres en tiras de papel, dóblalas y sácalas de un sombrero para jugar al estilo tradicional sin pantallas."
+          ]
+        }
+      ],
+      relatedTitle: "Más generadores divertidos",
+      relatedLinks: [
+        { href: "/movie-charades-generator/", label: "Charadas de Películas", description: "Consigue prompts de cine." },
+        { href: "/funny-charades-for-adults/", label: "Charadas para Adultos", description: "Prompts divertidos y atrevidos." },
+        { href: "/charades-generator-for-kids/", label: "Charadas para Niños", description: "Ideas sencillas para toda la familia." },
+        { href: "/imposter-game/", label: "Juego del Impostor", description: "Juega multijugador online." }
+      ],
+      faqTitle: "Preguntas frecuentes",
+      faq: [
+        {
+          question: "¿Cómo imitar a un famoso en charadas?",
+          answer: "Enfócate en sus hábitos conocidos o papeles icónicos. Para cantantes, imita sostener un micrófono o sus pasos de baile. Para actores, imita sus personajes más reconocibles."
+        },
+        {
+          question: "¿Qué pasa si nadie conoce a la celebridad?",
+          answer: "Puedes saltar el prompt o intentar actuar las palabras que forman su nombre por separado."
+        },
+        {
+          question: "¿Puedo imprimir estas tarjetas de famosos?",
+          answer: "Sí, puedes copiar la lista generada directamente o imprimir esta página para recortar tarjetas físicas para tu reunión."
+        }
+      ]
+    }
+  }
 };

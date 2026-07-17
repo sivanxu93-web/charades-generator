@@ -9,6 +9,8 @@ import { emotionsData } from "./categories/emotions";
 import { disneyData } from "./categories/disney";
 import { funnyData } from "./categories/funny";
 import { christmasData } from "./categories/christmas";
+import { bibleData } from "./categories/bible";
+import { celebrityData } from "./categories/celebrity";
 import { esCharadesDatabase } from "./locales/es";
 import { categoryIds, difficultyIds, ageGroupIds } from "./charades-metadata";
 
@@ -22,6 +24,8 @@ const enDatabase: CharadesWord[] = [
   ...disneyData,
   ...funnyData,
   ...christmasData,
+  ...bibleData,
+  ...celebrityData,
 ];
 
 const databaseByLocale: Record<Locale, CharadesWord[]> = {

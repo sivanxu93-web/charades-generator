@@ -8,7 +8,7 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-const pageKey = "bible-charades";
+const pageKey = "celebrity-charades-generator";
 
 export async function generateStaticParams() {
   return SUPPORTED_LOCALES.map((locale) => ({ locale }));
@@ -53,10 +53,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BibleCharadesPage({ params }: PageProps) {
+export default async function CelebrityCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const content = stage2Pages[pageKey][locale] ?? stage2Pages[pageKey].en;
 
-  return <CharadesGrowthPage locale={locale} content={content} category="bible" />;
+  return <CharadesGrowthPage locale={locale} content={content} category="celebrity" />;
 }

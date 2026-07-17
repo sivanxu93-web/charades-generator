@@ -9,6 +9,7 @@ const localizedPagePaths = [
   "/classroom-charades-guide",
   "/contact",
   "/disney-charades-generator",
+  "/celebrity-charades-generator",
   "/emotion-charades",
   "/family-game-night",
   "/family-game-night-ideas",

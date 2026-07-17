@@ -266,6 +266,8 @@ export const es = {
     disney: "Disney",
     funny: "Divertidas",
     christmas: "Navidad",
+    bible: "Biblia",
+    celebrity: "Famosos",
   },
   difficulties: {
     easy: "Fácil",
@@ -709,6 +711,7 @@ export const es = {
         { href: "/random-charades-generator/", anchor: "Generador de Charadas Aleatorio" },
         { href: "/movie-charades-generator/", anchor: "Generador de Charadas de Cine" },
         { href: "/disney-charades-generator/", anchor: "Generador de Charadas Disney" },
+        { href: "/celebrity-charades-generator/", anchor: "Generador de Charadas de Famosos" },
         { href: "/charades-generator-for-kids/", anchor: "Charadas para Niños" },
         { href: "/funny-charades-for-adults/", anchor: "Charadas Divertidas para Adultos" },
         { href: "/christmas-charades-generator/", anchor: "Generador de Charadas Navideñas" },
@@ -716,6 +719,12 @@ export const es = {
         { href: "/emotion-charades/", anchor: "Guía de Charadas de Emociones" },
         { href: "/hard-charades-ideas/", anchor: "Ideas de Charadas Difíciles" },
         { href: "/reverse-charades-game/", anchor: "Juego de Charadas al Revés" },
+        { href: "/bible-charades/", anchor: "Charadas de la Biblia" },
+        { href: "/halloween-party-games/", anchor: "Juegos de Halloween" },
+        { href: "/christmas-party-games/", anchor: "Juegos de Navidad" },
+        { href: "/truth-or-dare-generator/", anchor: "Generador de Verdad o Reto" },
+        { href: "/would-you-rather-generator/", anchor: "Generador de Qué Prefieres" },
+        { href: "/family-game-night-ideas/", anchor: "Ideas para Noche de Juegos" },
         { href: "/pictionary-word-generator/", anchor: "Generador de Palabras de Pictionary" },
         { href: "/imposter-game/", anchor: "Juego del Impostor" }
       ]
