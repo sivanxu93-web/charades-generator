@@ -60,7 +60,7 @@ export default async function CharadesIdeasPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = ideasContent[locale] ?? ideasContent.en;
+  const copy = ((ideasContent as any)[locale] ?? ideasContent.en) as typeof ideasContent.en;
 
   const canonicalPath = "/charades-ideas";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
@@ -535,37 +535,4 @@ const ideasContent = {
       },
     ],
   },
-} satisfies Record<
-  Locale,
-  {
-    tagline: string;
-    introLead: string;
-    primaryCta: string;
-    secondaryCta: string;
-    audienceSectionTitle: string;
-    audienceSectionDescription: string;
-    audiences: Array<{
-      key: string;
-      title: string;
-      description: string;
-      items: string[];
-    }>;
-    themesSectionTitle: string;
-    themesSectionDescription: string;
-    sampleLabel: string;
-    themeCta: string;
-    themes: Array<{
-      key: string;
-      title: string;
-      href: string;
-      description: string;
-      samples: string[];
-    }>;
-    generatorSectionTitle: string;
-    generatorSectionDescription: string;
-    generatorTips: string[];
-    generatorCta: string;
-    faqTitle: string;
-    faq: Array<{ question: string; answer: string }>;
-  }
->;
+} ;

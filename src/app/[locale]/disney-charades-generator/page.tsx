@@ -61,7 +61,7 @@ export default async function DisneyCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = disneyContent[locale] ?? disneyContent.en;
+  const copy = ((disneyContent as any)[locale] ?? disneyContent.en) as typeof disneyContent.en;
   const initialWords = pickWords("disney", "medium", "all", 3, locale);
 
   const canonicalPath = "/disney-charades-generator";
@@ -426,44 +426,4 @@ const disneyContent = {
       "Antes de representar héroes y villanos Disney, repasa las reglas básicas y variantes de charadas para que todos se sientan seguros.",
     rulesCta: "Leer la guía completa de charadas",
   },
-} satisfies Record<Locale, {
-  partyTitle: string;
-  partyDescription: {
-    before: string;
-    linkText: string;
-    after: string;
-    href: string;
-  };
-  partyColumns: Array<{
-    title: string;
-    items: string[];
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  charactersTitle: string;
-  characters: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  tipsTitle: string;
-  tips: {
-    characterTitle: string;
-    characterItems: string[];
-    characterHeadingColor: string;
-    guessingTitle: string;
-    guessingItems: string[];
-    guessingHeadingColor: string;
-  };
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-}>;
+} ;

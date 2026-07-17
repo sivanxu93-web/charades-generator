@@ -61,7 +61,7 @@ export default async function FunnyCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = funnyContent[locale] ?? funnyContent.en;
+  const copy = ((funnyContent as any)[locale] ?? funnyContent.en) as typeof funnyContent.en;
   const initialWords = pickWords("funny", "medium", "adults", 3, locale);
 
   const canonicalPath = "/funny-charades-for-adults";
@@ -741,71 +741,4 @@ const funnyContent = {
       "Antes de que la fiesta se descontrole, asegúrate de que todos tengan claras las reglas, los tiempos y qué cuenta como acierto.",
     rulesCta: "Ver reglas completas de charadas",
   },
-} satisfies Record<Locale, {
-  quickActions: {
-    title: string;
-    description: string;
-    primary: { label: string; href: string };
-    secondary: { label: string; href: string };
-  };
-  party: {
-    title: string;
-    description: { before: string; linkText: string; after: string; href: string };
-    columns: Array<{
-      title: string;
-      items: string[];
-      background: string;
-      headingColor: string;
-      textColor: string;
-    }>;
-  };
-  playbook: {
-    title: string;
-    sections: Array<{
-      title: string;
-      items: string[];
-    }>;
-  };
-  categoriesTitle: string;
-  categories: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  tips: {
-    title: string;
-    sections: Array<{
-      title: string;
-      headingColor: string;
-      items: string[];
-    }>;
-  };
-  wordBanks: {
-    title: string;
-    columns: Array<{
-      sections: Array<{
-        heading: string;
-        items: string[];
-      }>;
-    }>;
-  };
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  gearTitle: string;
-  gearDescription: string;
-  gearDisclaimer: string;
-  gearItems: Array<{
-    title: string;
-    description: string;
-    href: string;
-    tag: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-}>;
+} ;

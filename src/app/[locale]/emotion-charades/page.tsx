@@ -61,7 +61,7 @@ export default async function EmotionCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = emotionContent[locale] ?? emotionContent.en;
+  const copy = ((emotionContent as any)[locale] ?? emotionContent.en) as typeof emotionContent.en;
   const initialWords = pickWords("emotions", "all", "all", 3, locale);
 
   const canonicalPath = "/emotion-charades";
@@ -460,45 +460,4 @@ const emotionContent = {
       "Cuando uses charadas de emociones dentro de una sesión SEL, conviene alinear primero las reglas básicas para que el foco se mantenga en los sentimientos y no en la mecánica.",
     rulesCtaLabel: "Abrir guía completa de charadas",
   },
-} satisfies Record<
-  Locale,
-  {
-    introTitle: string;
-    introLead: string;
-    introColumns: Array<{
-      title: string;
-      items: string[];
-      background: string;
-      headingColor: string;
-      textColor: string;
-    }>;
-    activitiesTitle: string;
-    activities: Array<{
-      title: string;
-      description: string;
-      items: string[];
-    }>;
-    tipsTitle: string;
-    tips: Array<{
-      title: string;
-      items: string[];
-    }>;
-    integrationTitle: string;
-    integrationLead: string;
-    integrationCards: Array<{
-      title: string;
-      items: string[];
-    }>;
-    integrationFooter: {
-      before: string;
-      linkText: string;
-      after: string;
-      href: string;
-      };
-    faqTitle: string;
-    faq: Array<{ question: string; answer: string }>;
-    rulesCtaTitle: string;
-    rulesCtaDescription: string;
-    rulesCtaLabel: string;
-  }
->;
+} ;

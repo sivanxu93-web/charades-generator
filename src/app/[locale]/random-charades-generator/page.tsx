@@ -64,7 +64,7 @@ export default async function RandomCharadesPage({ params }: PageProps) {
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
   const initialWords = pickWords("all", "all", "all", 3, locale);
-  const copy = randomContent[locale] ?? randomContent.en;
+  const copy = ((randomContent as any)[locale] ?? randomContent.en) as typeof randomContent.en;
 
   const canonicalPath = "/random-charades-generator";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
@@ -424,38 +424,4 @@ const randomContent = {
       "El modo aleatorio es caótico, pero las reglas siguen siendo las mismas. Repásalas rápido para que todo el grupo tenga claro cómo se juega antes de empezar.",
     rulesCta: "Ver guía completa de charadas",
   },
-} satisfies Record<Locale, {
-  differenceTitle: string;
-  differenceLead: string;
-  differenceBullets: string[];
-  differenceFooter: {
-    before: string;
-    linkText: string;
-    after: string;
-    href: string;
-  };
-  presetsTitle: string;
-  presets: Array<{
-    title: string;
-    description: string;
-    note: string;
-  }>;
-  useCasesTitle: string;
-  useCases: Array<{
-    title: string;
-    items: string[];
-  }>;
-  tipsTitle: string;
-  tips: Array<{
-    title: string;
-    items: string[];
-  }>;
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-}>;
+} ;

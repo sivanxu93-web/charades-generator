@@ -68,7 +68,7 @@ export const stage2PageOrder: Stage2PageKey[] = [
   "halloween-charades-generator",
 ];
 
-export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent>> = {
+export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Partial<Record<Locale, Stage2PageContent>>> = {
   "truth-or-dare-generator": {
     en: {
       path: "/truth-or-dare-generator",
@@ -1064,6 +1064,104 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
         },
       ],
     },
+    fr: {
+      path: "/bible-charades",
+      title: "Jeu de Mime Biblique - Mots et Idées pour la Famille",
+      description: "Jouez au jeu de mime biblique avec des personnages, des lieux, des récits, des actions et des animaux pour l'école du dimanche et la famille.",
+      keywords: [
+        "mime biblique",
+        "mots mime biblique",
+        "idées mime biblique",
+        "jeux pour église",
+        "jeux chrétiens en famille"
+      ],
+      heroLabel: "Idées de mime inspirées de la foi",
+      heroTitle: "Mime Biblique",
+      heroDescription: "Utilisez des personnages, des lieux, des histoires et des animaux bibliques pour un jeu de mime respectueux en famille ou au catéchisme.",
+      primaryCta: "Choisir un mot biblique",
+      copyLabel: "Copier le mot",
+      copiedLabel: "Copié !",
+      generatorTitle: "Générateur de mimes bibliques",
+      promptListTitle: "Liste d'idées de mimes pour le jeu de mime biblique",
+      generatorDescription: "Sélectionnez une catégorie et mimez le mot en silence. Restez respectueux et simple pour tous les âges.",
+      generatorButton: "Nouveau mot biblique",
+      groups: [
+        {
+          id: "people",
+          label: "Personnages",
+          description: "Figures bibliques incontournables.",
+          prompts: ["Noé", "Moïse", "David", "Esther", "Marie", "Pierre"]
+        },
+        {
+          id: "places",
+          label: "Lieux",
+          description: "Lieux marquants des Écritures.",
+          prompts: ["Jardin d'Éden", "Jéricho", "Bethléem", "Mer Rouge", "Mont Sinaï", "Galilée"]
+        },
+        {
+          id: "stories",
+          label: "Histoires",
+          description: "Récits célèbres à mimer.",
+          prompts: ["Noé construisant l'arche", "David face à Goliath", "Jonas et la baleine", "Le bon Samaritain", "La brebis égarée", "La multiplication des pains"]
+        },
+        {
+          id: "actions",
+          label: "Actions",
+          description: "Verbes simples pour les enfants.",
+          prompts: ["Prier", "Construire", "Pêcher", "Chanter", "Partager le pain", "Allumer une lampe"]
+        },
+        {
+          id: "animals",
+          label: "Animaux",
+          description: "Animaux des récits bibliques.",
+          prompts: ["Colombe", "Brebis", "Lion", "Âne", "Poisson", "Chameau"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "Comment Jouer au Mime Biblique",
+          description: "Gardez le jeu clair, respectueux et accessible à tous.",
+          items: [
+            "Choisissez les catégories en fonction de l'âge et de la culture biblique du groupe.",
+            "Laissez les plus jeunes mimer les animaux ou les actions avant de passer aux récits complexes.",
+            "En groupe de catéchisme, demandez à l'acteur d'expliquer brièvement l'histoire après que le mot a été trouvé."
+          ]
+        },
+        {
+          id: "classroom",
+          title: "Conseils pour le Catéchisme et l'École du Dimanche",
+          description: "Le mime biblique renforce l'apprentissage des histoires sans être perçu comme un contrôle.",
+          items: [
+            "Passez en revue les noms propres difficiles avant de lancer la partie.",
+            "Associez un lecteur plus âgé avec un acteur plus jeune pour un travail d'équipe fluide.",
+            "Après chaque bonne réponse, posez une question simple sur le récit pour ancrer le souvenir."
+          ]
+        }
+      ],
+      relatedTitle: "Plus de Jeux en Famille",
+      relatedLinks: [
+        { href: "/", label: "Générateur de Mime Gratuit", description: "Générez des mots et idées au hasard." },
+        { href: "/charades-generator-for-kids/", label: "Mime pour Enfants", description: "Mimes simples pour les plus petits." },
+        { href: "/family-game-night-ideas/", label: "Idées de Soirées Jeux", description: "Planifiez une soirée complète." },
+        { href: "/pictionary-word-generator/", label: "Générateur Pictionary", description: "Dessinez les prompts." }
+      ],
+      faqTitle: "Foire Aux Questions",
+      faq: [
+        {
+          question: "Quelles sont les meilleures idées pour un mime biblique ?",
+          answer: "Les personnages clés comme Noé ou Moïse, les lieux célèbres comme Bethléem, les grands récits comme David et Goliath, et des actions comme prier ou pêcher."
+        },
+        {
+          question: "Ce jeu est-il adapté au catéchisme ?",
+          answer: "Oui, tout à fait. Utilisez des mimes simples pour les petits et des histoires pour les plus grands, avec un débriefing rapide après chaque mot trouvé."
+        },
+        {
+          question: "Puis-je y jouer lors d'une soirée familiale ?",
+          answer: "Oui, les prompts sont parfaitement sains et adaptés pour réunir toutes les générations autour d'un jeu chrétien."
+        }
+      ]
+    }
   },
   "halloween-party-games": {
     en: {
@@ -1725,6 +1823,97 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
           answer: "Sí, puedes copiar la lista generada directamente o imprimir esta página para recortar tarjetas físicas para tu reunión."
         }
       ]
+    },
+    fr: {
+      path: "/celebrity-charades-generator",
+      title: "Générateur Aléatoire de Célébrités - Personnages et Famosos",
+      description: "Générateur gratuit de célébrités pour le jeu de mime ou Pictionary. Liste de chanteurs, acteurs, personnages historiques et fictifs.",
+      keywords: [
+        "générateur de célébrités",
+        "mime célébrités",
+        "personnages célèbres aléatoires",
+        "idées de mimes célébrités"
+      ],
+      heroLabel: "Outil de fête gratuit",
+      heroTitle: "Générateur Aléatoire de Célébrités",
+      heroDescription: "Générez des célébrités et des personnages connus instantanément. Idéal pour animer vos soirées de jeux ou créer des cartes physiques.",
+      primaryCta: "Générer des célébrités",
+      copyLabel: "Copier la liste",
+      copiedLabel: "Copié !",
+      generatorTitle: "Sélectionnez votre catégorie",
+      promptListTitle: "Liste de célébrités pour le mime",
+      generatorDescription: "Sélectionnez un pack ou mélangez les chanteurs populaires, les acteurs hollywoodiens, les figures historiques et les personnages fictifs.",
+      generatorButton: "Nouvelle célébrité",
+      groups: [
+        {
+          id: "actors",
+          label: "Acteurs & Actrices",
+          description: "Stars de cinéma célèbres.",
+          prompts: ["Brad Pitt", "Angelina Jolie", "Leonardo DiCaprio", "Marion Cotillard", "Omar Sy", "Johnny Depp"]
+        },
+        {
+          id: "singers",
+          label: "Chanteurs & Musiciens",
+          description: "Artistes musicaux et pop stars.",
+          prompts: ["Céline Dion", "Michael Jackson", "Beyoncé", "Stromae", "Angèle", "David Guetta"]
+        },
+        {
+          id: "historical",
+          label: "Personnages Historiques",
+          description: "Figures marquantes de l'histoire.",
+          prompts: ["Napoléon Bonaparte", "Marie Curie", "Albert Einstein", "Cléopâtre", "Léonard de Vinci"]
+        },
+        {
+          id: "fictional",
+          label: "Personnages Fictifs",
+          description: "Héros célèbres de fiction.",
+          prompts: ["Harry Potter", "Sherlock Holmes", "Spider-Man", "Batman", "Cendrillon"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Comment Jouer aux Mimes de Célébrités",
+          description: "Suivez nos conseils pour des parties pleines de rires.",
+          items: [
+            "Divisez votre groupe en équipes de taille équivalente.",
+            "L'acteur doit faire deviner la célébrité par le geste, sans émettre de son.",
+            "Réglez un temps limite de 60 secondes par candidat."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Idées de Jeux pour vos Fêtes",
+          description: "Dynamisez vos soirées avec ces variantes amusantes.",
+          items: [
+            "Célébrité sur le Front : Écrivez un nom sur un post-it collé sur le front d'un joueur, qui doit deviner qui il est par des questions fermées (oui/non).",
+            "Machine à remonter le temps : Restreignez le générateur aux 'Figures Historiques' pour une ambiance culturelle.",
+            "Cartes physiques : Imprimez cette page et découpez les noms pour jouer de façon traditionnelle sans écrans."
+          ]
+        }
+      ],
+      relatedTitle: "Plus de Générateurs Amusants",
+      relatedLinks: [
+        { href: "/", label: "Générateur de Mime Gratuit", description: "Générez des mots et idées au hasard." },
+        { href: "/movie-charades-generator/", label: "Mime Cinéma", description: "Mimes de films et classiques." },
+        { href: "/funny-charades-for-adults/", label: "Mime pour Adultes", description: "Mimes hilarants et décalés." },
+        { href: "/charades-generator-for-kids/", label: "Mime pour Enfants", description: "Idées simples pour toute la famille." }
+      ],
+      faqTitle: "Foire Aux Questions",
+      faq: [
+        {
+          question: "Comment imiter une célébrité sans parler ?",
+          answer: "Concentrez-vous sur leurs habitudes marquantes ou rôles iconiques. Pour les chanteurs, mimez un micro ou un pas de danse célèbre. Pour les acteurs, mimez leur personnage le plus connu."
+        },
+        {
+          question: "Que faire si un joueur ne connaît pas la célébrité ?",
+          answer: "Vous pouvez passer au mot suivant ou essayer de mimer chaque partie du nom séparément."
+        },
+        {
+          question: "Puis-je imprimer ces cartes de célébrités ?",
+          answer: "Oui ! Copiez simplement la liste générée ou utilisez le bouton d'impression pour découper des cartes de jeu physiques."
+        }
+      ]
     }
   },
   "family-charades-generator": {
@@ -1897,6 +2086,92 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
         {
           question: "¿Cuántos jugadores necesitamos?",
           answer: "Puedes jugar con tan solo 3 jugadores (un actor y dos adivinadores), pero funciona mejor en equipos de 4 o más personas."
+        }
+      ]
+    },
+    fr: {
+      path: "/family-charades-generator",
+      title: "Générateur de Jeu de Mime en Famille - Idées et Mots Amusants",
+      description: "Générez des mots de mime propres et amusants pour toute la famille. Idéal pour les soirées jeux, enfants, ados et adultes jouant ensemble.",
+      keywords: [
+        "mime en famille",
+        "générateur mime famille",
+        "mots de mime famille",
+        "jeux de mime en famille",
+        "idées de mime pour famille"
+      ],
+      heroLabel: "Activités pour soirées jeux",
+      heroTitle: "Générateur de Mime en Famille",
+      heroDescription: "Obtenez instantanément des idées de mimes familiales. Générez des listes de mots pour enfants et parents pour jouer et s'amuser ensemble.",
+      primaryCta: "Générer des mots famille",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copié !",
+      generatorTitle: "Choisissez une catégorie de mimes",
+      promptListTitle: "Liste de mots familiaux pour le jeu de mime",
+      generatorDescription: "Sélectionnez une catégorie ou mélangez les tâches ménagères, les routines quotidiennes, les sports et les situations familiales amusantes.",
+      generatorButton: "Nouveau mot famille",
+      groups: [
+        {
+          id: "routines",
+          label: "Routines Quotidiennes",
+          description: "Tâches simples de la vie de tous les jours à la maison.",
+          prompts: ["Faire la vaisselle", "Promener le chien", "Mettre la table", "Lire une histoire au lit"]
+        },
+        {
+          id: "activities",
+          label: "Activités Familiales",
+          description: "Choses amusantes que les familles font ensemble.",
+          prompts: ["Jouer à un jeu de société", "Pique-nique en famille", "Regarder la télévision", "Souffler des bougies d'anniversaire"]
+        },
+        {
+          id: "funny",
+          label: "Situations Amusantes",
+          description: "Des mimes cocasses pour faire rire tout le monde.",
+          prompts: ["Apprendre à siffler", "Perder au Monopoly", "Se réveiller très tôt", "Essayer d'attraper une mouche"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Comment Jouer au Mime en Famille",
+          description: "Gardez le jeu convivial, rapide et facile pour tous les participants.",
+          items: [
+            "Formez des équipes mixtes avec enfants et adultes pour équilibrer les chances.",
+            "L'acteur doit représenter le mot en silence à l'aide de gestes, sans aucun bruit.",
+            "Réglez un temps de 60 secondes. Chaque bonne réponse rapporte 1 point."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Conseils pour Parents et Enfants",
+          description: "Assurez-vous que les plus jeunes se sentent à l'aise et inclus.",
+          items: [
+            "Utilisez des mots simples d'actions et d'animaux pour les enfants de moins de 7 ans afin d'éviter la frustration.",
+            "Permettez aux enfants timides de mimer en duo avec un adulte pour se rassurer.",
+            "Autorisez un changement de mot par tour s'ils ne connaissent pas l'expression."
+          ]
+        }
+      ],
+      relatedTitle: "Plus de Jeux en Famille",
+      relatedLinks: [
+        { href: "/", label: "Générateur de Mime Gratuit", description: "Générez des mots et idées au hasard." },
+        { href: "/charades-generator-for-kids/", label: "Mime pour Enfants", description: "Mimes simples pour les plus petits." },
+        { href: "/family-game-night-ideas/", label: "Idées de Soirées Jeux", description: "Planifiez une soirée complète." },
+        { href: "/would-you-rather-generator/", label: "Générateur Tu Préfères", description: "Questions rapides de choix." }
+      ],
+      faqTitle: "Foire Aux Questions",
+      faq: [
+        {
+          question: "Ce générateur de mimes en famille est-il gratuit ?",
+          answer: "Oui ! Notre outil est 100% gratuit sur n'importe quel navigateur, sans téléchargement d'application ni inscription requise."
+        },
+        {
+          question: "Pour quels âges est-il adapté ?",
+          answer: "La catégorie famille est conçue pour tous les âges (de 4 à 99+ ans). Elle contient des scènes familières et des sports faciles à mimer."
+        },
+        {
+          question: "Combien de joueurs faut-il ?",
+          answer: "Vous pouvez y jouer dès 3 joueurs (un actor et deux devins), mais le jeu est encore meilleur en équipes de 4 ou plus."
         }
       ]
     }
@@ -2072,6 +2347,92 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
           answer: "Funciona genial como rompehielos mientras llegan los invitados, o como una actividad divertida después de la comida principal mientras están en la mesa."
         }
       ]
+    },
+    fr: {
+      path: "/thanksgiving-charades-generator",
+      title: "Générateur de Mime d'Action de Grâce - Idées Amusantes pour le Repas",
+      description: "Générateur interactif gratuit de mimes pour l'Action de Grâce. Mots, cartes et règles pour vos réunions de famille et repas de fête.",
+      keywords: [
+        "mime action de grâce",
+        "générateur mime action de grâce",
+        "mots de mime action de grâce",
+        "idées de mime repas de fête",
+        "cartes de mime action de grâce"
+      ],
+      heroLabel: "Activités familiales festives",
+      heroTitle: "Générateur de Mime d'Action de Grâce",
+      heroDescription: "Obtenez des mots de mime sur le thème de l'Action de Grâce. Générez des listes personnalisées pour vos repas de fête et réunions de famille.",
+      primaryCta: "Générer des mimes Action de Grâce",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copié !",
+      generatorTitle: "Choisissez votre catégorie",
+      promptListTitle: "Liste de mots d'Action de Grâce pour le mime",
+      generatorDescription: "Sélectionnez un pack de mots ou mélangez les plats traditionnels, les symboles de l'automne et les activités chaleureuses.",
+      generatorButton: "Nouveau mot festif",
+      groups: [
+        {
+          id: "food",
+          label: "Plats Traditionnels",
+          description: "La dinde, les accompagnements et les desserts classiques.",
+          prompts: ["Manger de la dinde", "Tarte à la citrouille", "Couper la dinde", "Faire de la purée"]
+        },
+        {
+          id: "symbols",
+          label: "Symboles d'Automne",
+          description: "Éléments et décors de la saison des récoltes.",
+          prompts: ["Corne d'abondance", "Feuilles d'automne", "Une citrouille", "Un épouvantail"]
+        },
+        {
+          id: "celebration",
+          label: "Moments de Partage",
+          description: "Activités chaleureuses partagées en famille.",
+          prompts: ["Remercier sa famille", "Partager un repas", "Faire une sieste après manger", "Regarder le défilé"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Comment Jouer pendant le Repas",
+          description: "Animez vos moments à table de façon fluide.",
+          items: [
+            "Divisez les invités en équipes. Se costumer ou porter un chapeau rigolo rend le jeu encore plus drôle !",
+            "L'acteur mime le mot à l'aide de gestes sans émettre aucun son.",
+            "Réglez un chronomètre de 60 secondes. Chaque mot deviné rapporte 1 point."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Conseils pour votre Repas de Fête",
+          description: "Intégrez le jeu facilement dans vos festivités.",
+          items: [
+            "Jouez un tour rapide à table en attendant que la dinde soit découpée ou le dessert servi.",
+            "Utilisez des mots très simples pour les petits et gardez les termes historiques pour les adultes.",
+            "Offrez de petits chocolats ou des friandises comme récompenses à l'équipe gagnante."
+          ]
+        }
+      ],
+      relatedTitle: "Plus de Jeux Festifs",
+      relatedLinks: [
+        { href: "/", label: "Générateur de Mime Gratuit", description: "Générez des mots et idées au hasard." },
+        { href: "/christmas-charades-generator/", label: "Mime de Noël", description: "Générateur thématique de Noël." },
+        { href: "/family-charades-generator/", label: "Mime en Famille", description: "Mimes propres pour tous les âges." },
+        { href: "/charades-generator-for-kids/", label: "Mime pour Enfants", description: "Mimes simples pour les plus petits." }
+      ],
+      faqTitle: "Foire Aux Questions",
+      faq: [
+        {
+          question: "Ce générateur d'Action de Grâce est-il adapté aux enfants ?",
+          answer: "Oui ! Tous les mots sont sélectionnés pour être conviviaux, sûrs et amusants pour les enfants, ados, parents et grands-parents."
+        },
+        {
+          question: "Puis-je imprimer cette liste de mots ?",
+          answer: "Oui ! Vous pouvez copier la liste générée ou utiliser notre bouton d'impression pour découper des cartes de jeu physiques."
+        },
+        {
+          question: "Quel est le meilleur moment pour jouer le jour de la fête ?",
+          answer: "C'est parfait comme jeu de bienvenue pour briser la glace, ou après le grand repas pour rire ensemble en restant à table."
+        }
+      ]
     }
   },
   "halloween-charades-generator": {
@@ -2243,6 +2604,91 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
         {
           question: "¿Necesitamos accesorios para jugar?",
           answer: "¡No se necesita nada! La gracia de las charadas es representarlo todo usando únicamente el lenguaje corporal y la mímica."
+        }
+      ]
+    },
+    fr: {
+      path: "/halloween-charades-generator",
+      title: "Générateur de Mime d'Halloween - Idées de Mots Spéciaux",
+      description: "Générateur de mimes d'Halloween gratuit. Mots effrayants, monstres, sorcières et règles pour les enfants et les soirées déguisées.",
+      keywords: [
+        "mime halloween",
+        "générateur mime halloween",
+        "mots de mime halloween",
+        "idées de mime halloween"
+      ],
+      heroLabel: "Activités pour fêtes d'Halloween",
+      heroTitle: "Générateur de Mime d'Halloween",
+      heroDescription: "Obtenez des mots de mime sur le thème d'Halloween. Générez des listes pour vos soirées déguisées, fêtes d'enfants et réunions de famille.",
+      primaryCta: "Générer des mots d'Halloween",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copié !",
+      generatorTitle: "Choisissez votre catégorie",
+      promptListTitle: "Liste de mots d'Halloween pour le mime",
+      generatorDescription: "Sélectionnez une catégorie ou mélangez les monstres classiques, les objets mystérieux et les actions effrayantes.",
+      generatorButton: "Nouveau mot d'Halloween",
+      groups: [
+        {
+          id: "monsters",
+          label: "Monstres et Créatures",
+          description: "Les monstres classiques et personnages d'Halloween.",
+          prompts: ["Fantôme", "Vampire", "Sorcière", "Momie", "Zombie", "Squelette"]
+        },
+        {
+          id: "items",
+          label: "Objets Mystérieux",
+          description: "Symboles et articles traditionnels de la fête.",
+          prompts: ["Citrouille d'Halloween", "Chapeau de sorcière", "Toile d'araignée", "Bonbons", "Chaudron", "Balai de sorcière"]
+        },
+        {
+          id: "actions",
+          label: "Actions d'Halloween",
+          description: "Actions thématiques amusantes à mimer.",
+          prompts: ["Bonbons ou un sort", "Voler sur un balai", "Hurler à la lune", "Creuser une citrouille"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Comment Jouer au Mime d'Halloween",
+          description: "Rendez votre partie mystérieuse et amusante pour tous.",
+          items: [
+            "Divisez les invités en équipes. Porter des costumes rend la mímica encore plus drôle !",
+            "L'acteur mime le mot à l'aide de gestes et d'expressions faciales, sans aucun bruit.",
+            "Réglez un temps de 60 secondes. Chaque mot deviné rapporte 1 point."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Conseils pour votre Fête d'Halloween",
+          description: "Rendez votre soirée de jeux encore plus mystérieuse.",
+          items: [
+            "Jouez sous une lumière tamisée ou à la bougie pour créer une ambiance mystérieuse.",
+            "Attribuez des points bonus si les joueurs restent dans le rôle de leur costume en mimant.",
+            "Distribuez des bonbons d'Halloween ou des friandises à l'équipe gagnante."
+          ]
+        }
+      ],
+      relatedTitle: "Plus de Jeux Thématiques",
+      relatedLinks: [
+        { href: "/", label: "Générateur de Mime Gratuit", description: "Générez des mots et idées au hasard." },
+        { href: "/halloween-party-games/", label: "Jeux de Fête d'Halloween", description: "D'autres jeux amusants pour la soirée." },
+        { href: "/family-charades-generator/", label: "Mime en Famille", description: "Mimes propres pour tous les âges." },
+        { href: "/charades-generator-for-kids/", label: "Mime pour Enfants", description: "Mimes simples pour les plus petits." }
+      ],
+      faqTitle: "Foire Aux Questions",
+      faq: [
+        {
+          question: "Ce générateur d'Halloween est-il adapté aux enfants ?",
+          answer: "Oui ! Bien qu'il contienne des monstres classiques, les mots sont amusants et conçus pour faire rire plutôt que pour terrifier."
+        },
+        {
+          question: "Puis-je l'utiliser pour une fête d'école ?",
+          answer: "Absolument ! Les enseignants adorent utiliser notre outil pour les célébrations d'Halloween en classe. Il est 100% adapté au milieu scolaire."
+        },
+        {
+          question: "Faut-il des accessoires pour jouer ?",
+          answer: "Aucun accessoire n'est requis ! Tout le charme du jeu réside dans l'utilisation du langage corporel et de l'expression physique."
         }
       ]
     }

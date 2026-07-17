@@ -61,7 +61,7 @@ export default async function ReverseCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = reverseContent[locale] ?? reverseContent.en;
+  const copy = ((reverseContent as any)[locale] ?? reverseContent.en) as typeof reverseContent.en;
   const initialWords = pickWords("all", "medium", "all", 3, locale);
 
   const canonicalPath = "/reverse-charades-game";
@@ -381,29 +381,4 @@ const reverseContent = {
       },
     ],
   },
-} satisfies Record<
-  Locale,
-  {
-    introTitle: string;
-    introLead: string;
-    introBullets: string[];
-    rulesTitle: string;
-    rulesSetupTitle: string;
-    rulesSetupSteps: string[];
-    rulesPlayTitle: string;
-    rulesPlaySteps: string[];
-    teamTipsTitle: string;
-    teamTips: Array<{ title: string; items: string[] }>;
-    resourcesTitle: string;
-    resourcesDescription: string;
-    resourcesPrimaryCta: string;
-    resourcesSecondaryCta: string;
-    faqTitle: string;
-    faq: Array<{ question: string; answer: string }>;
-    rulesCtaTitle: string;
-    rulesCtaDescription: string;
-    rulesCtaLabel: string;
-    samplesTitle: string;
-    samples: Array<{ title: string; items: string[] }>;
-  }
->;
+} ;

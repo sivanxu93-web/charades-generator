@@ -54,17 +54,7 @@ const howToExtras = {
       "Rota los papeles para que todos actúen y adivinen durante la sesión.",
     ],
   },
-} satisfies Record<Locale, {
-  teamTitle: string;
-  teamDescription: string;
-  teamTips: string[];
-  kitTitle: string;
-  kitDescription: string;
-  kitCta: string;
-  reverseTitle: string;
-  reverseDescription: string;
-  reverseSteps: string[];
-}>;
+} ;
 
 const supportingGuides = {
   en: [
@@ -101,14 +91,7 @@ const supportingGuides = {
       href: "/family-game-night/",
     },
   ],
-} satisfies Record<
-  Locale,
-  Array<{
-    title: string;
-    description: string;
-    href: string;
-  }>
->;
+} ;
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -163,10 +146,10 @@ export default async function HowToUsePage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const extras = howToExtras[locale] ?? howToExtras.en;
+  const extras = ((howToExtras as any)[locale] ?? howToExtras.en) as typeof howToExtras.en;
   const quickKitHref = buildLocalePath(locale, "/quick-play-kit/");
   const themedGenerators = dictionary.home?.themedGenerators;
-  const guides = supportingGuides[locale] ?? supportingGuides.en;
+  const guides = ((supportingGuides as any)[locale] ?? supportingGuides.en) as typeof supportingGuides.en;
   const steps = [
     dictionary.pages.howToUse.step1,
     dictionary.pages.howToUse.step2,

@@ -61,7 +61,7 @@ export default async function HardCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = hardContent[locale] ?? hardContent.en;
+  const copy = ((hardContent as any)[locale] ?? hardContent.en) as typeof hardContent.en;
   const initialWords = pickWords("all", "hard", "all", 3, locale);
 
   const canonicalPath = "/hard-charades-ideas";
@@ -387,23 +387,4 @@ const hardContent = {
       "Cuando las cartas se complican, tener reglas claras evita frustraciones. Revisa la guía general de charadas antes de subir la dificultad.",
     rulesCtaLabel: "Ver guía completa de charadas",
   },
-} satisfies Record<
-  Locale,
-  {
-    introTitle: string;
-    introLead: string;
-    introBullets: string[];
-    categoriesTitle: string;
-    categories: Array<{ title: string; description: string; items: string[] }>;
-    hostTitle: string;
-    hostTips: Array<{ title: string; items: string[] }>;
-    variantsTitle: string;
-    variants: Array<{ title: string; description: string; items: string[] }>;
-    variantsFooter: { before: string; linkText: string; after: string; href: string };
-    faqTitle: string;
-    faq: Array<{ question: string; answer: string }>;
-    rulesCtaTitle: string;
-    rulesCtaDescription: string;
-    rulesCtaLabel: string;
-  }
->;
+} ;

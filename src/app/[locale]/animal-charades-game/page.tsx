@@ -61,7 +61,7 @@ export default async function AnimalCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = animalContent[locale] ?? animalContent.en;
+  const copy = ((animalContent as any)[locale] ?? animalContent.en) as typeof animalContent.en;
   const initialWords = pickWords("animals", "all", "all", 3, locale);
 
   const canonicalPath = "/animal-charades-game";
@@ -224,7 +224,7 @@ type AnimalContent = {
   rulesCta: string;
 };
 
-const animalContent: Record<Locale, AnimalContent> = {
+const animalContent = {
   en: {
     introTitle: "Animal charades keeps every age roaring with laughter",
     introLead:
@@ -307,7 +307,7 @@ const animalContent: Record<Locale, AnimalContent> = {
     resourcesTitle: "Keep the animal theme going",
     resourcesLead:
       "Save your favourite prompts or switch to other categories once the animal trivia winds down.",
-    resourcesPrimary: null,
+    resourcesPrimary: null as { label: string; href: string } | null,
     resourcesSecondary: {
       label: "Open random charades generator",
       href: "/random-charades-generator",
@@ -422,7 +422,7 @@ const animalContent: Record<Locale, AnimalContent> = {
     resourcesTitle: "Sigue con la temática animal",
     resourcesLead:
       "Guarda tus prompts favoritos o cambia de categoría cuando se agote la trivia animal.",
-    resourcesPrimary: null,
+    resourcesPrimary: null as { label: string; href: string } | null,
     resourcesSecondary: {
       label: "Usar el generador aleatorio",
       href: "/es/random-charades-generator",

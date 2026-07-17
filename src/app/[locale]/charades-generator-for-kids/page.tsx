@@ -61,7 +61,7 @@ export default async function CharadesForKidsPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = kidsContent[locale] ?? kidsContent.en;
+  const copy = ((kidsContent as any)[locale] ?? kidsContent.en) as typeof kidsContent.en;
   const initialWords = pickWords("kids", "easy", "kids", 3, locale);
 
   const canonicalPath = "/charades-generator-for-kids";
@@ -619,66 +619,4 @@ const kidsContent = {
       "Si juegas con niños de distintas edades o es su primera vez con charadas, repasa antes la guía completa de reglas y consejos.",
     rulesCta: "Abrir la guía completa de charadas",
   },
-} satisfies Record<Locale, {
-  introTitle: string;
-  introDescription: string;
-  activitiesTitle: string;
-  activitiesDescription: {
-    before: string;
-    linkText: string;
-    after: string;
-    href: string;
-  };
-  activitiesColumns: Array<{
-    title: string;
-    items: string[];
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  safeTitle: string;
-  safeCategories: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  ageGuideTitle: string;
-  ageGuideItems: Array<{
-    age: string;
-    description: string;
-    examplesLabel: string;
-    examples: string;
-  }>;
-  benefitsTitle: string;
-  benefits: {
-    learningTitle: string;
-    learningItems: string[];
-    learningHeadingColor: string;
-    physicalTitle: string;
-    physicalItems: string[];
-    physicalHeadingColor: string;
-  };
-  playGuideTitle: string;
-  playGuideList: string[];
-  marryTitle: string;
-  marryDescription: string;
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  gearTitle: string;
-  gearDescription: string;
-  gearDisclaimer: string;
-  gearItems: Array<{
-    title: string;
-    description: string;
-    href: string;
-    tag: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-}>;
+} ;

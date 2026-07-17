@@ -62,7 +62,7 @@ export default async function MovieCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = movieContent[locale] ?? movieContent.en;
+  const copy = ((movieContent as any)[locale] ?? movieContent.en) as typeof movieContent.en;
   const initialWords = pickWords("movies", "medium", "all", 3, locale);
 
   const canonicalPath = "/movie-charades-generator";
@@ -475,49 +475,4 @@ const movieContent = {
       "Una rubia muy legal", "El diario de Noa (The Notebook)", "La La Land", "Resacón en Las Vegas", "Coco"
     ],
   },
-} satisfies Record<Locale, {
-  partyTitle: string;
-  partyDescription: {
-    before: string;
-    linkText: string;
-    after: string;
-    href: string;
-  };
-  partyColumns: Array<{
-    title: string;
-    items: string[];
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  categoriesTitle: string;
-  categories: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  tipsTitle: string;
-  tips: {
-    actingTitle: string;
-    actingItems: string[];
-    actingHeadingColor: string;
-    guessingTitle: string;
-    guessingItems: string[];
-    guessingHeadingColor: string;
-  };
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-  copyButtonLabel: string;
-  copiedButtonLabel: string;
-  listTitle: string;
-  listDescription: string;
-  popularMovies: string[];
-}>;
+} ;

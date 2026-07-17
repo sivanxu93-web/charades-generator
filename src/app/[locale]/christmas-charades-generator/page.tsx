@@ -61,7 +61,7 @@ export default async function ChristmasCharadesPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = christmasContent[locale] ?? christmasContent.en;
+  const copy = ((christmasContent as any)[locale] ?? christmasContent.en) as typeof christmasContent.en;
   const initialWords = pickWords("christmas", "medium", "all", 3, locale);
 
   const canonicalPath = "/christmas-charades-generator";
@@ -524,55 +524,4 @@ const christmasContent = {
       },
     ],
   },
-} satisfies Record<Locale, {
-  calloutTitle: string;
-  calloutDescription: {
-    before: string;
-    linkText: string;
-    after: string;
-    href: string;
-  };
-  calloutColumns: Array<{
-    title: string;
-    items: string[];
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  categoriesTitle: string;
-  categories: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  howToTitle: string;
-  howTo: {
-    setupTitle: string;
-    setupItems: string[];
-    setupHeadingColor: string;
-    tipsTitle: string;
-    tipsItems: string[];
-    tipsHeadingColor: string;
-  };
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  gearTitle: string;
-  gearDescription: string;
-  gearDisclaimer: string;
-  gearItems: Array<{
-    title: string;
-    description: string;
-    href: string;
-    tag: string;
-  }>;
-  rulesTitle: string;
-  rulesDescription: string;
-  rulesCta: string;
-  samplesTitle: string;
-  samples: Array<{ title: string; items: string[] }>;
-}>;
+} ;

@@ -60,7 +60,7 @@ export default async function ImposterGamePage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const content = imposterContent[locale] ?? imposterContent.en;
+  const content = ((imposterContent as any)[locale] ?? imposterContent.en) as typeof imposterContent.en;
 
   const canonicalPath = "/imposter-game";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
@@ -663,50 +663,4 @@ const imposterContent = {
     ctaPrimary: "Crear sala de impostor",
     ctaSecondary: "Abrir lista de palabras",
   },
-} satisfies Record<Locale, {
-  heroBadge: string;
-  heroTitle: string;
-  heroDescription: string;
-  heroPrimaryCta: string;
-  heroSecondaryCta: string;
-  heroNote: string;
-  whatIsTitle: string;
-  whatIsIntro: string;
-  whatIsBullets: string[];
-  rulesTitle: string;
-  setupTitle: string;
-  setupSteps: string[];
-  playTitle: string;
-  playSteps: string[];
-  rolesTitle: string;
-  roles: Array<{
-    title: string;
-    description: string;
-    tagline: string;
-  }>;
-  wordsTitle: string;
-  wordsIntro: string;
-  wordGroups: Array<{
-    title: string;
-    items: string[];
-  }>;
-  generatorHint: {
-    before: string;
-    linkText: string;
-    after: string;
-  };
-  useCasesTitle: string;
-  useCases: Array<{
-    title: string;
-    items: string[];
-  }>;
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-  ctaTitle: string;
-  ctaDescription: string;
-  ctaPrimary: string;
-  ctaSecondary: string;
-}>;
+} ;

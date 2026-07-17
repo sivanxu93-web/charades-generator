@@ -40,7 +40,7 @@ const LOCALIZED = {
 
 export default function ImposterQuickGenerator() {
   const { locale } = useLocale();
-  const t = LOCALIZED[locale] || LOCALIZED.en;
+  const t = (LOCALIZED as any)[locale] || LOCALIZED.en;
 
   const [activePackId, setActivePackId] = useState<ImposterPackId>("everyday");
   const [isRevealed, setIsRevealed] = useState(false);
@@ -172,7 +172,7 @@ export default function ImposterQuickGenerator() {
         <div className="mb-6 flex flex-wrap gap-2 justify-center sm:justify-start">
           {IMPOSTER_PACK_IDS.map((packId) => {
             const isActive = packId === activePackId;
-            const packLabel = IMPOSTER_PACKS[packId].label[locale] || IMPOSTER_PACKS[packId].label.en;
+            const packLabel = (IMPOSTER_PACKS[packId].label as any)[locale] || IMPOSTER_PACKS[packId].label.en;
             return (
               <button
                 key={packId}

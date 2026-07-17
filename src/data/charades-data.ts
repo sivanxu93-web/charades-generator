@@ -15,6 +15,7 @@ import { familyData } from "./categories/family";
 import { thanksgivingData } from "./categories/thanksgiving";
 import { halloweenData } from "./categories/halloween";
 import { esCharadesDatabase } from "./locales/es";
+import { frCharadesDatabase } from "./locales/fr";
 import { categoryIds, difficultyIds, ageGroupIds } from "./charades-metadata";
 
 const enDatabase: CharadesWord[] = [
@@ -37,6 +38,7 @@ const enDatabase: CharadesWord[] = [
 const databaseByLocale: Record<Locale, CharadesWord[]> = {
   en: enDatabase,
   es: esCharadesDatabase,
+  fr: frCharadesDatabase,
 };
 
 export { categoryIds, difficultyIds as difficulties, ageGroupIds as ageGroups };

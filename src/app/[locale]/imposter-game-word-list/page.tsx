@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
   const locale = params.locale as Locale;
-  const copy = imposterWordListContent[locale] ?? imposterWordListContent.en;
+  const copy = ((imposterWordListContent as any)[locale] ?? imposterWordListContent.en) as typeof imposterWordListContent.en;
   const canonicalUrl = buildCanonicalUrl(locale, "/imposter-game-word-list/");
 
   return {
@@ -60,7 +60,7 @@ export default async function ImposterWordListPage(props: Props) {
   const params = await props.params;
   const locale = params.locale as Locale;
   const dictionary = getDictionary(locale);
-  const copy = imposterWordListContent[locale] ?? imposterWordListContent.en;
+  const copy = ((imposterWordListContent as any)[locale] ?? imposterWordListContent.en) as typeof imposterWordListContent.en;
   const canonicalPath = "/imposter-game-word-list/";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
   const homeUrl = buildLocalePath(locale, "/");
@@ -71,7 +71,7 @@ export default async function ImposterWordListPage(props: Props) {
   const allPairsText = IMPOSTER_PACK_IDS.flatMap((packId) => {
     const pack = IMPOSTER_PACKS[packId];
     return [
-      pack.label[locale] || pack.label.en,
+      (pack.label as any)[locale] || pack.label.en,
       ...pack.pairs.map((pair) => `${pair.main} vs ${pair.imposter}`),
     ];
   }).join("\n");
@@ -137,7 +137,7 @@ export default async function ImposterWordListPage(props: Props) {
           <div key={packId} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden mb-8">
             <div className="bg-indigo-600 px-6 py-4 flex justify-between items-center">
               <h2 className="text-xl font-bold text-white">
-                {pack.label[locale] || pack.label.en}
+                {(pack.label as any)[locale] || pack.label.en}
               </h2>
               <Link
                 href={buildLocalePath(locale, `/imposter-game/?pack=${packId}`)}
@@ -310,26 +310,4 @@ const imposterWordListContent = {
     ],
     copyPair: "Copiar",
   },
-} satisfies Record<Locale, {
-  title: string;
-  description: string;
-  keywords: string[];
-  heading: string;
-  lead: string;
-  primaryCta: string;
-  copyAll: string;
-  copyPack: string;
-  copyPair: string;
-  copied: string;
-  print: string;
-  packCta: string;
-  howToUseTitle: string;
-  howToUseSteps: string[];
-  finalCtaTitle: string;
-  finalCtaDescription: string;
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-}>;
+} ;

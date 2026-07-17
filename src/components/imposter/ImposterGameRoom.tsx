@@ -60,7 +60,7 @@ export default function ImposterGameRoom() {
   const guideHref = useMemo(() => buildLocalePath(locale, "/imposter-game/"), [locale]);
 
   const packOptions = useMemo(
-    () => IMPOSTER_PACK_IDS.map((id) => ({ id, label: IMPOSTER_PACKS[id].label[locale] || IMPOSTER_PACKS[id].label.en })),
+    () => IMPOSTER_PACK_IDS.map((id) => ({ id, label: (IMPOSTER_PACKS[id].label as any)[locale] || IMPOSTER_PACKS[id].label.en })),
     [locale],
   );
 
@@ -678,7 +678,7 @@ export default function ImposterGameRoom() {
                 {room.name} · <span className={room.role === "imposter" ? "text-red-400" : "text-cyan-400"}>{room.role === "imposter" ? t.imposter : t.crew}</span>
               </p>
               <p className="mt-1 text-xs text-slate-400">
-                {t.round} {room.round} · {t.pack}: {IMPOSTER_PACKS[room.packId]?.label[locale] ?? IMPOSTER_PACKS[room.packId]?.label.en}
+                {t.round} {room.round} · {t.pack}: {(IMPOSTER_PACKS[room.packId]?.label as any)[locale] ?? IMPOSTER_PACKS[room.packId]?.label.en}
               </p>
             </div>
           </div>

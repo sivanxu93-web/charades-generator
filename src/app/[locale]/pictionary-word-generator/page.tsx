@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
-  const copy = pictionaryContent[locale] ?? pictionaryContent.en;
+  const copy = ((pictionaryContent as any)[locale] ?? pictionaryContent.en) as typeof pictionaryContent.en;
   const { title, description, keywords } = copy.seo;
 
   const canonicalPath = "/pictionary-word-generator";
@@ -64,7 +64,7 @@ export default async function PictionaryPage({ params }: PageProps) {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
-  const copy = pictionaryContent[locale] ?? pictionaryContent.en;
+  const copy = ((pictionaryContent as any)[locale] ?? pictionaryContent.en) as typeof pictionaryContent.en;
   // Objects and Animals are best for drawing
   const initialWords = pickWords("objects", "easy", "all", 3, locale);
 
@@ -697,58 +697,4 @@ const pictionaryContent = {
       },
     ],
   },
-} satisfies Record<Locale, {
-  seo: {
-    title: string;
-    description: string;
-    keywords: string[];
-  };
-  hero: {
-    pageTitle: string;
-    pageDescription: string;
-  };
-  introTitle: string;
-  introDescription: string;
-  featuresColumns: Array<{
-    title: string;
-    items: string[];
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  categoriesTitle: string;
-  categories: Array<{
-    title: string;
-    description: string;
-    background: string;
-    headingColor: string;
-    textColor: string;
-  }>;
-  wordListTitle: string;
-  wordListDescription: string;
-  copyWordList: string;
-  wordLists: Array<{
-    key: string;
-    title: string;
-    description: string;
-    words: string[];
-  }>;
-  printableTitle: string;
-  printableDescription: string;
-  copyPrintable: string;
-  copied: string;
-  printCards: string;
-  printableWords: string[];
-  tipsTitle: string;
-  tips: {
-    drawingTitle: string;
-    drawingItems: string[];
-    guessingTitle: string;
-    guessingItems: string[];
-  };
-  faqTitle: string;
-  faq: Array<{
-    question: string;
-    answer: string;
-  }>;
-}>;
+} ;

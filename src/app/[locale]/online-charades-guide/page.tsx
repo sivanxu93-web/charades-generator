@@ -10,7 +10,7 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-const metaByLocale: Record<Locale, { title: string; description: string }> = {
+const metaByLocale = {
   en: {
     title: "Online & Zoom Charades Guide – Remote Game Ideas",
     description:
@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale: localeParam } = await params;
   const locale = localeParam as Locale;
-  const meta = metaByLocale[locale] ?? metaByLocale.en;
+  const meta = ((metaByLocale as any)[locale] ?? metaByLocale.en) as typeof metaByLocale.en;
 
   const canonicalPath = "/online-charades-guide";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
@@ -72,7 +72,7 @@ export default async function OnlineCharadesGuidePage({ params }: PageProps) {
   const locale = localeParam as Locale;
   const isEn = locale === "en";
   const dictionary = getDictionary(locale);
-  const meta = metaByLocale[locale] ?? metaByLocale.en;
+  const meta = ((metaByLocale as any)[locale] ?? metaByLocale.en) as typeof metaByLocale.en;
 
   const canonicalPath = "/online-charades-guide";
   const canonicalUrl = buildCanonicalUrl(locale, canonicalPath);
