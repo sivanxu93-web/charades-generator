@@ -7,7 +7,10 @@ export type Stage2PageKey =
   | "bible-charades"
   | "halloween-party-games"
   | "christmas-party-games"
-  | "celebrity-charades-generator";
+  | "celebrity-charades-generator"
+  | "family-charades-generator"
+  | "thanksgiving-charades-generator"
+  | "halloween-charades-generator";
 
 export interface Stage2PromptGroup {
   id: string;
@@ -60,6 +63,9 @@ export const stage2PageOrder: Stage2PageKey[] = [
   "halloween-party-games",
   "christmas-party-games",
   "celebrity-charades-generator",
+  "family-charades-generator",
+  "thanksgiving-charades-generator",
+  "halloween-charades-generator",
 ];
 
 export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent>> = {
@@ -1590,10 +1596,10 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
       ],
       relatedTitle: "More Fun Generators",
       relatedLinks: [
+        { href: "/", label: "Free Charades Generator", description: "Generate random words and ideas." },
         { href: "/movie-charades-generator/", label: "Movie Charades Generator", description: "Get famous film prompts." },
         { href: "/funny-charades-for-adults/", label: "Funny Adult Charades", description: "Awkward and hilarious prompts." },
-        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple family-friendly ideas." },
-        { href: "/imposter-game/", label: "Imposter Game Room", description: "Play multiplayer online." }
+        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple family-friendly ideas." }
       ],
       faqTitle: "Frequently Asked Questions",
       faq: [
@@ -1699,10 +1705,10 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
       ],
       relatedTitle: "Más generadores divertidos",
       relatedLinks: [
+        { href: "/", label: "Generador de Charadas Gratis", description: "Genera palabras e ideas al azar." },
         { href: "/movie-charades-generator/", label: "Charadas de Películas", description: "Consigue prompts de cine." },
         { href: "/funny-charades-for-adults/", label: "Charadas para Adultos", description: "Prompts divertidos y atrevidos." },
-        { href: "/charades-generator-for-kids/", label: "Charadas para Niños", description: "Ideas sencillas para toda la familia." },
-        { href: "/imposter-game/", label: "Juego del Impostor", description: "Juega multijugador online." }
+        { href: "/charades-generator-for-kids/", label: "Charadas para Niños", description: "Ideas sencillas para toda la familia." }
       ],
       faqTitle: "Preguntas frecuentes",
       faq: [
@@ -1717,6 +1723,526 @@ export const stage2Pages: Record<Stage2PageKey, Record<Locale, Stage2PageContent
         {
           question: "¿Puedo imprimir estas tarjetas de famosos?",
           answer: "Sí, puedes copiar la lista generada directamente o imprimir esta página para recortar tarjetas físicas para tu reunión."
+        }
+      ]
+    }
+  },
+  "family-charades-generator": {
+    en: {
+      path: "/family-charades-generator",
+      title: "Family Charades Generator - Fun Word Ideas for All Ages",
+      description: "Generate funny, easy, and clean family charades words and ideas. Perfect for family game nights, kids, teens, and adults playing together.",
+      keywords: [
+        "family charades",
+        "family charades generator",
+        "family charades words",
+        "family game night charades",
+        "charades ideas for family"
+      ],
+      heroLabel: "Fun activities for game night",
+      heroTitle: "Family Charades Generator",
+      heroDescription: "Get instant, clean, and hilarious family charades prompts. Generate custom word lists for kids and parents to act out and play together.",
+      primaryCta: "Generate family prompts",
+      copyLabel: "Copy word list",
+      copiedLabel: "Copied",
+      generatorTitle: "Pick a family charades category",
+      promptListTitle: "Family Charades Word List",
+      generatorDescription: "Select a group below or get a random mix of household chores, daily routines, popular sports, and hilarious family scenarios.",
+      generatorButton: "New family word",
+      groups: [
+        {
+          id: "routines",
+          label: "Daily Routines",
+          description: "Simple everyday tasks around the house.",
+          prompts: ["Washing the dishes", "Walking the dog", "Setting the dinner table", "Reading a bedtime story"]
+        },
+        {
+          id: "activities",
+          label: "Family Activities",
+          description: "Fun things families do together.",
+          prompts: ["Playing board games", "Family picnic", "Watching TV", "Blowing out birthday candles"]
+        },
+        {
+          id: "funny",
+          label: "Funny Situations",
+          description: "Silly prompts that will get everyone laughing.",
+          prompts: ["Learning to whistle", "Losing a game of Monopoly", "Waking up early", "Trying to catch a fly"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "How to Play Family Charades",
+          description: "Keep the game friendly, fast, and easy for everyone.",
+          items: [
+            "Form teams with a mix of kids and adults on each side to keep things balanced.",
+            "Clue-givers must act out words using body movements, facial expressions, and gestures without making any sound.",
+            "Set a 60-second timer. Each correct guess earns 1 point, and the team with the most points wins."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Tips for Kids and Parents",
+          description: "Make sure younger players feel confident and included.",
+          items: [
+            "Use easy action and animal words for younger kids (under 7) so they don't get frustrated.",
+            "Let younger or shy kids pair up with a parent as co-actors for extra support.",
+            "Allow one free skip per turn if a player doesn't know the word or phrase."
+          ]
+        }
+      ],
+      relatedTitle: "More Family-Friendly Games",
+      relatedLinks: [
+        { href: "/", label: "Free Charades Generator", description: "Generate random words and ideas." },
+        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple child-friendly prompts." },
+        { href: "/family-game-night-ideas/", label: "Family Game Night Ideas", description: "Plan a full evening." },
+        { href: "/would-you-rather-generator/", label: "Would You Rather Generator", description: "Fast choice questions." }
+      ],
+      faqTitle: "Frequently Asked Questions",
+      faq: [
+        {
+          question: "Is this family charades generator free?",
+          answer: "Yes! Our generator is 150% free to use on any browser without downloading any apps or registering."
+        },
+        {
+          question: "What age group is this appropriate for?",
+          answer: "The family category is designed for all ages (4 to 99+). It features clean, recognizable household items, sports, and common family scenarios."
+        },
+        {
+          question: "How many players do we need?",
+          answer: "You can play with as few as 3 players (one actor, two guessers), but it works best in teams of 4 or more."
+        }
+      ]
+    },
+    es: {
+      path: "/family-charades-generator",
+      title: "Generador de Charadas Familiares - Ideas y Palabras Divertidas",
+      description: "Genera palabras e ideas limpias y divertidas para charadas familiares. Ideal para noches de juegos en familia, niños, adolescentes y adultos jugando juntos.",
+      keywords: [
+        "charadas familiares",
+        "generador charadas familiares",
+        "palabras charadas familiares",
+        "juegos de charadas en familia",
+        "ideas de charadas para familia"
+      ],
+      heroLabel: "Actividades para la noche de juegos",
+      heroTitle: "Generador de Charadas Familiares",
+      heroDescription: "Obtén palabras de charadas familiares limpias y divertidas al instante. Genera listas de palabras para niños y padres para actuar juntos.",
+      primaryCta: "Generar palabras familiares",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copiado",
+      generatorTitle: "Elige una categoría de charadas",
+      promptListTitle: "Lista de palabras familiares para charadas",
+      generatorDescription: "Selecciona una categoría o mezcla tareas del hogar, rutinas diarias, deportes populares y situaciones familiares divertidas.",
+      generatorButton: "Nueva palabra familiar",
+      groups: [
+        {
+          id: "routines",
+          label: "Rutinas Diarias",
+          description: "Tareas simples del día a día en casa.",
+          prompts: ["Lavar los platos", "Pasear al perro", "Poner la mesa", "Leer un cuento antes de dormir"]
+        },
+        {
+          id: "activities",
+          label: "Actividades en Familia",
+          description: "Cosas divertidas que las familias hacen juntas.",
+          prompts: ["Jugar juegos de mesa", "Picnic familiar", "Ver la televisión", "Soplar las velas de cumpleaños"]
+        },
+        {
+          id: "funny",
+          label: "Situaciones Divertidas",
+          description: "Prompts graciosos que harán reír a todos.",
+          prompts: ["Aprender a silbar", "Perder en el Monopoly", "Despertarse temprano", "Intentar atrapar una mosca"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Cómo Jugar Charadas en Familia",
+          description: "Mantén el juego amigable, rápido y fácil para todos.",
+          items: [
+            "Forma equipos mezclando niños y adultos en cada lado para mantener la balanza.",
+            "El actor debe representar la palabra usando movimientos corporales, gestos y expresiones sin emitir ningún sonido.",
+            "Establece un límite de 60 segundos. Cada respuesta correcta suma 1 punto, y el equipo con más puntos gana."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Consejos para Padres e Hijos",
+          description: "Asegúrate de que los más jóvenes se sientan seguros e incluidos.",
+          items: [
+            "Usa palabras de acciones simples y animales para niños menores de 7 años para evitar frustraciones.",
+            "Permite que los niños tímidos actúen en parejas con un adulto para recibir apoyo.",
+            "Permite cambiar la palabra una vez por turno si no conocen la frase."
+          ]
+        }
+      ],
+      relatedTitle: "Más Juegos Familiares",
+      relatedLinks: [
+        { href: "/", label: "Generador de Charadas Gratis", description: "Genera palabras e ideas al azar." },
+        { href: "/charades-generator-for-kids/", label: "Generador de Charadas para Niños", description: "Prompts sencillos para los pequeños." },
+        { href: "/family-game-night-ideas/", label: "Ideas para Noche de Juegos", description: "Planea una noche completa." },
+        { href: "/would-you-rather-generator/", label: "Generador de Qué Prefieres", description: "Preguntas rápidas de elección." }
+      ],
+      faqTitle: "Preguntas Frecuentes",
+      faq: [
+        {
+          question: "¿Este generador de charadas familiares es gratis?",
+          answer: "¡Sí! Nuestro generador es 150% gratuito para usar en cualquier navegador, sin descargar aplicaciones ni registrarse."
+        },
+        {
+          question: "¿Para qué edades es adecuado?",
+          answer: "La categoría familiar está diseñada para todas las edades (de 4 a 99+ años). Contiene escenas cotidianas, deportes y situaciones familiares reconocibles."
+        },
+        {
+          question: "¿Cuántos jugadores necesitamos?",
+          answer: "Puedes jugar con tan solo 3 jugadores (un actor y dos adivinadores), pero funciona mejor en equipos de 4 o más personas."
+        }
+      ]
+    }
+  },
+  "thanksgiving-charades-generator": {
+    en: {
+      path: "/thanksgiving-charades-generator",
+      title: "Thanksgiving Charades Generator - Fun Dinner Game Ideas",
+      description: "Free interactive Thanksgiving charades generator. Instant clean words, cards, and rules for family gatherings, kids, and holiday dinner parties.",
+      keywords: [
+        "thanksgiving charades",
+        "thanksgiving charades generator",
+        "thanksgiving charades words",
+        "thanksgiving charades ideas",
+        "thanksgiving charades cards"
+      ],
+      heroLabel: "Holiday family activities",
+      heroTitle: "Thanksgiving Charades Generator",
+      heroDescription: "Get instant Thanksgiving-themed charades prompts. Generate custom word lists for holiday dinners, family gatherings, and kids playing together.",
+      primaryCta: "Generate Thanksgiving prompts",
+      copyLabel: "Copy word list",
+      copiedLabel: "Copied",
+      generatorTitle: "Pick a Thanksgiving category",
+      promptListTitle: "Thanksgiving Charades Words and Prompts List",
+      generatorDescription: "Select a category below or get a random mix of holiday food, historical symbols, cozy autumn nature, and fun traditions.",
+      generatorButton: "New Thanksgiving word",
+      groups: [
+        {
+          id: "food",
+          label: "Food & Feast",
+          description: "Delicious Thanksgiving dishes and foods.",
+          prompts: ["Turkey", "Pumpkin pie", "Gravy", "Mashed potatoes", "Cranberry sauce", "Apple cider"]
+        },
+        {
+          id: "symbols",
+          label: "History & Symbols",
+          description: "Traditional symbols of the autumn holiday.",
+          prompts: ["Pilgrim", "Native American", "Mayflower", "Cornucopia", "Harvest", "Scarecrow"]
+        },
+        {
+          id: "traditions",
+          label: "Traditions & Fun",
+          description: "Holiday activities and family fun.",
+          prompts: ["Football", "Feasting", "Giving thanks", "Family reunion", "Parade", "Hayride"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "How to Play Thanksgiving Charades",
+          description: "Keep the round fast, fun, and friendly while waiting for dinner.",
+          items: [
+            "Divide guests into teams. Mix different generations (grandparents, kids, parents) on each side for the most fun.",
+            "Actor must represent the word using body language and gestures without speaking or making sound effects.",
+            "Set a 60-second timer. Each correct guess scores 1 point, and the team with the highest score wins."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Hosting Tips for Thanksgiving Dinner",
+          description: "Incorporate charades easily into your holiday routine.",
+          items: [
+            "Play a quick round at the dinner table while waiting for the turkey to carve or dessert to serve.",
+            "Use easy terms for kids (like eating corn or acting like a turkey) and save historical terms for adults.",
+            "Offer small holiday treats (like a slice of pie or a chocolate) as prizes for the winning team."
+          ]
+        }
+      ],
+      relatedTitle: "More Holiday Games",
+      relatedLinks: [
+        { href: "/", label: "Free Charades Generator", description: "Generate random words and ideas." },
+        { href: "/christmas-charades-generator/", label: "Christmas Charades Generator", description: "Holiday special word generator." },
+        { href: "/family-charades-generator/", label: "Family Charades Generator", description: "Clean prompts for all ages." },
+        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple child-friendly prompts." }
+      ],
+      faqTitle: "Frequently Asked Questions",
+      faq: [
+        {
+          question: "Is this Thanksgiving charades generator family-friendly?",
+          answer: "Yes! All prompts are carefully hand-selected to be clean, safe, and appropriate for kids, teens, parents, and grandparents."
+        },
+        {
+          question: "Can I print these Thanksgiving words?",
+          answer: "Yes! You can copy the generated list directly or print this page to cut out physical slips of paper for your gathering."
+        },
+        {
+          question: "When is the best time to play during Thanksgiving?",
+          answer: "It works great as an icebreaker while guests arrive, or as a fun activity after the main meal while sitting around the table."
+        }
+      ]
+    },
+    es: {
+      path: "/thanksgiving-charades-generator",
+      title: "Generador de Charadas de Acción de Gracias - Ideas y Palabras",
+      description: "Generador interactivo de charadas de Acción de Gracias. Palabras limpias, tarjetas e ideas para reuniones familiares, niños y cenas festivas.",
+      keywords: [
+        "charadas de accion de gracias",
+        "generador charadas accion de gracias",
+        "palabras charadas accion de gracias",
+        "ideas charadas de accion de gracias"
+      ],
+      heroLabel: "Actividades familiares festivas",
+      heroTitle: "Generador de Charadas de Acción de Gracias",
+      heroDescription: "Obtén palabras temáticas de Acción de Gracias al instante. Genera listas de palabras para cenas festivas y reuniones familiares para actuar juntos.",
+      primaryCta: "Generar palabras de Acción de Gracias",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copiado",
+      generatorTitle: "Elige una categoría de Acción de Gracias",
+      promptListTitle: "Lista de palabras e ideas de Acción de Gracias",
+      generatorDescription: "Selecciona una categoría o mezcla comida festiva, símbolos históricos, naturaleza otoñal acogedora y tradiciones divertidas.",
+      generatorButton: "Nueva palabra de Acción de Gracias",
+      groups: [
+        {
+          id: "food",
+          label: "Comida y Banquete",
+          description: "Deliciosos platos y comidas de Acción de Gracias.",
+          prompts: ["Pavo", "Pastel de calabaza", "Salsa de carne", "Puré de patatas", "Salsa de arándanos", "Sidra de manzana"]
+        },
+        {
+          id: "symbols",
+          label: "Historia y Símbolos",
+          description: "Símbolos tradicionales de las fiestas de otoño.",
+          prompts: ["Peregrino", "Indígena americano", "Mayflower", "Cornucopia", "Cosecha", "Espantapájaros"]
+        },
+        {
+          id: "traditions",
+          label: "Tradiciones y Diversión",
+          description: "Actividades festivas y diversión en familia.",
+          prompts: ["Fútbol americano", "Banquete", "Dar gracias", "Reunión familiar", "Desfile", "Paseo en heno"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Cómo Jugar Charadas de Acción de Gracias",
+          description: "Mantén la ronda rápida, divertida y familiar mientras esperas la cena.",
+          items: [
+            "Divide a los invitados en equipos. Mezcla diferentes generaciones (abuelos, niños, padres) en cada lado para mayor diversión.",
+            "El actor debe representar la palabra usando lenguaje corporal y gestos sin hablar ni emitir sonidos.",
+            "Establece un límite de 60 segundos. Cada respuesta correcta suma 1 punto, y el equipo con más puntos gana."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Consejos para la Cena de Acción de Gracias",
+          description: "Incorpora charadas fácilmente en tu rutina festiva.",
+          items: [
+            "Juega una ronda rápida en la mesa mientras esperas que se trinche el pavo o se sirva el postre.",
+            "Usa términos fáciles para los niños (como comer maíz o actuar como un pavo) y guarda los términos históricos para los adultos.",
+            "Ofrece pequeños dulces festivos (como una porción de pastel o chocolate) como premios para el equipo ganador."
+          ]
+        }
+      ],
+      relatedTitle: "Más Juegos Divertidos",
+      relatedLinks: [
+        { href: "/", label: "Generador de Charadas Gratis", description: "Genera palabras e ideas al azar." },
+        { href: "/christmas-charades-generator/", label: "Generador de Charadas Navideñas", description: "Especial navideño de charadas." },
+        { href: "/family-charades-generator/", label: "Generador de Charadas Familiares", description: "Prompts limpios para todas las edades." },
+        { href: "/charades-generator-for-kids/", label: "Generador de Charadas para Niños", description: "Prompts sencillos para los pequeños." }
+      ],
+      faqTitle: "Preguntas Frecuentes",
+      faq: [
+        {
+          question: "¿Este generador de Acción de Gracias es apto para familias?",
+          answer: "¡Sí! Todos los prompts están seleccionados a mano para ser limpios, seguros y apropiados para niños, adolescentes, padres y abuelos."
+        },
+        {
+          question: "¿Puedo imprimir estas palabras?",
+          answer: "¡Sí! Puedes copiar la lista generada directamente o imprimir esta página para recortar tarjetas físicas para tu reunión."
+        },
+        {
+          question: "¿Cuándo es el mejor momento para jugar en Acción de Gracias?",
+          answer: "Funciona genial como rompehielos mientras llegan los invitados, o como una actividad divertida después de la comida principal mientras están en la mesa."
+        }
+      ]
+    }
+  },
+  "halloween-charades-generator": {
+    en: {
+      path: "/halloween-charades-generator",
+      title: "Halloween Charades Generator - Spooky Word Ideas",
+      description: "Free interactive Halloween charades generator. Instant creepy monsters, scary actions, and rules for spooky party games and kids.",
+      keywords: [
+        "halloween charades",
+        "halloween charades generator",
+        "halloween charades words",
+        "halloween charades ideas",
+        "halloween charades cards"
+      ],
+      heroLabel: "Spooky party activities",
+      heroTitle: "Halloween Charades Generator",
+      heroDescription: "Get instant Halloween-themed charades prompts. Generate custom word lists for spooky parties, family gatherings, and kids playing together.",
+      primaryCta: "Generate Halloween prompts",
+      copyLabel: "Copy word list",
+      copiedLabel: "Copied",
+      generatorTitle: "Pick a Halloween category",
+      promptListTitle: "Halloween Charades Words and Prompts List",
+      generatorDescription: "Select a category below or get a random mix of spooky monsters, creepy objects, scary actions, and haunted places.",
+      generatorButton: "New Halloween word",
+      groups: [
+        {
+          id: "monsters",
+          label: "Monsters & Villains",
+          description: "Classic spooky monsters and characters.",
+          prompts: ["Ghost", "Vampire", "Witch", "Mummy", "Zombie", "Skeleton"]
+        },
+        {
+          id: "items",
+          label: "Creepy Objects",
+          description: "Traditional Halloween symbols and items.",
+          prompts: ["Jack-o'-lantern", "Pumpkin", "Candy corn", "Tombstone", "Cauldron", "Broomstick"]
+        },
+        {
+          id: "actions",
+          label: "Scary Actions",
+          description: "Spooky actions and things to act out.",
+          prompts: ["Trick-or-treating", "Flying on a broomstick", "Howling at the moon", "Carving a pumpkin"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "How to Play Halloween Charades",
+          description: "Keep the game scary, spooky, and fun for all guests.",
+          items: [
+            "Divide guests into teams. Dress up in costumes to make acting even more fun!",
+            "Actor must represent the word using body movements, scary facial expressions, and creepy gestures without making any sound.",
+            "Set a 60-second timer. Each correct guess scores 1 point, and the team with the most points wins."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Hosting Tips for a Halloween Party",
+          description: "Spookify your charades night with these creative tips.",
+          items: [
+            "Play under dim lights or candlelight to create a spooky atmosphere.",
+            "Award bonus points if players act out their prompts while remaining in their Halloween costume characters.",
+            "Give away Halloween candy or spooky treats as prizes to the winning team."
+          ]
+        }
+      ],
+      relatedTitle: "More Spooky Games",
+      relatedLinks: [
+        { href: "/", label: "Free Charades Generator", description: "Generate random words and ideas." },
+        { href: "/halloween-party-games/", label: "Halloween Party Games", description: "Other fun party games." },
+        { href: "/family-charades-generator/", label: "Family Charades Generator", description: "Clean prompts for all ages." },
+        { href: "/charades-generator-for-kids/", label: "Kids Charades Generator", description: "Simple child-friendly prompts." }
+      ],
+      faqTitle: "Frequently Asked Questions",
+      faq: [
+        {
+          question: "Is this Halloween charades generator safe for kids?",
+          answer: "Yes! While it features classic monsters like ghosts and witches, all prompts are clean and designed to be fun rather than genuinely terrifying."
+        },
+        {
+          question: "Can I use this for classroom parties?",
+          answer: "Absolutely! Teachers love using our generator for classroom Halloween celebrations and brain breaks. It's fully school-appropriate."
+        },
+        {
+          question: "Do we need props to play?",
+          answer: "No props are required! The fun of charades is acting everything out using only body language and gestures."
+        }
+      ]
+    },
+    es: {
+      path: "/halloween-charades-generator",
+      title: "Generador de Charadas de Halloween - Ideas y Palabras Terroríficas",
+      description: "Generador interactivo de charadas de Halloween. Palabras espeluznantes, monstruos, acciones de miedo y reglas para niños y fiestas.",
+      keywords: [
+        "charadas de halloween",
+        "generador charadas halloween",
+        "palabras charadas halloween",
+        "ideas charadas de halloween"
+      ],
+      heroLabel: "Actividades para fiestas de miedo",
+      heroTitle: "Generador de Charadas de Halloween",
+      heroDescription: "Obtén palabras temáticas de Halloween al instante. Genera listas de palabras para fiestas de disfraces, reuniones y juegos infantiles para actuar juntos.",
+      primaryCta: "Generar palabras de Halloween",
+      copyLabel: "Copiar lista de palabras",
+      copiedLabel: "Copiado",
+      generatorTitle: "Elige una categoría de Halloween",
+      promptListTitle: "Lista de palabras e ideas de Halloween",
+      generatorDescription: "Selecciona una categoría o mezcla monstruos espantosos, objetos misteriosos, acciones de miedo y lugares embrujados.",
+      generatorButton: "Nueva palabra de Halloween",
+      groups: [
+        {
+          id: "monsters",
+          label: "Monstruos y Villanos",
+          description: "Clásicos monstruos y personajes de terror.",
+          prompts: ["Fantasma", "Vampiro", "Bruja", "Momia", "Zombie", "Esqueleto"]
+        },
+        {
+          id: "items",
+          label: "Objetos Misteriosos",
+          description: "Símbolos y artículos tradicionales de Halloween.",
+          prompts: ["Calabaza de Halloween", "Calabaza", "Caramelo de maíz", "Lápida", "Caldero", "Escoba de bruja"]
+        },
+        {
+          id: "actions",
+          label: "Acciones de Miedo",
+          description: "Acciones temáticas para representar con mímica.",
+          prompts: ["Truco o trato", "Volar en una escoba", "Aullar a la luna", "Tallar una calabaza"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to",
+          title: "Cómo Jugar Charadas de Halloween",
+          description: "Mantén el juego misterioso, divertido y apto para todos.",
+          items: [
+            "Divide a los invitados en equipos. ¡Llevar disfraces hace que la actuación sea aún más divertida!",
+            "El actor debe representar la palabra usando movimientos corporales, gestos de miedo y expresiones sin emitir ningún sonido.",
+            "Establece un límite de 60 segundos. Cada respuesta correcta suma 1 punto, y el equipo con más puntos gana."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Consejos para una Fiesta de Halloween",
+          description: "Hace que tu noche de charadas sea aún más terrorífica.",
+          items: [
+            "Juega bajo luces tenues o a la luz de las velas para crear una atmósfera misteriosa.",
+            "Otorga puntos extra si los jugadores actúan sus prompts metidos en el papel de sus personajes de disfraz.",
+            "Regala dulces de Halloween o golosinas temáticas al equipo ganador."
+          ]
+        }
+      ],
+      relatedTitle: "Más Juegos Temáticos",
+      relatedLinks: [
+        { href: "/", label: "Generador de Charadas Gratis", description: "Genera palabras e ideas al azar." },
+        { href: "/halloween-party-games/", label: "Juegos de Fiesta de Halloween", description: "Otros juegos divertidos para la noche." },
+        { href: "/family-charades-generator/", label: "Generador de Charadas Familiares", description: "Prompts limpios para todas las edades." },
+        { href: "/charades-generator-for-kids/", label: "Generador de Charadas para Niños", description: "Prompts sencillos para los pequeños." }
+      ],
+      faqTitle: "Preguntas Frecuentes",
+      faq: [
+        {
+          question: "¿Este generador de Halloween es seguro para niños?",
+          answer: "¡Sí! Aunque incluye monstruos clásicos como fantasmas y brujas, todos los prompts son aptos para todas las edades y están pensados para divertir en vez de asustar de verdad."
+        },
+        {
+          question: "¿Puedo usarlo para fiestas en el colegio?",
+          answer: "¡Claro! A los docentes les encanta usar nuestro generador para las fiestas escolares de Halloween. Es totalmente escolar y educativo."
+        },
+        {
+          question: "¿Necesitamos accesorios para jugar?",
+          answer: "¡No se necesita nada! La gracia de las charadas es representarlo todo usando únicamente el lenguaje corporal y la mímica."
         }
       ]
     }

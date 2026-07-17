@@ -11,6 +11,9 @@ export const categoryIds = [
   'christmas',
   'bible',
   'celebrity',
+  'family',
+  'thanksgiving',
+  'halloween',
 ] as const;
 
 export const difficultyIds = ['easy', 'medium', 'hard'] as const;

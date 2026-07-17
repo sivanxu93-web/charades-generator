@@ -65,6 +65,21 @@ const routeConfig: Array<{
     priority: 0.8,
   },
   {
+    path: "/family-charades-generator",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/thanksgiving-charades-generator",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
+    path: "/halloween-charades-generator",
+    changeFrequency: "weekly",
+    priority: 0.8,
+  },
+  {
     path: "/funny-charades-for-adults",
     changeFrequency: "weekly",
     priority: 0.8,

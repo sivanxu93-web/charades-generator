@@ -11,6 +11,9 @@ import { funnyData } from "./categories/funny";
 import { christmasData } from "./categories/christmas";
 import { bibleData } from "./categories/bible";
 import { celebrityData } from "./categories/celebrity";
+import { familyData } from "./categories/family";
+import { thanksgivingData } from "./categories/thanksgiving";
+import { halloweenData } from "./categories/halloween";
 import { esCharadesDatabase } from "./locales/es";
 import { categoryIds, difficultyIds, ageGroupIds } from "./charades-metadata";
 
@@ -26,6 +29,9 @@ const enDatabase: CharadesWord[] = [
   ...christmasData,
   ...bibleData,
   ...celebrityData,
+  ...familyData,
+  ...thanksgivingData,
+  ...halloweenData,
 ];
 
 const databaseByLocale: Record<Locale, CharadesWord[]> = {
