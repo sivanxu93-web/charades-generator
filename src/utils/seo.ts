@@ -38,11 +38,13 @@ export function buildAlternateLanguages(path: string): Record<string, string> {
   const englishUrl = buildCanonicalUrl("en", path);
   const spanishUrl = buildCanonicalUrl("es", path);
   const frenchUrl = buildCanonicalUrl("fr", path);
+  const portugueseUrl = buildCanonicalUrl("pt", path);
 
   return {
     en: englishUrl,
     es: spanishUrl,
     fr: frenchUrl,
+    pt: portugueseUrl,
     "x-default": englishUrl,
   };
 }
