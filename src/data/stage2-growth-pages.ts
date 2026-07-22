@@ -1161,6 +1161,104 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Oui, les prompts sont parfaitement sains et adaptés pour réunir toutes les générations autour d'un jeu chrétien."
         }
       ]
+    },
+    pt: {
+      path: "/bible-charades",
+      title: "Mímica Bíblica - Palavras e Ideias Temáticas para a Família",
+      description: "Jogue o jogo de mímica bíblica com personagens, lugares, histórias, ações e animais bíblicos para a catequese, escola dominical e família.",
+      keywords: [
+        "mimica biblica",
+        "palavras mimica biblica",
+        "ideias mimica biblica",
+        "jogos para igreja",
+        "jogos cristaos em familia"
+      ],
+      heroLabel: "Ideias de mímica inspiradas na fé",
+      heroTitle: "Mímica Bíblica",
+      heroDescription: "Use personagens, lugares, histórias e animais da Bíblia para um jogo de mímica respeitoso em família ou na escola dominical.",
+      primaryCta: "Escolher uma palavra bíblica",
+      copyLabel: "Copiar palavra",
+      copiedLabel: "Copiado !",
+      generatorTitle: "Gerador de mímicas bíblicas",
+      promptListTitle: "Lista de ideias de mímicas para o jogo de mímica bíblica",
+      generatorDescription: "Selecione uma categoria e imite a palavra em silêncio absoluto. Mantenha os gestos respeitosos e adequados.",
+      generatorButton: "Nova palavra bíblica",
+      groups: [
+        {
+          id: "people",
+          label: "Personagens",
+          description: "Figuras bíblicas fundamentais.",
+          prompts: ["Noé", "Moisés", "Davi", "Ester", "Maria", "Pedro"]
+        },
+        {
+          id: "places",
+          label: "Lugares",
+          description: "Locais marcantes das Escrituras.",
+          prompts: ["Jardim do Éden", "Jericó", "Belém", "Mar Vermelho", "Monte Sinai", "Galileia"]
+        },
+        {
+          id: "stories",
+          label: "Histórias",
+          description: "Relatos famosos para imitar.",
+          prompts: ["Noé construindo a arca", "Davi e Golias", "Jonas e a baleia", "O bom Samaritano", "A ovelha perdida", "A multiplicação dos pães"]
+        },
+        {
+          id: "actions",
+          label: "Ações",
+          description: "Verbos simples para crianças.",
+          prompts: ["Orar", "Construir", "Pescar", "Cantar", "Partilhar o pão", "Acender a lâmpada"]
+        },
+        {
+          id: "animals",
+          label: "Animais",
+          description: "Animais das passagens bíblicas.",
+          prompts: ["Pomba", "Ovelha", "Leão", "Jumento", "Peixe", "Camelo"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "Como Jogar Mímica Bíblica",
+          description: "Mantenha a partida divertida, respeitosa e acessível para todos.",
+          items: [
+            "Escolha as categorias de acordo com a idade e o conhecimento bíblico do grupo.",
+            "Deixe os menores imitarem os animais ou ações antes de passar às histórias mais complexas.",
+            "Nos grupos de jovens, peça ao ator para resumir brevemente a história depois que a palavra for adivinhada."
+          ]
+        },
+        {
+          id: "classroom",
+          title: "Dicas para a Escola Dominical e Catequese",
+          description: "A mímica bíblica ajuda a fixar os ensinamentos das escrituras de forma lúdica e sem pressão.",
+          items: [
+            "Revise os nomes próprios mais difíceis antes de iniciar a rodada.",
+            "Forme duplas misturando um participante mais velho e um mais novo para equilibrar o jogo.",
+            "Faça uma pergunta simples sobre a passagem bíblica logo após a resposta certa ser dita."
+          ]
+        }
+      ],
+      relatedTitle: "Mais Jogos Em Família",
+      relatedLinks: [
+        { href: "/", label: "Gerador de Mímica Grátis", description: "Gere palavras e ideias aleatórias." },
+        { href: "/charades-generator-for-kids/", label: "Mímica para Crianças", description: "Mímicas fáceis para os pequenos." },
+        { href: "/family-game-night-ideas/", label: "Ideias de Noite de Jogos", description: "Planeje uma noite completa de diversão." },
+        { href: "/pictionary-word-generator/", label: "Gerador Pictionary", description: "Gere prompts para desenhar." }
+      ],
+      faqTitle: "Perguntas Frequentes",
+      faq: [
+        {
+          question: "Quais são as melhores ideias para uma mímica bíblica ?",
+          answer: "Personagens chaves como Noé ou Moisés, lugares famosos como Belém, grandes relatos como Davi e Golias, e ações simples como orar."
+        },
+        {
+          question: "Este jogo é apropriado para a catequese ?",
+          answer: "Sim, absolutamente. Use mímicas fáceis com as crianças e relatos com os mais velhos, fazendo um breve resumo da lição após cada acerto."
+        },
+        {
+          question: "Posso jogar em uma noite de jogos com a família ?",
+          answer: "Sim, os temas são completamente saudáveis e adequados para unir todas as gerações da família em torno da fé."
+        }
+      ]
     }
   },
   "halloween-party-games": {
@@ -1914,6 +2012,97 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Oui ! Copiez simplement la liste générée ou utilisez le bouton d'impression pour découper des cartes de jeu physiques."
         }
       ]
+    },
+    pt: {
+      path: "/celebrity-charades-generator",
+      title: "Gerador de Celebridades para Mímica - Famosos e Personagens",
+      description: "Gerador gratuito de celebridades para mímica ou Pictionary. Encontre cantores, atores, atletas, figuras históricas e personagens fictícios.",
+      keywords: [
+        "gerador de celebridades",
+        "mimica celebridades",
+        "famosos para mimica",
+        "ideias mimica famosos"
+      ],
+      heroLabel: "Nomes de famosos para seu jogo",
+      heroTitle: "Mímica de Celebridades",
+      heroDescription: "Gere cantores, atores, atletas e personagens históricos e fictícios para animar o seu jogo de mímica ou Pictionary com amigos.",
+      primaryCta: "Escolher um famoso",
+      copyLabel: "Copiar nome",
+      copiedLabel: "Copiado !",
+      generatorTitle: "Gerador aleatório de famosos",
+      promptListTitle: "Lista de famosos e celebridades para mímica",
+      generatorDescription: "Escolha uma categoria e imite os trejeitos marcantes, poses ou trabalhos conhecidos da celebridade sem emitir som.",
+      generatorButton: "Novo famoso",
+      groups: [
+        {
+          id: "musicians",
+          label: "Cantores & Músicos",
+          description: "Estrelas da música nacional e internacional.",
+          prompts: ["Anitta", "Roberto Carlos", "Ivete Sangalo", "Michael Jackson", "Beyoncé", "Madonna"]
+        },
+        {
+          id: "actors",
+          label: "Atores & Atrizes",
+          description: "Estrelas da TV, cinema e novelas.",
+          prompts: ["Fernanda Montenegro", "Lázaro Ramos", "Selton Mello", "Brad Pitt", "Will Smith", "Angelina Jolie"]
+        },
+        {
+          id: "athletes",
+          label: "Atletas",
+          description: "Ídolos do esporte mundial.",
+          prompts: ["Pelé", "Neymar", "Ayrton Senna", "Marta", "Lionel Messi", "Cristiano Ronaldo"]
+        },
+        {
+          id: "historical",
+          label: "Históricos & Fictícios",
+          description: "Figuras da história e ficção.",
+          prompts: ["Dom Pedro I", "Albert Einstein", "Sherlock Holmes", "Harry Potter", "Batman", "Coringa"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "Como Imitar Celebridades Sem Falar",
+          description: "Mantenha o foco nos maneirismos físicos, gestos de palco e papéis icônicos da celebridade.",
+          items: [
+            "Para cantores, imite a performance de palco, passos de dance clássicos ou segurar o microfone.",
+            "Para atletas, faça o gesto característico de comemoração ou a simulação do esporte que praticam.",
+            "Evite soletrar as letras do nome; prefira focar nos traços físicos e roupas marcantes."
+          ]
+        },
+        {
+          id: "variations",
+          title: "Variantes de Mímica de Famosos",
+          description: "Crie novas dinâmicas para o seu grupo usando estas regras alternativas.",
+          items: [
+            "Quem sou eu ?: Escreva o nome em uma fita e cole na testa do jogador. Ele deve fazer perguntas para a equipe adivinhar quem ele é.",
+            "Estilo Imagem e Ação: Permita que o jogador escolha entre fazer mímica ou desenhar a celebridade no quadro.",
+            "Modo Rápido: Defina 30 segundos por famoso para aumentar a adrenalina e dar risadas rápidas."
+          ]
+        }
+      ],
+      relatedTitle: "Mais Geradores Divertidos",
+      relatedLinks: [
+        { href: "/", label: "Gerador de Mímica Grátis", description: "Gere ideias e palavras aleatórias." },
+        { href: "/movie-charades-generator/", label: "Mímica de Cinema", description: "Encontre nomes de filmes famosos." },
+        { href: "/funny-charades-for-adults/", label: "Mímica para Adultos", description: "Ideias engraçadas para festas." },
+        { href: "/charades-generator-for-kids/", label: "Mímica para Crianças", description: "Ideias simples para toda a família." }
+      ],
+      faqTitle: "Perguntas Frequentes",
+      faq: [
+        {
+          question: "Como fazer mímica de um famoso sem falar ?",
+          answer: "Foque nos hábitos conhecidos ou nos papéis icônicos. Para cantores, imite segurar um microfone e fazer poses de palco. Para atores, faça gestos característicos do personagem mais famoso dele."
+        },
+        {
+          question: "O que fazer se ninguém conhecer a celebridade ?",
+          answer: "Você pode pular para o próximo nome ou tentar mimetizar as palavras que compõem o nome individualmente."
+        },
+        {
+          question: "Posso imprimir as cartas de celebridades ?",
+          answer: "Sim ! Você pode copiar os nomes gerados diretamente na área de transferência ou usar o botão de impressão para criar cartões físicos."
+        }
+      ]
     }
   },
   "family-charades-generator": {
@@ -2162,16 +2351,101 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
       faqTitle: "Foire Aux Questions",
       faq: [
         {
-          question: "Ce générateur de mimes en famille est-il gratuit ?",
-          answer: "Oui ! Notre outil est 100% gratuit sur n'importe quel navigateur, sans téléchargement d'application ni inscription requise."
-        },
-        {
-          question: "Pour quels âges est-il adapté ?",
-          answer: "La catégorie famille est conçue pour tous les âges (de 4 à 99+ ans). Elle contient des scènes familières et des sports faciles à mimer."
-        },
-        {
           question: "Combien de joueurs faut-il ?",
           answer: "Vous pouvez y jouer dès 3 joueurs (un actor et deux devins), mais le jeu est encore meilleur en équipes de 4 ou plus."
+        }
+      ]
+    },
+    pt: {
+      path: "/family-charades-generator",
+      title: "Gerador de Mímica em Família - Palavras e Ideias Divertidas",
+      description: "Gere palavras de mímica adequadas e divertidas para toda a família. Perfeito para noites de jogos, crianças, adolescentes e adultos jogarem juntos.",
+      keywords: [
+        "mimica em familia",
+        "gerador mimica familia",
+        "palavras de mimica familia",
+        "jogos de mimica em familia",
+        "ideias de mimica para familia"
+      ],
+      heroLabel: "Atividades para noites de jogos",
+      heroTitle: "Gerador de Mímica em Família",
+      heroDescription: "Obtenha ideias de mímica para a família instantaneamente. Gere listas de palavras para crianças e pais jogarem e se divertirem juntos.",
+      primaryCta: "Gerar palavra familiar",
+      copyLabel: "Copiar palavra",
+      copiedLabel: "Copiado !",
+      generatorTitle: "Gerador de mímica familiar",
+      promptListTitle: "Lista de ideias de mímicas para jogar em família",
+      generatorDescription: "Selecione uma categoria e imite a palavra ou frase em silêncio. Estimule as crianças a usarem expressões corporais criativas.",
+      generatorButton: "Nova palavra familiar",
+      groups: [
+        {
+          id: "easy",
+          label: "Muito Fácil",
+          description: "Ideal para crianças pequenas e iniciantes.",
+          prompts: ["Gato", "Cachorro", "Chorar", "Dormir", "Escovar os dentes", "Comer sorvete"]
+        },
+        {
+          id: "sports",
+          label: "Esportes & Lazer",
+          description: "Atividades físicas divertidas.",
+          prompts: ["Jogar futebol", "Nadar", "Andar de skate", "Pescar", "Andar de bicicleta", "Pular corda"]
+        },
+        {
+          id: "daily",
+          label: "Rotina Familiar",
+          description: "Situações normais do dia a dia doméstico.",
+          prompts: ["Lavar a louça", "Varrer a casa", "Fazer dever de casa", "Assistir TV", "Arrumar a cama", "Passear com o cachorro"]
+        },
+        {
+          id: "funny",
+          label: "Situações Divertidas",
+          description: "Desafios cômicos para toda a família.",
+          prompts: ["Pisar em um chiclete", "Tomar um susto", "Espirrar sem parar", "Andar de patins", "Imitar um bebê", "Fugir de uma abelha"]
+        }
+      ],
+      sections: [
+        {
+          id: "rules",
+          title: "Como Jogar Mímica em Família",
+          description: "Instruções fáceis para divertir todas as idades na sua sala de estar.",
+          items: [
+            "Divida a família em duas equipes (tente misturar adultos e crianças em cada time).",
+            "Defina 60 ou 90 segundos por rodada para dar tempo suficiente de adivinhar.",
+            "Sem sons de nenhum tipo! Apenas gestos e expressão corporal são válidos.",
+            "Dica de ouro: estabeleça um limite de pulos de palavras para que ninguém fique travado."
+          ]
+        },
+        {
+          id: "benefits",
+          title: "Benefícios de Jogar em Família",
+          description: "A mímica vai além do entretenimento; ela desenvolve habilidades valiosas.",
+          items: [
+            "Estimula a comunicação não-verbal e a expressividade nas crianças.",
+            "Garante risadas naturais e fortalece os laços afetivos em um ambiente livre de telas.",
+            "Ajuda na desinibição e no desenvolvimento da autoconfiança de forma lúdica."
+          ]
+        }
+      ],
+      relatedTitle: "Mais Jogos Divertidos",
+      relatedLinks: [
+        { href: "/", label: "Gerador de Mímica Grátis", description: "Consiga palavras aleatórias." },
+        { href: "/charades-generator-for-kids/", label: "Mímica para Crianças", description: "Prompts simples para os pequenos." },
+        { href: "/family-game-night-ideas/", label: "Ideias de Noite de Jogos", description: "Organize um evento completo." },
+        { href: "/would-you-rather-generator/", label: "Gerador O Que Você Prefere", description: "Perguntas de escolhas difíceis." }
+      ],
+      faqTitle: "Perguntas Frequentes",
+      faq: [
+        {
+          question: "Este gerador de mímica familiar é gratuito ?",
+          answer: "Sim ! Nossa ferramenta é 100% gratuita em qualquer navegador, sem necessidade de baixar aplicativos ou realizar cadastros."
+        },
+        {
+          question: "Para quais idades é indicado ?",
+          answer: "A categoria familiar foi desenvolvida para todas as idades (de 4 a 99+ anos), contendo conceitos do dia a dia e atividades facilmente interpretáveis."
+        },
+        {
+          question: "Quantos jogadores são necessários ?",
+          answer: "Você pode jogar com pelo menos 3 participantes (um ator e dois adivinhadores), mas o jogo fica muito melhor em equipes de 4 ou mais pessoas."
         }
       ]
     }
@@ -2433,6 +2707,90 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "C'est parfait comme jeu de bienvenue pour briser la glace, ou après le grand repas pour rire ensemble en restant à table."
         }
       ]
+    },
+    pt: {
+      path: "/thanksgiving-charades-generator",
+      title: "Gerador de Mímica de Ação de Graças - Ideias Divertidas de Jogos",
+      description: "Gerador interativo de mímica de Ação de Graças. Palavras, cartões e regras limpas e fáceis para confraternizações de família, crianças e jantar de feriado.",
+      keywords: [
+        "mimica acao de gracas",
+        "gerador mimica acao de gracas",
+        "palavras mimica acao de gracas",
+        "ideias mimica acao de gracas"
+      ],
+      heroLabel: "Ideias de jogos para feriados",
+      heroTitle: "Mímica de Ação de Graças",
+      heroDescription: "Use palavras de comida, tradições familiares, esportes de outono e a história da Ação de Graças para uma partida de mímica saudável e divertida.",
+      primaryCta: "Gerar palavra de Ação de Graças",
+      copyLabel: "Copiar palavra",
+      copiedLabel: "Copiado !",
+      generatorTitle: "Gerador de mímica de Ação de Graças",
+      promptListTitle: "Lista de palavras de Ação de Graças para mímica",
+      generatorDescription: "Escolha um grupo temático, depois imite a palavra ou frase em silêncio. Ideal para divertir a mesa de jantar.",
+      generatorButton: "Nova palavra temática",
+      groups: [
+        {
+          id: "food",
+          label: "Comida & Jantar",
+          description: "Pratos típicos e guloseimas do banquete.",
+          prompts: ["Peru assado", "Purê de batatas", "Torta de abóbora", "Molho de cranberry", "Pão de milho", "Milho cozido"]
+        },
+        {
+          id: "traditions",
+          label: "Tradições",
+          description: "Atividades típicas do dia de Ação de Graças.",
+          prompts: ["Agradecer em família", "Assistir ao desfile", "Jogar futebol americano", "Fazer uma sesta", "Cozinhar juntos", "Lavar a louça do jantar"]
+        },
+        {
+          id: "symbols",
+          label: "Símbolos",
+          description: "Elementos clássicos do feriado.",
+          prompts: ["Cornucópia", "Espantalho", "Peregrinos", "Folhas de outono", "Abóbora", "Torta de maçã"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "Como Jogar Mímica de Ação de Graças na Mesa",
+          description: "Uma maneira simples de divertir a família antes ou depois do banquete.",
+          items: [
+            "Não precisa levantar! Você pode fazer a rodada de mímica sentando-se à mesa, usando apenas gestos da cintura para cima.",
+            "Defina punições engraçadas para quem falar, como ter que passar a sobremesa para o vizinho.",
+            "Deixe que a pessoa que adivinhar escolha quem será o próximo mímico da rodada."
+          ]
+        },
+        {
+          id: "tips",
+          title: "Atividades para a Confraternização",
+          description: "Crie momentos significativos integrando o jogo de mímica às suas tradições.",
+          items: [
+            "Use o gerador como quebra-gelo para os convidados que estão chegando e esperando o jantar ficar pronto.",
+            "Se tiver crianças, crie cartões físicos impressos para que elas possam colorir e brincar em uma mesa separada."
+          ]
+        }
+      ],
+      relatedTitle: "Mais Jogos Festivos",
+      relatedLinks: [
+        { href: "/", label: "Gerador de Mímica Grátis", description: "Consiga termos e ideias ao acaso." },
+        { href: "/christmas-charades-generator/", label: "Mímica de Natal", description: "Gere ideias festivas de fim de ano." },
+        { href: "/family-charades-generator/", label: "Mímica em Família", description: "Palavras limpas para todas as idades." },
+        { href: "/charades-generator-for-kids/", label: "Mímica para Crianças", description: "Prompts simples para os pequenos." }
+      ],
+      faqTitle: "Perguntas Frequentes",
+      faq: [
+        {
+          question: "Este gerador de Ação de Graças é adequado para crianças ?",
+          answer: "Sim ! Todos os prompts são selecionados manualmente para serem limpos, saudáveis e seguros para crianças, jovens, pais e avós."
+        },
+        {
+          question: "Posso imprimir esta lista de palavras ?",
+          answer: "Sim ! Você pode copiar a lista gerada de uma vez só ou usar o botão de impressão para recortar cartões de mímica de papel."
+        },
+        {
+          question: "Qual o melhor momento para jogar no feriado ?",
+          answer: "Funciona muito bem para quebrar o gelo enquanto o jantar está sendo finalizado, ou após a refeição principal para relaxar e dar risadas juntos."
+        }
+      ]
     }
   },
   "halloween-charades-generator": {
@@ -2689,6 +3047,91 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
         {
           question: "Faut-il des accessoires pour jouer ?",
           answer: "Aucun accessoire n'est requis ! Tout le charme du jeu réside dans l'utilisation du langage corporel et de l'expression physique."
+        }
+      ]
+    },
+    pt: {
+      path: "/halloween-charades-generator",
+      title: "Gerador de Mímica de Halloween - Ideias de Palavras Assustadoras",
+      description: "Gerador interativo de mímica de Halloween gratuito. Monstros assustadores, ações arrepiantes e regras divertidas para festas de Halloween e crianças.",
+      keywords: [
+        "mimica halloween",
+        "gerador mimica halloween",
+        "palavras mimica halloween",
+        "ideias mimica halloween"
+      ],
+      heroLabel: "Ideias de jogos assustadoramente divertidos",
+      heroTitle: "Mímica de Halloween",
+      heroDescription: "Gere monstros assustadores, criaturas mágicas e ações misteriosas para animar o seu jogo de mímica em festas de Halloween infantis ou adultas.",
+      primaryCta: "Gerar palavra de Halloween",
+      copyLabel: "Copiar palavra",
+      copiedLabel: "Copiado !",
+      generatorTitle: "Gerador de mímica de Halloween",
+      promptListTitle: "Lista de palavras de Halloween para mímica",
+      generatorDescription: "Selecione o grupo que combine com o seu público, depois imite a palavra misteriosa em silêncio absoluto.",
+      generatorButton: "Nova palavra de Halloween",
+      groups: [
+        {
+          id: "monsters",
+          label: "Monstros & Criaturas",
+          description: "Criaturas clássicas das histórias de terror.",
+          prompts: ["Vampiro", "Zumbi", "Fantasma", "Lobisomem", "Esqueleto", "Múmia"]
+        },
+        {
+          id: "objects",
+          label: "Objetos & Símbolos",
+          description: "Elementos típicos do Halloween.",
+          prompts: ["Abóbora iluminada", "Vassoura de bruxa", "Caldeirão", "Teia de aranha", "Caixão", "Chapéu de bruxa"]
+        },
+        {
+          id: "actions",
+          label: "Ações Misteriosas",
+          description: "Atividades divertidas e assustadoras.",
+          prompts: ["Voar em uma vassoura", "Sair do túmulo", "Uivar para a lua", "Preparar uma poção", "Pedir doces ou travessuras", "Fazer uma risada maléfica"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "Como Jogar Mímica de Halloween",
+          description: "Regras simples para dar um toque especial de terror à sua brincadeira.",
+          items: [
+            "Não são permitidos sons ou sussurros. Todo o medo deve vir do visual e dos movimentos corporais.",
+            "Defina 60 segundos por rodada para manter o ritmo ágil e divertido.",
+            "Os jogadores podem usar elementos de suas próprias fantasias reais para ajudar nos mimes."
+          ]
+        },
+        {
+          id: "party-tips",
+          title: "Dicas de Festa de Halloween",
+          description: "Crie uma atmosfera envolvente para animar a noite dos seus convidados.",
+          items: [
+            "Jogue sob luz baixa ou à luz de velas para criar uma atmosfera misteriosa e fantasmagórica.",
+            "Dê pontos bônus se o jogador mantiver os trejeitos do personagem de sua fantasia enquanto mima.",
+            "Use doces de Halloween ou guloseimas como recompensa para a equipe vencedora."
+          ]
+        }
+      ],
+      relatedTitle: "Mais Jogos Temáticos",
+      relatedLinks: [
+        { href: "/", label: "Gerador de Mímica Grátis", description: "Consiga palavras aleatórias." },
+        { href: "/halloween-party-games/", label: "Jogos de Festa de Halloween", description: "Outras atividades assustadoras para sua noite." },
+        { href: "/family-charades-generator/", label: "Mímica em Família", description: "Palavras limpas para todas as idades." },
+        { href: "/charades-generator-for-kids/", label: "Mímica para Crianças", description: "Mímicas fáceis para os pequenos." }
+      ],
+      faqTitle: "Perguntas Frequentes",
+      faq: [
+        {
+          question: "Este gerador de Halloween é adequado para crianças ?",
+          answer: "Sim ! Embora contenha monstros clássicos do folclore, as palavras são lúdicas e desenhadas para fazer rir em vez de assustar."
+        },
+        {
+          question: "Posso usá-lo para uma festa escolar ?",
+          answer: "Com certeza ! Professores adoram usar nossa ferramenta em comemorações escolares de Halloween por ser 100% livre de termos inadequados."
+        },
+        {
+          question: "É necessário algum acessório para jogar ?",
+          answer: "Não é necessário nenhum tipo de acessório. O jogo depende pura e simplesmente da expressão física e da linguagem corporal."
         }
       ]
     }
