@@ -289,7 +289,7 @@ export const en = {
     apply: "Apply Filters", categoryLabel: "Choose Category", difficultyLabel: "Choose Difficulty", ageGroupLabel: "Choose Age Group", allLevels: "All Levels", activeFilters: "Active Filters:", noFilters: "None",
   },
   generator: {
-    defaultTitle: "Charades Generator & Online Game Guide",
+    defaultTitle: "Free Online Charades Generator",
     defaultDescription: "Generate random charades words for kids, adults, movies, Disney, animals, and parties. No login needed.",
     generateButton: "Generate words",
     copyButton: "Copy words",
@@ -702,7 +702,11 @@ export const en = {
         "Spider-Man", "Riding a bicycle", "Brushing teeth", "Harry Potter", "Cooking dinner",
         "Waking up", "Walking a dog", "Playing basketball", "Super Mario", "Drinking coffee",
         "Mickey Mouse", "Ironing clothes", "Lion King", "Flying a kite", "Baking a cake",
-        "Playing guitar", "Surfing the internet", "Tying shoelaces", "Eating a lemon", "Catching a fish"
+        "Playing guitar", "Surfing the internet", "Tying shoelaces", "Eating a lemon", "Catching a fish",
+        "Building a snowman", "Washing a car", "Dinosaur", "Typing on keyboard", "Iron Man",
+        "Sleeping in class", "Opening a present", "Applying makeup", "Taking a selfie", "Driving a tractor",
+        "Playing the drums", "Peeling a banana", "Climbing a tree", "Walking on the moon", "Juggling balls",
+        "Singing opera", "Dog catching a frisbee", "Sweeping the floor", "Riding a roller coaster", "Chased by a bee"
       ],
       copyButton: "Copy Quick Word List",
       copiedButton: "List Copied!"
