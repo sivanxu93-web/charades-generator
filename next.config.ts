@@ -132,6 +132,42 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: "/fr",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "fr",
+          },
+        ],
+      },
+      {
+        source: "/fr/:path*",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "fr",
+          },
+        ],
+      },
+      {
+        source: "/pt",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "pt",
+          },
+        ],
+      },
+      {
+        source: "/pt/:path*",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "pt",
+          },
+        ],
+      },
     ];
   },
   async rewrites() {
