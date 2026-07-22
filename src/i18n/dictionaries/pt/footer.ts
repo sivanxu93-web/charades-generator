@@ -1,0 +1,51 @@
+export const footer = {
+  brandTitle: "Charades Generator",
+  brandDescription: "Gerador grátis de mímica com mais de 1000 palavras e ideias. Perfeito para festas, noites em família e reuniões.",
+  brandTagline: "Gerador instantâneo de mímica para crianças, adultos, filmes, Disney e muito mais.",
+  sections: {
+    charades: {
+      title: "Geradores",
+      links: [
+        { title: "Gerador de Mímica", href: "/" },
+        { title: "Gerador de palavras", href: "/" },
+        { title: "Gerador aleatório", href: "/random-charades-generator/" },
+        { title: "Gerador Pictionary", href: "/pictionary-word-generator/" },
+        { title: "Mímica infantil", href: "/charades-generator-for-kids/" },
+        { title: "Mímica de cinema", href: "/movie-charades-generator/" },
+        { title: "Mímica Disney", href: "/disney-charades-generator/" },
+        { title: "Mímica de Natal", href: "/christmas-charades-generator/" },
+        { title: "Mímica inversa", href: "/reverse-charades-game/" },
+        { title: "Mímica para adultos", href: "/funny-charades-for-adults/" },
+        { title: "Jogo do Impostor", href: "/imposter-game/" },
+        { title: "Palavras do Impostor", href: "/imposter-game-word-list/" },
+        { title: "Como jogar Impostor", href: "/how-to-play-imposter-game/" },
+        { title: "Gerador Verdade ou Desafio", href: "/truth-or-dare-generator/" },
+        { title: "Gerador O Que Você Prefere", href: "/would-you-rather-generator/" },
+        { title: "Jogos de noite em família", href: "/family-game-night-ideas/" },
+        { title: "Mímica da Bíblia", href: "/bible-charades/" },
+        { title: "Mímica de Halloween", href: "/halloween-party-games/" },
+        { title: "Jogos de festa de Natal", href: "/christmas-party-games/" },
+      ],
+    },
+    info: {
+      title: "Ajuda & Informações",
+      links: [
+        { title: "Como jogar", href: "/how-to-use/" },
+        { title: "Perguntas frequentes", href: "/faq/" },
+        { title: "Kit de jogo rápido", href: "/quick-play-kit/" },
+        { title: "Sobre nós", href: "/about/" },
+        { title: "Contato", href: "/contact/" },
+      ],
+    },
+    legal: {
+      title: "Informações Legais",
+      links: [
+        { title: "Política de privacidade", href: "/privacy-policy/" },
+        { title: "Termos de serviço", href: "/terms-of-service/" },
+      ],
+    },
+    partnersTitle: "Parceiros",
+  },
+  rights: "© {{year}} Charades Generator. Todos os direitos reservados.",
+  slogan: "Gerador de palavras para mímica, diversão sem fim.",
+};
