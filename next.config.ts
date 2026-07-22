@@ -168,6 +168,24 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: "/ja",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "ja",
+          },
+        ],
+      },
+      {
+        source: "/ja/:path*",
+        headers: [
+          {
+            key: "Content-Language",
+            value: "ja",
+          },
+        ],
+      },
     ];
   },
   async rewrites() {

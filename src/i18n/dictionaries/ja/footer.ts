@@ -1,0 +1,51 @@
+export const footer = {
+  brandTitle: "Charades Generator",
+  brandDescription: "1000種類以上のお題を収録した無料のジェスチャーゲームお題メーカー。パーティー、忘年会、学校レク、家族だんらんに最適。",
+  brandTagline: "子供向け、大人向け、映画、ディズニーなど、ワンタップでランダムにお題を出す決定版ツール。",
+  sections: {
+    charades: {
+      title: "お題メーカー",
+      links: [
+        { title: "ジェスチャーゲームお題", href: "/" },
+        { title: "お題自動生成", href: "/" },
+        { title: "ランダムシャッフル", href: "/random-charades-generator/" },
+        { title: "Pictionaryお題メーカー", href: "/pictionary-word-generator/" },
+        { title: "子ども向けお題", href: "/charades-generator-for-kids/" },
+        { title: "映画お題", href: "/movie-charades-generator/" },
+        { title: "ディズニーお題", href: "/disney-charades-generator/" },
+        { title: "クリスマスお題", href: "/christmas-charades-generator/" },
+        { title: "リバースジェスチャー", href: "/reverse-charades-game/" },
+        { title: "おもしろお題", href: "/funny-charades-for-adults/" },
+        { title: "ワードウルフ", href: "/imposter-game/" },
+        { title: "ワードウルフお題一覧", href: "/imposter-game-word-list/" },
+        { title: "ワードウルフの遊び方", href: "/how-to-play-imposter-game/" },
+        { title: "真実か挑戦か生成器", href: "/truth-or-dare-generator/" },
+        { title: "究極の選択生成器", href: "/would-you-rather-generator/" },
+        { title: "家族向けゲームアイデア", href: "/family-game-night-ideas/" },
+        { title: "聖書お題", href: "/bible-charades/" },
+        { title: "ハロウィンのお題", href: "/halloween-party-games/" },
+        { title: "クリスマス会ゲーム", href: "/christmas-party-games/" },
+      ],
+    },
+    info: {
+      title: "ヘルプ＆インフォ",
+      links: [
+        { title: "基本ルール・遊び方", href: "/how-to-use/" },
+        { title: "よくある質問", href: "/faq/" },
+        { title: "印刷用プレイセット", href: "/quick-play-kit/" },
+        { title: "運営概要", href: "/about/" },
+        { title: "お問い合わせ", href: "/contact/" },
+      ],
+    },
+    legal: {
+      title: "リーガル",
+      links: [
+        { title: "プライバシーポリシー", href: "/privacy-policy/" },
+        { title: "利用規約", href: "/terms-of-service/" },
+      ],
+    },
+    partnersTitle: "リンクパートナー",
+  },
+  rights: "© {{year}} Charades Generator. All rights reserved.",
+  slogan: "言葉を使わないからこそ面白い、ジェスチャーお題メーカー。",
+};
