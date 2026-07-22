@@ -1259,6 +1259,103 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Sim, os temas são completamente saudáveis e adequados para unir todas as gerações da família em torno da fé."
         }
       ]
+    },
+    ja: {
+      path: "/bible-charades",
+      title: "聖書ジェスチャーゲームお題一覧 - 教会・家族向け無料出題器",
+      description: "聖書の人物、場所、物語、アクション、動物などをテーマにしたジェスチャーお題を無料生成。教会学校やキリスト教家庭でのレクに最適です。",
+      keywords: [
+        "聖書 ジェスチャー",
+        "聖書 お題",
+        "教会 レクリエーション",
+        "キリスト教 ゲーム"
+      ],
+      heroLabel: "聖書のエピソードからお題を生成",
+      heroTitle: "聖書ジェスチャーゲーム",
+      heroDescription: "聖書のストーリーや人物、身近な行動を使って、子どもから大人まで礼拝後や家族団らんで遊べる安全なお題セット。",
+      primaryCta: "聖書お題をシャッフル",
+      copyLabel: "お題をコピー",
+      copiedLabel: "コピー完了！",
+      generatorTitle: "聖書お題メーカー",
+      promptListTitle: "聖書ジェスチャーゲームお題リスト",
+      generatorDescription: "カテゴリを選び、声を出さずにジェスチャーだけでお題を当てます。聖なる物語を楽しく再現しましょう。",
+      generatorButton: "新しいお題を出す",
+      groups: [
+        {
+          id: "people",
+          label: "聖書の人物",
+          description: "旧約・新約聖書の登場人物。",
+          prompts: ["ノア", "モーセ", "ダビデ", "エステル", "聖母マリア", "ペテロ"]
+        },
+        {
+          id: "places",
+          label: "聖書の場所",
+          description: "聖書に登場する有名な土地や場所。",
+          prompts: ["エデンの園", "エリコ", "ベツレヘム", "紅海", "シナイ山", "ガリラヤ"]
+        },
+        {
+          id: "stories",
+          label: "有名な物語",
+          description: "聖書の有名なお話をジェスチャーで再現。",
+          prompts: ["ノアの方舟を造る", "ダビデとゴリアテの戦い", "ヨナと巨大な魚", "善いサマリア人", "迷える羊", "五千人の給食（パンの奇跡）"]
+        },
+        {
+          id: "actions",
+          label: "日常の動作",
+          description: "子どもでも簡単に演じられるシンプルな行動。",
+          prompts: ["お祈りをする", "家を建てる", "魚を釣る", "賛美歌を歌う", "パンを分かち合う", "ともしびを灯す"]
+        },
+        {
+          id: "animals",
+          label: "聖書の動物",
+          description: "エピソードに出てくる動物たち。",
+          prompts: ["ハト", "羊", "ライオン", "ロバ", "クジラ", "ラクダ"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "聖書ジェスチャーゲームの遊び方",
+          description: "誰でも楽しめるよう、ルールを分かりやすく設定しましょう。",
+          items: [
+            "参加者の年齢層や聖書の知識レベルに応じて、出題カテゴリを調整します。",
+            "小さなお子様がいる場合は、動物や簡単な動作のお題から始めるのがおすすめです。",
+            "正解が出た後に、幹事や先生がそのエピソードの背景を30秒で簡単に説明すると、聖書の学びがさらに深まります。"
+          ]
+        },
+        {
+          id: "sunday-school",
+          title: "教会学校・日曜学校での指導のコツ",
+          description: "押し付けの勉強ではなく、体を使ったアクティブな学びとして活用できます。",
+          items: [
+            "難しい固有名詞がある場合は、ゲーム前に一度聖書を読み返す時間を設けるとスムーズです。",
+            "年長の子どもと年少の子どもを同じチームにして、ペアで演技できるようにするとチームワークが育ちます。",
+            "得点表をホワイトボードに大きく書き、ゲーム感覚を盛り上げましょう。"
+          ]
+        }
+      ],
+      relatedTitle: "他のゲームも楽しむ",
+      relatedLinks: [
+        { href: "/", label: "無料ジェスチャーゲームお題メーカー", description: "豊富な全ジャンルからランダム出題。" },
+        { href: "/charades-generator-for-kids/", label: "子ども向けお題メーカー", description: "幼児・小学生向けの簡単お題。" },
+        { href: "/family-game-night-ideas/", label: "家族向けゲームナイト", description: "おうち時間を盛り上げるレクアイデア。" },
+        { href: "/pictionary-word-generator/", label: "Pictionaryお題メーカー", description: "お題を絵に描いて当てるゲーム。" }
+      ],
+      faqTitle: "よくある質問",
+      faq: [
+        {
+          question: "聖書ジェスチャーゲームで人気のお題は何ですか？",
+          answer: "ノアやモーセなどの有名な人物、ベツレヘムなどの場所、ダビデとゴリアテやノアの方舟などのエピソード、お祈りをするなどの簡単な行動です。"
+        },
+        {
+          question: "教会学校のレクとして使えますか？",
+          answer: "はい、最適なアクティビティです。小さな子どもには簡単なお題、高学年には物語のエピソードを出題し、正解後に簡単におさらいのミニ説教を入れると定着します。"
+        },
+        {
+          question: "家庭の礼拝やレクでも遊べますか？",
+          answer: "はい、道具が要らないため、食後の団らんや休日のファミリーナイトで楽しく聖書に親しむゲームとして遊んでいただけます。"
+        }
+      ]
     }
   },
   "halloween-party-games": {
@@ -2103,6 +2200,97 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Sim ! Você pode copiar os nomes gerados diretamente na área de transferência ou usar o botão de impressão para criar cartões físicos."
         }
       ]
+    },
+    ja: {
+      path: "/celebrity-charades-generator",
+      title: "有名人・芸能人ジェスチャーゲームお題メーカー：お笑い芸人や偉人",
+      description: "ジェスチャーゲームやPictionaryで使える芸能人・有名人お題ジェネレーター。お笑い芸人、俳優、スポーツ選手、歴史上の偉人、アニメキャラまで無料出題。",
+      keywords: [
+        "有名人 ジェスチャー",
+        "芸能人 お題",
+        "ものまね お題",
+        "歴史上の人物 クイズ"
+      ],
+      heroLabel: "有名人の特徴を捉えてものまね",
+      heroTitle: "有名人ジェスチャーゲーム",
+      heroDescription: "お笑い芸人の決めポーズやスポーツ選手のフォーム、アニメキャラの必殺技などを言葉を使わずに体だけで再現するお題セット。",
+      primaryCta: "有名人お題をシャッフル",
+      copyLabel: "お題をコピー",
+      copiedLabel: "コピー完了！",
+      generatorTitle: "有名人お題ジェネレーター",
+      promptListTitle: "ジェスチャーゲーム用有名人・芸能人お題リスト",
+      generatorDescription: "声を出したり名前を言うのは厳禁！ポーズ、癖、代表作のワンシーンなどをオーバーリアクションで演じましょう。",
+      generatorButton: "次の有名人を出す",
+      groups: [
+        {
+          id: "musicians",
+          label: "アーティスト・歌手",
+          description: "ステージパフォーマンスが特徴的な歌手。",
+          prompts: ["マイケル・ジャクソン", "マドンナ", "レディー・ガガ", "星野源", "福山雅治", "宇多田ヒカル"]
+        },
+        {
+          id: "actors",
+          label: "芸能人・タレント",
+          description: "テレビで見かける有名人やお笑い芸人。",
+          prompts: ["明石家さんま", "マツコ・デラックス", "志村けん", "ビートたけし", "タモリ", "フワちゃん"]
+        },
+        {
+          id: "athletes",
+          label: "アスリート・スポーツ選手",
+          description: "独特のフォームやポーズを持つスター選手。",
+          prompts: ["大谷翔平", "羽生結弦", "イチロー", "三浦知良", "八村塁", "本田圭佑"]
+        },
+        {
+          id: "historical",
+          label: "偉人・二次元キャラクター",
+          description: "歴史の教科書でおなじみの人物やアニメキャラ。",
+          prompts: ["織田信長", "坂本龍馬", "アルベルト・アインシュタイン", "シャーロック・ホームズ", "ハリー・ポッター", "ドラえもん"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "有名人を言葉を使わずに演じるコツ",
+          description: "その人の顔まねや服装、有名なパフォーマンスを体全体で誇張します。",
+          items: [
+            "歌手なら、マイクを持つ角度や、特徴的なステージの振り付け、決めポーズを再現します。",
+            "お笑い芸人なら、誰もが知る『一発ギャグ』の動きやツッコミのジェスチャーを演じます。",
+            "文字数を指で教える代わりに、その人の「職業（バットを振る＝野球選手など）」を先に演じてヒントを与えましょう。"
+          ]
+        },
+        {
+          id: "variations",
+          title: "有名人テーマのゲームバリエーション",
+          description: "基本ルールに少し変化を加えるだけで、さらに盛り上がります。",
+          items: [
+            "私は誰でしょう？（額当てゲーム）：紙にお題を書いてプレイヤーの額に貼ります。本人は自分の名前を知りません。周囲のジェスチャーを見て自分が誰かを当てます。",
+            "似顔絵Pictionary：ジェスチャーではなく、ホワイトボードに有名人の似顔絵や特徴を描いて当てる絵心バトル。",
+            "ギャグ30秒リレー：30秒以内で次々とお笑い芸人のお題をものまねし、何人当てられるか競う超スピード戦。"
+          ]
+        }
+      ],
+      relatedTitle: "他のおもしろメーカー",
+      relatedLinks: [
+        { href: "/", label: "無料ジェスチャーゲームお題メーカー", description: "すべてのカテゴリからシャッフル。" },
+        { href: "/movie-charades-generator/", label: "映画お題メーカー", description: "名作シネマのジェスチャー。" },
+        { href: "/funny-charades-for-adults/", label: "おもしろお題（大人向け）", description: "飲み会が爆笑に包まれるネタ集。" },
+        { href: "/charades-generator-for-kids/", label: "子ども向けお題メーカー", description: "子どもたちがすぐ真似できる定番お題。" }
+      ],
+      faqTitle: "よくある質問",
+      faq: [
+        {
+          question: "声を出さずに有名人を表現するにはどうすればいいですか？",
+          answer: "トレードマークの動きや癖を誇張します。歌手なら代表曲のサビのダンス、スポーツ選手なら試合中のフォーム、お笑い芸人なら持ちネタの動きをします。"
+        },
+        {
+          question: "誰も知らない有名人が出た場合は？",
+          answer: "お題をパスして新しく引き直すか、名前を数文字に分割して「ジェスチャーで文字を連想させる」高度なテクニックに挑んでみましょう。"
+        },
+        {
+          question: "印刷して紙のカードとして使えますか？",
+          answer: "はい、画面上のリストをそのままコピーして印刷し、ハサミで切り取って箱の中から引くようなアナログな遊び方もできます。"
+        }
+      ]
     }
   },
   "family-charades-generator": {
@@ -2448,6 +2636,98 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Você pode jogar com pelo menos 3 participantes (um ator e dois adivinhadores), mas o jogo fica muito melhor em equipes de 4 ou mais pessoas."
         }
       ]
+    },
+    ja: {
+      path: "/family-charades-generator",
+      title: "家族向けジェスチャーゲームお題メーカー - 親子で爆笑お題",
+      description: "家族団らんやゲームナイトで使える、簡単で健全なジェスチャーお題メーカー。幼児、小学生、お父さん、お母さんが一緒に笑って遊べるネタが満載。",
+      keywords: [
+        "家族 ジェスチャー",
+        "親子 ジェスチャーゲーム",
+        "ホームパーティー お題",
+        "家で遊べるゲーム"
+      ],
+      heroLabel: "おうち時間を彩るレクリエーション",
+      heroTitle: "家族向けジェスチャーゲーム",
+      heroDescription: "日常の家事、学校の様子、簡単なスポーツなど、どの世代にとっても身近な行動をテーマにした家族専用お題セット。",
+      primaryCta: "家族お題をシャッフル",
+      copyLabel: "お題をコピー",
+      copiedLabel: "コピー完了！",
+      generatorTitle: "ファミリーお題メーカー",
+      promptListTitle: "家族ゲーム用の簡単ジェスチャーお題リスト",
+      generatorDescription: "カテゴリを選び、ジェスチャーをします。お父さんやお母さんの必死な演技に子どもたちが大笑いすること間違いなし！",
+      generatorButton: "新しいお題を出す",
+      groups: [
+        {
+          id: "easy",
+          label: "とても簡単",
+          description: "小さな子どもでもすぐに理解できるお題。",
+          prompts: ["猫", "犬", "泣く", "寝る", "歯を磨く", "アイスクリームを食べる"]
+        },
+        {
+          id: "sports",
+          label: "スポーツ＆レジャー",
+          description: "わかりやすい全身運動のお題。",
+          prompts: ["サッカー", "水泳", "スケートボード", "魚釣り", "自転車に乗る", "縄跳び"]
+        },
+        {
+          id: "daily",
+          label: "おうちの日常",
+          description: "家族全員が毎日見ている家庭内の光景。",
+          prompts: ["お皿を洗う", "部屋を掃除する", "宿題をする", "テレビを見る", "布団を敷く", "犬の散歩に行く"]
+        },
+        {
+          id: "funny",
+          label: "ハプニング・おもしろ",
+          description: "ちょっと笑える面白いシチュエーション。",
+          prompts: ["ガムを踏んでしまう", "突然驚く", "くしゃみが止まらない", "ローラースケートですべる", "赤ちゃんの真似をする", "ハチに追いかけられる"]
+        }
+      ],
+      sections: [
+        {
+          id: "rules",
+          title: "おうちで楽しむ家族ルールの作り方",
+          description: "すべての年齢の家族が平等に楽しめるよう、ルールを工夫しましょう。",
+          items: [
+            "親チームvs子どもチーム、あるいは大人と子どもをミックスした混成チームに分けます。",
+            "子どもが演じる時は、制限時間を少し長め（90秒など）に設定してあげましょう。",
+            "声出しは絶対禁止。オーバーな身振り手振りで親子のコミュニケーションを深めます。",
+            "お題が難しすぎる場合は、何度でもパス（引き直し）を認めるとスムーズに楽しめます。"
+          ]
+        },
+        {
+          id: "benefits",
+          title: "家族でジェスチャーゲームをするメリット",
+          description: "ただ楽しいだけでなく、絆を強めるたくさんの効果があります。",
+          items: [
+            "非言語的な自己表現 of 楽しさを学び、子どもの創造性を引き出します。",
+            "テレビやスマホの画面から目を離し、顔を見合わせるデジタルデトックスの最高の機会になります。",
+            "大人が必死にバカになって演じる姿を見せることで、家庭の雰囲気が一気に明るくなります。"
+          ]
+        }
+      ],
+      relatedTitle: "他のおすすめゲーム",
+      relatedLinks: [
+        { href: "/", label: "無料ジェスチャーゲームお題メーカー", description: "全カテゴリからシャッフル生成。" },
+        { href: "/charades-generator-for-kids/", label: "子ども向けお題", description: "幼児・小学生向けの超簡単お題。" },
+        { href: "/family-game-night-ideas/", label: "ファミリーゲームナイト", description: "家族レク全体の企画アイデア。" },
+        { href: "/would-you-rather-generator/", label: "究極の選択メーカー", description: "どっちを選ぶ？家族で盛り上がる質問。" }
+      ],
+      faqTitle: "よくある質問",
+      faq: [
+        {
+          question: "家族向けお題メーカーは本当に無料ですか？",
+          answer: "はい！完全無料です。スマホやパソコンのブラウザさえあれば、アプリ不要でどこでも今すぐ遊べます。"
+        },
+        {
+          question: "対象年齢は何歳からですか？",
+          answer: "ファミリーカテゴリは、4歳から99歳以上まで対応しています。日常の分かりやすいシーンが中心のため、小さなお子様でも演技に参加できます。"
+        },
+        {
+          question: "最低何人から遊べますか？",
+          answer: "演者1名、回答者2名の「最低3名」から遊べますが、4名以上でチーム戦にすると圧倒的に盛り上がります。"
+        }
+      ]
     }
   },
   "thanksgiving-charades-generator": {
@@ -2791,6 +3071,90 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
           answer: "Funciona muito bem para quebrar o gelo enquanto o jantar está sendo finalizado, ou após a refeição principal para relaxar e dar risadas juntos."
         }
       ]
+    },
+    ja: {
+      path: "/thanksgiving-charades-generator",
+      title: "感謝祭ジェスチャーゲームお題メーカー - 秋のファミリーレク",
+      description: "感謝祭（サンクスギビング）をテーマにした無料ジェスチャーお題メーカー。ごちそう、家族の集まり、秋のシンボルなど楽しいお題を収録。",
+      keywords: [
+        "感謝祭 ゲーム",
+        "サンクスギビング レク",
+        "秋のイベント ゲーム",
+        "パーティーゲーム 出題"
+      ],
+      heroLabel: "秋の祝日を盛り上げるゲーム",
+      heroTitle: "感謝祭ジェスチャーゲーム",
+      heroDescription: "七面鳥のごちそう、秋の収穫、家族団らんをテーマに、夕食後や団らんの時間に大人数で遊べるお題セット。",
+      primaryCta: "感謝祭お題をシャッフル",
+      copyLabel: "お題をコピー",
+      copiedLabel: "コピー完了！",
+      generatorTitle: "感謝祭お題メーカー",
+      promptListTitle: "感謝祭用のジェスチャーゲームお題リスト",
+      generatorDescription: "テーマを選択し、声を出さずにジェスチャーします。食卓をさらに楽しくするレクリエーションです。",
+      generatorButton: "新しいお題を出す",
+      groups: [
+        {
+          id: "food",
+          label: "ごちそう＆ディナー",
+          description: "食卓に並ぶ秋の味覚やメインディッシュ。",
+          prompts: ["七面鳥の丸焼き", "マッシュポテト", "パンプキンパイ", "クランベリーソース", "コーンブレッド", "トウモロコシをかじる"]
+        },
+        {
+          id: "traditions",
+          label: "祝日の伝統",
+          description: "この時期に行う定番のイベント。",
+          prompts: ["家族みんなで感謝する", "パレードを観る", "フットボール観戦", "満腹で昼寝をする", "一緒に料理を作る", "ごちそうのお皿を洗う"]
+        },
+        {
+          id: "symbols",
+          label: "秋 of シンボル",
+          description: "感謝祭や秋を象徴するもの。",
+          prompts: ["豊穣の角（コーヌコピア）", "かかし", "ピルグリム（開拓者）", "紅葉した落ち葉", "カボチャ", "アップルパイ"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "食卓で遊ぶための感謝祭ミニルール",
+          description: "お腹いっぱいでくつろいでいる時でも、席を立たずに遊べるルールです。",
+          items: [
+            "立ち上がる必要はありません！ディナーテーブルに座ったまま、上半身のジェスチャーだけで表現します。",
+            "もし声を出してしまったら、隣の人にデザートを一口分けなければならないという罰ゲームを導入すると盛り上がります。",
+            "正解を当てた人が、次にジェスチャーする人を指名して回していきます。"
+          ]
+        },
+        {
+          id: "tips",
+          title: "感謝祭パーティーを成功させるコツ",
+          description: "家族の集まりを思い出深いものにするためのヒント。",
+          items: [
+            "ごちそうの準備を待っている間の退屈な時間に、子どもたちのアイスブレイクとして出題器を使ってもましょう。",
+            "印刷機能を使ってお題カードを紙に刷り出し、子ども用のテーブルに置いておくと、子どもたちだけで自律的に遊んでくれます。"
+          ]
+        }
+      ],
+      relatedTitle: "その他の季節ゲーム",
+      relatedLinks: [
+        { href: "/", label: "無料ジェスチャーゲームお題メーカー", description: "すべてのカテゴリからランダム出題。" },
+        { href: "/christmas-charades-generator/", label: "クリスマスお題メーカー", description: "クリスマスのテーマを出題。" },
+        { href: "/family-charades-generator/", label: "家族向けお題メーカー", description: "すべての世代で遊べる簡単お題。" },
+        { href: "/charades-generator-for-kids/", label: "子ども向けお題メーカー", description: "幼児・小学生向けの簡単お題。" }
+      ],
+      faqTitle: "よくある質問",
+      faq: [
+        {
+          question: "この感謝祭お題は子どもにも安全ですか？",
+          answer: "はい！すべてのお題は手動で選別されており、子どもから大人、お年寄りまで全員で安心して遊べる内容になっています。"
+        },
+        {
+          question: "お題を印刷して使うことはできますか？",
+          answer: "はい。生成されたリストをコピーして保存するか、印刷機能を使って紙のカードにして遊ぶことができます。"
+        },
+        {
+          question: "感謝祭でこのゲームで遊ぶのに最適なタイミングは？",
+          answer: "ごちそうを待っている間や、食事を終えてデザートまでのくつろぎの時間にテーブルを囲んで遊ぶのがおすすめです。"
+        }
+      ]
     }
   },
   "halloween-charades-generator": {
@@ -3132,6 +3496,91 @@ export const stage2Pages: Record<Stage2PageKey, { en: Stage2PageContent } & Part
         {
           question: "É necessário algum acessório para jogar ?",
           answer: "Não é necessário nenhum tipo de acessório. O jogo depende pura e simplesmente da expressão física e da linguagem corporal."
+        }
+      ]
+    },
+    ja: {
+      path: "/halloween-charades-generator",
+      title: "ハロウィンジェスチャーゲームお題一覧 - 不気味で楽しいお題",
+      description: "ハロウィンパーティーを盛り上げる無料ジェスチャーお題メーカー。おばけ、ゾンビ、魔女などのモンスターやハロウィンならではの面白いお題を収録。",
+      keywords: [
+        "ハロウィン ゲーム",
+        "ハロウィン お題",
+        "おばけ ジェスチャー",
+        "パーティーゲーム ハロウィン"
+      ],
+      heroLabel: "怖くて面白いジェスチャーお題",
+      heroTitle: "ハロウィンジェスチャーゲーム",
+      heroDescription: "ドラキュラ、ゾンビ、カボチャのランタンなど、不気味でユニークなハロウィンテーマのお題セット。",
+      primaryCta: "ハロウィンお題をシャッフル",
+      copyLabel: "お題をコピー",
+      copiedLabel: "コピー完了！",
+      generatorTitle: "ハロウィンお題メーカー",
+      promptListTitle: "ハロウィンパーティー用のお題リスト",
+      generatorDescription: "カテゴリを選択して、声を出さずに不気味なジェスチャーをします。パーティーの余興や仮装大会に最適です。",
+      generatorButton: "新しいお題を出す",
+      groups: [
+        {
+          id: "monsters",
+          label: "モンスター＆クリーチャー",
+          description: "ホラーやハロウィン定番の怪物たち。",
+          prompts: ["吸血鬼（ヴァンパイア）", "ゾンビ", "幽霊（ゴースト）", "狼男", "ガイコツ", "ミイラ男"]
+        },
+        {
+          id: "objects",
+          label: "グッズ＆シンボル",
+          description: "ハロウィンの装飾や象徴するもの。",
+          prompts: ["ジャック・オー・ランタン", "魔女のほうき", "大釜", "クモの巣", "棺桶", "魔女の帽子"]
+        },
+        {
+          id: "actions",
+          label: "不気味なアクション",
+          description: "ちょっと怖い、でも面白いコミカルな動き。",
+          prompts: ["ほうきで空を飛ぶ", "墓場から這い出る", "満月に吠える", "怪しいポーションを混ぜる", "お菓子をねだる", "悪魔の笑い声をする"]
+        }
+      ],
+      sections: [
+        {
+          id: "how-to-play",
+          title: "ハロウィンならではのジェスチャーゲームのルール",
+          description: "仮装パーティーを10倍盛り上げるための特別仕様ルール。",
+          items: [
+            "ハミングや怪しい笑い声も含め、音出しは一切反則。完全なサイレントホラーで演じてもらいます。",
+            "制限時間は60秒。仮装をして動きづらい場合は、少し長めに設定してあげましょう。",
+            "自分の『仮装』をヒントとして直接アピールしてもOKなルールにすると、仮装大会と兼ねて楽しめます。"
+          ]
+        },
+        {
+          id: "party-tips",
+          title: "雰囲気作りのアイデア",
+          description: "ハロウィンの夜を忘れられないイベントにするためのヒント。",
+          items: [
+            "部屋の照明を少し暗くするか、キャンドルの明かりだけでプレイすると、非常にミステリアスな雰囲気が出ます。",
+            "演者が自分の仮装したキャラクターになりきってジェスチャーした場合、審査員から『面白ボーナス点』を与えるシステムがおすすめ。",
+            "正解した人や勝ったチームには、お菓子（キャンディやチョコ）を景品として配りましょう。"
+          ]
+        }
+      ],
+      relatedTitle: "他のテーマ別ゲーム",
+      relatedLinks: [
+        { href: "/", label: "無料ジェスチャーゲームお題メーカー", description: "全ジャンルの単語をランダムにシャッフル。" },
+        { href: "/halloween-party-games/", label: "ハロウィンパーティーゲーム一覧", description: "ハロウィンに使える他の定番レク。" },
+        { href: "/family-charades-generator/", label: "家族向けお題メーカー", description: "子どもから大人まで遊べる簡単お題。" },
+        { href: "/charades-generator-for-kids/", label: "子ども向けお題メーカー", description: "幼児・小学生向けの簡単お題。" }
+      ],
+      faqTitle: "よくある質問",
+      faq: [
+        {
+          question: "お題は子どもにとって怖すぎませんか？",
+          answer: "いいえ！吸血鬼やゾンビなどのモチーフは含まれますが、どれもコミカルで笑いを誘う設計になっており、子どもたちが怖がらない内容です。"
+        },
+        {
+          question: "学校のハロウィンイベントでも使えますか？",
+          answer: "はい、大歓迎です。小学校や中学校の英語の授業、子ども英会話教室のハロウィンアクティビティとして非常に人気があります。"
+        },
+        {
+          question: "小道具などは必要ですか？",
+          answer: "一切不要です！体一つで演じきるところがジェスチャーゲームの面白さです。仮装した衣装そのものが最高のアシストになります。"
         }
       ]
     }
