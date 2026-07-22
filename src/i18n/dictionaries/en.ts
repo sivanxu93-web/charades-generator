@@ -289,7 +289,7 @@ export const en = {
     apply: "Apply Filters", categoryLabel: "Choose Category", difficultyLabel: "Choose Difficulty", ageGroupLabel: "Choose Age Group", allLevels: "All Levels", activeFilters: "Active Filters:", noFilters: "None",
   },
   generator: {
-    defaultTitle: "Free Online Charades Generator",
+    defaultTitle: "Charades Generator & Game Guide",
     defaultDescription: "Generate random charades words for kids, adults, movies, Disney, animals, and parties. No login needed.",
     generateButton: "Generate words",
     copyButton: "Copy words",
