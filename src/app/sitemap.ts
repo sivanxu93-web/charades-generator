@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { statSync } from "fs";
 import { join } from "path";
 import { buildAlternateLanguages, buildCanonicalUrl } from "@/utils/seo";
+import { SUPPORTED_LOCALES } from "@/i18n/config";
 
 export const dynamic = "force-static";
 
@@ -226,20 +227,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   for (const route of routeConfig) {
-    const languages = buildAlternateLanguages(route.path);
-    const primaryUrl = buildCanonicalUrl("en", route.path);
     const pageFilePath = getPageFilePath(route.path);
     const lastModified = getFileModificationTime(pageFilePath);
 
-    sitemapEntries.push({
-      url: primaryUrl,
-      lastModified,
-      changeFrequency: route.changeFrequency,
-      priority: route.priority,
-      alternates: {
-        languages,
-      },
-    });
+    for (const locale of SUPPORTED_LOCALES) {
+      const localeUrl = buildCanonicalUrl(locale, route.path);
+      const languages = buildAlternateLanguages(route.path);
+
+      sitemapEntries.push({
+        url: localeUrl,
+        lastModified,
+        changeFrequency: route.changeFrequency,
+        priority: route.priority,
+        alternates: {
+          languages,
+        },
+      });
+    }
   }
 
   return sitemapEntries;
