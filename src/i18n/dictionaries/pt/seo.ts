@@ -1,11 +1,11 @@
 export const seo = {
   home: {
-    title: "Jogo de Mímica Online: Gerador de Palavras e Idéias Grátis",
+    title: "Jogo de Mímica Grátis: 2.000+ Palavras e Cartões Imprimíveis",
     description: "Use o nosso gerador de jogo de mímica online e grátis para obter palavras instantaneamente. Escolha temas como infantil, adultos, filmes, Disney, animais e dificuldade.",
     keywords: "jogo de mimica, jogo de mímica online, palavras para mimica, ideias de mimicas, gerador de mimica, lista de palavras para mimica",
     structuredDataName: "Jogo de Mímica Online - Gerador de Palavras Grátis",
     alternateName: "Jogo de Mímica Online",
-    structuredDataDescription: "Gerador de mímica online com mais de 1000 palavras para jogar em família ou com amigos. Totalmente gratuito.",
+    structuredDataDescription: "Gerador de mímica online com mais de 2.000 palavras para jogar em família ou com amigos. Totalmente gratuito.",
   },
   kids: {
     title: "Palavras para Mímica Infantil: Idéias e Mímicas Fáceis para Crianças",

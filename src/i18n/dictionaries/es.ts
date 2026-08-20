@@ -3,7 +3,7 @@ export const es = {
   localeName: "Español",
   seo: {
     home: {
-      title: "Generador de Charadas: Listas de Palabras y Reglas",
+      title: "Generador de Charadas Gratis: 2,000+ Palabras e Tarjetas Imprimibles",
       description:
         "Usa este generador de charadas gratis para obtener palabras al instante. Elige niños, adultos, cine, Disney, animales y dificultad, luego copia o imprime tu lista.",
       keywords:

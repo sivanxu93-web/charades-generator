@@ -3,7 +3,7 @@ export const en = {
   localeName: "English",
   seo: {
     home: {
-      title: "Charades Generator: Free Word Lists & Game Rules",
+      title: "Free Charades Generator: 2,000+ Words & Printable Cards",
       description:
         "Use this free charades generator to get random charades words instantly. Choose kids, adults, movies, Disney, animals, and difficulty, then copy or print your list.",
       keywords:
@@ -11,7 +11,7 @@ export const en = {
       structuredDataName: "Charades Generator - Free Online Word Tool",
       alternateName: "Free Charades Word Generator",
       structuredDataDescription:
-        "Charades word generator with a 1000+ word database. Free instant charades words and ideas for kids, adults, parties, and classrooms—including movies, Disney, animals, actions, and funny prompts.",
+        "Charades word generator with a 2,000+ word database. Free instant charades words and ideas for kids, adults, parties, and classrooms—including movies, Disney, animals, actions, and funny prompts.",
     },
     kids: {
       title: "Charades for Kids: 500+ Fun Ideas & Kids Charades Generator",

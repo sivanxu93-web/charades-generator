@@ -1,11 +1,11 @@
 export const seo = {
   home: {
-    title: "Jeu de Mime : Générateur Gratuit de Mots à Mimer et Idées",
+    title: "Jeu de Mime Gratuit : 2 000+ Mots & Cartes à Imprimer",
     description: "Utilisez notre outil de jeu de mime en ligne gratuit pour obtenir des mots instantanément. Sélectionnez vos thèmes (enfants, adultes, animaux, cinéma, Disney) et votre niveau de difficulté.",
     keywords: "jeu de mime, jeu de mimes, mots à mimer, idées de mimes, jeu de mime en ligne, jeu de mime gratuit, liste de mots pour mime",
     structuredDataName: "Jeu de Mime en Ligne - Outil de Mots Gratuit",
     alternateName: "Jeu de Mime en Ligne",
-    structuredDataDescription: "Générateur de jeu de mime avec une base de données de plus de 1000 mots ! Mots instantanés gratuits pour enfants, adultes et fêtes. Sans inscription.",
+    structuredDataDescription: "Générateur de jeu de mime avec une base de données de plus de 2 000 mots ! Mots instantanés gratuits pour enfants, adultes et fêtes. Sans inscription.",
   },
   kids: {
     title: "Mots à Mimer pour Enfants : Idées et Générateur de Mime Facile",
