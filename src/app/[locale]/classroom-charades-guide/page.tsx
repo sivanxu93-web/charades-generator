@@ -21,6 +21,21 @@ const metaByLocale = {
     description:
       "Ideas de charadas para clase, variantes SEL y consejos de gestión usando el generador gratuito de charadas.",
   },
+  fr: {
+    title: "Guide du Jeu de Mime en Classe – Activités pour Enseignants",
+    description:
+      "Idées de jeu de mime adaptées aux écoles, astuces pédagogiques et pauses dynamiques pour enseignants.",
+  },
+  pt: {
+    title: "Guia de Mímica em Sala de Aula – Atividades para Professores",
+    description:
+      "Ideias de mímica para ambiente escolar, dinâmicas educativas e dicas de gestão de turma.",
+  },
+  ja: {
+    title: "学校・授業で使えるジェスチャーゲーム完全ガイド",
+    description:
+      "学校の授業やレクリエーションで役立つ、先生向けジェスチャーゲームの指導法とアイデア集。",
+  },
 };
 
 export async function generateStaticParams() {

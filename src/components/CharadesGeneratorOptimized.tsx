@@ -30,6 +30,7 @@ interface CharadesGeneratorProps {
   defaultDifficulty?: string;
   title?: string;
   description?: string;
+  headingLevel?: 'h1' | 'h2';
   hideFilters?: boolean;
   initialWords?: CharadesWord[];
   hideCategoryFilter?: boolean;
@@ -55,6 +56,7 @@ export default function CharadesGeneratorOptimized({
   defaultDifficulty = 'all',
   title,
   description,
+  headingLevel = 'h1',
   hideFilters = false,
   initialWords,
   hideCategoryFilter = false,
@@ -274,6 +276,8 @@ export default function CharadesGeneratorOptimized({
     setTimeout(() => setCopyFeedback('idle'), 3000);
   }, [generatedWords, difficultiesLabel, categoriesLabel, ageGroupLabels]);
 
+  const HeadingTag = headingLevel === 'h2' ? 'h2' : 'h1';
+
   return (
     <>
       <header className="text-center mb-8">
@@ -285,7 +289,7 @@ export default function CharadesGeneratorOptimized({
             </Link>
           </div>
         )}
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">{resolvedTitle}</h1>
+        <HeadingTag className="text-4xl font-bold text-gray-800 mb-2">{resolvedTitle}</HeadingTag>
         <p className="text-gray-600 text-lg">{resolvedDescription}</p>
         <p className="text-gray-500 text-sm mt-2">{dictionary.generator.wordsCountSublabel}</p>
       </header>

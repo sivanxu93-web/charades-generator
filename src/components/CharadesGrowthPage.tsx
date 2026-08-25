@@ -53,6 +53,7 @@ export default function CharadesGrowthPage({ locale, content, category }: Charad
         <CharadesGeneratorOptimized
           title={content.generatorTitle}
           description={content.generatorDescription}
+          headingLevel="h2"
           defaultCategory={category}
           defaultDifficulty="medium"
           defaultAgeGroup="all"

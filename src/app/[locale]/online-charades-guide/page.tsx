@@ -21,6 +21,21 @@ const metaByLocale = {
     description:
       "Cómo organizar charadas en Zoom o videollamadas usando los modos aleatorio y reverse del generador.",
   },
+  fr: {
+    title: "Guide du Jeu de Mime en Ligne & Zoom – Idées à Distance",
+    description:
+      "Comment organiser des jeux de mime sur Zoom et en réunion vidéo grâce au générateur en ligne.",
+  },
+  pt: {
+    title: "Guia de Mímica Online e Zoom – Ideias para Jogos Remotos",
+    description:
+      "Como organizar partidas de mímica pelo Zoom e chamadas de vídeo usando nosso gerador online.",
+  },
+  ja: {
+    title: "オンライン＆Zoomジェスチャーゲーム攻略ガイド",
+    description:
+      "Zoomやビデオ通話で楽しむオンラインジェスチャーゲームの遊び方とルール解説。",
+  },
 };
 
 export async function generateStaticParams() {

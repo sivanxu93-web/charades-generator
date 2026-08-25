@@ -21,6 +21,21 @@ const metaByLocale = {
     description:
       "Playbook sencillo para organizar noches de juegos familiares con charadas usando los generadores de pelis, Disney e infantil.",
   },
+  fr: {
+    title: "Soirée Jeux en Famille : Guide du Jeu de Mime",
+    description:
+      "Guide pratique pour organiser une soirée jeux en famille réussie avec des mimes Disney, films et enfants.",
+  },
+  pt: {
+    title: "Noite de Jogos em Família com Mímica – Guia Prático",
+    description:
+      "Guia simples para organizar uma noite de jogos em família inesquecível com mímica para crianças, filmes e Disney.",
+  },
+  ja: {
+    title: "家族で楽しむジェスチャーゲーム ナイト完全ガイド",
+    description:
+      "子供から大人まで家族みんなで盛り上がるジェスチャーゲームの遊び方とテーマ別お題。",
+  },
 };
 
 export async function generateStaticParams() {

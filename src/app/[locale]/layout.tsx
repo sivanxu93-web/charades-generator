@@ -1,8 +1,9 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LocaleProvider } from "@/contexts/LocaleContext";
-import { SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
+import { isLocale, SUPPORTED_LOCALES, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionary";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-static";
 
@@ -17,6 +18,9 @@ export async function generateStaticParams() {
 
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale: localeParam } = await params;
+  if (!isLocale(localeParam)) {
+    notFound();
+  }
   const locale = localeParam as Locale;
   const dictionary = getDictionary(locale);
 
